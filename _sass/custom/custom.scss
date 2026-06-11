@@ -1,0 +1,176 @@
+// ============================================================
+// Dew Monday — Just the Docs Brand Override
+// Matches app aesthetic: warm cream, dark sidebar, forest green
+// ============================================================
+
+// --- Typography ---
+h1, h2, h3, h4, h5, h6 {
+  font-family: "DM Serif Display", Georgia, serif !important;
+  letter-spacing: -0.01em;
+}
+
+.site-title {
+  font-family: "DM Serif Display", Georgia, serif !important;
+  font-size: 1.25rem !important;
+  color: #a6e3a1 !important;
+  letter-spacing: -0.01em;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif !important;
+  background-color: #F5F0E8 !important;
+  color: #1C1C1C !important;
+}
+
+// --- Sidebar ---
+.side-bar {
+  background-color: #1e1e2e !important;
+  border-right: 1px solid #2D5A27 !important;
+}
+
+.site-header {
+  background-color: #1e1e2e !important;
+  border-bottom: 1px solid rgba(45, 90, 39, 0.4) !important;
+}
+
+// --- Nav links ---
+.nav-list .nav-list-link {
+  color: #cdd6f4 !important;
+  font-family: "Inter", system-ui, sans-serif !important;
+  font-size: 0.875rem !important;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.nav-list .nav-list-link:hover {
+  color: #a6e3a1 !important;
+  background-color: rgba(166, 227, 161, 0.08) !important;
+}
+
+.nav-list .nav-list-link.active {
+  color: #a6e3a1 !important;
+  background-color: rgba(166, 227, 161, 0.12) !important;
+  font-weight: 600 !important;
+}
+
+.nav-list-expander svg {
+  fill: #6B7280 !important;
+}
+
+// --- Main content area ---
+.main-content-wrap {
+  background-color: #F5F0E8 !important;
+}
+
+.main-content {
+  font-family: "Inter", system-ui, sans-serif !important;
+  color: #1C1C1C !important;
+  max-width: 860px;
+}
+
+// --- Links in content ---
+.main-content a {
+  color: #2D5A27 !important;
+  text-decoration: underline;
+  text-decoration-color: rgba(45, 90, 39, 0.3);
+}
+
+.main-content a:hover {
+  color: #234820 !important;
+  text-decoration-color: #234820;
+}
+
+// --- Blockquotes ---
+.main-content blockquote {
+  border-left: 4px solid #2D5A27 !important;
+  background-color: rgba(45, 90, 39, 0.05) !important;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 20px !important;
+  color: #374151 !important;
+  font-style: normal !important;
+}
+
+// --- Tables ---
+.main-content table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.main-content th {
+  background-color: #2D5A27 !important;
+  color: #F5F0E8 !important;
+  font-family: "Inter", system-ui, sans-serif !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 14px !important;
+}
+
+.main-content td {
+  border: 1px solid #E2DDD6 !important;
+  padding: 9px 14px !important;
+  color: #1C1C1C !important;
+}
+
+.main-content tr:nth-child(even) td {
+  background-color: rgba(245, 240, 232, 0.6) !important;
+}
+
+// --- Code ---
+code {
+  font-family: "JetBrains Mono", Consolas, monospace !important;
+  background-color: rgba(45, 90, 39, 0.07) !important;
+  border: 1px solid #E2DDD6 !important;
+  border-radius: 4px !important;
+  font-size: 0.85em !important;
+  color: #1C1C1C !important;
+}
+
+.highlight {
+  background-color: #1e1e2e !important;
+  border-radius: 8px !important;
+  border: 1px solid #2D5A27 !important;
+}
+
+.highlight code {
+  background: transparent !important;
+  border: none !important;
+  color: #cdd6f4 !important;
+}
+
+// --- Search ---
+.search-input {
+  background-color: rgba(245, 240, 232, 0.1) !important;
+  border: 1px solid rgba(166, 227, 161, 0.2) !important;
+  color: #F5F0E8 !important;
+  border-radius: 6px !important;
+}
+
+.search-input::placeholder {
+  color: #6B7280 !important;
+}
+
+// --- Buttons ---
+.btn-primary {
+  background-color: #2D5A27 !important;
+  border-color: #2D5A27 !important;
+  color: #F5F0E8 !important;
+}
+
+.btn-primary:hover {
+  background-color: #234820 !important;
+}
+
+// --- Labels / Badges ---
+.label {
+  font-family: "Inter", system-ui, sans-serif !important;
+  font-size: 0.75rem !important;
+}
+
+// --- Footer ---
+.site-footer {
+  background-color: #1e1e2e !important;
+  border-top: 1px solid rgba(45, 90, 39, 0.3) !important;
+  color: #6B7280 !important;
+}
