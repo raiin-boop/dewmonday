@@ -1,13 +1,14 @@
-# 🎨 Art Dropshipping
-
-> **Concept Status:** 🌱 Ideation
-> **Last Updated:** June 2026
-
+---
+layout: default
+title: Art Dropshipping
+nav_order: 2
+parent: Concepts
+has_children: true
 ---
 
-## Overview
+#  Art Dropshipping
 
-A print-on-demand and curated art reselling storefront under the Dew Monday brand. The store would feature original digital artworks printed on demand (prints, canvases, apparel, home goods) as well as curated physical products from independent artists — shipped directly from fulfillment partners.
+Limited-edition artist collaborations shipped direct. Each drop is a moment  announced with a Remotion-generated video trailer and available for 72 hours only.
 
 ---
 
@@ -19,57 +20,34 @@ Independent artists often lack the infrastructure to sell globally, manage inven
 
 ## Value Proposition
 
-- **Artist-aligned** — Dew Monday lifts artists rather than extracting from them
-- **POD + curated hybrid** — flexibility to test original designs alongside vetted artist products
-- **Brand coherence** — visual aesthetic and editorial voice differentiate the store
+- **Artist-aligned**  Dew Monday lifts artists rather than extracting from them
+- - **Drop model**  scarcity creates urgency without manipulation
+  - - **Brand coherence**  visual aesthetic and editorial voice differentiate the store
+   
+    - ---
 
----
+    ## Target Audience
 
-## Target Audience
+    | Segment | Profile |
+    |---|---|
+    | Art Enthusiasts | Collect prints, want unique pieces, support independent artists |
+    | Gift Buyers | Looking for meaningful, original gifts |
+    | Interior Decorators | Seeking affordable statement pieces |
+    | Artists Themselves | Potential collaborators/suppliers |
 
-| Segment | Profile |
-|---|---|
-| Art Enthusiasts | Collect prints, want unique pieces, support independent artists |
-| Gift Buyers | Looking for meaningful, original gifts |
-| Interior Decorators | Seeking affordable statement pieces |
-| Artists Themselves | Potential collaborators/suppliers |
+    ---
 
----
+    ## Revenue Model
 
-## Revenue Model
+    - POD margin on Dew Monday original designs (Printful, Gelato, Printify)
+    - - Revenue share with featured artists (25% to artist)
+      - - Limited edition drops (72-hour windows)
+        - - Remotion video trailers for each drop announcement
+         
+          - ---
 
-- POD margin on Dew Monday original designs (Printful, Gelato, Printify)
-- Revenue share / wholesale with featured artists
-- Limited edition drops (scarcity-driven)
-- Subscription box concept (quarterly curated art pack)
+          ## Key Questions to Answer
 
----
-
-## Key Questions to Answer
-
-- [ ] POD platform comparison: Printful vs. Gelato vs. Printify — quality, margins, integrations?
-- [ ] How do we source and vet independent artist partners?
-- [ ] What's the IP and contract structure for artist collaborations?
-- [ ] What product categories to start with? (Prints → apparel → home goods)
-- [ ] How does this interact with the Art Tutorial App?
-
----
-
-## Potential Product Categories
-
-Phase 1 (Launch): Fine art prints, Canvas wraps
-Phase 2 (Growth): Apparel, Stickers & stationery
-Phase 3 (Scale): Home goods, Curated physical art from partner artists
-
----
-
-## Next Steps
-
-1. Compare Printful vs. Gelato print quality with test order
-2. Draft an artist partnership agreement template
-3. Define Dew Monday's own design aesthetic
-4. Map out a 10-product launch lineup
-
----
-
-*Part of the [Dew Monday](../../README.md) brand incubator.*
+          - [ ] Which POD partners have the best print quality for art prints?
+          - [ ] - [ ] How do we source and vet artist collaborators?
+          - [ ] - [ ] What's the minimum viable drop cadence (weekly, bi-weekly, monthly)?
