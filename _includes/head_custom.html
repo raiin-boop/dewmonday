@@ -1,0 +1,137 @@
+<!-- Dew Monday: Google Fonts for brand typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Dew Monday: Brand color scheme override -->
+<style>
+  /* Force light cream mode regardless of Just the Docs color_scheme setting */
+  :root {
+    --body-background-color: #F5F0E8;
+    --sidebar-color: #1e1e2e;
+    --body-text-color: #1C1C1C;
+    --body-heading-color: #1C1C1C;
+    --nav-width: 248px;
+    --content-width: 860px;
+    --heading-font-family: "DM Serif Display", Georgia, serif;
+    --body-font-family: "Inter", system-ui, sans-serif;
+    --mono-font-family: "JetBrains Mono", Consolas, monospace;
+    --base-button-color: #2D5A27;
+    --link-color: #2D5A27;
+  }
+
+  /* Override dark theme applied by color_scheme: dark */
+  body {
+    background-color: #F5F0E8 !important;
+    color: #1C1C1C !important;
+    font-family: "Inter", system-ui, sans-serif !important;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .site-title {
+    font-family: "DM Serif Display", Georgia, serif !important;
+  }
+
+  h1 { font-size: 2.25rem !important; letter-spacing: -0.02em; }
+  h2 { font-size: 1.65rem !important; letter-spacing: -0.01em; }
+  h3 { font-size: 1.25rem !important; }
+
+  /* Sidebar stays dark — intentional contrast */
+  .side-bar, .site-header {
+    background-color: #1e1e2e !important;
+    border-right-color: rgba(45, 90, 39, 0.35) !important;
+  }
+
+  .site-title {
+    color: #a6e3a1 !important;
+    font-size: 1.2rem !important;
+  }
+
+  .nav-list-link {
+    color: #cdd6f4 !important;
+    font-family: "Inter", system-ui, sans-serif !important;
+    font-size: 0.875rem !important;
+  }
+
+  .nav-list-link:hover,
+  .nav-list-link.active {
+    color: #a6e3a1 !important;
+    background-color: rgba(166, 227, 161, 0.1) !important;
+  }
+
+  /* Main content area */
+  .main-content-wrap {
+    background-color: #F5F0E8 !important;
+  }
+
+  .main-content a {
+    color: #2D5A27 !important;
+  }
+
+  .main-content a:hover {
+    color: #234820 !important;
+    text-decoration: underline;
+  }
+
+  /* Tables */
+  .main-content th {
+    background-color: #2D5A27 !important;
+    color: #F5F0E8 !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .main-content td {
+    border-color: #E2DDD6 !important;
+  }
+
+  .main-content tr:nth-child(even) td {
+    background-color: rgba(230, 225, 215, 0.5) !important;
+  }
+
+  /* Blockquotes */
+  .main-content blockquote {
+    border-left: 4px solid #2D5A27 !important;
+    background-color: rgba(45, 90, 39, 0.05) !important;
+    color: #374151 !important;
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* Inline code */
+  code:not(.highlight code) {
+    background-color: rgba(45, 90, 39, 0.08) !important;
+    border: 1px solid #E2DDD6 !important;
+    color: #1C1C1C !important;
+    border-radius: 4px !important;
+    font-family: "JetBrains Mono", Consolas, monospace !important;
+  }
+
+  /* Code blocks */
+  .highlight {
+    background-color: #1e1e2e !important;
+    border: 1px solid rgba(45, 90, 39, 0.3) !important;
+    border-radius: 8px !important;
+  }
+
+  .highlight code {
+    background: transparent !important;
+    border: none !important;
+    color: #cdd6f4 !important;
+  }
+
+  /* Search */
+  .search-input {
+    background-color: rgba(255,255,255,0.1) !important;
+    color: #F5F0E8 !important;
+    border-color: rgba(166, 227, 161, 0.25) !important;
+    border-radius: 6px !important;
+  }
+
+  /* Footer */
+  .site-footer {
+    background-color: #1e1e2e !important;
+    border-top-color: rgba(45, 90, 39, 0.3) !important;
+    color: #6B7280 !important;
+  }
+</style>
