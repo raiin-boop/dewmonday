@@ -1,0 +1,250 @@
+---
+layout: none
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dew Monday — Creative Brand Incubator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F5F0E8;
+      --primary: #2D5A27;
+      --accent: #6BA3BE;
+      --text: #1C1C1C;
+      --muted: #6B6B6B;
+      --border: #E2DDD6;
+      --white: #FFFFFF;
+    }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      z-index: 100; padding: 0 48px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif; font-size: 1.4rem;
+      color: var(--text); text-decoration: none; letter-spacing: -0.5px;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 500; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 64px; min-height: 88vh;
+      background: linear-gradient(140deg, #111e10 0%, #2D5A27 55%, #1a3d34 100%);
+      display: flex; align-items: center; padding: 0 10%;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(107,163,190,0.08) 0%, transparent 70%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 680px; }
+    .hero-eyebrow {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      color: var(--white); line-height: 1.06;
+      margin-bottom: 24px; letter-spacing: -1.5px;
+    }
+    .hero p {
+      font-size: 1.15rem; color: rgba(255,255,255,0.7);
+      line-height: 1.75; max-width: 500px; margin-bottom: 40px;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--primary);
+      padding: 14px 28px; border-radius: 3px;
+      font-weight: 600; font-size: 0.9rem; text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { background: var(--bg); transform: translateY(-2px); }
+
+    /* ── SECTION HEADER ── */
+    .section-header { text-align: center; padding: 80px 48px 56px; }
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif; font-size: 2.8rem;
+      color: var(--text); letter-spacing: -0.5px; margin-bottom: 12px;
+    }
+    .section-header p { color: var(--muted); font-size: 1.05rem; max-width: 440px; margin: 0 auto; }
+
+    /* ── CONCEPT PANELS ── */
+    .concept-panel {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 480px; border-top: 1px solid var(--border);
+    }
+    .concept-panel:last-of-type { border-bottom: 1px solid var(--border); }
+    .concept-panel.reversed .concept-text { order: -1; }
+
+    .concept-image {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 420px; font-size: 5.5rem;
+      position: relative; overflow: hidden;
+    }
+    .concept-image::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.15) 0%, transparent 60%);
+    }
+
+    .bg-camera  { background: linear-gradient(135deg, #151520 0%, #252540 100%); }
+    .bg-art     { background: linear-gradient(135deg, #1e0f2e 0%, #3d2060 100%); }
+    .bg-tutorial{ background: linear-gradient(135deg, #0f1e0f 0%, #2D5A27 100%); }
+    .bg-creator { background: linear-gradient(135deg, #0f1e26 0%, #1e3d4f 100%); }
+    .bg-little  { background: linear-gradient(135deg, #2e1020 0%, #5c2040 100%); }
+
+    .concept-text {
+      padding: 64px 72px; background: var(--white);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .concept-tag {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    .concept-text h3 {
+      font-family: 'DM Serif Display', serif; font-size: 2.4rem;
+      color: var(--text); margin-bottom: 16px; letter-spacing: -0.5px; line-height: 1.15;
+    }
+    .concept-text p {
+      font-size: 1rem; color: var(--muted); line-height: 1.8;
+      margin-bottom: 28px; max-width: 400px;
+    }
+    .concept-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.88rem; font-weight: 600; color: var(--primary);
+      text-decoration: none; border-bottom: 2px solid var(--primary);
+      padding-bottom: 2px; width: fit-content;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .concept-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text); color: rgba(255,255,255,0.5);
+      padding: 48px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--white); }
+    footer p { font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .hero { padding: 0 24px; min-height: 80vh; }
+      .concept-panel { grid-template-columns: 1fr; }
+      .concept-panel.reversed .concept-text { order: 0; }
+      .concept-text { padding: 40px 32px; }
+      .section-header { padding: 60px 24px 36px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/dewmonday/" class="nav-logo">Dew Monday</a>
+    <ul class="nav-links">
+      <li><a href="/dewmonday/concepts/" class="active">Concepts</a></li>
+      <li><a href="/dewmonday/brand/">Brand</a></li>
+      <li><a href="https://github.com/raiin-boop/dewmonday">GitHub ↗</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Creative Brand Incubator</p>
+      <h1>Five concepts.<br>One vision.</h1>
+      <p>Independent brands built in public — each with its own identity, audience, and model. Rooted in creativity, accessibility, and the maker mindset.</p>
+      <a href="/dewmonday/concepts/" class="hero-cta">Explore the Concepts →</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2>The Concepts</h2>
+      <p>Five brands, each solving a real problem for a real person.</p>
+    </div>
+
+    <div class="concept-panel">
+      <div class="concept-image bg-camera">📷</div>
+      <div class="concept-text">
+        <span class="concept-tag">E-commerce · Dropshipping</span>
+        <h3>Camera Dropshipping</h3>
+        <p>Curated photography gear for first-timers, upgraders, and niche enthusiasts — paired with editorial buying guides. A trusted friend, not a faceless marketplace.</p>
+        <a href="/dewmonday/concepts/camera-dropshipping/" class="concept-link">Read more →</a>
+      </div>
+    </div>
+
+    <div class="concept-panel reversed">
+      <div class="concept-image bg-art">🎨</div>
+      <div class="concept-text">
+        <span class="concept-tag">E-commerce · Print on Demand</span>
+        <h3>Art Dropshipping</h3>
+        <p>Limited-edition artist collaboration prints on a 72-hour drop model. Every piece carries an artist story. Curated to max 60 designs — never a scroll-and-forget gallery.</p>
+        <a href="/dewmonday/concepts/art-dropshipping/" class="concept-link">Read more →</a>
+      </div>
+    </div>
+
+    <div class="concept-panel">
+      <div class="concept-image bg-tutorial">✏️</div>
+      <div class="concept-text">
+        <span class="concept-tag">EdTech · App</span>
+        <h3>Art Tutorial App</h3>
+        <p>Project-first art education. Every lesson ends in something shareable. Structured for beginners who want real results — not just technique drills.</p>
+        <a href="/dewmonday/concepts/art-tutorial-app/" class="concept-link">Read more →</a>
+      </div>
+    </div>
+
+    <div class="concept-panel reversed">
+      <div class="concept-image bg-creator">📬</div>
+      <div class="concept-text">
+        <span class="concept-tag">Newsletter · Community</span>
+        <h3>Creator Hub</h3>
+        <p>A weekly Monday newsletter and community for independent creators. Tools, frameworks, and real talk on building something that lasts — founding members first.</p>
+        <a href="/dewmonday/concepts/creator-hub/" class="concept-link">Read more →</a>
+      </div>
+    </div>
+
+    <div class="concept-panel">
+      <div class="concept-image bg-little">🎪</div>
+      <div class="concept-text">
+        <span class="concept-tag">Kids · Free · Accessibility-First</span>
+        <h3>Little Makers</h3>
+        <p>A free creativity activity hub for kids ages 0–8. No paywall, no account needed. Every activity has a household-only version — because creativity shouldn't cost anything.</p>
+        <a href="/dewmonday/concepts/little-makers/" class="concept-link">Read more →</a>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <div class="footer-logo">Dew Monday</div>
+    <p>Built in public. Five brands, one vision.</p>
+    <ul class="footer-links">
+      <li><a href="/dewmonday/concepts/">Concepts</a></li>
+      <li><a href="/dewmonday/brand/">Brand</a></li>
+      <li><a href="https://github.com/raiin-boop/dewmonday">GitHub</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
