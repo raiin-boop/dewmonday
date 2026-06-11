@@ -1,3 +1,11 @@
+---
+layout: default
+title: Little Makers
+nav_order: 5
+parent: Concepts
+has_children: true
+---
+
 # 🌱 Little Makers
 
 > **Concept Status:** 🌱 Ideation
