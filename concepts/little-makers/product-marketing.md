@@ -1,3 +1,10 @@
+---
+layout: default
+title: Product Marketing
+nav_order: 1
+parent: Little Makers
+---
+
 # Product Marketing Context — Little Makers
 
 > **One-liner:** A free, accessible creativity hub where every activity has a no-cost version — because creativity shouldn't require a craft budget.
