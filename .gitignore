@@ -1,0 +1,92 @@
+# ─────────────────────────────────────────────
+# Dew Monday — .gitignore
+# ─────────────────────────────────────────────
+
+# ── OS & System Files ──────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Editors & IDEs ─────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# ── Node / JavaScript ──────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+.npm/
+.yarn/
+dist/
+build/
+.next/
+.nuxt/
+.cache/
+.turbo/
+.vercel/
+.netlify/
+
+# ── Environment & Secrets ──────────────────
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+secrets/
+*.pem
+*.key
+*.cert
+
+# ── Python ─────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+env/
+.Python
+
+# ── Logs & Temp Files ──────────────────────
+logs/
+*.log
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+
+# ── Design & Asset Exports (keep sources) ──
+*.sketch~
+*.fig~
+
+# ── Research & Private Notes ───────────────
+**/_private/
+**/private-notes.md
+**/TODO-private.md
+
+# ── Miscellaneous ──────────────────────────
+*.zip
+*.tar.gz
+*.rar
+coverage/
+.nyc_output/
