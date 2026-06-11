@@ -5,85 +5,123 @@ nav_order: 1
 parent: Little Makers
 ---
 
-# Product Marketing Context - Little Makers
+# Little Makers — Product Marketing
 
-> **One-liner:** A free, accessible creativity hub where every activity has a no-cost version, because creativity should not require a craft budget.
+> **Concept Status:** 🌱 Ideation
+> **Last Updated:** June 2026
 
 ---
 
-## Problem
+## One-Liner
 
-Caregivers frequently hit an "I am out of ideas" moment: limited time, limited supplies, and children needing immediate engagement. Existing activity resources often assume specialty supplies, broad age ranges, and high prep effort.
+A free, filter-ready activity hub where parents, babysitters, and teachers find age-appropriate creative activities — no supplies budget required.
 
-Little Makers is built for real-world constraints: common household materials, short instructions, and fast discovery.
+---
+
+## Problem Statement
+
+Caregivers need creative activity ideas constantly, but existing resources are scattered, paywalled, or assume expensive supplies. Families without craft budgets are effectively excluded from the best content.
 
 ---
 
 ## Positioning Statement
 
-Little Makers meets caregivers where they are, not where social media expects them to be. Every activity includes a household-only version, clear age guidance, and instructions in four steps or fewer.
+For parents, babysitters, and teachers of kids ages 0–8 who need quick creative activity ideas, Little Makers is a free, always-accessible activity hub that works with household materials — unlike Pinterest boards or paid subscription boxes that assume time, money, and a Pinterest-ready craft room.
 
 ---
 
 ## Ideal Customer Profile (ICP)
 
-| Segment | Age | Mindset | Core Need | Key Feature |
+| Segment | Age | Situation | Pain Point | What They Need |
 |---|---|---|---|---|
-| The "What Do We Do Now?" Parent | 25-40 | "I want to do something meaningful, but I am out of time and energy" | Fast activity discovery | Age filter + Surprise Me |
-| Babysitter / Nanny | 16-30 | "I need activities that work with whatever is in this home" | Zero prep with known materials | Household-only filter |
-| Grandparent / Extended Family | 55-75 | "I want quality time without screens" | Memorable low-complexity activities | Keepsake activity tag |
-| PreK / Kindergarten Teacher | 24-55 | "I need high-engagement activities with predictable cleanup" | Classroom-safe planning | Messiness rating |
+| Parent of Toddler | 25–35 | Home with 1–2 kids under 4 | Runs out of ideas by Wednesday | Rainy day rescue activities, fast |
+| Babysitter / Nanny | 18–28 | New household every week | Doesn't know what supplies are available | Household-materials-only activities |
+| Grandparent | 55–70 | Occasional childcare, low tech comfort | Can't navigate complex apps or buy supplies | Simple, printable, no-login activities |
+| Teacher / Daycare Staff | 24–45 | Classroom of 8–20 kids | Needs curriculum-aligned activities at scale | Age-tagged, skill-tagged, classroom-ready |
+| Lower-income Caregiver | Any | Budget is the primary constraint | Excluded from paid craft kits and premium apps | Free-forever, household-first content |
 
 ---
 
-## Accessibility Commitment
+## Differentiators
 
-Little Makers treats accessibility as product infrastructure, not an add-on.
-
-1. Every activity includes a household-only option with common substitutes.
-2. Core content is available without login or paywall.
-3. No ads are targeted to children.
-4. Every activity supports a clean printable view for offline use.
-5. Activity instructions use plain language and concise numbered steps.
-
----
-
-## Core Messages by Audience
-
-- Parents: "You already have enough at home to start."
-- Babysitters: "Open, filter, and run an activity in minutes."
-- Grandparents: "Simple activities that create meaningful keepsakes."
-- Teachers: "Predictable prep and mess levels for group settings."
+| Feature | Little Makers | Pinterest | Paid Apps | Activity Books |
+|---|---|---|---|---|
+| Free forever | ✅ | ✅ | ❌ | ❌ (one-time cost) |
+| No account required | ✅ | ❌ | ❌ | ✅ |
+| Household-materials-only option | ✅ | ❌ | ❌ | Rarely |
+| Age + skill filters | ✅ | ❌ | Sometimes | ❌ |
+| Developmental skill tags | ✅ | ❌ | Sometimes | Sometimes |
+| Mobile-first | ✅ | ✅ | ✅ | ❌ |
 
 ---
 
-## Distribution Channels
+## Key Messages
 
-1. SEO for household-material and age-specific activity queries.
-2. Pinterest cards linking directly to activity pages.
-3. Group chat sharing loops through screenshot-friendly activity cards.
-4. Weekly email with age-based activity bundles.
-5. UGC discovery via short-form social clips.
+1. **"No supplies run required"** — every activity works with what you already have at home
+2. **"Made for the real attention span"** — 10–30 minute activities, not hour-long Pinterest projects
+3. **"Free forever, no account needed"** — accessibility is the core promise, not a growth hack
+4. **"Filtered for your kid's age"** — no guessing whether an activity is age-appropriate
 
 ---
 
-## Revenue Model
+## Tone & Voice
 
-| Source | Share | Description |
+- Warm and practical — like advice from a friend who's great with kids
+- No condescension — caregivers are resourceful, not clueless
+- Brief — parents are reading on their phone with one hand
+- Honest about messiness level — "warning: this gets everywhere" is a feature, not a bug
+
+---
+
+## Channels (Priority Order)
+
+| Channel | Tactic | Goal |
 |---|---|---|
-| Affiliate recommendations | 60% | Curated tools and toys, with a free alternative always listed first |
-| Seasonal downloadable packs | 25% | Themed printable collections in low-cost bundles |
-| Family-safe sponsorships | 15% | Sponsored placements in caregiver-facing sections only |
+| SEO | Target "toddler activities at home," "preschool art projects," "rainy day kids activities" | Organic discovery |
+| Pinterest | Pin individual activity cards with household-materials callout | Top-of-funnel traffic |
+| Instagram Reels | 15–30 second activity demos, no voiceover needed | Brand awareness |
+| TikTok | "3-minute activity for a rainy day" format | Viral reach |
+| Parenting Facebook Groups | Share specific activities as value-adds (no spam) | Community trust |
 
 ---
 
-## Strategic Fit in Dew Monday Ecosystem
+## Conversion Funnel
 
-- Complements `camera-dropshipping` via "capture your project" moments.
-- Complements `art-dropshipping` via kid-safe decor and illustration collaborations.
-- Complements `art-tutorial-app` via parent-child parallel creative prompts.
-- Complements `creator-hub` with community prompts and family creativity challenges.
 
 ---
+
+## Accessibility Commitment (Non-Negotiable)
+
+- **Free forever** — no core content behind a paywall
+- **No account required** — zero friction for first-time visitors
+- **Mobile-first** — most caregivers are on their phone
+- **Readable on slow connections** — no autoplay video, optimized images
+- **Plain language** — 6th-grade reading level target
+
+Monetization is strictly additive: optional affiliate links (labeled), printable packs, brand sponsorships for products we'd recommend anyway.
+
+---
+
+## Metrics (Target — Month 6)
+
+| Metric | Target |
+|---|---|
+| Monthly unique visitors | 5,000+ |
+| Activities in library | 100+ |
+| Avg. session duration | 3+ minutes |
+| Return visitor rate | 30%+ |
+| Printable pack downloads | 50/month |
+| SEO ranking — "toddler activities at home" | Top 20 |
+
+---
+
+## What Little Makers Is NOT
+
+- Not a subscription service
+- Not a toy/craft kit marketplace (recommendations only, never pushy)
+- Not a parenting advice blog
+- Not a social network — caregivers are busy, not here to scroll a feed
+- Not a classroom curriculum replacement — a supplement, not a system
+
 
 *Part of the [Dew Monday](../../README.md) brand incubator.*
