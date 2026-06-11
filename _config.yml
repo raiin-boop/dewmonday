@@ -1,0 +1,50 @@
+remote_theme: just-the-docs/just-the-docs@v0.10.0
+
+title: "🌿 Dew Monday"
+description: "Brand incubator — camera dropshipping, art dropshipping, art tutorial app, creator hub, and little makers."
+baseurl: "/dewmonday"
+url: "https://raiin-boop.github.io"
+
+# Theme color scheme
+color_scheme: dark
+
+# Search
+search_enabled: true
+
+# Navigation
+nav_sort: case_sensitive
+
+# Footer
+footer_content: "Dew Monday Brand Incubator &middot; 2026"
+
+# Aux links in header
+aux_links:
+  "GitHub Repo":
+    - "https://github.com/raiin-boop/dewmonday"
+aux_links_new_tab: true
+
+# Back to top
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# Callouts
+callouts_level: quiet
+callouts:
+  highlight:
+    color: green
+  note:
+    title: Note
+    color: blue
+
+# Exclude from build
+exclude:
+  - "*.sh"
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .agents/
+  - node_modules/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-github-metadata
