@@ -1,13 +1,14 @@
-# 🚀 Creator Hub
-
-> **Concept Status:** 🌱 Ideation
-> **Last Updated:** June 2026
-
+---
+layout: default
+title: Creator Hub
+nav_order: 4
+parent: Concepts
+has_children: true
 ---
 
-## Overview
+#  Creator Hub
 
-A community platform and resource center built for independent creators — giving them tools, peer connection, and curated resources to grow their craft and their business. The Creator Hub is both the connective tissue of the Dew Monday ecosystem and a standalone destination for creator community.
+A centralized community and resource hub for independent creators. Weekly newsletter drops, curated tools, peer connection, and ecosystem glue that ties all Dew Monday concepts together.
 
 ---
 
@@ -19,71 +20,59 @@ Creators are scattered across Discord servers, Reddit communities, Slack groups,
 
 ## Value Proposition
 
-- **Centralized creator community** — no more jumping between Discord, Reddit, and newsletters
-- **Curated resources** — tools, templates, and guides vetted by real creators
-- **Ecosystem glue** — connects gear buyers, art learners, and collaborators in one place
-- **Dew Monday editorial layer** — original content, weekly digests, creative prompts
+- **Centralized creator community**  no more jumping between Discord, Reddit, and newsletters
+- - **Curated resources**  tools, templates, and guides vetted by real creators
+  - - **Ecosystem glue**  connects gear buyers, art learners, and collaborators in one place
+    - - **Dew Monday editorial layer**  original content, weekly digests, creative prompts
+     
+      - ---
 
----
+      ## Target Audience
 
-## Target Audience
+      | Segment | Profile |
+      |---|---|
+      | Solo Creators | Photographers, illustrators, videographers building an audience |
+      | Side Hustlers | Day-jobbers monetizing their creative skills |
+      | Small Creative Teams | Duos/trios collaborating on creative projects |
+      | Students & Learners | Active on Art Tutorial App, want community |
 
-| Segment | Profile |
-|---|---|
-| Solo Creators | Photographers, illustrators, videographers building an audience |
-| Side Hustlers | Day-jobbers monetizing their creative skills |
-| Small Creative Teams | Duos/trios collaborating on creative projects |
-| Students & Learners | Active on Art Tutorial App, want community |
+      ---
 
----
+      ## Content Pillars
 
-## Content Pillars
+      1. **Craft**  technique, tools, creative process
+      2. 2. **Business**  monetization, pricing, clients, contracts
+         3. 3. **Community**  creator spotlights, collabs, shared projects
+            4. 4. **Gear**  honest reviews, setup tours (ties to Camera Dropshipping)
+              
+               5. ---
+              
+               6. ## Drop Model (Newsletter)
+              
+               7. One issue, every Monday, 6am ET. No mid-week emails. No daily digests. The Monday drop is the format.
+              
+               8. ```
+                  Week structure:
+                  Teaser post (Friday)  Full drop (Monday 6am)  Archive posted (Monday noon)
+                  ```
 
-1. **Craft** — technique, tools, creative process
-2. **Business** — monetization, pricing, clients, contracts
-3. **Community** — creator spotlights, collabs, shared projects
-4. **Gear** — honest reviews, setup tours (ties to Camera Dropshipping)
+                  Each issue: one deep feature, three short links, one creative prompt, one creator spotlight.
 
----
+                  ---
 
-## Tech Stack Considerations
+                  ## Tech Stack Considerations
 
-| Layer | Options |
-|---|---|
-| Community Platform | Circle.so, Discourse, custom Next.js |
-| Newsletter | Resend, ConvertKit, Beehiiv |
-| Directory / Profiles | Airtable + Webflow, or custom |
-| Auth | Shared with Art Tutorial App |
+                  | Layer | Options |
+                  |---|---|
+                  | Community Platform | Circle.so, Discourse, custom Next.js |
+                  | Newsletter | Resend, ConvertKit, Beehiiv |
+                  | Directory / Profiles | Airtable + Webflow, or custom |
 
----
+                  ---
 
-## Revenue Model
+                  ## Key Questions to Answer
 
-- Free tier (open community)
-- Pro membership (premium resources, events access, ad-free)
-- Brand sponsorships (creator-aligned sponsors only)
-- Affiliate revenue from resource recommendations
-
----
-
-## Key Questions to Answer
-
-- [ ] Build on Circle.so vs. custom platform? (Speed vs. control tradeoff)
-- [ ] What's the critical mass of members needed to feel alive?
-- [ ] How do we seed the community before launch? (Invite-only beta?)
-- [ ] How does Creator Hub cross-promote with Art Tutorial App and the store?
-- [ ] What's the content cadence for the newsletter?
-
----
-
-## Next Steps
-
-1. Define the founding community size target (100 members? 500?)
-2. Choose platform: Circle.so trial vs. custom build evaluation
-3. Draft the first 4 newsletter editions
-4. Build a "founding member" waitlist page
-5. Map content pillars to a 90-day editorial calendar
-
----
-
-*Part of the [Dew Monday](../../README.md) brand incubator.*
+                  - [ ] Paid community or free with paid tier?
+                  - [ ] - [ ] How does Creator Hub cross-sell Art Tutorial App?
+                  - [ ] - [ ] What is the minimum viable first issue?
+                  - [ ] - [ ] Which platform launches first  newsletter or community?
