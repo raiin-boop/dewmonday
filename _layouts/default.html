@@ -172,16 +172,26 @@
         <div class="dm-sidebar-label">Concepts</div>
         <ul class="dm-sidebar-nav">
           <li><a href="{{ '/concepts/' | relative_url }}" {% if page.url == '/concepts/' %}class="active"{% endif %}>Overview</a></li>
+
           <li><a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" {% if page.url contains 'camera-dropshipping' %}class="active"{% endif %}>📷 Camera Drops</a></li>
           <li class="child"><a href="{{ '/concepts/camera-dropshipping/product-marketing/' | relative_url }}" {% if page.url contains 'camera-dropshipping/product' %}class="active"{% endif %}>📷 Gear Marketing</a></li>
-          <li><a href="{{ '/concepts/art-dropshipping/' | relative_url }}" {% if page.url contains 'art-dropshipping' %}class="active"{% endif %}>🖼 Art Drops</a></li>
+
+          <li><a href="{{ '/concepts/art-dropshipping/' | relative_url }}" {% if page.url contains 'art-dropshipping' %}class="active"{% endif %}>🖼️ Art Drops</a></li>
           <li class="child"><a href="{{ '/concepts/art-dropshipping/product-marketing/' | relative_url }}" {% if page.url contains 'art-dropshipping/product' %}class="active"{% endif %}>🖼️ Art Marketing</a></li>
+
           <li><a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" {% if page.url contains 'art-tutorial' %}class="active"{% endif %}>🎨 Tutorial App</a></li>
           <li class="child"><a href="{{ '/concepts/art-tutorial-app/product-marketing/' | relative_url }}" {% if page.url contains 'art-tutorial/product' %}class="active"{% endif %}>🎨 Tutorial Marketing</a></li>
+
           <li><a href="{{ '/concepts/creator-hub/' | relative_url }}" {% if page.url contains 'creator-hub' %}class="active"{% endif %}>✍️ Creator Hub</a></li>
           <li class="child"><a href="{{ '/concepts/creator-hub/product-marketing/' | relative_url }}" {% if page.url contains 'creator-hub/product' %}class="active"{% endif %}>✍️ Hub Marketing</a></li>
+          <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/001-start-before-ready/' | relative_url }}" {% if page.url contains 'newsletter/001' %}class="active"{% endif %}>📩 #001 Start</a></li>
+          <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/002-the-business-of-making/' | relative_url }}" {% if page.url contains 'newsletter/002' %}class="active"{% endif %}>📩 #002 Business</a></li>
+          <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/003-community-vs-audience/' | relative_url }}" {% if page.url contains 'newsletter/003' %}class="active"{% endif %}>📩 #003 Community</a></li>
+          <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/004-the-myth-of-the-perfect-setup/' | relative_url }}" {% if page.url contains 'newsletter/004' %}class="active"{% endif %}>📩 #004 Gear</a></li>
+
           <li><a href="{{ '/concepts/little-makers/' | relative_url }}" {% if page.url contains 'little-makers' %}class="active"{% endif %}>🎈 Little Makers</a></li>
           <li class="child"><a href="{{ '/concepts/little-makers/product-marketing/' | relative_url }}" {% if page.url contains 'little-makers/product' %}class="active"{% endif %}>🎈 Makers Marketing</a></li>
+          <li class="child"><a href="{{ '/concepts/little-makers/tool-recommendations/' | relative_url }}" {% if page.url contains 'tool-recommendations' %}class="active"{% endif %}>🛠️ Tool Picks</a></li>
         </ul>
       </div>
       <div class="dm-sidebar-section">
@@ -189,6 +199,7 @@
         <ul class="dm-sidebar-nav">
           <li><a href="{{ '/brand/' | relative_url }}" {% if page.url == '/brand/' %}class="active"{% endif %}>Brand Identity</a></li>
           <li><a href="{{ '/brand/design-system/' | relative_url }}" {% if page.url contains 'design-system' %}class="active"{% endif %}>Design System</a></li>
+          <li><a href="{{ '/brand/customer-interview-guide/' | relative_url }}" {% if page.url contains 'interview-guide' %}class="active"{% endif %}>🎙️ Interview Guide</a></li>
         </ul>
       </div>
     </aside>
