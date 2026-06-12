@@ -2,7 +2,7 @@
 layout: default
 title: "Issue #004 — The Myth of the Perfect Setup"
 parent: Creator Hub
-permalink: /concepts/creator-hub/newsletter/004/
+permalink: /concepts/creator-hub/newsletter/004-the-myth-of-the-perfect-setup/
 description: "On gear, tools, and why the best setup is the one you actually use."
 tag: Newsletter
 ---

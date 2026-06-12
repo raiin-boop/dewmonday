@@ -2,7 +2,7 @@
 layout: default
 title: "Issue #001 — Start Before You're Ready"
 parent: Creator Hub
-permalink: /concepts/creator-hub/newsletter/001/
+permalink: /concepts/creator-hub/newsletter/001-start-before-ready/
 description: "The first edition of Dew Monday's weekly letter for independent creators."
 tag: Newsletter
 ---

@@ -2,7 +2,7 @@
 layout: default
 title: "Issue #003 — Community vs. Audience"
 parent: Creator Hub
-permalink: /concepts/creator-hub/newsletter/003/
+permalink: /concepts/creator-hub/newsletter/003-community-vs-audience/
 description: "On the difference between people who watch you and people who are with you."
 tag: Newsletter
 ---

@@ -2,7 +2,7 @@
 layout: default
 title: "Issue #002 — The Business of Making"
 parent: Creator Hub
-permalink: /concepts/creator-hub/newsletter/002/
+permalink: /concepts/creator-hub/newsletter/002-the-business-of-making/
 description: "On pricing your work, finding your first ten customers, and separating the art from the anxiety."
 tag: Newsletter
 ---
