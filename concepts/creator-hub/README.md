@@ -4,6 +4,7 @@ title: Creator Hub
 nav_order: 4
 parent: Concepts
 has_children: true
+permalink: /concepts/creator-hub/
 ---
 
 #  Creator Hub
