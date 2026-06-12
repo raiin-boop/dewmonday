@@ -1,0 +1,20 @@
+remote_theme: just-the-docs/just-the-docs@v0.10.0
+title: "Dew Monday"
+description: "Brand incubator"
+baseurl: "/dewmonday"
+url: "https://raiin-boop.github.io"
+color_scheme: dark
+search_enabled: true
+nav_sort: case_sensitive
+footer_content: "Dew Monday Brand Incubator 2026"
+aux_links:
+  "GitHub Repo":
+    - "https://github.com/raiin-boop/dewmonday"
+aux_links_new_tab: true
+back_to_top: true
+back_to_top_text: "Back to top"
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
