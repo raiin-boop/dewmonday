@@ -4,6 +4,7 @@ title: Art Tutorial App
 nav_order: 3
 parent: Concepts
 has_children: true
+permalink: /concepts/art-tutorial-app/
 ---
 
 #  Art Tutorial App
