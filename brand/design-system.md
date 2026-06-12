@@ -3,6 +3,7 @@ layout: default
 title: Design System
 nav_order: 1
 parent: Brand
+permalink: /brand/design-system/
 ---
 
 # Dew Monday Design System
