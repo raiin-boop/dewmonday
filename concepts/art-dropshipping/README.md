@@ -4,6 +4,7 @@ title: Art Dropshipping
 nav_order: 2
 parent: Concepts
 has_children: true
+permalink: /concepts/art-dropshipping/
 ---
 
 #  Art Dropshipping
