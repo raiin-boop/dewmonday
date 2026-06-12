@@ -3,6 +3,7 @@ layout: default
 title: Brand
 nav_order: 2
 has_children: true
+permalink: /brand/
 ---
 
 #  Dew Monday  Brand Identity
