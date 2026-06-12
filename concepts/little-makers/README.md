@@ -4,6 +4,7 @@ title: Little Makers
 nav_order: 5
 parent: Concepts
 has_children: true
+permalink: /concepts/little-makers/
 ---
 
 # 🌱 Little Makers
