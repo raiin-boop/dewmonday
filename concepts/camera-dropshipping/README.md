@@ -4,6 +4,7 @@ title: Camera Dropshipping
 nav_order: 1
 parent: Concepts
 has_children: true
+permalink: /concepts/camera-dropshipping/
 ---
 
 #  Camera Dropshipping
