@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} — Dew Monday{% else %}Dew Monday — Creative Brand Incubator{% endif %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F5F0E8; --bg-white: #FFFFFF;
+      --primary: #2D5A27; --primary-dark: #1E3D1A; --primary-light: #4a7c44;
+      --accent: #6BA3BE; --accent-dark: #4A82A0; --orange: #D4703A;
+      --text: #1C1C1C; --text-muted: #6B6B6B; --text-light: #9A9A9A;
+      --border: #E2DDD6; --border-strong: #C8C2B8;
+      --font-display: 'DM Serif Display', serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 10px; --radius-sm: 6px;
+      --shadow-sm: 0 1px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--bg); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    .dm-nav { position: sticky; top: 0; z-index: 1000; background: var(--bg-white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; box-shadow: var(--shadow-sm); }
+    .dm-nav-logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--primary); text-decoration: none; letter-spacing: -0.02em; }
+    .dm-nav-logo span { color: var(--accent); }
+    .dm-nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .dm-nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); text-decoration: none; letter-spacing: 0.01em; transition: color 0.2s; }
+    .dm-nav-links a:hover, .dm-nav-links .active { color: var(--primary); }
+    .dm-nav-cta { background: var(--primary) !important; color: #fff !important; padding: 8px 20px; border-radius: var(--radius-sm); font-weight: 600 !important; transition: background 0.2s !important; }
+    .dm-nav-cta:hover { background: var(--primary-dark) !important; }
+    .dm-nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .dm-nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; }
+
+    /* PAGE HERO */
+    .dm-page-hero { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, #1a4a14 100%); padding: 56px 48px 48px; color: #fff; }
+    .dm-page-hero-inner { max-width: 860px; margin: 0 auto; }
+    .dm-breadcrumb { font-size: 0.8rem; font-weight: 500; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+    .dm-breadcrumb a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .dm-breadcrumb a:hover { color: rgba(255,255,255,0.85); }
+    .dm-breadcrumb span { margin: 0 6px; }
+    .dm-page-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; line-height: 1.2; margin-bottom: 12px; }
+    .dm-page-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.75); max-width: 600px; line-height: 1.6; }
+    .dm-page-hero-tag { display: inline-block; margin-top: 18px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; }
+
+    /* LAYOUT */
+    .dm-body-wrap { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* SIDEBAR */
+    .dm-sidebar { width: 240px; flex-shrink: 0; padding: 40px 24px 40px 0; border-right: 1px solid var(--border); min-height: calc(100vh - 64px); }
+    .dm-sidebar-section { margin-bottom: 32px; }
+    .dm-sidebar-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 10px; padding-left: 12px; }
+    .dm-sidebar-nav { list-style: none; }
+    .dm-sidebar-nav li a { display: block; font-size: 0.875rem; font-weight: 400; color: var(--text-muted); text-decoration: none; padding: 6px 12px; border-radius: var(--radius-sm); transition: all 0.15s; border-left: 2px solid transparent; }
+    .dm-sidebar-nav li a:hover { color: var(--primary); background: rgba(45,90,39,0.06); border-left-color: var(--primary); }
+    .dm-sidebar-nav li a.active { color: var(--primary); background: rgba(45,90,39,0.08); border-left-color: var(--primary); font-weight: 500; }
+    .dm-sidebar-nav .child a { font-size: 0.825rem; padding: 5px 12px 5px 24px; }
+
+    /* ARTICLE */
+    .dm-article { flex: 1; min-width: 0; padding: 48px 0 80px 48px; }
+
+    /* PROSE */
+    .dm-prose h1, .dm-prose h2, .dm-prose h3, .dm-prose h4, .dm-prose h5 { font-family: var(--font-display); font-weight: 400; line-height: 1.25; color: var(--text); margin-top: 2.2em; margin-bottom: 0.6em; }
+    .dm-prose h1 { font-size: 2.2rem; margin-top: 0; }
+    .dm-prose h2 { font-size: 1.6rem; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .dm-prose h3 { font-size: 1.25rem; }
+    .dm-prose h4 { font-size: 1rem; font-family: var(--font-body); font-weight: 700; }
+    .dm-prose p { margin-bottom: 1.2em; max-width: 72ch; }
+    .dm-prose a { color: var(--accent-dark); text-decoration: underline; text-decoration-color: rgba(107,163,190,0.4); text-underline-offset: 3px; transition: color 0.2s; }
+    .dm-prose a:hover { color: var(--primary); }
+    .dm-prose ul, .dm-prose ol { padding-left: 1.5rem; margin-bottom: 1.2em; max-width: 72ch; }
+    .dm-prose li { margin-bottom: 0.4em; }
+    .dm-prose strong { font-weight: 600; }
+    .dm-prose blockquote { border-left: 3px solid var(--accent); margin: 1.8em 0; padding: 14px 20px; background: rgba(107,163,190,0.08); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-muted); font-style: italic; }
+    .dm-prose blockquote p { margin-bottom: 0; }
+    .dm-prose code { font-family: var(--font-mono); font-size: 0.85em; background: rgba(45,90,39,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+    .dm-prose pre { background: #1C1C1C; color: #e8e4dc; padding: 20px 24px; border-radius: var(--radius); overflow-x: auto; margin: 1.8em 0; font-size: 0.875rem; line-height: 1.6; }
+    .dm-prose pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+    .dm-prose table { width: 100%; border-collapse: collapse; margin: 1.8em 0; font-size: 0.9rem; border-radius: var(--radius); overflow: hidden; box-shadow: 0 0 0 1px var(--border); }
+    .dm-prose thead th { background: var(--primary); color: #fff; font-weight: 600; text-align: left; padding: 12px 16px; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .dm-prose tbody td { padding: 11px 16px; border-bottom: 1px solid var(--border); }
+    .dm-prose tbody tr:last-child td { border-bottom: none; }
+    .dm-prose tbody tr:nth-child(even) { background: rgba(245,240,232,0.5); }
+    .dm-prose tbody tr:hover { background: rgba(45,90,39,0.04); }
+    .dm-prose img { max-width: 100%; border-radius: var(--radius); margin: 1.8em 0; box-shadow: var(--shadow-md); }
+    .dm-prose hr { border: none; border-top: 1px solid var(--border); margin: 2.5em 0; }
+
+    /* FOOTER */
+    .dm-footer { background: #111; color: rgba(255,255,255,0.65); padding: 60px 48px 32px; }
+    .dm-footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .dm-footer-brand .dm-footer-logo { font-family: var(--font-display); font-size: 1.3rem; color: #fff; text-decoration: none; display: block; margin-bottom: 12px; }
+    .dm-footer-brand .dm-footer-logo span { color: var(--accent); }
+    .dm-footer-brand p { font-size: 0.875rem; line-height: 1.7; max-width: 280px; }
+    .dm-footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+    .dm-footer-col ul { list-style: none; }
+    .dm-footer-col ul li { margin-bottom: 8px; }
+    .dm-footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .dm-footer-col ul li a:hover { color: #fff; }
+    .dm-footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+    .dm-footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; }
+    .dm-footer-bottom a:hover { color: rgba(255,255,255,0.8); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .dm-nav { padding: 0 24px; }
+      .dm-nav-links { display: none; }
+      .dm-nav-hamburger { display: flex; }
+      .dm-body-wrap { flex-direction: column; padding: 0 20px; }
+      .dm-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 24px 0; min-height: auto; }
+      .dm-article { padding: 32px 0 60px; }
+      .dm-page-hero { padding: 40px 24px 36px; }
+      .dm-footer { padding: 48px 24px 28px; }
+      .dm-footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .dm-footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    /* MOBILE NAV */
+    .dm-mobile-nav { display: none; position: fixed; inset: 64px 0 0; background: var(--bg-white); z-index: 999; padding: 24px 28px; border-top: 1px solid var(--border); box-shadow: var(--shadow-md); }
+    .dm-mobile-nav.open { display: block; }
+    .dm-mobile-nav ul { list-style: none; }
+    .dm-mobile-nav ul li a { display: block; padding: 14px 0; font-size: 1.05rem; font-weight: 500; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+  <nav class="dm-nav">
+    <a href="{{ '/' | relative_url }}" class="dm-nav-logo">Dew <span>Monday</span></a>
+    <ul class="dm-nav-links">
+      <li><a href="{{ '/concepts/' | relative_url }}" {% if page.url contains '/concepts/' %}class="active"{% endif %}>Concepts</a></li>
+      <li><a href="{{ '/brand/' | relative_url }}" {% if page.url contains '/brand/' %}class="active"{% endif %}>Brand</a></li>
+      <li><a href="https://github.com/raiin-boop/dewmonday" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="{{ '/concepts/little-makers/' | relative_url }}" class="dm-nav-cta">Little Makers ↗</a></li>
+    </ul>
+    <button class="dm-nav-hamburger" onclick="document.querySelector('.dm-mobile-nav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="dm-mobile-nav">
+    <ul>
+      <li><a href="{{ '/' | relative_url }}">Home</a></li>
+      <li><a href="{{ '/concepts/' | relative_url }}">Concepts</a></li>
+      <li><a href="{{ '/brand/' | relative_url }}">Brand</a></li>
+      <li><a href="https://github.com/raiin-boop/dewmonday" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="{{ '/concepts/little-makers/' | relative_url }}">Little Makers ↗</a></li>
+    </ul>
+  </div>
+
+  {% if page.title %}
+  <div class="dm-page-hero">
+    <div class="dm-page-hero-inner">
+      <div class="dm-breadcrumb">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        {% if page.parent %}<span>/</span><a href="{{ '/concepts/' | relative_url }}">{{ page.parent }}</a>{% endif %}
+        <span>/</span> {{ page.title }}
+      </div>
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+      {% if page.tag %}<span class="dm-page-hero-tag">{{ page.tag }}</span>{% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="dm-body-wrap">
+    <aside class="dm-sidebar">
+      <div class="dm-sidebar-section">
+        <div class="dm-sidebar-label">Concepts</div>
+        <ul class="dm-sidebar-nav">
+          <li><a href="{{ '/concepts/' | relative_url }}" {% if page.url == '/concepts/' %}class="active"{% endif %}>Overview</a></li>
+          <li><a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" {% if page.url contains 'camera-dropshipping' %}class="active"{% endif %}>📷 Camera Drops</a></li>
+          <li class="child"><a href="{{ '/concepts/camera-dropshipping/product-marketing/' | relative_url }}" {% if page.url contains 'camera-dropshipping/product' %}class="active"{% endif %}>Marketing</a></li>
+          <li><a href="{{ '/concepts/art-dropshipping/' | relative_url }}" {% if page.url contains 'art-dropshipping' %}class="active"{% endif %}>🖼 Art Drops</a></li>
+          <li class="child"><a href="{{ '/concepts/art-dropshipping/product-marketing/' | relative_url }}" {% if page.url contains 'art-dropshipping/product' %}class="active"{% endif %}>Marketing</a></li>
+          <li><a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" {% if page.url contains 'art-tutorial' %}class="active"{% endif %}>🎨 Tutorial App</a></li>
+          <li class="child"><a href="{{ '/concepts/art-tutorial-app/product-marketing/' | relative_url }}" {% if page.url contains 'art-tutorial/product' %}class="active"{% endif %}>Marketing</a></li>
+          <li><a href="{{ '/concepts/creator-hub/' | relative_url }}" {% if page.url contains 'creator-hub' %}class="active"{% endif %}>✍️ Creator Hub</a></li>
+          <li class="child"><a href="{{ '/concepts/creator-hub/product-marketing/' | relative_url }}" {% if page.url contains 'creator-hub/product' %}class="active"{% endif %}>Marketing</a></li>
+          <li><a href="{{ '/concepts/little-makers/' | relative_url }}" {% if page.url contains 'little-makers' %}class="active"{% endif %}>🎈 Little Makers</a></li>
+          <li class="child"><a href="{{ '/concepts/little-makers/product-marketing/' | relative_url }}" {% if page.url contains 'little-makers/product' %}class="active"{% endif %}>Marketing</a></li>
+        </ul>
+      </div>
+      <div class="dm-sidebar-section">
+        <div class="dm-sidebar-label">Brand</div>
+        <ul class="dm-sidebar-nav">
+          <li><a href="{{ '/brand/' | relative_url }}" {% if page.url == '/brand/' %}class="active"{% endif %}>Brand Identity</a></li>
+          <li><a href="{{ '/brand/design-system/' | relative_url }}" {% if page.url contains 'design-system' %}class="active"{% endif %}>Design System</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="dm-article">
+      <div class="dm-prose">
+        {{ content }}
+      </div>
+    </main>
+  </div>
+
+  <footer class="dm-footer">
+    <div class="dm-footer-grid">
+      <div class="dm-footer-brand">
+        <a href="{{ '/' | relative_url }}" class="dm-footer-logo">Dew <span>Monday</span></a>
+        <p>A creative brand incubator exploring five ideas in parallel — built in public, one Monday at a time.</p>
+      </div>
+      <div class="dm-footer-col">
+        <h4>Concepts</h4>
+        <ul>
+          <li><a href="{{ '/concepts/camera-dropshipping/' | relative_url }}">Camera Drops</a></li>
+          <li><a href="{{ '/concepts/art-dropshipping/' | relative_url }}">Art Drops</a></li>
+          <li><a href="{{ '/concepts/art-tutorial-app/' | relative_url }}">Tutorial App</a></li>
+          <li><a href="{{ '/concepts/creator-hub/' | relative_url }}">Creator Hub</a></li>
+          <li><a href="{{ '/concepts/little-makers/' | relative_url }}">Little Makers</a></li>
+        </ul>
+      </div>
+      <div class="dm-footer-col">
+        <h4>Project</h4>
+        <ul>
+          <li><a href="{{ '/brand/' | relative_url }}">Brand Identity</a></li>
+          <li><a href="{{ '/brand/design-system/' | relative_url }}">Design System</a></li>
+          <li><a href="https://github.com/raiin-boop/dewmonday" target="_blank" rel="noopener">GitHub Repo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dm-footer-bottom">
+      <span>© 2026 Dew Monday. Built in public.</span>
+      <span>Made with ☕ by <a href="https://github.com/raiin-boop" target="_blank" rel="noopener">Renny</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>
