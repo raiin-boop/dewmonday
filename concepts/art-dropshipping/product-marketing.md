@@ -3,6 +3,7 @@ layout: default
 title: Product Marketing
 nav_order: 1
 parent: Art Dropshipping
+permalink: /concepts/art-dropshipping/product-marketing/
 ---
 
 # Product Marketing Context - Art Dropshipping

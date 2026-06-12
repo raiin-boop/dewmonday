@@ -3,6 +3,7 @@ layout: default
 title: Product Marketing
 nav_order: 1
 parent: Camera Dropshipping
+permalink: /concepts/camera-dropshipping/product-marketing/
 ---
 
 # Product Marketing Context - Camera Dropshipping

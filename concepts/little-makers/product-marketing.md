@@ -3,6 +3,7 @@ layout: default
 title: Product Marketing
 nav_order: 1
 parent: Little Makers
+permalink: /concepts/little-makers/product-marketing/
 ---
 
 # Little Makers — Product Marketing

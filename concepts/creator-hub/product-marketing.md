@@ -3,6 +3,7 @@ layout: default
 title: Product Marketing
 nav_order: 1
 parent: Creator Hub
+permalink: /concepts/creator-hub/product-marketing/
 ---
 
 # Product Marketing  Creator Hub

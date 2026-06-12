@@ -3,6 +3,7 @@ layout: default
 title: Product Marketing
 nav_order: 1
 parent: Art Tutorial App
+permalink: /concepts/art-tutorial-app/product-marketing/
 ---
 
 # Product Marketing  Art Tutorial App
