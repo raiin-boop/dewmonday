@@ -124,6 +124,92 @@
     .dm-mobile-nav.open { display: block; }
     .dm-mobile-nav ul { list-style: none; }
     .dm-mobile-nav ul li a { display: block; padding: 14px 0; font-size: 1.05rem; font-weight: 500; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+
+    /* ===== NEWSLETTER COMPONENTS ===== */
+    .dm-issue-meta {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 28px; padding: 10px 16px;
+      background: #F0EDE6; border-radius: 8px; border-left: 4px solid #2D5A27;
+    }
+    .dm-issue-num {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+      font-weight: 700; color: #2D5A27; letter-spacing: 0.04em;
+    }
+    .dm-issue-date { font-size: 0.82rem; color: #6B6B6B; }
+    .dm-issue-cat {
+      margin-left: auto; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; background: #2D5A27; color: white;
+      padding: 3px 12px; border-radius: 20px;
+    }
+    .dm-pull-quote {
+      font-family: 'DM Serif Display', serif; font-size: 1.35rem;
+      line-height: 1.45; color: #2D5A27; background: #F0EDE6;
+      border-left: 5px solid #2D5A27; padding: 20px 24px;
+      border-radius: 0 10px 10px 0; margin: 28px 0;
+    }
+    .dm-gear-card {
+      display: grid; grid-template-columns: 56px 1fr auto;
+      grid-template-rows: auto auto; column-gap: 16px; row-gap: 4px;
+      align-items: start; background: #FFFFFF; border: 1.5px solid #E2DDD6;
+      border-top: 4px solid #2D5A27; border-radius: 12px; padding: 20px 22px; margin: 24px 0;
+    }
+    .dm-gear-emoji { grid-column: 1; grid-row: 1 / 3; font-size: 2.2rem; line-height: 1; align-self: center; }
+    .dm-gear-name { grid-column: 2; grid-row: 1; font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: #1C1C1C; line-height: 1.2; }
+    .dm-gear-price {
+      grid-column: 3; grid-row: 1; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem; font-weight: 700; color: #2D5A27;
+      background: #E8F0E7; padding: 3px 10px; border-radius: 6px;
+      white-space: nowrap; align-self: center;
+    }
+    .dm-gear-body { grid-column: 2 / 4; grid-row: 2; font-size: 0.9rem; color: #444; line-height: 1.65; margin: 6px 0 0; }
+    .dm-resources { display: flex; flex-direction: column; gap: 14px; margin: 24px 0; }
+    .dm-resource {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: #FFFFFF; border: 1.5px solid #E2DDD6;
+      border-radius: 10px; padding: 16px 18px;
+    }
+    .dm-resource-num {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: #2D5A27; color: white; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; font-weight: 700; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .dm-resource-content h4 { font-size: 0.92rem; font-weight: 600; color: #1C1C1C; margin-bottom: 4px; }
+    .dm-resource-content p { font-size: 0.85rem; color: #555; line-height: 1.55; margin: 0; }
+    .dm-spotlight {
+      background: linear-gradient(135deg, #1E3D1A 0%, #2D5A27 100%);
+      border-radius: 12px; padding: 28px 28px; margin: 28px 0; color: white;
+    }
+    .dm-spotlight-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.55); margin-bottom: 10px;
+    }
+    .dm-spotlight h3 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-bottom: 10px; }
+    .dm-spotlight p { color: rgba(255,255,255,0.82); font-size: 0.92rem; line-height: 1.6; margin: 0; }
+    .dm-prompt-box { border: 1.5px solid #E2DDD6; border-radius: 12px; overflow: hidden; margin: 28px 0; }
+    .dm-prompt-header {
+      background: linear-gradient(90deg, #2D5A27, #3a7a32);
+      padding: 10px 18px; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.9);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .dm-prompt-body { padding: 18px 20px; background: #FAFAF8; font-size: 0.92rem; color: #333; line-height: 1.6; }
+
+    /* SIDEBAR DROPDOWNS */
+    .dm-sidebar-group > .dm-group-link {
+      display: flex; justify-content: space-between; align-items: center; width: 100%;
+    }
+    .dm-sidebar-arrow {
+      font-size: 0.6rem; font-weight: 700; color: var(--text-light);
+      transition: transform 0.2s ease; flex-shrink: 0; margin-left: 4px;
+      display: inline-block;
+    }
+    .dm-sidebar-group.open > .dm-group-link .dm-sidebar-arrow { transform: rotate(90deg); color: var(--primary); }
+    .dm-sidebar-children { display: none; list-style: none; overflow: hidden; }
+    .dm-sidebar-group.open > .dm-sidebar-children { display: block; }
+    .dm-sidebar-group > .dm-group-link.active .dm-sidebar-arrow { color: var(--primary); }
   </style>
 </head>
 <body>
@@ -173,33 +259,65 @@
         <ul class="dm-sidebar-nav">
           <li><a href="{{ '/concepts/' | relative_url }}" {% if page.url == '/concepts/' %}class="active"{% endif %}>Overview</a></li>
 
-          <li><a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" {% if page.url contains 'camera-dropshipping' %}class="active"{% endif %}>📷 Camera Drops</a></li>
-          <li class="child"><a href="{{ '/concepts/camera-dropshipping/product-marketing/' | relative_url }}" {% if page.url contains 'camera-dropshipping/product' %}class="active"{% endif %}>📷 Gear Marketing</a></li>
+          <li class="dm-sidebar-group {% if page.url contains 'camera-dropshipping' %}open{% endif %}">
+            <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="dm-group-link {% if page.url contains 'camera-dropshipping' %}active{% endif %}">
+              📷 Camera Drops <span class="dm-sidebar-arrow">›</span>
+            </a>
+            <ul class="dm-sidebar-children">
+              <li class="child"><a href="{{ '/concepts/camera-dropshipping/product-marketing/' | relative_url }}" {% if page.url contains 'camera-dropshipping/product' %}class="active"{% endif %}>📷 Gear Marketing</a></li>
+            </ul>
+          </li>
 
-          <li><a href="{{ '/concepts/art-dropshipping/' | relative_url }}" {% if page.url contains 'art-dropshipping' %}class="active"{% endif %}>🖼️ Art Drops</a></li>
-          <li class="child"><a href="{{ '/concepts/art-dropshipping/product-marketing/' | relative_url }}" {% if page.url contains 'art-dropshipping/product' %}class="active"{% endif %}>🖼️ Art Marketing</a></li>
+          <li class="dm-sidebar-group {% if page.url contains 'art-dropshipping' %}open{% endif %}">
+            <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="dm-group-link {% if page.url contains 'art-dropshipping' %}active{% endif %}">
+              🖼️ Art Drops <span class="dm-sidebar-arrow">›</span>
+            </a>
+            <ul class="dm-sidebar-children">
+              <li class="child"><a href="{{ '/concepts/art-dropshipping/product-marketing/' | relative_url }}" {% if page.url contains 'art-dropshipping/product' %}class="active"{% endif %}>🖼️ Art Marketing</a></li>
+            </ul>
+          </li>
 
-          <li><a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" {% if page.url contains 'art-tutorial' %}class="active"{% endif %}>🎨 Tutorial App</a></li>
-          <li class="child"><a href="{{ '/concepts/art-tutorial-app/product-marketing/' | relative_url }}" {% if page.url contains 'art-tutorial/product' %}class="active"{% endif %}>🎨 Tutorial Marketing</a></li>
+          <li class="dm-sidebar-group {% if page.url contains 'art-tutorial' %}open{% endif %}">
+            <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="dm-group-link {% if page.url contains 'art-tutorial' %}active{% endif %}">
+              🎨 Tutorial App <span class="dm-sidebar-arrow">›</span>
+            </a>
+            <ul class="dm-sidebar-children">
+              <li class="child"><a href="{{ '/concepts/art-tutorial-app/product-marketing/' | relative_url }}" {% if page.url contains 'art-tutorial-app/product' %}class="active"{% endif %}>🎨 Tutorial Marketing</a></li>
+            </ul>
+          </li>
 
-          <li><a href="{{ '/concepts/creator-hub/' | relative_url }}" {% if page.url contains 'creator-hub' %}class="active"{% endif %}>✍️ Creator Hub</a></li>
-          <li class="child"><a href="{{ '/concepts/creator-hub/product-marketing/' | relative_url }}" {% if page.url contains 'creator-hub/product' %}class="active"{% endif %}>✍️ Hub Marketing</a></li>
-          <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/001-start-before-ready/' | relative_url }}" {% if page.url contains 'newsletter/001' %}class="active"{% endif %}>📩 #001 Start</a></li>
-          <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/002-the-business-of-making/' | relative_url }}" {% if page.url contains 'newsletter/002' %}class="active"{% endif %}>📩 #002 Business</a></li>
-          <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/003-community-vs-audience/' | relative_url }}" {% if page.url contains 'newsletter/003' %}class="active"{% endif %}>📩 #003 Community</a></li>
-          <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/004-the-myth-of-the-perfect-setup/' | relative_url }}" {% if page.url contains 'newsletter/004' %}class="active"{% endif %}>📩 #004 Gear</a></li>
+          <li class="dm-sidebar-group {% if page.url contains 'creator-hub' %}open{% endif %}">
+            <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="dm-group-link {% if page.url contains 'creator-hub' %}active{% endif %}">
+              ✍️ Creator Hub <span class="dm-sidebar-arrow">›</span>
+            </a>
+            <ul class="dm-sidebar-children">
+              <li class="child"><a href="{{ '/concepts/creator-hub/product-marketing/' | relative_url }}" {% if page.url contains 'creator-hub/product' %}class="active"{% endif %}>✍️ Hub Marketing</a></li>
+              <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/001-start-before-ready/' | relative_url }}" {% if page.url contains 'newsletter/001' %}class="active"{% endif %}>📩 #001</a></li>
+              <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/002-the-business-of-making/' | relative_url }}" {% if page.url contains 'newsletter/002' %}class="active"{% endif %}>📩 #002</a></li>
+              <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/003-community-vs-audience/' | relative_url }}" {% if page.url contains 'newsletter/003' %}class="active"{% endif %}>📩 #003</a></li>
+              <li class="child"><a href="{{ '/concepts/creator-hub/newsletter/004-the-myth-of-the-perfect-setup/' | relative_url }}" {% if page.url contains 'newsletter/004' %}class="active"{% endif %}>📩 #004</a></li>
+            </ul>
+          </li>
 
-          <li><a href="{{ '/concepts/little-makers/' | relative_url }}" {% if page.url contains 'little-makers' %}class="active"{% endif %}>🎈 Little Makers</a></li>
-          <li class="child"><a href="{{ '/concepts/little-makers/product-marketing/' | relative_url }}" {% if page.url contains 'little-makers/product' %}class="active"{% endif %}>🎈 Makers Marketing</a></li>
-          <li class="child"><a href="{{ '/concepts/little-makers/tool-recommendations/' | relative_url }}" {% if page.url contains 'tool-recommendations' %}class="active"{% endif %}>🛠️ Tool Picks</a></li>
+          <li class="dm-sidebar-group {% if page.url contains 'little-makers' %}open{% endif %}">
+            <a href="{{ '/concepts/little-makers/' | relative_url }}" class="dm-group-link {% if page.url contains 'little-makers' %}active{% endif %}">
+              🎈 Little Makers <span class="dm-sidebar-arrow">›</span>
+            </a>
+            <ul class="dm-sidebar-children">
+              <li class="child"><a href="{{ '/concepts/little-makers/product-marketing/' | relative_url }}" {% if page.url contains 'little-makers/product' %}class="active"{% endif %}>🎈 Makers Marketing</a></li>
+              <li class="child"><a href="{{ '/concepts/little-makers/tool-recommendations/' | relative_url }}" {% if page.url contains 'tool-recommendations' %}class="active"{% endif %}>🛠️ Tool Picks</a></li>
+              <li class="child"><a href="{{ '/dewmonday/little-makers-activities.html' }}" >🎨 Activity Browser</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
+
       <div class="dm-sidebar-section">
         <div class="dm-sidebar-label">Brand</div>
         <ul class="dm-sidebar-nav">
           <li><a href="{{ '/brand/' | relative_url }}" {% if page.url == '/brand/' %}class="active"{% endif %}>Brand Identity</a></li>
           <li><a href="{{ '/brand/design-system/' | relative_url }}" {% if page.url contains 'design-system' %}class="active"{% endif %}>Design System</a></li>
-          <li><a href="{{ '/brand/customer-interview-guide/' | relative_url }}" {% if page.url contains 'interview-guide' %}class="active"{% endif %}>🎙️ Interview Guide</a></li>
+          <li><a href="{{ '/brand/research/customer-interview-guide/' | relative_url }}" {% if page.url contains 'interview-guide' %}class="active"{% endif %}>🎙️ Interview Guide</a></li>
         </ul>
       </div>
     </aside>
@@ -242,5 +360,24 @@
     </div>
   </footer>
 
+
+  <script>
+    // Sidebar dropdown toggle
+    document.querySelectorAll('.dm-sidebar-group > .dm-group-link').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var group = this.closest('.dm-sidebar-group');
+        var isOpen = group.classList.contains('open');
+        // Close all groups
+        document.querySelectorAll('.dm-sidebar-group').forEach(function(g) { g.classList.remove('open'); });
+        // Toggle clicked
+        if (!isOpen) { group.classList.add('open'); }
+        // Only prevent default if it has children (always does here)
+        e.preventDefault();
+        // Navigate after short delay so toggle is visible
+        var href = this.getAttribute('href');
+        setTimeout(function() { window.location.href = href; }, 120);
+      });
+    });
+  </script>
 </body>
 </html>
