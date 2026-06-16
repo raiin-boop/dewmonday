@@ -2,7 +2,7 @@
 layout: default
 title: "Customer Research Interview Guide"
 parent: Brand
-permalink: /brand/customer-interview-guide/
+permalink: /brand/research/customer-interview-guide/
 description: "Assumption validation interviews for all five Dew Monday concepts"
 ---
 
