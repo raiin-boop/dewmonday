@@ -136,76 +136,108 @@ Every standalone concept page defines its own `:root` block. The variable names 
 
 Every standalone page uses the same set of components. Copy these patterns exactly — do not invent variations unless explicitly asked.
 
-### 4.1 Navigation (Sticky, Glassmorphism)
+### 4.1 Navigation (Sticky, Glassmorphism) — DUAL DROPDOWN REQUIRED
 
-The nav is identical across all pages, with only the `.active` class on the current concept changing.
+**Every page must include BOTH the Concepts dropdown AND the Brand dropdown.** This is non-negotiable — single-dropdown nav is the old format and must not be used for any new pages or updates.
+
+The nav is otherwise identical across all pages; only the `.active` class on the current concept changes. Use `toggleDD('dd-concepts')` and `toggleDD('dd-brand')` with the shared JS function below.
 
 ```html
 <nav class="nav">
   <div class="nav-left">
-    <a href="{{ '/' | relative_url }}" class="nav-logo">
-      Dew<span>Monday</span>
-    </a>
-    <div class="nav-dropdown" id="navDropdown">
-      <button class="nav-dropdown-trigger" onclick="document.getElementById('navDropdown').classList.toggle('open')">
+    <a href="/dewmonday/" class="nav-logo">Dew<span>Monday</span></a>
+
+    <!-- ① CONCEPTS DROPDOWN -->
+    <div class="nav-dropdown" id="dd-concepts">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">
         Concepts
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M6 9l6 6 6-6"/>
-        </svg>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       <div class="nav-dropdown-menu">
-        <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="nav-menu-item [active if current]">
+        <a href="/dewmonday/concepts/creator-hub/" class="nav-menu-item">
           <span class="nav-menu-emoji">✍️</span>
-          <div>
-            <div class="nav-menu-title">Creator Hub</div>
-            <div class="nav-menu-desc">Newsletter & build log</div>
-          </div>
+          <div><div class="nav-menu-title">Creator Hub</div><div class="nav-menu-desc">Newsletter & build log</div></div>
         </a>
-        <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="nav-menu-item [active if current]">
+        <a href="/dewmonday/concepts/art-dropshipping/" class="nav-menu-item">
           <span class="nav-menu-emoji">🖼️</span>
-          <div>
-            <div class="nav-menu-title">Art Drops</div>
-            <div class="nav-menu-desc">Independent artist spotlights</div>
-          </div>
+          <div><div class="nav-menu-title">Art Drops</div><div class="nav-menu-desc">Independent artist spotlights</div></div>
         </a>
-        <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="nav-menu-item [active if current]">
+        <a href="/dewmonday/concepts/camera-dropshipping/" class="nav-menu-item">
           <span class="nav-menu-emoji">📷</span>
-          <div>
-            <div class="nav-menu-title">Camera Drops</div>
-            <div class="nav-menu-desc">Curated creator gear kits</div>
-          </div>
+          <div><div class="nav-menu-title">Camera Drops</div><div class="nav-menu-desc">Curated creator gear kits</div></div>
         </a>
-        <a href="{{ '/concepts/little-makers/' | relative_url }}" class="nav-menu-item [active if current]">
+        <a href="/dewmonday/concepts/little-makers/" class="nav-menu-item">
           <span class="nav-menu-emoji">🎈</span>
-          <div>
-            <div class="nav-menu-title">Little Makers</div>
-            <div class="nav-menu-desc">Screen-free activities for kids</div>
-          </div>
+          <div><div class="nav-menu-title">Little Makers</div><div class="nav-menu-desc">Screen-free activities for kids</div></div>
         </a>
         <div class="nav-menu-divider"></div>
-        <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="nav-menu-item [active if current]">
+        <a href="/dewmonday/concepts/tutorial-app/" class="nav-menu-item">
           <span class="nav-menu-emoji">🎨</span>
-          <div>
-            <div class="nav-menu-title">Tutorial App</div>
-            <div class="nav-menu-desc">Creator skills platform</div>
-          </div>
+          <div><div class="nav-menu-title">Tutorial App</div><div class="nav-menu-desc">Creator skills platform</div></div>
         </a>
-        <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="nav-menu-item [active if current]">
+        <a href="/dewmonday/concepts/art-tutorial-app/" class="nav-menu-item">
           <span class="nav-menu-emoji">🖌️</span>
-          <div>
-            <div class="nav-menu-title">Art Tutorial App</div>
-            <div class="nav-menu-desc">Structured art education</div>
-          </div>
+          <div><div class="nav-menu-title">Art Tutorial App</div><div class="nav-menu-desc">Structured art education</div></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ② BRAND DROPDOWN -->
+    <div class="nav-dropdown" id="dd-brand">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">
+        Brand
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/dewmonday/brand/#overview" class="nav-menu-item">
+          <span class="nav-menu-emoji">📖</span>
+          <div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div>
+        </a>
+        <a href="/dewmonday/brand/#brand-identity" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎯</span>
+          <div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div>
+        </a>
+        <a href="/dewmonday/brand/#design-system" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div>
+        </a>
+        <a href="/dewmonday/brand/#interview-guide" class="nav-menu-item">
+          <span class="nav-menu-emoji">🗣️</span>
+          <div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div>
+        </a>
+        <a href="/dewmonday/brand/#validation-scorecard" class="nav-menu-item">
+          <span class="nav-menu-emoji">📊</span>
+          <div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All 6 concepts rated</div></div>
         </a>
       </div>
     </div>
   </div>
+
   <div class="nav-right">
-    <a href="{{ '/' | relative_url }}" class="nav-home-link">Home</a>
-    <a href="{{ '/signup/' | relative_url }}" class="nav-subscribe-btn">Subscribe free →</a>
+    <a href="/dewmonday/" class="nav-home-link">Home</a>
+    <a href="/dewmonday/signup/" class="nav-subscribe-btn">Subscribe free →</a>
   </div>
 </nav>
 ```
+
+**Required JS — add once per page, just before `</body>`:**
+```javascript
+<script>
+function toggleDD(id) {
+  document.querySelectorAll('.nav-dropdown').forEach(d => {
+    if (d.id !== id) d.classList.remove('open');
+  });
+  document.getElementById(id).classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.nav-dropdown')) {
+    document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+  }
+});
+</script>
+```
+
+> **⚠️ Sidebar duplication bug:** If a page had a sidebar-style nav before the redesign, remove ALL old nav/sidebar HTML before adding the new dual-dropdown nav. Never let two nav elements coexist in the same file.
 
 **Nav CSS (paste into `<style>` block):**
 ```css
@@ -393,6 +425,94 @@ All concept pages end with a CTA that links to `/signup/`. Use the concept's pri
 .bottom-cta p{color:rgba(255,255,255,0.68);font-size:0.95rem;margin-bottom:32px;line-height:1.65;}
 .bottom-cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 ```
+
+### 4.8 Sub-Page Template (Spotlights & Drops)
+
+Spotlight and drop detail pages (e.g., Art Drops 001 Solitude Series, Camera Drops 001 Creator Starter Kit) are **sub-pages of their parent concept**. They follow the same standalone HTML architecture but use a two-column article + sidebar layout and inherit the parent concept's color theme exactly.
+
+**Rules for all sub-pages:**
+- Inherit the parent concept's `:root` variables without change
+- Show a **breadcrumb** at the top of the content area (below the nav, before the hero)
+- Use an **article + sidebar layout** (roughly 65% / 35% split on desktop, stacked on mobile)
+- The hero uses the same gradient as the parent concept page
+- Sidebar contains: issue metadata, quick-links / table of contents, key stats
+- Mark the parent concept as `active` in the Concepts nav dropdown
+- All internal links must use `/dewmonday/` prefix
+
+**Breadcrumb pattern:**
+```html
+<div class="breadcrumb">
+  <a href="/dewmonday/">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <a href="/dewmonday/concepts/art-dropshipping/">Art Drops</a>
+  <span class="breadcrumb-sep">›</span>
+  <span>Spotlight 001 — Solitude Series</span>
+</div>
+```
+
+```css
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.78rem;color:var(--text-muted);padding:14px 48px;border-bottom:1px solid var(--border-light);background:var(--bg-white);flex-wrap:wrap;}
+.breadcrumb a{color:var(--primary);text-decoration:none;font-weight:500;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb-sep{color:var(--border);}
+```
+
+**Article + Sidebar layout:**
+```html
+<div class="article-layout">
+  <article class="article-body">
+    <!-- Main content: hero, editorial text, drop grid, etc. -->
+  </article>
+  <aside class="article-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-label">Issue</div>
+      <div class="sidebar-value">Spotlight 001</div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-label">Published</div>
+      <div class="sidebar-value">June 2026</div>
+    </div>
+    <!-- TOC, key links, stats -->
+  </aside>
+</div>
+```
+
+```css
+.article-layout{display:grid;grid-template-columns:1fr 320px;gap:40px;max-width:1200px;margin:0 auto;padding:48px 48px 80px;align-items:start;}
+@media(max-width:900px){.article-layout{grid-template-columns:1fr;}.article-sidebar{order:-1;}}
+.article-body{min-width:0;}
+.article-sidebar{position:sticky;top:88px;display:flex;flex-direction:column;gap:16px;}
+.sidebar-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px 20px;}
+.sidebar-label{font-family:var(--font-mono);font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;}
+.sidebar-value{font-family:var(--font-display);font-size:1.05rem;color:var(--text);}
+```
+
+**Sub-page folder structure:**
+```
+concepts/
+  art-dropshipping/
+    index.html                          ← concept hub (parent)
+    drops/
+      001-solitude-series/
+        index.html                      ← spotlight sub-page
+      002-next-artist/
+        index.html
+  camera-dropshipping/
+    index.html
+    drops/
+      001-creator-starter-kit/
+        index.html                      ← gear drop sub-page
+```
+
+**Front matter for a sub-page:**
+```yaml
+---
+layout: none
+permalink: /concepts/art-dropshipping/drops/001-solitude-series/
+---
+```
+
+---
 
 ### 4.7 Footer
 
@@ -619,7 +739,104 @@ git push
 
 ---
 
-## 10. What NOT to Build
+## 10. Mandatory Page Standard — The Redesign IS the Default
+
+> **This section overrides any older examples or legacy patterns you may encounter in the repo. When in doubt, follow this section.**
+
+### 10.1 The Standalone HTML Redesign Is the Required Format
+
+All new pages — concept hubs, sub-pages, spotlights, drops, brand sections, and any other content page — **must** follow the standalone HTML redesign format. This is not optional and applies to every file created or updated going forward.
+
+**What this means in practice:**
+- Every page is a single self-contained `.html` file with `layout: none` front matter
+- All CSS, nav, and footer are inline in the file — no shared partials
+- Every page includes the **dual-dropdown nav** (Concepts + Brand) — see § 4.1
+- Every page has a **hero gradient section**, a **filter bar** (if content is filterable), **content cards**, and a **bottom CTA** linking to `/signup/`
+- Every page ends with the **footer** (all concept links + copyright)
+- Vanilla JS only — no frameworks
+
+**What is deprecated (do not use for new content):**
+- Markdown files (`.md`) with `layout: default` — these use the old sidebar-based format
+- `_layouts/default.html` — legacy, do not reference in new pages
+- Single-dropdown nav (Concepts only, no Brand dropdown) — old format
+- Pages without a hero gradient — old format
+- Pages without a bottom CTA — old format
+
+### 10.2 Three Canonical Page Types
+
+Every new page falls into one of three canonical types. Each type has a defined structure. Never invent a hybrid unless Renny explicitly asks.
+
+#### Type 1 — Concept Hub Page
+*Examples: `concepts/creator-hub/index.html`, `concepts/art-dropshipping/index.html`*
+
+| Section | Required? | Notes |
+|---------|-----------|-------|
+| Front matter (`layout: none`, permalink) | ✅ | Always |
+| Inline CSS with concept-specific `:root` | ✅ | See § 3.2–3.3 |
+| Dual-dropdown sticky nav (Concepts + Brand) | ✅ | See § 4.1; mark current concept `active` |
+| Hero gradient with badge, h1, sub, stats | ✅ | See § 4.2 |
+| Filter bar (chip buttons) | ✅ if content is filterable | See § 4.3 |
+| Content grid (cards / issues / drops) | ✅ | See § 4.4 |
+| Accordion section (FAQs or sub-topics) | ✅ | See § 4.5 |
+| Bottom CTA → `/signup/` | ✅ | See § 4.6 |
+| Footer (all concept links) | ✅ | See § 4.7 |
+| `toggleDD` JS for nav dropdowns | ✅ | See § 4.1 |
+
+#### Type 2 — Spotlight / Drop Detail Page
+*Examples: `concepts/art-dropshipping/drops/001-solitude-series/index.html`, `concepts/camera-dropshipping/drops/001-creator-starter-kit/index.html`*
+
+| Section | Required? | Notes |
+|---------|-----------|-------|
+| Front matter (`layout: none`, full permalink) | ✅ | Always |
+| Inline CSS — **inherit parent concept's color theme** | ✅ | Copy parent `:root` values exactly |
+| Dual-dropdown sticky nav | ✅ | Mark **parent** concept `active` in Concepts dropdown |
+| Breadcrumb (Home › Parent Concept › Page Title) | ✅ | See § 4.8 |
+| Hero gradient (same gradient as parent concept) | ✅ | Narrower, editorial tone |
+| Article + Sidebar two-column layout | ✅ | See § 4.8 for CSS |
+| Sidebar: issue metadata, TOC, key links | ✅ | Sticky on desktop |
+| Editorial content in article body | ✅ | Long-form, spotlight writing |
+| Bottom CTA → `/signup/` | ✅ | See § 4.6 |
+| Footer | ✅ | See § 4.7 |
+
+> **Art Drops specifically:** Spotlight pages NEVER include buy buttons, cart flows, or affiliate links. All purchase links go directly to the artist's own external site. See § 5.1.
+
+#### Type 3 — Brand Hub Sections
+*Example: `brand/index.html` with accordion sections for Overview, Brand Identity, Design System, Interview Guide, Concept Scorecard*
+
+| Section | Required? | Notes |
+|---------|-----------|-------|
+| Front matter (`layout: none`, `/brand/`) | ✅ | Always |
+| Inline CSS — use green/homepage palette (`#2D5A27`) | ✅ | Same as Creator Hub |
+| Dual-dropdown sticky nav | ✅ | Brand dropdown links to `#anchor` sections within the same page |
+| Hero gradient | ✅ | Brand-focused headline |
+| Accordion container with one `.accordion` per section | ✅ | See § 4.5 |
+| Each accordion section has an `id` anchor | ✅ | e.g., `id="overview"`, `id="brand-identity"` — these are what the Brand nav links to |
+| Bottom CTA | ✅ | See § 4.6 |
+| Footer | ✅ | See § 4.7 |
+
+> **Adding a new Brand section:** Add a new `.accordion` block inside `brand/index.html` and add the corresponding anchor link to the Brand dropdown in § 4.1. Do NOT create a separate page at `/brand/new-section/` — all brand content lives in a single file.
+
+### 10.3 Page Update Checklist
+
+Before delivering any new or updated page, verify:
+
+- [ ] `layout: none` in front matter
+- [ ] Correct `permalink:` set
+- [ ] `:root` variables use correct concept color theme (see § 3.3)
+- [ ] Dual-dropdown nav present (both Concepts AND Brand)
+- [ ] Correct concept marked `active` in nav
+- [ ] All internal links use `/dewmonday/` prefix
+- [ ] No bare `/concepts/` paths without prefix
+- [ ] Hero gradient matches concept theme
+- [ ] Bottom CTA links to `/dewmonday/signup/`
+- [ ] Footer includes all six concept links
+- [ ] `toggleDD` JS is present and not duplicated
+- [ ] No old sidebar nav remnants (sidebar duplication bug — see § 4.1 warning)
+- [ ] File exported as `.txt` for Renny (see § 11)
+
+---
+
+## 11. What NOT to Build
 
 Unless Renny explicitly asks, never:
 
@@ -631,10 +848,12 @@ Unless Renny explicitly asks, never:
 - Create a `concepts/art-drops/` or `concepts/camera-drops/` folder — they are `art-dropshipping` and `camera-dropshipping`
 - Add any tracking pixels, analytics, or third-party scripts without Renny's explicit approval
 - Replace the Monday 6am delivery cadence with anything else in newsletter content
+- Build a nav with only the Concepts dropdown — the Brand dropdown is also required (see § 4.1)
+- Create a separate page at `/brand/section-name/` — all Brand content is accordion sections in `brand/index.html`
 
 ---
 
-## 11. Quick Reference — All Concept Pages
+## 12. Quick Reference — All Concept Pages
 
 | # | Name | Folder | Emoji | Primary | Hero gradient direction |
 |---|------|--------|-------|---------|------------------------|
