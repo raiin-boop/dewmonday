@@ -34,6 +34,8 @@ dewmonday/
 | [Art Tutorial App](./concepts/art-tutorial-app/README.md) | 🌱 Ideation | Mobile/web app delivering structured art education |
 | [Creator Hub](./concepts/creator-hub/README.md) | 🌱 Ideation | Community platform and resource center for creators |
 
+**Linked pages:** [Tutorial App landing page](./concepts/tutorial-app/)
+
 **Status Legend:** 🌱 Ideation · 🔨 In Progress · 🚀 Launched · ⏸️ On Hold · ❌ Archived
 
 ---
