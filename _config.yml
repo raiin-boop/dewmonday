@@ -44,6 +44,7 @@ exclude:
   - vendor/
   - .agents/
   - node_modules/
+  - AGENTS.md
 
 plugins:
   - jekyll-seo-tag
