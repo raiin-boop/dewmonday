@@ -1,0 +1,474 @@
+---
+layout: none
+permalink: /concepts/art-dropshipping/drops/001-solitude-series/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solitude Series — Mara Voss · Art Drops · Dew Monday</title>
+  <meta name="description" content="Artist spotlight on Mara Voss — oil pastel and digital work about quiet rooms and the people who inhabit them.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#F0F4F8; --bg-white:#FFFFFF; --primary:#2A5F7A; --primary-dark:#1A3A50;
+      --primary-light:#E0EBF3; --accent:#7BAFD4; --accent-light:#EAF3FA;
+      --warm:#C4836A; --warm-light:#FAF0EC; --text:#1C1C1C; --text-muted:#6B6B6B;
+      --border:#C8D8E4; --border-light:#DDE8F0;
+      --font-display:'DM Serif Display',serif;
+      --font-body:'Inter',sans-serif;
+      --font-mono:'JetBrains Mono',monospace;
+      --radius:14px; --shadow:0 4px 24px rgba(26,58,80,0.09);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;}
+
+    /* ===== NAV ===== */
+    .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;box-shadow:0 1px 12px rgba(26,58,80,0.07);}
+    .nav-left{display:flex;align-items:center;gap:32px;}
+    .nav-logo{font-family:var(--font-display);font-size:1.3rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
+    .nav-logo span{color:var(--accent);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;transition:background 0.15s,color 0.15s;}
+    .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary);}
+    .nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform 0.2s;}
+    .nav-dropdown.open .chevron{transform:rotate(180deg);}
+    .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:8px;min-width:290px;box-shadow:0 12px 40px rgba(26,58,80,0.13);animation:menuIn 0.18s ease;z-index:300;}
+    .nav-dropdown.open .nav-dropdown-menu{display:block;}
+    @keyframes menuIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+    .nav-menu-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--text);transition:background 0.15s;}
+    .nav-menu-item:hover{background:var(--primary-light);}
+    .nav-menu-item.active{background:var(--primary-light);color:var(--primary);}
+    .nav-menu-emoji{font-size:1.1rem;width:24px;text-align:center;}
+    .nav-menu-title{font-size:0.85rem;font-weight:600;line-height:1.2;}
+    .nav-menu-desc{font-size:0.75rem;color:var(--text-muted);margin-top:1px;}
+    .nav-menu-divider{height:1px;background:var(--border-light);margin:4px 0;}
+    .nav-cta{background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:8px 18px;border-radius:9px;text-decoration:none;transition:background 0.15s;}
+    .nav-cta:hover{background:var(--primary-dark);}
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb{background:var(--primary-light);border-bottom:1px solid var(--border);padding:12px 48px;display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--text-muted);}
+    .breadcrumb a{color:var(--primary);text-decoration:none;font-weight:500;}
+    .breadcrumb a:hover{text-decoration:underline;}
+    .breadcrumb-sep{color:var(--border);}
+
+    /* ===== HERO ===== */
+    .hero{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,#3A7A9A 100%);padding:80px 48px 72px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 40%,rgba(123,175,212,0.2) 0%,transparent 60%);pointer-events:none;}
+    .hero-eyebrow{font-family:var(--font-mono);font-size:0.7rem;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.55);margin-bottom:12px;}
+    .hero-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+    .hero-tag{font-family:var(--font-mono);font-size:0.7rem;padding:4px 12px;border-radius:99px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);}
+    .hero h1{font-family:var(--font-display);font-size:3rem;line-height:1.1;color:#fff;margin-bottom:14px;max-width:680px;}
+    .hero h1 em{font-style:italic;color:rgba(255,255,255,0.7);}
+    .hero-artist{font-size:1.05rem;color:rgba(255,255,255,0.75);margin-bottom:28px;}
+    .hero-artist strong{color:#fff;}
+    .hero-pull{font-family:var(--font-display);font-style:italic;font-size:1.35rem;color:rgba(255,255,255,0.88);border-left:3px solid var(--accent);padding-left:20px;max-width:580px;line-height:1.4;}
+
+    /* ===== LAYOUT ===== */
+    .layout{display:grid;grid-template-columns:1fr 300px;gap:48px;max-width:1100px;margin:0 auto;padding:56px 48px;}
+    @media(max-width:860px){.layout{grid-template-columns:1fr;}.sidebar{order:-1;}}
+
+    /* ===== ARTICLE CONTENT ===== */
+    .article h2{font-family:var(--font-display);font-size:1.7rem;color:var(--primary-dark);margin:40px 0 12px;}
+    .article h2:first-child{margin-top:0;}
+    .article p{font-size:0.97rem;color:var(--text);line-height:1.78;margin-bottom:14px;}
+    .article strong{color:var(--primary-dark);}
+    .divider{height:1px;background:var(--border-light);margin:32px 0;}
+
+    /* pull quote */
+    .pull-quote{font-family:var(--font-display);font-style:italic;font-size:1.2rem;color:var(--primary);border-left:3px solid var(--accent);padding:14px 20px;margin:28px 0;background:var(--primary-light);border-radius:0 var(--radius) var(--radius) 0;line-height:1.45;}
+
+    /* artist profile card */
+    .artist-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:28px;box-shadow:var(--shadow);}
+    .artist-card-label{font-family:var(--font-mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--primary);margin-bottom:10px;}
+    .artist-card-name{font-family:var(--font-display);font-size:1.3rem;color:var(--primary-dark);margin-bottom:4px;}
+    .artist-card-handle{font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);margin-bottom:14px;}
+    .artist-card-body{font-size:0.88rem;color:var(--text);line-height:1.7;}
+    .artist-card-quote{font-family:var(--font-display);font-style:italic;color:var(--primary);margin-top:14px;padding-top:14px;border-top:1px solid var(--border-light);font-size:0.95rem;line-height:1.5;}
+
+    /* piece grid */
+    .piece-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+    @media(max-width:600px){.piece-grid{grid-template-columns:1fr;}}
+    .piece-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;transition:box-shadow 0.2s,transform 0.2s;}
+    .piece-card:hover{box-shadow:0 8px 32px rgba(26,58,80,0.14);transform:translateY(-2px);}
+    .piece-emoji{font-size:1.8rem;margin-bottom:10px;}
+    .piece-name{font-family:var(--font-display);font-size:1.1rem;color:var(--primary-dark);margin-bottom:6px;}
+    .piece-desc{font-size:0.84rem;color:var(--text);line-height:1.65;margin-bottom:10px;}
+    .piece-specs{display:flex;flex-wrap:wrap;gap:5px;}
+    .piece-spec{font-family:var(--font-mono);font-size:0.68rem;padding:2px 8px;border-radius:6px;background:var(--primary-light);color:var(--primary);}
+
+    /* editorial callout */
+    .editorial{background:var(--warm-light);border:1.5px solid #E8C4B0;border-radius:var(--radius);padding:24px;margin:28px 0;}
+    .editorial-label{font-family:var(--font-mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--warm);margin-bottom:10px;}
+    .editorial-title{font-family:var(--font-display);font-size:1.1rem;color:#6A2E0A;margin-bottom:10px;}
+    .editorial ul{padding-left:18px;}
+    .editorial li{font-size:0.88rem;margin-bottom:7px;color:var(--text);}
+
+    /* notice box */
+    .notice{background:var(--accent-light);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;font-size:0.85rem;color:var(--primary-dark);margin:24px 0;display:flex;gap:10px;}
+    .notice-icon{font-size:1rem;flex-shrink:0;margin-top:1px;}
+
+    /* ===== SIDEBAR ===== */
+    .sidebar{display:flex;flex-direction:column;gap:16px;}
+    .sidebar-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);}
+    .sidebar-card-label{font-family:var(--font-mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;}
+    .sidebar-card-title{font-family:var(--font-display);font-size:1rem;color:var(--primary-dark);margin-bottom:6px;}
+    .sidebar-links{display:flex;flex-direction:column;gap:6px;}
+    .sidebar-link-item{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:9px;background:var(--bg);border:1px solid var(--border-light);text-decoration:none;color:var(--text);font-size:0.84rem;font-weight:500;transition:background 0.15s,border-color 0.15s;}
+    .sidebar-link-item:hover{background:var(--primary-light);border-color:var(--border);}
+    .sidebar-link-item .arrow{color:var(--text-muted);font-size:0.8rem;}
+    .sidebar-tag{font-family:var(--font-mono);font-size:0.68rem;padding:2px 8px;border-radius:6px;background:var(--primary-light);color:var(--primary);}
+
+    /* series navigation */
+    .series-nav-card{background:var(--primary-dark);border-radius:var(--radius);padding:20px;}
+    .series-nav-label{font-family:var(--font-mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin-bottom:10px;}
+    .series-nav-title{font-family:var(--font-display);font-size:1.05rem;color:#fff;margin-bottom:4px;}
+    .series-nav-sub{font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:14px;}
+    .series-nav-btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 0;border-radius:8px;transition:opacity 0.15s;}
+    .series-nav-btn:hover{opacity:0.88;}
+
+    /* ===== CTA ===== */
+    .cta{background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:72px 48px;text-align:center;}
+    .cta h2{font-family:var(--font-display);font-size:2.1rem;color:#fff;margin-bottom:10px;}
+    .cta p{color:rgba(255,255,255,0.72);margin-bottom:26px;}
+    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);font-weight:700;padding:13px 34px;border-radius:10px;text-decoration:none;font-size:0.93rem;transition:opacity 0.15s;}
+    .cta-btn:hover{opacity:0.9;}
+
+    /* ===== FOOTER ===== */
+    .footer{background:var(--primary-dark);color:rgba(255,255,255,0.55);padding:48px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;}
+    .footer-logo{font-family:var(--font-display);font-size:1.1rem;color:#fff;}
+    .footer-logo span{color:var(--accent);}
+    .footer-links{display:flex;flex-wrap:wrap;gap:10px 22px;}
+    .footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.82rem;transition:color 0.15s;}
+    .footer-links a:hover{color:#fff;}
+    .footer-copy{width:100%;font-family:var(--font-mono);font-size:0.68rem;color:rgba(255,255,255,0.28);margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="/dewmonday/" class="nav-logo">Dew<span>Monday</span></a>
+
+    <div class="nav-dropdown" id="dd-concepts">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">
+        Concepts
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/dewmonday/concepts/creator-hub/" class="nav-menu-item">
+          <span class="nav-menu-emoji">✍️</span>
+          <div><div class="nav-menu-title">Creator Hub</div><div class="nav-menu-desc">The newsletter itself</div></div>
+        </a>
+        <div class="nav-menu-divider"></div>
+        <a href="/dewmonday/concepts/art-dropshipping/" class="nav-menu-item active">
+          <span class="nav-menu-emoji">🖼️</span>
+          <div><div class="nav-menu-title">Art Drops</div><div class="nav-menu-desc">Independent artist spotlights</div></div>
+        </a>
+        <a href="/dewmonday/concepts/camera-dropshipping/" class="nav-menu-item">
+          <span class="nav-menu-emoji">📷</span>
+          <div><div class="nav-menu-title">Camera Drops</div><div class="nav-menu-desc">Curated creator gear</div></div>
+        </a>
+        <a href="/dewmonday/concepts/little-makers/" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎈</span>
+          <div><div class="nav-menu-title">Little Makers</div><div class="nav-menu-desc">Kids craft activities</div></div>
+        </a>
+        <a href="/dewmonday/concepts/tutorial-app/" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-title">Tutorial App</div><div class="nav-menu-desc">Video lesson platform</div></div>
+        </a>
+        <a href="/dewmonday/concepts/art-tutorial-app/" class="nav-menu-item">
+          <span class="nav-menu-emoji">🖌️</span>
+          <div><div class="nav-menu-title">Art Tutorial App</div><div class="nav-menu-desc">Structured art education</div></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-dropdown" id="dd-brand">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">
+        Brand
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/dewmonday/brand/#overview" class="nav-menu-item">
+          <span class="nav-menu-emoji">📖</span>
+          <div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div>
+        </a>
+        <a href="/dewmonday/brand/#brand-identity" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎯</span>
+          <div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div>
+        </a>
+        <a href="/dewmonday/brand/#design-system" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div>
+        </a>
+        <a href="/dewmonday/brand/#interview-guide" class="nav-menu-item">
+          <span class="nav-menu-emoji">🗣️</span>
+          <div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div>
+        </a>
+        <a href="/dewmonday/brand/#validation-scorecard" class="nav-menu-item">
+          <span class="nav-menu-emoji">📊</span>
+          <div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All 6 concepts rated</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <a href="/dewmonday/signup/" class="nav-cta">Get Early Access</a>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/dewmonday/">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <a href="/dewmonday/concepts/art-dropshipping/">Art Drops</a>
+  <span class="breadcrumb-sep">›</span>
+  <span>Spotlight 001 — Solitude Series</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Art Drops · Artist Spotlight</div>
+  <div class="hero-meta">
+    <span class="hero-tag">SPOTLIGHT 001</span>
+    <span class="hero-tag">JUNE 2026</span>
+    <span class="hero-tag">INDEPENDENT ART</span>
+  </div>
+  <h1>Solitude Series — <em>Mara Voss</em></h1>
+  <p class="hero-artist">Six pieces. One body of work. Three years in a converted sun porch in <strong>Minneapolis.</strong></p>
+  <div class="hero-pull">"I've been making work about being alone in rooms for eight years. It took me until last year to realize that's the work."</div>
+</section>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- ARTICLE -->
+  <article class="article">
+
+    <div class="artist-card">
+      <div class="artist-card-label">✦ Artist Profile</div>
+      <div class="artist-card-name">Mara Voss</div>
+      <div class="artist-card-handle">@maravoss.studio · Minneapolis, MN · 6,200 followers</div>
+      <p class="artist-card-body">Works out of a converted sun porch with north-facing light she describes as "the only good thing about Minnesota winters." Day job in graphic design. Has been making personal work since 2018 — oil pastel first, then digital integration starting in 2022 when a broken wrist meant she couldn't hold a pastel stick for four months and had to figure out another way.<br><br>The Solitude Series started as a pandemic project and became the body of work she's most proud of. Six pieces made over three years. Each one is a different room. Each room has one person, or the feeling of one person who just left.</p>
+      <div class="artist-card-quote">"The rooms aren't sad. They're just honest about what it feels like to be the only one in them."</div>
+    </div>
+
+    <h2>The Work</h2>
+    <p>Mara works in oil pastel on toned paper, then digitizes and adjusts in Procreate before sending to print. The result sits somewhere between illustration and painting — warm, slightly grainy, unmistakably human. She sells originals once a year at a small show in her city. The rest of the year, she posts on Instagram to 6,200 people who keep asking where they can buy prints.</p>
+
+    <div class="piece-grid">
+      <div class="piece-card">
+        <div class="piece-emoji">🪟</div>
+        <div class="piece-name">Morning Window</div>
+        <p class="piece-desc">A figure at a kitchen window, coffee cup, morning light coming in sideways. The most requested piece from her Instagram. Her most recognizable work — the one people screenshot and ask about in the comments.</p>
+        <div class="piece-specs">
+          <span class="piece-spec">Oil pastel + digital</span>
+          <span class="piece-spec">11×14 in</span>
+          <span class="piece-spec">Giclée print</span>
+        </div>
+      </div>
+
+      <div class="piece-card">
+        <div class="piece-emoji">📚</div>
+        <div class="piece-name">Shelf Life</div>
+        <p class="piece-desc">A bookshelf with objects arranged by someone who lives alone. A mug used as a pen holder. Shoes by the door. The kind of specific detail that makes you recognize a life.</p>
+        <div class="piece-specs">
+          <span class="piece-spec">Oil pastel + digital</span>
+          <span class="piece-spec">9×12 in</span>
+          <span class="piece-spec">Giclée print</span>
+        </div>
+      </div>
+
+      <div class="piece-card">
+        <div class="piece-emoji">🍳</div>
+        <div class="piece-name">Kitchen at Night</div>
+        <p class="piece-desc">Single overhead light, dishes in the sink, chair pulled away from a table. The most "lonely" piece in the series — Mara says it's actually the most peaceful.</p>
+        <div class="piece-specs">
+          <span class="piece-spec">Oil pastel + digital</span>
+          <span class="piece-spec">11×14 in</span>
+          <span class="piece-spec">Giclée print</span>
+        </div>
+      </div>
+
+      <div class="piece-card">
+        <div class="piece-emoji">🪞</div>
+        <div class="piece-name">Bathroom Mirror</div>
+        <p class="piece-desc">A reflection of a figure who could be anyone. Toothbrush in a cup. Towel on a hook. The face just out of frame enough to be yours.</p>
+        <div class="piece-specs">
+          <span class="piece-spec">Oil pastel + digital</span>
+          <span class="piece-spec">8×10 in</span>
+          <span class="piece-spec">Giclée print</span>
+        </div>
+      </div>
+
+      <div class="piece-card">
+        <div class="piece-emoji">🛏️</div>
+        <div class="piece-name">Unmade Bed</div>
+        <p class="piece-desc">Warm tones. Sheets twisted. Pillow with the indent of a head still in it. Her personal favorite. The one she says she would keep if she could only keep one.</p>
+        <div class="piece-specs">
+          <span class="piece-spec">Oil pastel + digital</span>
+          <span class="piece-spec">11×14 in</span>
+          <span class="piece-spec">Giclée print</span>
+        </div>
+      </div>
+
+      <div class="piece-card">
+        <div class="piece-emoji">🚪</div>
+        <div class="piece-name">Door, Slightly Open</div>
+        <p class="piece-desc">Hallway light coming through a bedroom door cracked two inches. The final piece in the series, made last. The one that closes it without closing it.</p>
+        <div class="piece-specs">
+          <span class="piece-spec">Oil pastel + digital</span>
+          <span class="piece-spec">9×12 in</span>
+          <span class="piece-spec">Giclée print</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2>Why this artist</h2>
+    <p>She's been making work for eight years without a big following. The work is good enough to sustain attention — the kind of art that people save and come back to — but she has no distribution strategy beyond Instagram. She sells originals once a year locally and hasn't figured out print fulfillment at scale.</p>
+    <p>That's exactly who Art Drops exists for. Someone making real work who just needs more people to see it.</p>
+
+    <div class="pull-quote">"The rooms aren't sad. They're just honest about what it feels like to be the only one in them."</div>
+
+    <div class="divider"></div>
+
+    <h2>Where to buy</h2>
+    <div class="notice">
+      <span class="notice-icon">ℹ️</span>
+      <span>Dew Monday doesn't sell Mara's work. We just think you should see it. If you want to buy, go directly to her.</span>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+      <div style="background:var(--bg-white);border:1.5px solid var(--border);border-radius:10px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+        <div>
+          <div style="font-size:0.78rem;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:3px;">PRINTS</div>
+          <div style="font-weight:600;font-size:0.92rem;">Etsy Shop</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">etsy.com/shop/maravossstudio</div>
+        </div>
+        <a href="https://etsy.com/shop/maravossstudio" target="_blank" rel="noopener" style="background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;">Buy directly from Mara →</a>
+      </div>
+      <div style="background:var(--bg-white);border:1.5px solid var(--border);border-radius:10px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+        <div>
+          <div style="font-size:0.78rem;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:3px;">ORIGINALS</div>
+          <div style="font-weight:600;font-size:0.92rem;">Annual Minneapolis Show</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Follow @maravoss.studio for announcements</div>
+        </div>
+        <a href="https://instagram.com/maravoss.studio" target="_blank" rel="noopener" style="background:var(--accent-light);color:var(--primary);font-size:0.82rem;font-weight:600;padding:9px 18px;border-radius:8px;text-decoration:none;white-space:nowrap;border:1.5px solid var(--border);">Follow on Instagram →</a>
+      </div>
+      <div style="background:var(--bg-white);border:1.5px solid var(--border);border-radius:10px;padding:14px 18px;">
+        <div style="font-size:0.78rem;font-family:var(--font-mono);color:var(--text-muted);margin-bottom:3px;">COMMISSIONS</div>
+        <div style="font-size:0.88rem;color:var(--text);">Not currently open.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2>What I'd change</h2>
+    <div class="editorial">
+      <div class="editorial-label">Renny's Editorial — First Person</div>
+      <div class="editorial-title">The infrastructure is what's missing. The work is already there.</div>
+      <ul>
+        <li>She needs a proper print shop. Not Etsy — something like Big Cartel or Shopify with a good print-on-demand integration. The friction of finding her work is real.</li>
+        <li>Her Instagram bio doesn't mention prints are available. People literally ask in the comments and she responds individually. That's not a distribution strategy, that's exhaustion.</li>
+        <li>A simple email list of 200 people would probably sell out a print run in hours. She doesn't have one.</li>
+        <li>The work is strong enough to carry an audience. The infrastructure is what's missing — and that's fixable.</li>
+      </ul>
+    </div>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="series-nav-card">
+      <div class="series-nav-label">You're reading</div>
+      <div class="series-nav-title">Art Drops · Spotlight 001</div>
+      <div class="series-nav-sub">Solitude Series — Mara Voss</div>
+      <a href="/dewmonday/concepts/art-dropshipping/" class="series-nav-btn">← All Art Drops</a>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-label">About Art Drops</div>
+      <p style="font-size:0.84rem;color:var(--text);line-height:1.65;">Art Drops finds independent artists doing work worth knowing about. We write about why it matters and send you directly to the artist. No middleman. No markup.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-label">The Artist</div>
+      <div class="sidebar-card-title">Mara Voss</div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+        <div style="font-size:0.82rem;"><strong>Location:</strong> Minneapolis, MN</div>
+        <div style="font-size:0.82rem;"><strong>Medium:</strong> Oil pastel + Procreate</div>
+        <div style="font-size:0.82rem;"><strong>Followers:</strong> 6,200 on Instagram</div>
+        <div style="font-size:0.82rem;"><strong>Commissions:</strong> Closed</div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-label">The 6 Pieces</div>
+      <div class="sidebar-links">
+        <span class="sidebar-link-item" style="cursor:default;">🪟 Morning Window</span>
+        <span class="sidebar-link-item" style="cursor:default;">📚 Shelf Life</span>
+        <span class="sidebar-link-item" style="cursor:default;">🍳 Kitchen at Night</span>
+        <span class="sidebar-link-item" style="cursor:default;">🪞 Bathroom Mirror</span>
+        <span class="sidebar-link-item" style="cursor:default;">🛏️ Unmade Bed</span>
+        <span class="sidebar-link-item" style="cursor:default;">🚪 Door, Slightly Open</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-label">Newsletter</div>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:12px;">Art Drops goes out in the Dew Monday newsletter. Free, every Monday, 6am ET.</p>
+      <a href="/dewmonday/signup/" style="display:block;text-align:center;background:var(--primary);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 0;border-radius:8px;transition:opacity 0.15s;">Subscribe free →</a>
+    </div>
+
+  </aside>
+</div>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>More artists coming every week.</h2>
+  <p>Subscribe to Dew Monday — free, every Monday at 6am ET.</p>
+  <a href="/dewmonday/signup/" class="cta-btn">Get Early Access →</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">Dew<span>Monday</span></div>
+    <div style="font-size:0.8rem;margin-top:6px;">Built in public. Every Monday. Free.</div>
+  </div>
+  <div class="footer-links">
+    <a href="/dewmonday/">Home</a>
+    <a href="/dewmonday/concepts/creator-hub/">Creator Hub</a>
+    <a href="/dewmonday/concepts/art-dropshipping/">Art Drops</a>
+    <a href="/dewmonday/concepts/camera-dropshipping/">Camera Drops</a>
+    <a href="/dewmonday/concepts/little-makers/">Little Makers</a>
+    <a href="/dewmonday/concepts/tutorial-app/">Tutorial App</a>
+    <a href="/dewmonday/concepts/art-tutorial-app/">Art Tutorial App</a>
+    <a href="/dewmonday/brand/">Brand</a>
+    <a href="/dewmonday/signup/">Sign Up</a>
+  </div>
+  <div class="footer-copy">© 2026 Dew Monday. Built in public in Livonia, MI.</div>
+</footer>
+
+<script>
+  function toggleDD(id) {
+    const dd = document.getElementById(id);
+    const isOpen = dd.classList.contains('open');
+    document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+    if (!isOpen) dd.classList.add('open');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+    }
+  });
+</script>
+</body>
+</html>
