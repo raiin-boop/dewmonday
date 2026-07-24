@@ -51,6 +51,9 @@ permalink: /concepts/art-tutorial-app/
     .nav-menu-sub{font-size:0.75rem;color:var(--text-muted);}
     .nav-menu-text{display:flex;flex-direction:column;gap:1px;}
     .nav-menu-divider{height:1px;background:var(--border);margin:4px 0;}
+    .nav-right{display:flex;align-items:center;gap:14px;}
+    .nav-home-link{font-size:0.85rem;color:var(--text-muted);text-decoration:none;transition:color 0.15s;}
+    .nav-home-link:hover{color:var(--primary);}
     .nav-cta{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:8px 18px;font-size:0.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s;}
     .nav-cta:hover{background:var(--primary-dark);}
 
@@ -203,28 +206,28 @@ permalink: /concepts/art-tutorial-app/
           <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
         </button>
         <div class="nav-dropdown-menu">
-          <a href="/dewmonday/concepts/creator-hub/" class="nav-menu-item">
+          <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="nav-menu-item">
             <span class="nav-menu-emoji">✍️</span>
             <span class="nav-menu-text"><span class="nav-menu-label">Creator Hub</span><span class="nav-menu-sub">Newsletter & build log</span></span>
           </a>
-          <a href="/dewmonday/concepts/art-dropshipping/" class="nav-menu-item">
+          <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="nav-menu-item">
             <span class="nav-menu-emoji">🖼️</span>
             <span class="nav-menu-text"><span class="nav-menu-label">Art Drops</span><span class="nav-menu-sub">Independent artist spotlights</span></span>
           </a>
-          <a href="/dewmonday/concepts/camera-dropshipping/" class="nav-menu-item">
+          <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="nav-menu-item">
             <span class="nav-menu-emoji">📷</span>
             <span class="nav-menu-text"><span class="nav-menu-label">Camera Drops</span><span class="nav-menu-sub">Curated creator gear kits</span></span>
           </a>
-          <a href="/dewmonday/concepts/little-makers/" class="nav-menu-item">
+          <a href="{{ '/concepts/little-makers/' | relative_url }}" class="nav-menu-item">
             <span class="nav-menu-emoji">🎈</span>
             <span class="nav-menu-text"><span class="nav-menu-label">Little Makers</span><span class="nav-menu-sub">Screen-free activities for kids</span></span>
           </a>
-          <a href="/dewmonday/concepts/tutorial-app/" class="nav-menu-item">
+          <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="nav-menu-item">
             <span class="nav-menu-emoji">🎨</span>
             <span class="nav-menu-text"><span class="nav-menu-label">Tutorial App</span><span class="nav-menu-sub">Creator skills platform</span></span>
           </a>
           <div class="nav-menu-divider"></div>
-          <a href="/dewmonday/concepts/art-tutorial-app/" class="nav-menu-item active">
+          <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="nav-menu-item active">
             <span class="nav-menu-emoji">🖌️</span>
             <span class="nav-menu-text"><span class="nav-menu-label">Art Tutorial App</span><span class="nav-menu-sub">Structured art education</span></span>
           </a>
@@ -242,30 +245,33 @@ permalink: /concepts/art-tutorial-app/
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div class="nav-dropdown-menu">
-          <a href="/dewmonday/brand/#overview" class="nav-menu-item">
+          <a href="{{ '/brand/#overview' | relative_url }}" class="nav-menu-item">
             <span class="nav-menu-emoji">📖</span>
             <div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div>
           </a>
-          <a href="/dewmonday/brand/#brand-identity" class="nav-menu-item">
+          <a href="{{ '/brand/#brand-identity' | relative_url }}" class="nav-menu-item">
             <span class="nav-menu-emoji">🎯</span>
             <div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div>
           </a>
-          <a href="/dewmonday/brand/#design-system" class="nav-menu-item">
+          <a href="{{ '/brand/#design-system' | relative_url }}" class="nav-menu-item">
             <span class="nav-menu-emoji">🎨</span>
             <div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div>
           </a>
-          <a href="/dewmonday/brand/#interview-guide" class="nav-menu-item">
+          <a href="{{ '/brand/#interview-guide' | relative_url }}" class="nav-menu-item">
             <span class="nav-menu-emoji">🗣️</span>
             <div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div>
           </a>
-          <a href="/dewmonday/brand/#validation-scorecard" class="nav-menu-item">
+          <a href="{{ '/brand/#validation-scorecard' | relative_url }}" class="nav-menu-item">
             <span class="nav-menu-emoji">📊</span>
-            <div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All 6 concepts rated</div></div>
+            <div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All 7 concepts rated</div></div>
           </a>
         </div>
       </div>
     </div>
-    <a href="/dewmonday/signup/" class="nav-cta">Get Early Access</a>
+    <div class="nav-right">
+      <a href="{{ '/' | relative_url }}" class="nav-home-link">Home</a>
+      <a href="{{ '/signup/' | relative_url }}" class="nav-cta">Subscribe free →</a>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -614,9 +620,9 @@ permalink: /concepts/art-tutorial-app/
     <p class="footer-logo">Dew <span>Monday</span></p>
     <div class="footer-links">
       <a href="/dewmonday/" class="footer-link">Home</a>
-      <a href="/dewmonday/concepts/creator-hub/" class="footer-link">Creator Hub</a>
-      <a href="/dewmonday/concepts/art-dropshipping/" class="footer-link">Art Drops</a>
-      <a href="/dewmonday/concepts/tutorial-app/" class="footer-link">Tutorial App</a>
+      <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="footer-link">Creator Hub</a>
+      <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="footer-link">Art Drops</a>
+      <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="footer-link">Tutorial App</a>
       <a href="/dewmonday/signup/" class="footer-link">Sign Up</a>
     </div>
   </footer>
