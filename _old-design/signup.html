@@ -1,0 +1,574 @@
+---
+layout: none
+permalink: /signup/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Dew Monday · Free Weekly Newsletter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F5F0E8;
+      --bg-white: #FFFFFF;
+      --primary: #2D5A27;
+      --primary-dark: #1E3D1A;
+      --primary-light: #E8F0E7;
+      --accent: #6BA3BE;
+      --accent-light: #E8F2F8;
+      --orange: #D4703A;
+      --orange-light: #FAEEE6;
+      --purple: #7B6FA0;
+      --purple-light: #F0EEF8;
+      --teal: #3A8A7B;
+      --teal-light: #E6F4F1;
+      --text: #1C1C1C;
+      --text-muted: #6B6B6B;
+      --border: #E2DDD6;
+      --font-display: 'DM Serif Display', serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--bg); line-height: 1.6; min-height: 100vh; }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 64px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 1.3rem; color: var(--primary); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-back { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--primary); }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #2D5A27 55%, #3a7a30 100%);
+      padding: 72px 48px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(107,163,190,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: var(--font-display); font-size: 3.4rem; line-height: 1.08;
+      color: #fff; margin-bottom: 18px; max-width: 640px; margin-left: auto; margin-right: auto;
+    }
+    .hero h1 em { font-style: normal; color: #A8D5A2; }
+    .hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.78);
+      max-width: 480px; margin: 0 auto 36px;
+    }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat-num {
+      font-family: var(--font-display); font-size: 1.9rem; color: #A8D5A2; display: block;
+    }
+    .hero-stat-label {
+      font-family: var(--font-mono); font-size: 0.68rem; color: rgba(255,255,255,0.5);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+
+    /* ===== FORM CARD ===== */
+    .form-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 44px;
+      max-width: 520px;
+      margin: 0 auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      position: relative; z-index: 1;
+    }
+    .form-card-title {
+      font-family: var(--font-display); font-size: 1.45rem; color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+    .form-card-sub {
+      font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block; font-size: 0.78rem; font-weight: 600;
+      color: var(--text); margin-bottom: 6px; letter-spacing: 0.02em;
+    }
+    .form-group input {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      font-family: var(--font-body); font-size: 0.92rem; color: var(--text);
+      background: var(--bg); transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus {
+      border-color: var(--primary); box-shadow: 0 0 0 3px rgba(45,90,39,0.1);
+      background: #fff;
+    }
+    .form-group input::placeholder { color: #B0ADA8; }
+
+    .interests-label {
+      font-size: 0.78rem; font-weight: 600; color: var(--text);
+      margin-bottom: 10px; display: block; letter-spacing: 0.02em;
+    }
+    .interest-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .chip {
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border-radius: 20px;
+      border: 1.5px solid var(--border); background: var(--bg);
+      font-size: 0.8rem; color: var(--text-muted);
+      cursor: pointer; transition: all 0.18s; user-select: none;
+    }
+    .chip input[type="checkbox"] { display: none; }
+    .chip:hover { border-color: var(--primary); color: var(--primary); }
+    .chip.selected {
+      background: var(--primary-light); border-color: var(--primary);
+      color: var(--primary); font-weight: 600;
+    }
+
+    .btn-submit {
+      width: 100%; padding: 15px;
+      background: var(--primary); color: #fff;
+      border: none; border-radius: 12px;
+      font-family: var(--font-body); font-size: 1rem; font-weight: 600;
+      cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 0.01em;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-submit:hover { background: var(--primary-dark); box-shadow: 0 4px 14px rgba(30,61,26,0.3); }
+    .btn-submit:active { transform: scale(0.98); }
+    .btn-submit .btn-arrow { transition: transform 0.2s; }
+    .btn-submit:hover .btn-arrow { transform: translateX(4px); }
+
+    .form-fine {
+      text-align: center; font-size: 0.73rem; color: var(--text-muted);
+      margin-top: 12px; line-height: 1.5;
+    }
+    .form-fine a { color: var(--primary); text-decoration: none; }
+
+    /* ===== SUCCESS STATE ===== */
+    .success-state {
+      display: none; text-align: center; padding: 12px 0;
+    }
+    .success-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--primary-light); border: 2px solid var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; margin: 0 auto 16px;
+      animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes popIn { from { transform: scale(0.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .success-title { font-family: var(--font-display); font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 8px; }
+    .success-sub { font-size: 0.88rem; color: var(--text-muted); max-width: 300px; margin: 0 auto 20px; }
+    .success-next {
+      display: inline-block; padding: 10px 24px;
+      background: var(--primary-light); color: var(--primary);
+      border-radius: 10px; font-size: 0.85rem; font-weight: 600;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .success-next:hover { background: #d0e8cc; }
+
+    /* ===== WHAT YOU GET ===== */
+    .section { padding: 72px 48px; max-width: 960px; margin: 0 auto; }
+    .section-tag {
+      font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-display); font-size: 2rem;
+      color: var(--text); margin-bottom: 10px;
+    }
+    .section-sub { font-size: 0.95rem; color: var(--text-muted); max-width: 520px; margin-bottom: 40px; }
+
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .benefit-card {
+      background: var(--bg-white); border: 1.5px solid var(--border);
+      border-radius: 14px; padding: 24px 22px;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .benefit-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+    .benefit-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+    .benefit-title { font-weight: 700; font-size: 0.95rem; color: var(--text); margin-bottom: 6px; }
+    .benefit-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== CONCEPTS PREVIEW ===== */
+    .concepts-section {
+      background: var(--bg-white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 72px 48px;
+    }
+    .concepts-inner { max-width: 960px; margin: 0 auto; }
+    .concepts-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 12px; margin-top: 36px;
+    }
+    .concept-pill {
+      border-radius: 12px; padding: 18px 16px;
+      display: flex; flex-direction: column; gap: 6px;
+      border: 1.5px solid transparent;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .concept-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+    .concept-emoji { font-size: 1.6rem; }
+    .concept-name { font-weight: 700; font-size: 0.85rem; }
+    .concept-blurb { font-size: 0.75rem; line-height: 1.5; opacity: 0.8; }
+
+    .cp-hub   { background: var(--primary-light); border-color: #c4dcc2; color: var(--primary-dark); }
+    .cp-art   { background: var(--accent-light);  border-color: #c0d8e8; color: #2a5f7a; }
+    .cp-cam   { background: var(--orange-light);  border-color: #e8c8b0; color: #8a4a20; }
+    .cp-kid   { background: var(--teal-light);    border-color: #b0d8d0; color: #1e5a52; }
+    .cp-app   { background: var(--purple-light);  border-color: #ccc8e0; color: #4a3e72; }
+
+    /* ===== TESTIMONIAL ===== */
+    .testimonials { padding: 72px 48px; max-width: 960px; margin: 0 auto; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .testimonial-card {
+      background: var(--bg-white); border: 1.5px solid var(--border);
+      border-radius: 14px; padding: 22px 20px;
+    }
+    .testimonial-text { font-size: 0.88rem; color: var(--text); line-height: 1.65; margin-bottom: 14px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 10px; }
+    .testimonial-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--primary-light); border: 2px solid var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .testimonial-name { font-weight: 600; font-size: 0.82rem; color: var(--text); }
+    .testimonial-handle { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); }
+
+    /* ===== BOTTOM CTA ===== */
+    .bottom-cta {
+      background: linear-gradient(135deg, var(--primary-dark), #2D5A27);
+      padding: 72px 48px; text-align: center;
+    }
+    .bottom-cta h2 { font-family: var(--font-display); font-size: 2.2rem; color: #fff; margin-bottom: 12px; }
+    .bottom-cta p { color: rgba(255,255,255,0.72); font-size: 1rem; max-width: 420px; margin: 0 auto 32px; }
+    .cta-email-row {
+      display: flex; gap: 10px; max-width: 420px; margin: 0 auto;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .cta-input {
+      flex: 1; min-width: 220px; padding: 13px 18px;
+      border: none; border-radius: 10px;
+      font-family: var(--font-body); font-size: 0.92rem;
+      outline: none;
+    }
+    .cta-btn {
+      padding: 13px 26px; background: var(--accent); color: #fff;
+      border: none; border-radius: 10px;
+      font-family: var(--font-body); font-size: 0.92rem; font-weight: 600;
+      cursor: pointer; transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .cta-btn:hover { background: #5a8faa; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary-dark); padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { font-family: var(--font-display); font-size: 1.1rem; color: rgba(255,255,255,0.8); }
+    .footer-logo span { color: var(--accent); }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-mono { font-family: var(--font-mono); font-size: 0.68rem; color: rgba(255,255,255,0.25); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .nav { padding: 0 20px; }
+      .hero { padding: 52px 24px 48px; }
+      .hero h1 { font-size: 2.2rem; }
+      .form-card { padding: 28px 22px; margin: 0 16px; }
+      .section, .testimonials { padding: 52px 24px; }
+      .concepts-section { padding: 52px 24px; }
+      .bottom-cta { padding: 52px 24px; }
+      .footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
+    <a href="{{ '/' | relative_url }}" class="nav-back">← Back to site</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Free · Every Monday · 6am ET</p>
+    <h1>Built for creators who want to <em>actually build</em></h1>
+    <p class="hero-sub">One newsletter. Five concepts in public. Real decisions, real numbers, real failures — every Monday morning.</p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">6am</span>
+        <span class="hero-stat-label">Every Monday</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">5</span>
+        <span class="hero-stat-label">Concepts Live</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">Free</span>
+        <span class="hero-stat-label">Always</span>
+      </div>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="form-card">
+      <!-- Default form state -->
+      <div id="form-state">
+        <h2 class="form-card-title">Join the newsletter</h2>
+        <p class="form-card-sub">No spam. No fluff. Unsubscribe anytime in one click.</p>
+        <form id="signup-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="first-name">First name</label>
+            <input type="text" id="first-name" name="first_name" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          </div>
+
+          <span class="interests-label">What are you building? <span style="font-weight:400;color:var(--text-muted)">(optional)</span></span>
+          <div class="interest-chips">
+            <label class="chip" onclick="toggleChip(this)">
+              <input type="checkbox" name="interest" value="creator-hub"> ✍️ Newsletter / Blog
+            </label>
+            <label class="chip" onclick="toggleChip(this)">
+              <input type="checkbox" name="interest" value="camera-drops"> 📷 Creator Gear
+            </label>
+            <label class="chip" onclick="toggleChip(this)">
+              <input type="checkbox" name="interest" value="art-drops"> 🖼️ Art & Design
+            </label>
+            <label class="chip" onclick="toggleChip(this)">
+              <input type="checkbox" name="interest" value="little-makers"> 🎈 Kids Content
+            </label>
+            <label class="chip" onclick="toggleChip(this)">
+              <input type="checkbox" name="interest" value="tutorial-app"> 🎨 Apps & Tools
+            </label>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            Subscribe — it's free <span class="btn-arrow">→</span>
+          </button>
+        </form>
+        <p class="form-fine">By subscribing you agree to our <a href="#">privacy policy</a>. Sent via Mailchimp.</p>
+      </div>
+
+      <!-- Success state -->
+      <div class="success-state" id="success-state">
+        <div class="success-icon">🌱</div>
+        <h3 class="success-title">You're in!</h3>
+        <p class="success-sub">Check your inbox — your first issue lands this Monday at 6am ET.</p>
+        <a href="{{ '/' | relative_url }}" class="success-next">Explore the site →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="section">
+    <p class="section-tag">What's inside</p>
+    <h2 class="section-title">One email. Actually worth opening.</h2>
+    <p class="section-sub">No roundups, no sponsored listicles. Just one focused piece of creator work — every Monday at 6am.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <span class="benefit-icon">📊</span>
+        <div class="benefit-title">Real numbers, shared publicly</div>
+        <div class="benefit-desc">Revenue, traffic, decisions — reported honestly, including when things don't work.</div>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🔧</span>
+        <div class="benefit-title">Behind-the-build dispatches</div>
+        <div class="benefit-desc">What got built each week across all five concepts. What broke. What shipped.</div>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🎯</span>
+        <div class="benefit-title">Concept spotlights</div>
+        <div class="benefit-desc">Deep dives into one concept per issue — product decisions, audience strategy, early results.</div>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🖼️</span>
+        <div class="benefit-title">Artist & creator features</div>
+        <div class="benefit-desc">Independent artists doing work worth knowing about — with direct links to their shops.</div>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🎒</span>
+        <div class="benefit-title">Early drop access</div>
+        <div class="benefit-desc">Camera Drops 001 and future gear drops open to subscribers 48 hours before public.</div>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">🚫</span>
+        <div class="benefit-title">No ads, no affiliate links</div>
+        <div class="benefit-desc">We don't earn commissions on what you buy. Everything recommended is independently chosen.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCEPTS PREVIEW -->
+  <section class="concepts-section">
+    <div class="concepts-inner">
+      <p class="section-tag">Five concepts, built in public</p>
+      <h2 class="section-title">Everything covered in one newsletter</h2>
+      <p class="section-sub">Dew Monday runs five parallel concepts simultaneously. Each issue follows progress across all of them.</p>
+      <div class="concepts-grid">
+        <div class="concept-pill cp-hub">
+          <span class="concept-emoji">✍️</span>
+          <span class="concept-name">Creator Hub</span>
+          <span class="concept-blurb">The newsletter itself — resources, dispatches, and creator tools.</span>
+        </div>
+        <div class="concept-pill cp-art">
+          <span class="concept-emoji">🖼️</span>
+          <span class="concept-name">Art Drops</span>
+          <span class="concept-blurb">Artist spotlights linking directly to independent creators' own shops.</span>
+        </div>
+        <div class="concept-pill cp-cam">
+          <span class="concept-emoji">📷</span>
+          <span class="concept-name">Camera Drops</span>
+          <span class="concept-blurb">Curated gear kits for creators — one drop per month, editorially selected.</span>
+        </div>
+        <div class="concept-pill cp-kid">
+          <span class="concept-emoji">🎈</span>
+          <span class="concept-name">Little Makers</span>
+          <span class="concept-blurb">Screen-free activities and creative projects for kids, by age and skill level.</span>
+        </div>
+        <div class="concept-pill cp-app">
+          <span class="concept-emoji">🎨</span>
+          <span class="concept-name">Tutorial App</span>
+          <span class="concept-blurb">A long-term build — a structured learning platform for digital creators.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <p class="section-tag">From readers</p>
+    <h2 class="section-title">What people are saying</h2>
+    <p class="section-sub" style="margin-bottom:32px">Early readers from the first four weeks.</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The only newsletter I don't batch-read on Saturday. I actually open it Monday morning."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🎨</div>
+          <div>
+            <div class="testimonial-name">Jordan M.</div>
+            <div class="testimonial-handle">Freelance illustrator</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Showing real numbers — including the bad weeks — is more useful than any 'how I built a $10k/month business' thread."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">📷</div>
+          <div>
+            <div class="testimonial-name">Sam T.</div>
+            <div class="testimonial-handle">Video creator</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"I sent the Little Makers activity guide to four other parents in my group chat before I even finished reading it."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🎈</div>
+          <div>
+            <div class="testimonial-name">Priya K.</div>
+            <div class="testimonial-handle">Parent of two</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="bottom-cta">
+    <h2>Start reading this Monday</h2>
+    <p>Free, always. One email per week. Unsubscribe in one click, anytime.</p>
+    <div class="cta-email-row">
+      <input type="email" class="cta-input" placeholder="you@example.com" id="cta-email">
+      <button class="cta-btn" onclick="handleCTASubmit()">Join free →</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">Dew<span>Monday</span></div>
+    <div class="footer-links">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/brand/' | relative_url }}">Brand</a>
+      <a href="{{ '/concepts/' | relative_url }}">Concepts</a>
+      <a href="#">Privacy</a>
+      <a href="#">Unsubscribe</a>
+    </div>
+    <div class="footer-mono">© 2026 Dew Monday</div>
+  </footer>
+
+  <script>
+    function toggleChip(label) {
+      // Toggle selected class on click
+      setTimeout(() => {
+        const cb = label.querySelector('input[type="checkbox"]');
+        if (cb.checked) {
+          label.classList.add('selected');
+        } else {
+          label.classList.remove('selected');
+        }
+      }, 0);
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.querySelector('.btn-submit');
+      btn.textContent = 'Subscribing…';
+      btn.disabled = true;
+      // Simulate async (swap for Formspree/Mailchimp endpoint)
+      setTimeout(() => {
+        document.getElementById('form-state').style.display = 'none';
+        document.getElementById('success-state').style.display = 'block';
+      }, 900);
+    }
+
+    function handleCTASubmit() {
+      const email = document.getElementById('cta-email').value;
+      if (!email || !email.includes('@')) {
+        document.getElementById('cta-email').focus();
+        return;
+      }
+      document.getElementById('email').value = email;
+      document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => document.getElementById('first-name').focus(), 600);
+    }
+  </script>
+</body>
+</html>
