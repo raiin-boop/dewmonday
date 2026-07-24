@@ -100,9 +100,11 @@ permalink: /concepts/tutorial-app/
     .nav-cta {
       padding: 8px 18px; background: var(--primary); color: #fff;
       border-radius: 20px; font-size: 0.82rem; font-weight: 600;
-      text-decoration: none; transition: background 0.2s, transform 0.15s;
+      text-decoration: none; transition: background 0.2s, transform 0.1s, box-shadow 0.1s;
+      box-shadow: 0 3px 0 rgba(61,32,96,.40); transform: translateY(0);
     }
-    .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--primary-dark); }
+    .nav-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(61,32,96,.40); }
 
     /* ===== HERO ===== */
     .hero {
@@ -149,16 +151,18 @@ permalink: /concepts/tutorial-app/
       padding: 13px 28px; background: #fff; color: var(--primary-dark);
       border-radius: 12px; font-weight: 700; font-size: 0.92rem;
       text-decoration: none; transition: transform 0.15s, box-shadow 0.15s;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      box-shadow: 0 3px 0 rgba(61,32,96,.28), 0 4px 16px rgba(0,0,0,0.10); transform: translateY(0);
     }
-    .hero-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .hero-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 3px 0 rgba(61,32,96,.28), 0 8px 24px rgba(0,0,0,0.2); }
+    .hero-btn-primary:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(61,32,96,.28); }
     .hero-btn-secondary {
       padding: 13px 28px;
       border: 1.5px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.9);
       border-radius: 12px; font-weight: 600; font-size: 0.92rem;
-      text-decoration: none; transition: background 0.15s, border-color 0.15s;
+      text-decoration: none; transition: background 0.15s, border-color 0.15s, transform 0.1s;
     }
     .hero-btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+    .hero-btn-secondary:active { transform: translateY(1px); }
     .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
     .hero-stat-num { font-family: var(--font-display); font-size: 2rem; color: #D4A8F0; display: block; }
     .hero-stat-label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); }
@@ -184,8 +188,10 @@ permalink: /concepts/tutorial-app/
       border: 1.5px solid var(--border); background: var(--bg-white);
       font-size: 0.8rem; font-weight: 500; color: var(--text-muted);
       cursor: pointer; transition: all 0.18s; white-space: nowrap;
+      box-shadow: 0 2px 0 rgba(61,32,96,.14); transform: translateY(0);
     }
     .filter-chip:hover { border-color: var(--primary); color: var(--primary); }
+    .filter-chip:active { transform: translateY(2px); box-shadow: 0 0 0 rgba(61,32,96,.14); }
     .filter-chip.active { background: var(--primary); border-color: var(--primary); color: #fff; }
 
     /* ===== COURSE CARDS ===== */
@@ -317,14 +323,17 @@ permalink: /concepts/tutorial-app/
       padding: 13px 28px; background: #fff; color: var(--primary-dark);
       border-radius: 12px; font-weight: 700; font-size: 0.9rem;
       text-decoration: none; transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 3px 0 rgba(61,32,96,.28); transform: translateY(0);
     }
-    .cta-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    .cta-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 3px 0 rgba(61,32,96,.28), 0 6px 20px rgba(0,0,0,0.2); }
+    .cta-btn-primary:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(61,32,96,.28); }
     .cta-btn-ghost {
       padding: 13px 28px; border: 1.5px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85);
       border-radius: 12px; font-weight: 600; font-size: 0.9rem;
-      text-decoration: none; transition: background 0.15s;
+      text-decoration: none; transition: background 0.15s, transform 0.1s;
     }
     .cta-btn-ghost:hover { background: rgba(255,255,255,0.1); }
+    .cta-btn-ghost:active { transform: translateY(1px); }
 
     /* ===== FOOTER ===== */
     footer {
@@ -349,6 +358,8 @@ permalink: /concepts/tutorial-app/
       .bottom-cta { padding: 52px 24px; }
       footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
     }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
@@ -477,7 +488,7 @@ permalink: /concepts/tutorial-app/
 
     <div class="course-grid" id="courseGrid">
 
-      <div class="course-card" data-cat="video">
+      <div class="course-card reveal" data-cat="video">
         <div class="course-thumb" style="background: linear-gradient(135deg, #1a1a2e, #2d1b69);">
           🎬
           <span class="course-card-level level-beginner">Beginner</span>
@@ -494,7 +505,7 @@ permalink: /concepts/tutorial-app/
         </div>
       </div>
 
-      <div class="course-card" data-cat="video">
+      <div class="course-card reveal" data-cat="video">
         <div class="course-thumb" style="background: linear-gradient(135deg, #0f2027, #203a43);">
           🎙️
           <span class="course-card-level level-intermediate">Intermediate</span>
@@ -511,7 +522,7 @@ permalink: /concepts/tutorial-app/
         </div>
       </div>
 
-      <div class="course-card" data-cat="design">
+      <div class="course-card reveal" data-cat="design">
         <div class="course-thumb" style="background: linear-gradient(135deg, #3d2060, #6B4FA0);">
           🖼️
           <span class="course-card-level level-beginner">Beginner</span>
@@ -528,7 +539,7 @@ permalink: /concepts/tutorial-app/
         </div>
       </div>
 
-      <div class="course-card" data-cat="design">
+      <div class="course-card reveal" data-cat="design">
         <div class="course-thumb" style="background: linear-gradient(135deg, #1a0533, #4a1080);">
           🎭
           <span class="course-card-level level-intermediate">Intermediate</span>
@@ -545,7 +556,7 @@ permalink: /concepts/tutorial-app/
         </div>
       </div>
 
-      <div class="course-card" data-cat="illustration">
+      <div class="course-card reveal" data-cat="illustration">
         <div class="course-thumb" style="background: linear-gradient(135deg, #2d1b4e, #8B4FA0);">
           ✏️
           <span class="course-card-level level-beginner">Beginner</span>
@@ -562,7 +573,7 @@ permalink: /concepts/tutorial-app/
         </div>
       </div>
 
-      <div class="course-card" data-cat="motion">
+      <div class="course-card reveal" data-cat="motion">
         <div class="course-thumb" style="background: linear-gradient(135deg, #0d0d2b, #3A2080);">
           ⚡
           <span class="course-card-level level-advanced">Advanced</span>
@@ -834,6 +845,8 @@ permalink: /concepts/tutorial-app/
     const el = document.getElementById(id);
     el.classList.toggle('open');
   }
+  const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');revealObs.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 </script>
 </body>
 </html>

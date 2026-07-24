@@ -47,8 +47,9 @@ permalink: /brand/
     .nav-menu-title{font-size:0.85rem;font-weight:600;line-height:1.2;}
     .nav-menu-desc{font-size:0.75rem;color:var(--text-muted);margin-top:1px;}
     .nav-menu-divider{height:1px;background:var(--border-light);margin:4px 0;}
-    .nav-cta{background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:8px 18px;border-radius:9px;text-decoration:none;transition:background 0.15s;}
+    .nav-cta{background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:8px 18px;border-radius:9px;text-decoration:none;transition:background 0.15s,transform 0.1s,box-shadow 0.1s;box-shadow:0 3px 0 rgba(30,61,26,.35);transform:translateY(0);}
     .nav-cta:hover{background:var(--primary-mid);}
+    .nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(30,61,26,.35);}
 
     /* ===== HERO ===== */
     .hero{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,var(--primary-mid) 100%);padding:80px 48px 72px;text-align:center;position:relative;overflow:hidden;}
@@ -140,8 +141,9 @@ permalink: /brand/
     .cta{background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:72px 48px;text-align:center;margin-top:0;}
     .cta h2{font-family:var(--font-display);font-size:2.2rem;color:#fff;margin-bottom:12px;}
     .cta p{color:rgba(255,255,255,0.72);margin-bottom:28px;font-size:1rem;}
-    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);font-weight:700;padding:14px 36px;border-radius:10px;text-decoration:none;font-size:0.95rem;transition:opacity 0.15s;}
-    .cta-btn:hover{opacity:0.9;}
+    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);font-weight:700;padding:14px 36px;border-radius:10px;text-decoration:none;font-size:0.95rem;transition:opacity 0.15s,transform 0.1s,box-shadow 0.1s;box-shadow:0 3px 0 rgba(30,61,26,.28);transform:translateY(0);}
+    .cta-btn:hover{opacity:0.9;transform:translateY(-2px);box-shadow:0 3px 0 rgba(30,61,26,.28),0 6px 20px rgba(0,0,0,.12);}
+    .cta-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(30,61,26,.28);opacity:1;}
 
     /* ===== FOOTER ===== */
     .footer{background:var(--primary-dark);color:rgba(255,255,255,0.6);padding:48px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;}
@@ -151,6 +153,7 @@ permalink: /brand/
     .footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.83rem;transition:color 0.15s;}
     .footer-links a:hover{color:#fff;}
     .footer-copy{width:100%;font-family:var(--font-mono);font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}.reveal.in-view{opacity:1;transform:translateY(0);}
   </style>
 </head>
 <body>
@@ -329,7 +332,7 @@ permalink: /brand/
     </div>
 
     <!-- 2. BRAND IDENTITY -->
-    <div class="accordion-section" id="brand-identity">
+    <div class="accordion-section reveal" id="brand-identity">
       <div class="accordion-header" onclick="toggleAccordion(this)">
         <div class="accordion-header-left">
           <span class="accordion-icon">🎯</span>
@@ -377,7 +380,7 @@ permalink: /brand/
     </div>
 
     <!-- 3. DESIGN SYSTEM -->
-    <div class="accordion-section" id="design-system">
+    <div class="accordion-section reveal" id="design-system">
       <div class="accordion-header" onclick="toggleAccordion(this)">
         <div class="accordion-header-left">
           <span class="accordion-icon">🎨</span>
@@ -476,7 +479,7 @@ permalink: /brand/
     </div>
 
     <!-- 4. INTERVIEW GUIDE -->
-    <div class="accordion-section" id="interview-guide">
+    <div class="accordion-section reveal" id="interview-guide">
       <div class="accordion-header" onclick="toggleAccordion(this)">
         <div class="accordion-header-left">
           <span class="accordion-icon">🗣️</span>
@@ -550,7 +553,7 @@ permalink: /brand/
     </div>
 
     <!-- 5. CONCEPT VALIDATION SCORECARD -->
-    <div class="accordion-section" id="validation-scorecard">
+    <div class="accordion-section reveal" id="validation-scorecard">
       <div class="accordion-header" onclick="toggleAccordion(this)">
         <div class="accordion-header-left">
           <span class="accordion-icon">📊</span>
@@ -698,6 +701,8 @@ permalink: /brand/
       l.classList.toggle('active', l.getAttribute('href') === '#' + current);
     });
   });
+  const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');revealObs.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 </script>
 </body>
 </html>
