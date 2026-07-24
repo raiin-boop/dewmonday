@@ -36,32 +36,9 @@ permalink: /concepts/creation-bundle/
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    /* ===== NAV ===== */
-    .nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; box-shadow: 0 1px 12px rgba(0,0,0,0.07); }
-    .nav-left { display: flex; align-items: center; gap: 32px; }
-    .nav-logo { font-family: var(--font-display); font-size: 1.25rem; color: var(--primary-dark); text-decoration: none; white-space: nowrap; }
-    .nav-logo span { color: var(--accent); }
-    .nav-dropdown { position: relative; }
-    .nav-dropdown-trigger { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--text); background: none; border: none; cursor: pointer; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
-    .nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger { background: var(--primary-light); color: var(--primary); }
-    .nav-dropdown-trigger .chevron { width: 14px; height: 14px; transition: transform 0.2s; }
-    .nav-dropdown.open .chevron { transform: rotate(180deg); }
-    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border: 1.5px solid var(--border); border-radius: 16px; padding: 8px; min-width: 290px; box-shadow: 0 12px 40px rgba(0,0,0,0.13); animation: menuIn 0.18s ease; z-index: 300; }
-    .nav-dropdown.open .nav-dropdown-menu { display: block; }
-    @keyframes menuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-    .nav-menu-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; text-decoration: none; color: var(--text); transition: background 0.15s; }
-    .nav-menu-item:hover { background: var(--primary-light); }
-    .nav-menu-item.active { background: var(--primary-light); }
-    .nav-menu-emoji { font-size: 1.1rem; flex-shrink: 0; }
-    .nav-menu-title { font-weight: 600; font-size: 0.87rem; color: var(--text); line-height: 1.2; }
-    .nav-menu-desc { font-size: 0.74rem; color: var(--text-muted); }
-    .nav-menu-item.active .nav-menu-title { color: var(--primary); }
-    .nav-menu-divider { height: 1px; background: var(--border-light); margin: 5px 0; }
-    .nav-right { display: flex; align-items: center; gap: 14px; }
-    .nav-home-link { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
-    .nav-home-link:hover { color: var(--primary); }
-    .nav-subscribe-btn { padding: 8px 18px; background: var(--primary); color: #fff; border-radius: 20px; font-size: 0.82rem; font-weight: 700; text-decoration: none; transition: background 0.2s, transform 0.15s; white-space: nowrap; }
-    .nav-subscribe-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    /* ===== BACK LINK ===== */
+    .back-link { display: block; padding: 12px 24px; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); text-decoration: none; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; transition: color 0.15s; }
+    .back-link:hover { color: var(--primary); }
 
     /* ===== HERO ===== */
     .hero { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--primary-mid) 100%); padding: 80px 48px 72px; position: relative; overflow: hidden; }
@@ -102,15 +79,17 @@ permalink: /concepts/creation-bundle/
     .quiz-hint { font-size: 0.82rem; color: var(--text-muted); text-align: center; margin-bottom: 28px; }
 
     .bubble-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-    .bubble-option { padding: 12px 22px; border: 2px solid var(--border); border-radius: 999px; background: var(--bg-white); font-size: 0.88rem; font-weight: 500; color: var(--text); cursor: pointer; transition: all 0.2s; user-select: none; display: flex; align-items: center; gap: 8px; }
+    .bubble-option { padding: 12px 22px; border: 2px solid var(--border); border-radius: 999px; background: var(--bg-white); font-size: 0.88rem; font-weight: 500; color: var(--text); cursor: pointer; transition: all 0.2s; user-select: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 3px 0 rgba(30,74,42,.18); transform: translateY(0); }
     .bubble-option:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); transform: scale(1.03); }
+    .bubble-option:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(30,74,42,.18); }
     .bubble-option.selected { border-color: var(--primary); background: var(--primary); color: #fff; transform: scale(1.05); box-shadow: 0 4px 16px rgba(58,122,74,0.25); }
     .bubble-option .bubble-emoji { font-size: 1.1rem; }
 
     .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 36px; }
-    .quiz-back { padding: 10px 20px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--bg-white); font-size: 0.85rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
+    .quiz-back { padding: 10px 20px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--bg-white); font-size: 0.85rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.15s; box-shadow: 0 3px 0 rgba(30,74,42,.15); transform: translateY(0); }
     .quiz-back:hover { border-color: var(--primary); color: var(--primary); }
-    .quiz-back:disabled { opacity: 0.3; cursor: not-allowed; }
+    .quiz-back:not(:disabled):active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(30,74,42,.15); }
+    .quiz-back:disabled { opacity: 0.3; cursor: not-allowed; box-shadow: none; }
     .quiz-back:disabled:hover { border-color: var(--border); color: var(--text-muted); }
     .quiz-step-indicator { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); }
 
@@ -142,8 +121,9 @@ permalink: /concepts/creation-bundle/
     .result-card-best-for { font-family: var(--font-mono); font-size: 0.65rem; padding: 3px 9px; border-radius: 8px; background: var(--accent-light); color: #8A6010; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
 
     .results-restart { display: flex; justify-content: center; margin-top: 32px; }
-    .restart-btn { padding: 12px 28px; border: 1.5px solid var(--border); border-radius: 12px; background: var(--bg-white); font-size: 0.88rem; font-weight: 600; color: var(--text); cursor: pointer; transition: all 0.15s; }
+    .restart-btn { padding: 12px 28px; border: 1.5px solid var(--border); border-radius: 12px; background: var(--bg-white); font-size: 0.88rem; font-weight: 600; color: var(--text); cursor: pointer; transition: all 0.15s; box-shadow: 0 3px 0 rgba(30,74,42,.15); transform: translateY(0); }
     .restart-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .restart-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(30,74,42,.15); }
 
     /* ===== ACCORDION ===== */
     .content-section { max-width: 800px; margin: 0 auto; padding: 0 40px 60px; }
@@ -168,18 +148,8 @@ permalink: /concepts/creation-bundle/
     .bottom-cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
     /* ===== FOOTER ===== */
-    footer { background: var(--primary-dark); padding: 40px 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
-    .footer-logo { font-family: var(--font-display); font-size: 1.1rem; color: rgba(255,255,255,0.75); text-decoration: none; }
-    .footer-logo span { color: var(--accent); }
-    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
-    .footer-links a:hover { color: rgba(255,255,255,0.8); }
-    .footer-copy { font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.22); }
-
     /* ===== RESPONSIVE ===== */
     @media (max-width: 640px) {
-      .nav { padding: 0 20px; }
-      .nav-left { gap: 16px; }
       .hero { padding: 56px 24px 52px; }
       .hero h1 { font-size: 2.4rem; }
       .quiz-section { padding: 40px 20px 60px; }
@@ -190,94 +160,13 @@ permalink: /concepts/creation-bundle/
       .content-section { padding: 0 20px 40px; }
       .bottom-cta { padding: 52px 24px; }
       .bottom-cta h2 { font-size: 2rem; }
-      footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
       .result-card-pros-cons { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav class="nav">
-  <div class="nav-left">
-    <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
-
-    <!-- Concepts Dropdown -->
-    <div class="nav-dropdown" id="dd-concepts">
-      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">
-        Concepts
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="nav-dropdown-menu">
-        <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">✍️</span>
-          <div><div class="nav-menu-title">Creator Hub</div><div class="nav-menu-desc">Newsletter & build log</div></div>
-        </a>
-        <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">🖼️</span>
-          <div><div class="nav-menu-title">Art Drops</div><div class="nav-menu-desc">Independent artist spotlights</div></div>
-        </a>
-        <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">📷</span>
-          <div><div class="nav-menu-title">Camera Drops</div><div class="nav-menu-desc">Curated creator gear kits</div></div>
-        </a>
-        <a href="{{ '/concepts/little-makers/' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">🎈</span>
-          <div><div class="nav-menu-title">Little Makers</div><div class="nav-menu-desc">Screen-free activities for kids</div></div>
-        </a>
-        <div class="nav-menu-divider"></div>
-        <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">🎨</span>
-          <div><div class="nav-menu-title">Tutorial App</div><div class="nav-menu-desc">Creator skills platform</div></div>
-        </a>
-        <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">🖌️</span>
-          <div><div class="nav-menu-title">Art Tutorial App</div><div class="nav-menu-desc">Structured art education</div></div>
-        </a>
-        <div class="nav-menu-divider"></div>
-        <a href="{{ '/concepts/creation-bundle/' | relative_url }}" class="nav-menu-item active">
-          <span class="nav-menu-emoji">🎁</span>
-          <div><div class="nav-menu-title">Creation Bundle</div><div class="nav-menu-desc">Personalized gear quiz</div></div>
-        </a>
-      </div>
-    </div>
-
-    <!-- Brand Dropdown -->
-    <div class="nav-dropdown" id="dd-brand">
-      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">
-        Brand
-        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="nav-dropdown-menu">
-        <a href="{{ '/brand/#overview' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">📖</span>
-          <div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div>
-        </a>
-        <a href="{{ '/brand/#brand-identity' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">🎯</span>
-          <div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div>
-        </a>
-        <a href="{{ '/brand/#design-system' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">🎨</span>
-          <div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div>
-        </a>
-        <a href="{{ '/brand/#interview-guide' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">🗣️</span>
-          <div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div>
-        </a>
-        <a href="{{ '/brand/#validation-scorecard' | relative_url }}" class="nav-menu-item">
-          <span class="nav-menu-emoji">📊</span>
-          <div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All 7 concepts rated</div></div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="nav-right">
-    <a href="{{ '/' | relative_url }}" class="nav-home-link">Home</a>
-    <a href="{{ '/signup/' | relative_url }}" class="nav-subscribe-btn">Subscribe free →</a>
-  </div>
-</nav>
+<a href="{{ "/" | relative_url }}" class="back-link">← Dew Monday</a>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -461,36 +350,7 @@ permalink: /concepts/creation-bundle/
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <a href="{{ '/' | relative_url }}" class="footer-logo">Dew<span>Monday</span></a>
-  <div class="footer-links">
-    <a href="{{ '/concepts/creator-hub/' | relative_url }}">Creator Hub</a>
-    <a href="{{ '/concepts/art-dropshipping/' | relative_url }}">Art Drops</a>
-    <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}">Camera Drops</a>
-    <a href="{{ '/concepts/little-makers/' | relative_url }}">Little Makers</a>
-    <a href="{{ '/concepts/tutorial-app/' | relative_url }}">Tutorial App</a>
-    <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}">Art Tutorial App</a>
-    <a href="{{ '/concepts/creation-bundle/' | relative_url }}">Creation Bundle</a>
-    <a href="{{ '/signup/' | relative_url }}">Subscribe</a>
-  </div>
-  <p class="footer-copy">© 2026 Dew Monday · Built in public</p>
-</footer>
-
 <script>
-// ===== NAV DROPDOWNS =====
-function toggleDD(id) {
-  document.querySelectorAll('.nav-dropdown').forEach(d => {
-    if (d.id !== id) d.classList.remove('open');
-  });
-  document.getElementById(id).classList.toggle('open');
-}
-document.addEventListener('click', e => {
-  if (!e.target.closest('.nav-dropdown')) {
-    document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
-  }
-});
-
 // ===== ACCORDION =====
 function toggleAccordion(id) {
   document.getElementById(id).classList.toggle('open');
