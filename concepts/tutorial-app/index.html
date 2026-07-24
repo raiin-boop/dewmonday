@@ -358,8 +358,8 @@ permalink: /concepts/tutorial-app/
   <div class="nav-left">
     <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
 
-    <div class="nav-dropdown" id="conceptsDropdown">
-      <button class="nav-dropdown-trigger" onclick="toggleDropdown()">
+    <div class="nav-dropdown" id="dd-concepts">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">
         Concepts
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <path d="M6 9l6 6 6-6"/>
@@ -802,11 +802,17 @@ permalink: /concepts/tutorial-app/
 
 <script>
   // Concepts dropdown
-  function toggleDropdown() {
-    document.getElementById('conceptsDropdown').classList.toggle('open');
+  function toggleDD(id) {
+    document.querySelectorAll('.nav-dropdown').forEach(d => {
+      if (d.id !== id) d.classList.remove('open');
+    });
+    document.getElementById(id).classList.toggle('open');
   }
-  document.addEventListener('click', function(e) {
-    const d = document.getElementById('conceptsDropdown');
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
     if (!d.contains(e.target)) d.classList.remove('open');
   });
 

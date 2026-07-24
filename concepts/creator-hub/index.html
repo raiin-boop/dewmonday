@@ -9,160 +9,125 @@ permalink: /concepts/creator-hub/
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Creator Hub · Dew Monday</title>
 <meta name="description" content="The newsletter itself — resources, dispatches, and the build log.">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #F6F1EA; --bg-panel: #FCFAF6;
-  --ink: #2A2723; --ink-muted: #948C7E; --ink-soft: #B5AD9E;
-  --sage: #8FA88C; --sage-dark: #5F7A5C; --sage-light: #EAF0E7;
-  --clay: #C98B6E; --clay-dark: #9A5E44; --clay-light: #F5E6DD;
-  --border: #E6DFD3; --border-soft: #EFEADF;
-  --font-display: 'Instrument Serif', serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  --radius: 22px; --radius-sm: 14px;
-  --shadow: 0 20px 50px rgba(42,39,35,0.06);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-body); background: var(--bg); color: var(--ink); line-height: 1.65; }
-
-.nav { position: sticky; top: 0; z-index: 200; background: rgba(246,241,234,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 44px; height: 74px; }
-.nav-back { text-decoration: none; color: var(--ink); font-size: 0.87rem; display: flex; align-items: center; gap: 8px; }
-.nav-back:hover { color: var(--sage-dark); }
-.nav-cta { padding: 10px 22px; background: var(--ink); color: var(--bg); border-radius: 999px; font-size: 0.83rem; text-decoration: none; }
-.nav-cta:hover { background: var(--sage-dark); }
-
-.breadcrumb { padding: 12px 44px; font-size: 0.8rem; color: var(--ink-muted); }
-.breadcrumb a { color: var(--ink-muted); text-decoration: none; }
-
-.hero { padding: 48px 44px 44px; }
-.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--sage-light); color: var(--sage-dark); padding: 6px 16px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 22px; }
-.hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.2rem, 4.6vw, 3.2rem); max-width: 680px; margin-bottom: 16px; }
-.hero h1 em { font-style: italic; color: var(--sage-dark); }
-.hero-sub { color: var(--ink-muted); font-size: 1rem; max-width: 520px; }
-
-.content { max-width: 1000px; margin: 0 auto; padding: 20px 44px 100px; }
-.section { margin: 60px 0; }
-.section-eyebrow { font-size: 0.8rem; font-weight: 500; color: var(--sage-dark); margin-bottom: 10px; }
-.section-title { font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; margin-bottom: 14px; }
-.section-title em { font-style: italic; color: var(--sage-dark); }
-
-.filter-bar { display: flex; gap: 10px; margin: 20px 0 24px; flex-wrap: wrap; }
-.chip { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-panel); font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); cursor: pointer; transition: all 0.2s; }
-.chip:hover { border-color: var(--sage); color: var(--sage-dark); }
-.chip.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-.issue-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-@media (max-width: 700px) { .issue-grid { grid-template-columns: 1fr; } }
-.issue-card { background: var(--bg-panel); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 22px; transition: transform 0.2s, box-shadow 0.2s; }
-.issue-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.issue-card.hidden { display: none; }
-.issue-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--clay-dark); background: var(--clay-light); padding: 3px 11px; border-radius: 999px; display: inline-block; margin-bottom: 12px; }
-.issue-title { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 8px; }
-.issue-desc { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.6; margin-bottom: 14px; }
-.issue-meta { display: flex; justify-content: space-between; font-size: 0.76rem; color: var(--ink-soft); padding-top: 12px; border-top: 1px solid var(--border-soft); }
-
-.timeline { display: flex; flex-direction: column; margin-top: 10px; }
-.log-entry { display: flex; gap: 22px; padding: 24px 0; border-bottom: 1px solid var(--border-soft); }
-.log-entry:last-child { border-bottom: none; }
-.log-week { font-size: 0.72rem; font-weight: 600; color: var(--sage-dark); background: var(--sage-light); padding: 5px 13px; border-radius: 999px; height: fit-content; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
-.log-title { font-weight: 500; font-size: 0.94rem; margin-bottom: 6px; }
-.log-desc { font-size: 0.84rem; color: var(--ink-muted); line-height: 1.6; }
-
-footer { padding: 32px 44px; text-align: center; font-size: 0.8rem; color: var(--ink-muted); border-top: 1px solid var(--border); }
-footer a { color: var(--sage-dark); text-decoration: none; font-weight: 600; }
-
-@media (max-width: 640px) { .nav, .breadcrumb, .hero, .content, footer { padding-left: 20px; padding-right: 20px; } }
+:root{--bg:#F5F2EC;--bg-white:#fff;--primary:#2D5A27;--primary-dark:#1E3D1A;--primary-light:#E8F0E7;--accent:#6BA3BE;--text:#1C1C1C;--text-muted:#6B6B6B;--border:#D8D4C8;--border-light:#EAE6DC;--font-display:'DM Serif Display',serif;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace;--radius:14px;--shadow:0 4px 24px rgba(30,61,26,0.09)}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6}
+.nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;box-shadow:0 1px 12px rgba(0,0,0,.07)}
+.nav-left{display:flex;align-items:center;gap:32px}.nav-logo{font-family:var(--font-display);font-size:1.25rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap}.nav-logo span{color:var(--accent)}
+.nav-dropdown{position:relative}.nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;transition:background .15s,color .15s}
+.nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary)}.nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform .2s}.nav-dropdown.open .chevron{transform:rotate(180deg)}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:8px;min-width:290px;box-shadow:0 12px 40px rgba(0,0,0,.13);z-index:300}.nav-dropdown.open .nav-dropdown-menu{display:block}
+.nav-menu-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--text)}.nav-menu-item:hover,.nav-menu-item.active{background:var(--primary-light)}.nav-menu-emoji{font-size:1.1rem;flex-shrink:0}.nav-menu-title{font-weight:600;font-size:.87rem;line-height:1.2}.nav-menu-desc{font-size:.74rem;color:var(--text-muted)}.nav-menu-divider{height:1px;background:var(--border-light);margin:5px 0}
+.nav-right{display:flex;align-items:center;gap:14px}.nav-home-link{font-size:.85rem;color:var(--text-muted);text-decoration:none}.nav-home-link:hover{color:var(--primary)}.nav-subscribe-btn{padding:8px 18px;background:var(--primary);color:#fff;border-radius:20px;font-size:.82rem;font-weight:700;text-decoration:none}.nav-subscribe-btn:hover{background:var(--primary-dark)}
+.hero{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 55%,#3B7041 100%);padding:80px 48px 72px}.hero-inner{max-width:900px;margin:0 auto}.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:999px;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:24px}.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.75)}
+.hero h1{font-family:var(--font-display);font-size:3.4rem;line-height:1.07;color:#fff;margin-bottom:18px;max-width:680px}.hero h1 em{font-style:italic;color:rgba(255,255,255,.68)}.hero-sub{font-size:1rem;color:rgba(255,255,255,.72);margin-bottom:36px;max-width:540px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}.btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:.92rem;text-decoration:none}.btn-ghost{padding:12px 24px;border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.86);border-radius:12px;font-weight:600;font-size:.92rem;text-decoration:none}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap}.hero-stat-num{font-family:var(--font-display);font-size:2.4rem;color:rgba(255,255,255,.88);display:block}.hero-stat-label{font-family:var(--font-mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.42)}
+.content{max-width:1100px;margin:0 auto;padding:56px 40px}.section{margin-bottom:56px}.section-title{font-family:var(--font-display);font-size:2rem;margin-bottom:10px}.section-sub{color:var(--text-muted);font-size:.9rem;margin-bottom:28px}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.filter-chip{padding:7px 16px;border:1.5px solid var(--border);border-radius:999px;background:var(--bg-white);color:var(--text-muted);font-size:.8rem;font-weight:600;cursor:pointer}.filter-chip.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}.content-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:8px}.card-header{display:flex;justify-content:space-between;align-items:center}.card-tag{font-family:var(--font-mono);font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:8px;background:var(--primary-light);color:var(--primary)}.card-date{font-size:.75rem;color:var(--text-muted)}.card-title{font-family:var(--font-display);font-size:1.1rem}.card-desc{font-size:.84rem;color:var(--text-muted);line-height:1.6;flex:1}.card-link{font-size:.82rem;font-weight:700;color:var(--primary);text-decoration:none}
+.accordion{border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:10px;background:var(--bg-white)}.accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--bg-white);border:none;cursor:pointer;font-size:.92rem;font-weight:600}.accordion-body{display:none;padding:16px 20px 20px;border-top:1px solid var(--border-light);font-size:.88rem;color:var(--text-muted)}.accordion.open .accordion-body{display:block}
+.bottom-cta{background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:80px 48px;text-align:center}.bottom-cta-inner{max-width:640px;margin:0 auto}.bottom-cta-badge{display:inline-block;font-family:var(--font-mono);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2);margin-bottom:20px}.bottom-cta h2{font-family:var(--font-display);font-size:2.5rem;color:#fff;margin-bottom:14px}.bottom-cta h2 em{font-style:italic;color:rgba(255,255,255,.65)}.bottom-cta p{color:rgba(255,255,255,.68);font-size:.95rem;margin-bottom:32px}.bottom-cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{background:var(--primary-dark);padding:40px 48px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}.footer-logo{font-family:var(--font-display);font-size:1.1rem;color:rgba(255,255,255,.75);text-decoration:none}.footer-logo span{color:var(--accent)}.footer-links{display:flex;gap:24px;flex-wrap:wrap}.footer-links a{font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none}.footer-links a:hover{color:rgba(255,255,255,.8)}.footer-copy{font-family:var(--font-mono);font-size:.65rem;color:rgba(255,255,255,.22)}
+@media(max-width:720px){.nav{padding:0 20px}.nav-left{gap:16px}.hero{padding:56px 24px 52px}.hero h1{font-size:2.35rem}.content{padding:40px 20px}.bottom-cta{padding:56px 24px}footer{padding:28px 20px;flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
-
 <nav class="nav">
-  <a href="/dewmonday/" class="nav-back">← Dew Monday</a>
-  <a href="/dewmonday/signup/" class="nav-cta">Subscribe free</a>
+  <div class="nav-left">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
+    <div class="nav-dropdown" id="dd-concepts">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">Concepts <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="nav-menu-item active"><span class="nav-menu-emoji">✍️</span><div><div class="nav-menu-title">Creator Hub</div><div class="nav-menu-desc">Newsletter & build log</div></div></a>
+        <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🖼️</span><div><div class="nav-menu-title">Art Drops</div><div class="nav-menu-desc">Independent artist spotlights</div></div></a>
+        <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📷</span><div><div class="nav-menu-title">Camera Drops</div><div class="nav-menu-desc">Curated creator gear kits</div></div></a>
+        <a href="{{ '/concepts/little-makers/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎈</span><div><div class="nav-menu-title">Little Makers</div><div class="nav-menu-desc">Screen-free activities for kids</div></div></a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎨</span><div><div class="nav-menu-title">Tutorial App</div><div class="nav-menu-desc">Creator skills platform</div></div></a>
+        <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🖌️</span><div><div class="nav-menu-title">Art Tutorial App</div><div class="nav-menu-desc">Structured art education</div></div></a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/creation-bundle/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎁</span><div><div class="nav-menu-title">Creation Bundle</div><div class="nav-menu-desc">Personalized gear quiz</div></div></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" id="dd-brand">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">Brand <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/brand/#overview' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📖</span><div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div></a>
+        <a href="{{ '/brand/#brand-identity' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎯</span><div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div></a>
+        <a href="{{ '/brand/#design-system' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎨</span><div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div></a>
+        <a href="{{ '/brand/#interview-guide' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🗣️</span><div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div></a>
+        <a href="{{ '/brand/#validation-scorecard' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📊</span><div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All concepts rated</div></div></a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right"><a href="{{ '/' | relative_url }}" class="nav-home-link">Home</a><a href="{{ '/signup/' | relative_url }}" class="nav-subscribe-btn">Subscribe free →</a></div>
 </nav>
-<div class="breadcrumb"><a href="/dewmonday/">Home</a> › Creator Hub</div>
 
 <section class="hero">
-  <span class="hero-badge">Concept 01 · Live · 4 issues</span>
-  <h1>The newsletter itself, <em>reporting on itself</em></h1>
-  <p class="hero-sub">Creator Hub tracks how Dew Monday is built — what's working, what's failing, and every tool and decision in between.</p>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="hero-badge-dot"></span> Building in public · Concept 01</div>
+    <h1>The newsletter that <em>reports on itself</em></h1>
+    <p class="hero-sub">One builder. Seven concepts. Every decision tracked weekly.</p>
+    <div class="hero-actions"><a href="{{ '/signup/' | relative_url }}" class="btn-primary">Subscribe free →</a><a href="#content" class="btn-ghost">Browse issues ↓</a></div>
+    <div class="hero-stats">
+      <div><span class="hero-stat-num">4</span><span class="hero-stat-label">Issues live</span></div>
+      <div><span class="hero-stat-num">7</span><span class="hero-stat-label">Concepts tracked</span></div>
+      <div><span class="hero-stat-num">1x</span><span class="hero-stat-label">Per week</span></div>
+      <div><span class="hero-stat-num">Honest</span><span class="hero-stat-label">Build logs</span></div>
+    </div>
+  </div>
 </section>
 
-<div class="content">
+<main class="content" id="content">
   <section class="section">
-    <p class="section-eyebrow">Issue archive</p>
-    <h2 class="section-title">Every dispatch, <em>in order</em></h2>
+    <h2 class="section-title">Issue archive</h2>
+    <p class="section-sub">Dispatches, tooling notes, and weekly decision logs.</p>
     <div class="filter-bar">
-      <button class="chip active" data-cat="all" onclick="filterIssues('all', this)">All</button>
-      <button class="chip" data-cat="dispatch" onclick="filterIssues('dispatch', this)">Dispatch</button>
-      <button class="chip" data-cat="tools" onclick="filterIssues('tools', this)">Tools & Resources</button>
+      <button class="filter-chip active" onclick="filterContent('all', this)">All</button>
+      <button class="filter-chip" onclick="filterContent('dispatch', this)">Dispatch</button>
+      <button class="filter-chip" onclick="filterContent('tools', this)">Tools</button>
     </div>
-    <div class="issue-grid" id="issueGrid">
-      <div class="issue-card" data-cat="tools">
-        <span class="issue-num">Issue 004</span>
-        <div class="issue-title">The Exact Stack Running Dew Monday Right Now</div>
-        <p class="issue-desc">Jekyll, GitHub Pages, Formspree, and everything else powering the site — with honest takes on what's working and what isn't.</p>
-        <div class="issue-meta"><span>Tools & Resources</span><span>Jun 17 · 8 min</span></div>
-      </div>
-      <div class="issue-card" data-cat="dispatch">
-        <span class="issue-num">Issue 003</span>
-        <div class="issue-title">Why the Little Makers Filter Took Longer Than Expected</div>
-        <p class="issue-desc">A small interactive component, a sidebar bug, and what it taught me about scoping "simple" features.</p>
-        <div class="issue-meta"><span>Dispatch</span><span>Jun 10 · 6 min</span></div>
-      </div>
-      <div class="issue-card" data-cat="dispatch">
-        <span class="issue-num">Issue 002</span>
-        <div class="issue-title">Locking the Design System Before It's Tempting to Skip</div>
-        <p class="issue-desc">Fonts, tokens, and why doing this early saved rework across six concept pages.</p>
-        <div class="issue-meta"><span>Dispatch</span><span>Jun 3 · 5 min</span></div>
-      </div>
-      <div class="issue-card" data-cat="dispatch">
-        <span class="issue-num">Issue 001</span>
-        <div class="issue-title">Why I'm Building Six Things at Once</div>
-        <p class="issue-desc">The reasoning behind running six parallel concepts and what that means for how Dew Monday works.</p>
-        <div class="issue-meta"><span>Dispatch</span><span>May 27 · 5 min</span></div>
-      </div>
+    <div class="content-grid">
+      <div class="content-card" data-category="tools"><div class="card-header"><div class="card-tag">Tools</div><div class="card-date">Jun 17</div></div><h3 class="card-title">The stack running Dew Monday</h3><p class="card-desc">Jekyll, GitHub Pages, Formspree, and the workflow behind weekly publishing.</p><a class="card-link" href="#">Issue 004 →</a></div>
+      <div class="content-card" data-category="dispatch"><div class="card-header"><div class="card-tag">Dispatch</div><div class="card-date">Jun 10</div></div><h3 class="card-title">Why the Little Makers filter took longer</h3><p class="card-desc">A straightforward feature that exposed scope and QA gaps.</p><a class="card-link" href="#">Issue 003 →</a></div>
+      <div class="content-card" data-category="dispatch"><div class="card-header"><div class="card-tag">Dispatch</div><div class="card-date">Jun 3</div></div><h3 class="card-title">Locking the design system early</h3><p class="card-desc">How token decisions reduced rework across the concept pages.</p><a class="card-link" href="#">Issue 002 →</a></div>
+      <div class="content-card" data-category="dispatch"><div class="card-header"><div class="card-tag">Dispatch</div><div class="card-date">May 27</div></div><h3 class="card-title">Why build multiple concepts at once</h3><p class="card-desc">The operating thesis for running parallel product directions.</p><a class="card-link" href="#">Issue 001 →</a></div>
     </div>
   </section>
 
   <section class="section">
-    <p class="section-eyebrow">Build log</p>
-    <h2 class="section-title">What shipped, <em>week by week</em></h2>
-    <div class="timeline">
-      <div class="log-entry">
-        <div class="log-week">Week 4</div>
-        <div><div class="log-title">All 6 concept pages live — standalone HTML with dropdown nav</div><p class="log-desc">Each concept now has its own full-page experience with niche-matched design.</p></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-week">Week 3</div>
-        <div><div class="log-title">Little Makers Activity Browser shipped</div><p class="log-desc">Filterable browser with 24 activities across 4 age groups.</p></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-week">Week 2</div>
-        <div><div class="log-title">Design system locked</div><p class="log-desc">Color tokens, typography scale, and navigation built.</p></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-week">Week 1</div>
-        <div><div class="log-title">Site scaffolded on Jekyll + GitHub Pages</div><p class="log-desc">Repo created, five concept pages stubbed out.</p></div>
-      </div>
-    </div>
+    <h2 class="section-title">Build notes</h2>
+    <div class="accordion"><button class="accordion-trigger" onclick="this.parentElement.classList.toggle('open')"><span>Week 4 — redesign standard applied</span><span>▾</span></button><div class="accordion-body">Unified standalone format, dropdown navigation, and concept-level consistency updates across live pages.</div></div>
+    <div class="accordion"><button class="accordion-trigger" onclick="this.parentElement.classList.toggle('open')"><span>Week 3 — Little Makers browser shipped</span><span>▾</span></button><div class="accordion-body">Filter logic shipped with age/category sorting and reset behavior.</div></div>
+    <div class="accordion"><button class="accordion-trigger" onclick="this.parentElement.classList.toggle('open')"><span>Week 2 — design tokens stabilized</span><span>▾</span></button><div class="accordion-body">Palette, type, spacing, and nav behavior standardized for concept pages.</div></div>
   </section>
-</div>
+</main>
 
-<footer><a href="/dewmonday/">← Back to all six concepts</a></footer>
+<section class="bottom-cta"><div class="bottom-cta-inner"><div class="bottom-cta-badge">Free · Every Monday</div><h2>Follow the build <em>every week</em></h2><p>Get what worked, what failed, and what changed across the concepts — in one email.</p><div class="bottom-cta-actions"><a href="{{ '/signup/' | relative_url }}" class="btn-primary">Get early access →</a><a href="{{ '/' | relative_url }}" class="btn-ghost">See all concepts</a></div></div></section>
+
+<footer>
+  <a href="{{ '/' | relative_url }}" class="footer-logo">Dew<span>Monday</span></a>
+  <div class="footer-links">
+    <a href="{{ '/concepts/creator-hub/' | relative_url }}">Creator Hub</a>
+    <a href="{{ '/concepts/art-dropshipping/' | relative_url }}">Art Drops</a>
+    <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}">Camera Drops</a>
+    <a href="{{ '/concepts/little-makers/' | relative_url }}">Little Makers</a>
+    <a href="{{ '/concepts/tutorial-app/' | relative_url }}">Tutorial App</a>
+    <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}">Art Tutorial App</a>
+    <a href="{{ '/concepts/creation-bundle/' | relative_url }}">Creation Bundle</a>
+    <a href="{{ '/signup/' | relative_url }}">Subscribe</a>
+  </div>
+  <p class="footer-copy">© 2026 Dew Monday · Built in public</p>
+</footer>
 
 <script>
-function filterIssues(cat, btn) {
-  document.querySelectorAll('.filter-bar .chip').forEach(c => c.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.issue-card').forEach(card => {
-    card.classList.toggle('hidden', cat !== 'all' && card.dataset.cat !== cat);
-  });
-}
+function toggleDD(id){document.querySelectorAll('.nav-dropdown').forEach(d=>{if(d.id!==id)d.classList.remove('open')});document.getElementById(id).classList.toggle('open')}
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown')){document.querySelectorAll('.nav-dropdown').forEach(d=>d.classList.remove('open'))}})
+function filterContent(category,btn){document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('[data-category]').forEach(card=>{card.style.display=(category==='all'||card.dataset.category===category)?'flex':'none'})}
 </script>
 </body>
 </html>

@@ -8,107 +8,95 @@ permalink: /signup/
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Subscribe · Dew Monday</title>
-<meta name="description" content="Free. One email per week. Real decisions, real numbers, every Monday at 6am.">
-
+<meta name="description" content="Free. One email per week. Real decisions, real numbers, every Monday.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #F6F1EA; --bg-panel: #FCFAF6;
-  --ink: #2A2723; --ink-muted: #948C7E; --ink-soft: #B5AD9E;
-  --sage: #8FA88C; --sage-dark: #5F7A5C; --sage-light: #EAF0E7;
-  --clay: #C98B6E; --clay-light: #F5E6DD;
-  --border: #E6DFD3;
-  --font-display: 'Instrument Serif', serif;
-  --font-body: 'Inter', sans-serif;
-  --radius: 22px;
-  --shadow: 0 20px 50px rgba(42,39,35,0.08);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font-body); background: var(--bg); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; }
-
-.nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 44px; }
-.nav-back { text-decoration: none; color: var(--ink); font-size: 0.88rem; display: flex; align-items: center; gap: 8px; }
-.nav-back:hover { color: var(--sage-dark); }
-
-.wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px 20px 60px; position: relative; overflow: hidden; }
-.wrap::before { content: ''; position: absolute; top: -160px; right: -100px; width: 480px; height: 480px; background: radial-gradient(circle, rgba(143,168,140,0.24) 0%, transparent 72%); filter: blur(50px); }
-.wrap::after { content: ''; position: absolute; bottom: -200px; left: -100px; width: 440px; height: 440px; background: radial-gradient(circle, rgba(201,139,110,0.18) 0%, transparent 72%); filter: blur(55px); }
-
-.signup-card { background: var(--bg-panel); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); max-width: 480px; width: 100%; padding: 44px 40px; position: relative; z-index: 1; }
-.signup-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--sage-light); color: var(--sage-dark); padding: 6px 16px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 22px; }
-.signup-h1 { font-family: var(--font-display); font-weight: 400; font-size: 2.2rem; line-height: 1.15; margin-bottom: 14px; }
-.signup-h1 em { font-style: italic; color: var(--sage-dark); }
-.signup-sub { color: var(--ink-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 28px; }
-
-.signup-form { display: flex; flex-direction: column; gap: 12px; }
-.signup-form input {
-  padding: 14px 18px; border-radius: 14px; border: 1px solid var(--border);
-  background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 0.94rem;
-}
-.signup-form input:focus { outline: none; border-color: var(--sage); }
-.signup-form button {
-  padding: 15px 20px; background: var(--ink); color: var(--bg); border: none; border-radius: 999px;
-  font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s;
-}
-.signup-form button:hover { background: var(--sage-dark); }
-.signup-note { font-size: 0.78rem; color: var(--ink-soft); margin-top: 14px; text-align: center; }
-
-.signup-success { display: none; text-align: center; }
-.signup-success.show { display: block; }
-.signup-success-emoji { font-size: 2.4rem; margin-bottom: 14px; }
-.signup-success-title { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 8px; }
-.signup-success-desc { color: var(--ink-muted); font-size: 0.9rem; line-height: 1.6; }
-
-.trust-row { display: flex; gap: 18px; margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--ink-soft); flex-wrap: wrap; }
-.trust-item { display: flex; align-items: center; gap: 6px; }
+:root{--bg:#F5F0E8;--bg-white:#fff;--primary:#2D5A27;--primary-dark:#1E3D1A;--primary-light:#E8F0E7;--accent:#6BA3BE;--text:#1C1C1C;--text-muted:#6B6B6B;--border:#D8D4C8;--border-light:#EAE6DC;--font-display:'DM Serif Display',serif;--font-body:'Inter',sans-serif;--font-mono:'JetBrains Mono',monospace;--radius:14px;--shadow:0 10px 30px rgba(30,61,26,.12)}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6}
+.nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;box-shadow:0 1px 12px rgba(0,0,0,.07)}.nav-left{display:flex;align-items:center;gap:32px}.nav-logo{font-family:var(--font-display);font-size:1.25rem;color:var(--primary-dark);text-decoration:none}.nav-logo span{color:var(--accent)}
+.nav-dropdown{position:relative}.nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px}.nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary)}.nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform .2s}.nav-dropdown.open .chevron{transform:rotate(180deg)}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:8px;min-width:290px;box-shadow:0 12px 40px rgba(0,0,0,.13);z-index:300}.nav-dropdown.open .nav-dropdown-menu{display:block}.nav-menu-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--text)}.nav-menu-item:hover{background:var(--primary-light)}.nav-menu-emoji{font-size:1.1rem}.nav-menu-title{font-weight:600;font-size:.87rem}.nav-menu-desc{font-size:.74rem;color:var(--text-muted)}.nav-menu-divider{height:1px;background:var(--border-light);margin:5px 0}
+.nav-right{display:flex;align-items:center;gap:14px}.nav-home-link{font-size:.85rem;color:var(--text-muted);text-decoration:none}.nav-home-link:hover{color:var(--primary)}.nav-subscribe-btn{padding:8px 18px;background:var(--primary);color:#fff;border-radius:20px;font-size:.82rem;font-weight:700;text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:72px 40px}.hero-inner{max-width:900px;margin:0 auto}.hero-badge{display:inline-block;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.2);margin-bottom:20px}.hero h1{font-family:var(--font-display);font-size:3rem;color:#fff;line-height:1.08;margin-bottom:14px}.hero h1 em{font-style:italic;color:rgba(255,255,255,.66)}.hero-sub{color:rgba(255,255,255,.74);max-width:560px}
+.wrap{max-width:980px;margin:0 auto;padding:48px 20px 70px}.signup-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:34px;max-width:520px;margin:0 auto}.signup-card h2{font-family:var(--font-display);font-size:2rem;margin-bottom:8px}.signup-card p{color:var(--text-muted);font-size:.9rem;margin-bottom:22px}
+.signup-form{display:flex;flex-direction:column;gap:12px}.signup-form input{padding:14px 16px;border:1.5px solid var(--border);border-radius:12px;font:inherit}.signup-form input:focus{outline:none;border-color:var(--primary)}.signup-form button{padding:14px 16px;background:var(--primary);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:.9rem;cursor:pointer}.signup-form button:hover{background:var(--primary-dark)}
+.signup-note{font-size:.78rem;color:var(--text-muted);margin-top:12px}.signup-success{display:none;text-align:center;padding-top:8px}.signup-success.show{display:block}.signup-success h3{font-family:var(--font-display);font-size:1.8rem;margin-bottom:8px}
+.trust-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;font-size:.78rem;color:var(--text-muted)}
+footer{background:var(--primary-dark);padding:40px 48px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}.footer-logo{font-family:var(--font-display);font-size:1.1rem;color:rgba(255,255,255,.75);text-decoration:none}.footer-logo span{color:var(--accent)}.footer-links{display:flex;gap:24px;flex-wrap:wrap}.footer-links a{font-size:.78rem;color:rgba(255,255,255,.4);text-decoration:none}.footer-copy{font-family:var(--font-mono);font-size:.65rem;color:rgba(255,255,255,.22)}
+@media(max-width:720px){.nav{padding:0 20px}.nav-left{gap:16px}.hero{padding:54px 24px}.hero h1{font-size:2.25rem}.wrap{padding:34px 18px 56px}.signup-card{padding:24px}footer{padding:28px 20px;flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
+<nav class="nav">
+  <div class="nav-left">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
+    <div class="nav-dropdown" id="dd-concepts">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">Concepts <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">✍️</span><div><div class="nav-menu-title">Creator Hub</div><div class="nav-menu-desc">Newsletter & build log</div></div></a>
+        <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🖼️</span><div><div class="nav-menu-title">Art Drops</div><div class="nav-menu-desc">Independent artist spotlights</div></div></a>
+        <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📷</span><div><div class="nav-menu-title">Camera Drops</div><div class="nav-menu-desc">Curated creator gear kits</div></div></a>
+        <a href="{{ '/concepts/little-makers/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎈</span><div><div class="nav-menu-title">Little Makers</div><div class="nav-menu-desc">Screen-free activities for kids</div></div></a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎨</span><div><div class="nav-menu-title">Tutorial App</div><div class="nav-menu-desc">Creator skills platform</div></div></a>
+        <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🖌️</span><div><div class="nav-menu-title">Art Tutorial App</div><div class="nav-menu-desc">Structured art education</div></div></a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/creation-bundle/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎁</span><div><div class="nav-menu-title">Creation Bundle</div><div class="nav-menu-desc">Personalized gear quiz</div></div></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" id="dd-brand">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">Brand <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/brand/#overview' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📖</span><div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div></a>
+        <a href="{{ '/brand/#brand-identity' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎯</span><div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div></a>
+        <a href="{{ '/brand/#design-system' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎨</span><div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div></a>
+        <a href="{{ '/brand/#interview-guide' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🗣️</span><div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div></a>
+        <a href="{{ '/brand/#validation-scorecard' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📊</span><div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All concepts rated</div></div></a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right"><a href="{{ '/' | relative_url }}" class="nav-home-link">Home</a><a href="{{ '/signup/' | relative_url }}" class="nav-subscribe-btn">Subscribe free →</a></div>
+</nav>
 
-<nav class="nav"><a href="/dewmonday/" class="nav-back">← Dew Monday</a></nav>
+<section class="hero"><div class="hero-inner"><div class="hero-badge">Free · Every Monday</div><h1>Follow the build <em>every week</em></h1><p class="hero-sub">One honest email with what shipped, what failed, and what changed across the Dew Monday concepts.</p></div></section>
 
 <div class="wrap">
   <div class="signup-card">
     <div id="signupContent">
-      <span class="signup-badge">Free · every Monday</span>
-      <h1 class="signup-h1">Follow the build, <em>every week</em></h1>
-      <p class="signup-sub">Real decisions, real numbers, real failures — across all six concepts. One email, Monday at 6am ET. Unsubscribe anytime in one click.</p>
+      <h2>Join the newsletter</h2>
+      <p>Real decisions, real metrics, and weekly progress notes from a build-in-public project.</p>
       <form class="signup-form" id="signupForm">
         <input type="text" id="signupName" placeholder="First name" required>
         <input type="email" id="signupEmail" placeholder="Email address" required>
-        <button type="submit">Subscribe — it's free</button>
+        <button type="submit">Subscribe — it’s free</button>
       </form>
-      <p class="signup-note">No spam. Sent via Mailchimp. Unsubscribe in one click.</p>
-      <div class="trust-row">
-        <span class="trust-item">🚫 No ads</span>
-        <span class="trust-item">🔒 No data selling</span>
-        <span class="trust-item">📬 One email a week</span>
-      </div>
+      <p class="signup-note">No spam. Unsubscribe in one click.</p>
+      <div class="trust-row"><span>🚫 No ads</span><span>🔒 No data selling</span><span>📬 One email a week</span></div>
     </div>
-    <div class="signup-success" id="signupSuccess">
-      <div class="signup-success-emoji">🌱</div>
-      <div class="signup-success-title" id="successTitle">You're in!</div>
-      <p class="signup-success-desc">First issue lands this Monday at 6am ET. Check your inbox for a confirmation email.</p>
-    </div>
+    <div class="signup-success" id="signupSuccess"><h3 id="successTitle">You’re in!</h3><p>First issue lands Monday at 6am ET.</p></div>
   </div>
 </div>
 
+<footer>
+  <a href="{{ '/' | relative_url }}" class="footer-logo">Dew<span>Monday</span></a>
+  <div class="footer-links">
+    <a href="{{ '/concepts/creator-hub/' | relative_url }}">Creator Hub</a>
+    <a href="{{ '/concepts/art-dropshipping/' | relative_url }}">Art Drops</a>
+    <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}">Camera Drops</a>
+    <a href="{{ '/concepts/little-makers/' | relative_url }}">Little Makers</a>
+    <a href="{{ '/concepts/tutorial-app/' | relative_url }}">Tutorial App</a>
+    <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}">Art Tutorial App</a>
+    <a href="{{ '/concepts/creation-bundle/' | relative_url }}">Creation Bundle</a>
+  </div>
+  <p class="footer-copy">© 2026 Dew Monday · Built in public</p>
+</footer>
+
 <script>
-document.getElementById('signupForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const name = document.getElementById('signupName').value.trim();
-  document.getElementById('successTitle').textContent = name ? `You're in, ${name}!` : "You're in!";
-  document.getElementById('signupContent').querySelector('.signup-badge').style.display = 'none';
-  document.getElementById('signupContent').querySelector('.signup-h1').style.display = 'none';
-  document.getElementById('signupContent').querySelector('.signup-sub').style.display = 'none';
-  document.getElementById('signupContent').querySelector('.signup-form').style.display = 'none';
-  document.getElementById('signupContent').querySelector('.signup-note').style.display = 'none';
-  document.getElementById('signupContent').querySelector('.trust-row').style.display = 'none';
-  document.getElementById('signupSuccess').classList.add('show');
-});
+function toggleDD(id){document.querySelectorAll('.nav-dropdown').forEach(d=>{if(d.id!==id)d.classList.remove('open')});document.getElementById(id).classList.toggle('open')}
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown')){document.querySelectorAll('.nav-dropdown').forEach(d=>d.classList.remove('open'))}})
+document.getElementById('signupForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('signupName').value.trim();document.getElementById('successTitle').textContent=name?`You’re in, ${name}!`:'You’re in!';document.getElementById('signupContent').style.display='none';document.getElementById('signupSuccess').classList.add('show')})
 </script>
 </body>
 </html>

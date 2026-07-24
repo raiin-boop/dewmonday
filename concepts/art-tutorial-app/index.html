@@ -197,8 +197,8 @@ permalink: /concepts/art-tutorial-app/
   <nav class="nav">
     <div class="nav-left">
       <a href="/dewmonday/" class="nav-logo">Dew <span>Monday</span></a>
-      <div class="nav-dropdown" id="conceptsNav">
-        <button class="nav-dropdown-trigger" onclick="toggleNav()">
+      <div class="nav-dropdown" id="dd-concepts">
+        <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">
           Concepts
           <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
         </button>
@@ -622,12 +622,16 @@ permalink: /concepts/art-tutorial-app/
   </footer>
 
   <script>
-    function toggleNav(){
-      document.getElementById('conceptsNav').classList.toggle('open');
+    function toggleDD(id) {
+      document.querySelectorAll('.nav-dropdown').forEach(d => {
+        if (d.id !== id) d.classList.remove('open');
+      });
+      document.getElementById(id).classList.toggle('open');
     }
-    document.addEventListener('click',function(e){
-      const nav=document.getElementById('conceptsNav');
-      if(!nav.contains(e.target)) nav.classList.remove('open');
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-dropdown')) {
+        document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+      }
     });
 
     function toggleAccordion(id){

@@ -169,8 +169,8 @@ permalink: /concepts/camera-dropshipping/
 <nav class="nav">
   <div class="nav-left">
     <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
-    <div class="nav-dropdown" id="conceptsDropdown">
-      <button class="nav-dropdown-trigger" onclick="toggleDropdown()">
+    <div class="nav-dropdown" id="dd-concepts">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">
         Concepts
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
       </button>
@@ -441,8 +441,17 @@ permalink: /concepts/camera-dropshipping/
 </footer>
 
 <script>
-  function toggleDropdown(){const d=document.getElementById('conceptsDropdown');d.classList.toggle('open');}
-  document.addEventListener('click',e=>{const d=document.getElementById('conceptsDropdown');if(!d.contains(e.target))d.classList.remove('open');});
+  function toggleDD(id) {
+    document.querySelectorAll('.nav-dropdown').forEach(d => {
+      if (d.id !== id) d.classList.remove('open');
+    });
+    document.getElementById(id).classList.toggle('open');
+  }
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+    }
+  });
   function filterGear(cat,btn){
     document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
     btn.classList.add('active');

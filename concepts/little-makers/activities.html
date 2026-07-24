@@ -38,18 +38,28 @@ permalink: /concepts/little-makers/activities/
     body { font-family: var(--font-body); color: var(--text); background: var(--bg); line-height: 1.6; min-height: 100vh; }
 
     /* ===== NAV ===== */
-    .nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--bg-white);
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 64px;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-    }
-    .nav-logo { font-family: var(--font-display); font-size: 1.3rem; color: var(--primary); text-decoration: none; }
-    .nav-logo span { color: var(--accent); }
-    .nav-back { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-    .nav-back:hover { color: var(--primary); }
+    .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;box-shadow:0 1px 12px rgba(0,0,0,0.07);}
+    .nav-left{display:flex;align-items:center;gap:32px;}
+    .nav-logo{font-family:var(--font-display);font-size:1.25rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
+    .nav-logo span{color:var(--accent);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;transition:background 0.15s,color 0.15s;}
+    .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary);}
+    .nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform 0.2s;}
+    .nav-dropdown.open .chevron{transform:rotate(180deg);}
+    .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:8px;min-width:290px;box-shadow:0 12px 40px rgba(0,0,0,0.13);z-index:300;}
+    .nav-dropdown.open .nav-dropdown-menu{display:block;}
+    .nav-menu-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--text);transition:background 0.15s;}
+    .nav-menu-item:hover,.nav-menu-item.active{background:var(--primary-light);}
+    .nav-menu-emoji{font-size:1.1rem;flex-shrink:0;}
+    .nav-menu-title{font-weight:600;font-size:0.87rem;line-height:1.2;}
+    .nav-menu-desc{font-size:0.74rem;color:var(--text-muted);}
+    .nav-menu-divider{height:1px;background:var(--border);margin:5px 0;}
+    .nav-right{display:flex;align-items:center;gap:14px;}
+    .nav-home-link{font-size:0.85rem;color:var(--text-muted);text-decoration:none;}
+    .nav-home-link:hover{color:var(--primary);}
+    .nav-subscribe-btn{padding:8px 18px;background:var(--primary);color:#fff;border-radius:20px;font-size:0.82rem;font-weight:700;text-decoration:none;}
+    .nav-subscribe-btn:hover{background:var(--primary-dark);}
 
     /* ===== PAGE HERO ===== */
     .page-hero {
@@ -207,8 +217,34 @@ permalink: /concepts/little-makers/activities/
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
-  <a href="{{ '/concepts/little-makers/' | relative_url }}" class="nav-back">← Little Makers</a>
+  <div class="nav-left">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
+    <div class="nav-dropdown" id="dd-concepts">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">Concepts <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">✍️</span><div><div class="nav-menu-title">Creator Hub</div><div class="nav-menu-desc">Newsletter & build log</div></div></a>
+        <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🖼️</span><div><div class="nav-menu-title">Art Drops</div><div class="nav-menu-desc">Independent artist spotlights</div></div></a>
+        <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📷</span><div><div class="nav-menu-title">Camera Drops</div><div class="nav-menu-desc">Curated creator gear kits</div></div></a>
+        <a href="{{ '/concepts/little-makers/' | relative_url }}" class="nav-menu-item active"><span class="nav-menu-emoji">🎈</span><div><div class="nav-menu-title">Little Makers</div><div class="nav-menu-desc">Screen-free activities for kids</div></div></a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎨</span><div><div class="nav-menu-title">Tutorial App</div><div class="nav-menu-desc">Creator skills platform</div></div></a>
+        <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🖌️</span><div><div class="nav-menu-title">Art Tutorial App</div><div class="nav-menu-desc">Structured art education</div></div></a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/creation-bundle/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎁</span><div><div class="nav-menu-title">Creation Bundle</div><div class="nav-menu-desc">Personalized gear quiz</div></div></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" id="dd-brand">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">Brand <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/brand/#overview' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📖</span><div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div></a>
+        <a href="{{ '/brand/#brand-identity' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎯</span><div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div></a>
+        <a href="{{ '/brand/#design-system' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎨</span><div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div></a>
+        <a href="{{ '/brand/#interview-guide' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🗣️</span><div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div></a>
+        <a href="{{ '/brand/#validation-scorecard' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📊</span><div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All concepts rated</div></div></a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right"><a href="{{ '/' | relative_url }}" class="nav-home-link">Home</a><a href="{{ '/signup/' | relative_url }}" class="nav-subscribe-btn">Subscribe free →</a></div>
 </nav>
 
 <!-- HERO -->
@@ -719,6 +755,9 @@ permalink: /concepts/little-makers/activities/
 </footer>
 
 <script>
+function toggleDD(id){document.querySelectorAll('.nav-dropdown').forEach(d=>{if(d.id!==id)d.classList.remove('open')});document.getElementById(id).classList.toggle('open')}
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown')){document.querySelectorAll('.nav-dropdown').forEach(d=>d.classList.remove('open'))}})
+
   const cards = Array.from(document.querySelectorAll('.activity-card'));
   let activeAge = 'all';
   let activeCat = 'all';
