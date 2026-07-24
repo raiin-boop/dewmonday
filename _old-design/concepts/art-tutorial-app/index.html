@@ -1,0 +1,657 @@
+---
+layout: none
+permalink: /concepts/art-tutorial-app/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Tutorial App · Dew Monday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#F8F2F5; --bg-white:#FFFFFF; --primary:#7A3A5A; --primary-dark:#4A1A35;
+      --primary-mid:#9A5A7A; --primary-light:#F5E8EF; --primary-glow:rgba(122,58,90,0.14);
+      --accent:#C47A9A; --accent-light:#FDF0F6;
+      --gold:#D4A847; --gold-light:#FDF6E3;
+      --teal:#3A8A7B; --teal-light:#E6F4F1;
+      --rose:#E07A7A; --rose-light:#FDF0F0;
+      --text:#1C1C1C; --text-muted:#6B6B6B;
+      --border:#E4D0DA; --border-light:#F0E2EB;
+      --font-display:'DM Serif Display',serif;
+      --font-body:'Inter',sans-serif;
+      --font-mono:'JetBrains Mono',monospace;
+      --radius:14px; --shadow:0 4px 24px rgba(74,26,53,0.10);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;}
+
+    /* ===== NAV ===== */
+    .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;box-shadow:0 1px 12px rgba(74,26,53,0.07);}
+    .nav-left{display:flex;align-items:center;gap:32px;}
+    .nav-logo{font-family:var(--font-display);font-size:1.25rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
+    .nav-logo span{color:var(--accent);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;transition:background 0.15s,color 0.15s;}
+    .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary);}
+    .nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform 0.2s;}
+    .nav-dropdown.open .chevron{transform:rotate(180deg);}
+    .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:8px;min-width:290px;box-shadow:0 12px 40px rgba(74,26,53,0.13);animation:menuIn 0.18s ease;z-index:300;}
+    .nav-dropdown.open .nav-dropdown-menu{display:block;}
+    @keyframes menuIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+    .nav-menu-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--text);transition:background 0.15s;}
+    .nav-menu-item:hover{background:var(--primary-light);}
+    .nav-menu-item.active{background:var(--primary-light);color:var(--primary);}
+    .nav-menu-emoji{font-size:1.1rem;width:28px;text-align:center;}
+    .nav-menu-label{font-size:0.85rem;font-weight:600;}
+    .nav-menu-sub{font-size:0.75rem;color:var(--text-muted);}
+    .nav-menu-text{display:flex;flex-direction:column;gap:1px;}
+    .nav-menu-divider{height:1px;background:var(--border);margin:4px 0;}
+    .nav-cta{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:8px 18px;font-size:0.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s;}
+    .nav-cta:hover{background:var(--primary-dark);}
+
+    /* ===== HERO ===== */
+    .hero{background:linear-gradient(135deg, var(--primary-dark) 0%, #7A3A5A 55%, #A05A7A 100%);padding:80px 40px 72px;text-align:center;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%, rgba(212,168,71,0.10) 0%, transparent 55%), radial-gradient(ellipse at 75% 70%, rgba(196,122,154,0.15) 0%, transparent 50%);pointer-events:none;}
+    .hero::after{content:'🖌️';position:absolute;right:8%;top:50%;transform:translateY(-50%);font-size:9rem;opacity:0.07;pointer-events:none;}
+    .hero-eyebrow{font-family:var(--font-mono);font-size:0.72rem;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.5);margin-bottom:16px;}
+    .hero h1{font-family:var(--font-display);font-size:3.2rem;line-height:1.1;color:#fff;margin-bottom:18px;max-width:620px;margin-left:auto;margin-right:auto;}
+    .hero h1 em{font-style:normal;color:#F5C5D8;}
+    .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.75);max-width:540px;margin:0 auto 36px;line-height:1.65;}
+    .hero-badges{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+    .hero-badge{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:999px;padding:5px 14px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.85);font-family:var(--font-mono);}
+    .hero-actions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+    .btn-hero-primary{background:#fff;color:var(--primary-dark);border:none;border-radius:12px;padding:14px 28px;font-size:0.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;display:inline-block;}
+    .btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.2);}
+    .btn-hero-ghost{background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.35);border-radius:12px;padding:14px 24px;font-size:0.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s;display:inline-block;}
+    .btn-hero-ghost:hover{background:rgba(255,255,255,0.2);}
+    .hero-stats{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:44px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.12);flex-wrap:wrap;}
+    .hero-stat-num{font-family:var(--font-display);font-size:2rem;color:#fff;display:block;}
+    .hero-stat-label{font-size:0.78rem;color:rgba(255,255,255,0.55);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;}
+
+    /* ===== SECTION WRAPPER ===== */
+    .section{padding:64px 40px;}
+    .section-inner{max-width:1100px;margin:0 auto;}
+    .section-label{font-family:var(--font-mono);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--primary);margin-bottom:10px;}
+    .section-title{font-family:var(--font-display);font-size:2.1rem;color:var(--primary-dark);margin-bottom:12px;line-height:1.2;}
+    .section-sub{font-size:1rem;color:var(--text-muted);max-width:560px;line-height:1.65;margin-bottom:36px;}
+
+    /* ===== FILTERS ===== */
+    .filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+    .filter-chip{background:var(--bg-white);border:1.5px solid var(--border);border-radius:999px;padding:6px 16px;font-size:0.82rem;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all 0.15s;font-family:var(--font-body);}
+    .filter-chip:hover{border-color:var(--primary);color:var(--primary);}
+    .filter-chip.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+
+    /* ===== TRACK CARDS ===== */
+    .tracks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px;}
+    .track-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:box-shadow 0.2s,border-color 0.2s;position:relative;}
+    .track-card:hover{box-shadow:var(--shadow);border-color:var(--accent);}
+    .track-card-header{padding:24px 24px 16px;border-bottom:1px solid var(--border-light);}
+    .track-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;}
+    .track-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+    .track-icon.rose{background:var(--rose-light);}
+    .track-icon.gold{background:var(--gold-light);}
+    .track-icon.teal{background:var(--teal-light);}
+    .track-icon.accent{background:var(--accent-light);}
+    .track-icon.primary{background:var(--primary-light);}
+    .track-badges{display:flex;gap:6px;flex-wrap:wrap;}
+    .track-badge{font-family:var(--font-mono);font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 9px;border-radius:6px;}
+    .track-badge.beginner{background:#E8F5E9;color:#2E7D32;}
+    .track-badge.intermediate{background:#FFF3E0;color:#E65100;}
+    .track-badge.project{background:var(--primary-light);color:var(--primary);}
+    .track-badge.community{background:var(--accent-light);color:#7A3A5A;}
+    .track-name{font-family:var(--font-display);font-size:1.2rem;color:var(--primary-dark);margin-bottom:6px;}
+    .track-desc{font-size:0.9rem;color:var(--text-muted);line-height:1.6;}
+    .track-meta{display:flex;gap:16px;font-size:0.78rem;color:var(--text-muted);font-family:var(--font-mono);}
+    .track-meta span{display:flex;align-items:center;gap:4px;}
+    .track-accordion{padding:0 24px;}
+    .track-accordion-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 0;background:none;border:none;cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--primary);border-top:1px solid var(--border-light);}
+    .track-accordion-toggle .acc-chevron{width:16px;height:16px;transition:transform 0.22s;}
+    .track-accordion.open .acc-chevron{transform:rotate(180deg);}
+    .track-accordion-body{display:none;padding-bottom:20px;}
+    .track-accordion.open .track-accordion-body{display:block;}
+    .lesson-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .lesson-item{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:8px;background:var(--bg);}
+    .lesson-num{font-family:var(--font-mono);font-size:0.7rem;font-weight:700;color:var(--primary);min-width:26px;}
+    .lesson-name{font-size:0.83rem;color:var(--text);font-weight:500;}
+    .lesson-sub{font-size:0.76rem;color:var(--text-muted);display:block;margin-top:1px;}
+    .track-cta{margin-top:14px;}
+    .track-btn{display:block;text-align:center;background:var(--primary-light);color:var(--primary);border-radius:9px;padding:10px;font-size:0.85rem;font-weight:700;text-decoration:none;transition:background 0.15s,color 0.15s;}
+    .track-btn:hover{background:var(--primary);color:#fff;}
+
+    /* ===== HOW IT WORKS ===== */
+    .how-section{background:var(--primary-dark);padding:72px 40px;}
+    .how-inner{max-width:1000px;margin:0 auto;}
+    .how-label{font-family:var(--font-mono);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.45);margin-bottom:10px;}
+    .how-title{font-family:var(--font-display);font-size:2rem;color:#fff;margin-bottom:48px;}
+    .how-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
+    .how-step{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:28px 24px;}
+    .how-step-num{font-family:var(--font-mono);font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px;}
+    .how-step-icon{font-size:2rem;margin-bottom:14px;display:block;}
+    .how-step-title{font-family:var(--font-display);font-size:1.15rem;color:#fff;margin-bottom:8px;}
+    .how-step-desc{font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.65;}
+
+    /* ===== PROJECT GALLERY ===== */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
+    .gallery-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px 18px;text-align:center;transition:border-color 0.2s,transform 0.2s;}
+    .gallery-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+    .gallery-emoji{font-size:2.4rem;margin-bottom:12px;display:block;}
+    .gallery-title{font-size:0.88rem;font-weight:700;color:var(--primary-dark);margin-bottom:4px;}
+    .gallery-track{font-size:0.75rem;color:var(--text-muted);font-family:var(--font-mono);}
+
+    /* ===== FAQ ACCORDION ===== */
+    .faq-list{display:flex;flex-direction:column;gap:10px;max-width:760px;}
+    .faq-item{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color 0.2s;}
+    .faq-item.open{border-color:var(--accent);}
+    .faq-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:none;border:none;cursor:pointer;text-align:left;gap:12px;}
+    .faq-question{font-size:0.95rem;font-weight:700;color:var(--primary-dark);}
+    .faq-chevron{width:18px;height:18px;color:var(--primary);flex-shrink:0;transition:transform 0.22s;}
+    .faq-item.open .faq-chevron{transform:rotate(180deg);}
+    .faq-answer{display:none;padding:0 22px 20px;font-size:0.9rem;color:var(--text-muted);line-height:1.7;}
+    .faq-item.open .faq-answer{display:block;}
+
+    /* ===== AUDIENCE CARDS ===== */
+    .audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:48px;}
+    .audience-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:22px 20px;}
+    .audience-icon{font-size:1.8rem;margin-bottom:12px;display:block;}
+    .audience-title{font-size:0.9rem;font-weight:700;color:var(--primary-dark);margin-bottom:6px;}
+    .audience-desc{font-size:0.83rem;color:var(--text-muted);line-height:1.6;}
+
+    /* ===== CTA SECTION ===== */
+    .cta-section{background:linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);padding:72px 40px;text-align:center;}
+    .cta-inner{max-width:600px;margin:0 auto;}
+    .cta-eyebrow{font-family:var(--font-mono);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.45);margin-bottom:14px;}
+    .cta-title{font-family:var(--font-display);font-size:2.4rem;color:#fff;margin-bottom:14px;line-height:1.15;}
+    .cta-sub{font-size:1rem;color:rgba(255,255,255,0.7);margin-bottom:32px;line-height:1.65;}
+    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);border-radius:12px;padding:15px 32px;font-size:1rem;font-weight:700;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,0,0,0.2);}
+
+    /* ===== FOOTER ===== */
+    .footer{background:var(--primary-dark);padding:36px 40px;text-align:center;}
+    .footer-logo{font-family:var(--font-display);font-size:1.1rem;color:rgba(255,255,255,0.6);margin-bottom:10px;}
+    .footer-logo span{color:var(--accent);}
+    .footer-links{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
+    .footer-link{font-size:0.82rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s;}
+    .footer-link:hover{color:rgba(255,255,255,0.8);}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:680px){
+      .nav{padding:0 20px;}
+      .hero{padding:56px 24px 52px;}
+      .hero h1{font-size:2.2rem;}
+      .section{padding:48px 24px;}
+      .how-section{padding:56px 24px;}
+      .cta-section{padding:56px 24px;}
+      .footer{padding:28px 24px;}
+      .tracks-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-left">
+      <a href="/dewmonday/" class="nav-logo">Dew <span>Monday</span></a>
+      <div class="nav-dropdown" id="conceptsNav">
+        <button class="nav-dropdown-trigger" onclick="toggleNav()">
+          Concepts
+          <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="/dewmonday/concepts/creator-hub/" class="nav-menu-item">
+            <span class="nav-menu-emoji">✍️</span>
+            <span class="nav-menu-text"><span class="nav-menu-label">Creator Hub</span><span class="nav-menu-sub">Newsletter & build log</span></span>
+          </a>
+          <a href="/dewmonday/concepts/art-dropshipping/" class="nav-menu-item">
+            <span class="nav-menu-emoji">🖼️</span>
+            <span class="nav-menu-text"><span class="nav-menu-label">Art Drops</span><span class="nav-menu-sub">Independent artist spotlights</span></span>
+          </a>
+          <a href="/dewmonday/concepts/camera-dropshipping/" class="nav-menu-item">
+            <span class="nav-menu-emoji">📷</span>
+            <span class="nav-menu-text"><span class="nav-menu-label">Camera Drops</span><span class="nav-menu-sub">Curated creator gear kits</span></span>
+          </a>
+          <a href="/dewmonday/concepts/little-makers/" class="nav-menu-item">
+            <span class="nav-menu-emoji">🎈</span>
+            <span class="nav-menu-text"><span class="nav-menu-label">Little Makers</span><span class="nav-menu-sub">Screen-free activities for kids</span></span>
+          </a>
+          <a href="/dewmonday/concepts/tutorial-app/" class="nav-menu-item">
+            <span class="nav-menu-emoji">🎨</span>
+            <span class="nav-menu-text"><span class="nav-menu-label">Tutorial App</span><span class="nav-menu-sub">Creator skills platform</span></span>
+          </a>
+          <div class="nav-menu-divider"></div>
+          <a href="/dewmonday/concepts/art-tutorial-app/" class="nav-menu-item active">
+            <span class="nav-menu-emoji">🖌️</span>
+            <span class="nav-menu-text"><span class="nav-menu-label">Art Tutorial App</span><span class="nav-menu-sub">Structured art education</span></span>
+          </a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/creation-bundle/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎁</span>
+          <div><div class="nav-menu-label">Creation Bundle</div><div class="nav-menu-sub">Personalized gear quiz</div></div>
+        </a>
+        </div>
+      </div>
+      <!-- Brand dropdown -->
+      <div class="nav-dropdown" id="dd-brand">
+        <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">
+          Brand
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="/dewmonday/brand/#overview" class="nav-menu-item">
+            <span class="nav-menu-emoji">📖</span>
+            <div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div>
+          </a>
+          <a href="/dewmonday/brand/#brand-identity" class="nav-menu-item">
+            <span class="nav-menu-emoji">🎯</span>
+            <div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div>
+          </a>
+          <a href="/dewmonday/brand/#design-system" class="nav-menu-item">
+            <span class="nav-menu-emoji">🎨</span>
+            <div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div>
+          </a>
+          <a href="/dewmonday/brand/#interview-guide" class="nav-menu-item">
+            <span class="nav-menu-emoji">🗣️</span>
+            <div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div>
+          </a>
+          <a href="/dewmonday/brand/#validation-scorecard" class="nav-menu-item">
+            <span class="nav-menu-emoji">📊</span>
+            <div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All 6 concepts rated</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <a href="/dewmonday/signup/" class="nav-cta">Get Early Access</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Concept 06 · Art Tutorial App</p>
+    <h1>Learn to make art<br><em>that actually looks like you.</em></h1>
+    <p class="hero-sub">Project-first art education. No algorithm rabbit holes. No corporate gamification. Just structured paths, real work, and a community that gets your aesthetic.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">Project-First</span>
+      <span class="hero-badge">Every lesson = something shareable</span>
+      <span class="hero-badge">Dew Monday voice</span>
+      <span class="hero-badge">Community feedback</span>
+    </div>
+    <div class="hero-actions">
+      <a href="/dewmonday/signup/" class="btn-hero-primary">Get Early Access</a>
+      <a href="#tracks" class="btn-hero-ghost">Browse Curriculum →</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="hero-stat-num">4</span><span class="hero-stat-label">Curriculum Tracks</span></div>
+      <div><span class="hero-stat-num">20+</span><span class="hero-stat-label">Planned Lessons</span></div>
+      <div><span class="hero-stat-num">100%</span><span class="hero-stat-label">Project-Based</span></div>
+    </div>
+  </section>
+
+  <!-- WHO IS THIS FOR -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">Who It's For</p>
+      <h2 class="section-title">Made for creators at every starting point</h2>
+      <p class="section-sub">Whether you've never touched a stylus or you're already posting work online — there's a path built for where you are.</p>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <span class="audience-icon">🌱</span>
+          <div class="audience-title">Beginner Artists</div>
+          <div class="audience-desc">Ages 16–28. Wants to build a real skill without formal training. Just starting out.</div>
+        </div>
+        <div class="audience-card">
+          <span class="audience-icon">⬆️</span>
+          <div class="audience-title">Creator Upgraders</div>
+          <div class="audience-desc">Already making content. Wants better visual quality and a more distinct style.</div>
+        </div>
+        <div class="audience-card">
+          <span class="audience-icon">🔀</span>
+          <div class="audience-title">Career Pivoters</div>
+          <div class="audience-desc">Exploring creative work as a side hustle or full-time shift. Needs structure.</div>
+        </div>
+        <div class="audience-card">
+          <span class="audience-icon">✨</span>
+          <div class="audience-title">Hobbyists</div>
+          <div class="audience-desc">Learning for joy, not income. Wants a guided pace without pressure.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM TRACKS -->
+  <section class="section" id="tracks" style="padding-top:0;">
+    <div class="section-inner">
+      <p class="section-label">Curriculum</p>
+      <h2 class="section-title">Four tracks. One shared output: work you're proud of.</h2>
+      <p class="section-sub">Every track ends in a finished project. Every lesson builds on the last. No filler.</p>
+
+      <div class="filter-bar">
+        <button class="filter-chip active" onclick="filterTracks('all',this)">All Tracks</button>
+        <button class="filter-chip" onclick="filterTracks('beginner',this)">Beginner</button>
+        <button class="filter-chip" onclick="filterTracks('intermediate',this)">Intermediate</button>
+        <button class="filter-chip" onclick="filterTracks('project',this)">Project-Based</button>
+        <button class="filter-chip" onclick="filterTracks('community',this)">Community</button>
+      </div>
+
+      <div class="tracks-grid">
+
+        <!-- TRACK 1: Digital Foundation -->
+        <div class="track-card" data-tags="beginner project">
+          <div class="track-card-header">
+            <div class="track-card-top">
+              <div class="track-icon rose">🖼️</div>
+              <div class="track-badges">
+                <span class="track-badge beginner">Beginner</span>
+                <span class="track-badge project">Project</span>
+              </div>
+            </div>
+            <div class="track-name">Digital Foundation</div>
+            <p class="track-desc">Start from zero and build a finished digital illustration in five lessons. No experience needed — just a device and something to say.</p>
+            <div class="track-meta">
+              <span>📚 5 lessons</span>
+              <span>⏱ ~6 hrs</span>
+              <span>🎨 Procreate / iPad</span>
+            </div>
+          </div>
+          <div class="track-accordion" id="acc1">
+            <button class="track-accordion-toggle" onclick="toggleAccordion('acc1')">
+              View Lesson Outline
+              <svg class="acc-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
+            </button>
+            <div class="track-accordion-body">
+              <ul class="lesson-list">
+                <li class="lesson-item"><span class="lesson-num">01</span><div><span class="lesson-name">Your First Layer</span><span class="lesson-sub">Canvas setup, brushes, basic marks</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">02</span><div><span class="lesson-name">Shapes Before Lines</span><span class="lesson-sub">Thinking in forms, building a figure</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">03</span><div><span class="lesson-name">Color That Doesn't Fight Itself</span><span class="lesson-sub">Limited palettes, temperature, harmony</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">04</span><div><span class="lesson-name">Light Without Overthinking</span><span class="lesson-sub">Simple shading, a single light source</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">05</span><div><span class="lesson-name">Your First Finished Piece</span><span class="lesson-sub">Final project + community share</span></div></li>
+              </ul>
+              <div class="track-cta">
+                <a href="/dewmonday/signup/" class="track-btn">Join waitlist for this track →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRACK 2: Oil Pastel & Mixed Media -->
+        <div class="track-card" data-tags="beginner intermediate project">
+          <div class="track-card-header">
+            <div class="track-card-top">
+              <div class="track-icon gold">🎨</div>
+              <div class="track-badges">
+                <span class="track-badge beginner">Beginner</span>
+                <span class="track-badge intermediate">Intermediate</span>
+                <span class="track-badge project">Project</span>
+              </div>
+            </div>
+            <div class="track-name">Oil Pastel & Mixed Media</div>
+            <p class="track-desc">Traditional media with a modern eye. Learn oil pastel on toned paper, then scan and refine digitally — the workflow Dew Monday artists actually use.</p>
+            <div class="track-meta">
+              <span>📚 5 lessons</span>
+              <span>⏱ ~8 hrs</span>
+              <span>🖍 Oil pastel + Procreate</span>
+            </div>
+          </div>
+          <div class="track-accordion" id="acc2">
+            <button class="track-accordion-toggle" onclick="toggleAccordion('acc2')">
+              View Lesson Outline
+              <svg class="acc-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
+            </button>
+            <div class="track-accordion-body">
+              <ul class="lesson-list">
+                <li class="lesson-item"><span class="lesson-num">01</span><div><span class="lesson-name">Choosing Your Ground</span><span class="lesson-sub">Toned paper, colour temperature, first marks</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">02</span><div><span class="lesson-name">Layering Without Muddying</span><span class="lesson-sub">Build-up technique, pressure control</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">03</span><div><span class="lesson-name">The Scan Workflow</span><span class="lesson-sub">Clean scans, colour correction, prep for digital</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">04</span><div><span class="lesson-name">Digital Finishing</span><span class="lesson-sub">Adjusting in Procreate without losing the grain</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">05</span><div><span class="lesson-name">Series Thinking</span><span class="lesson-sub">Make three cohesive pieces, not just one</span></div></li>
+              </ul>
+              <div class="track-cta">
+                <a href="/dewmonday/signup/" class="track-btn">Join waitlist for this track →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRACK 3: Portrait & Figure -->
+        <div class="track-card" data-tags="intermediate project community">
+          <div class="track-card-header">
+            <div class="track-card-top">
+              <div class="track-icon teal">👤</div>
+              <div class="track-badges">
+                <span class="track-badge intermediate">Intermediate</span>
+                <span class="track-badge project">Project</span>
+                <span class="track-badge community">Community</span>
+              </div>
+            </div>
+            <div class="track-name">Portrait & Figure</div>
+            <p class="track-desc">Draw the people in your world. From face proportions to full gesture — this track ends in a portrait series you can actually share.</p>
+            <div class="track-meta">
+              <span>📚 5 lessons</span>
+              <span>⏱ ~10 hrs</span>
+              <span>🖊 Any medium</span>
+            </div>
+          </div>
+          <div class="track-accordion" id="acc3">
+            <button class="track-accordion-toggle" onclick="toggleAccordion('acc3')">
+              View Lesson Outline
+              <svg class="acc-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
+            </button>
+            <div class="track-accordion-body">
+              <ul class="lesson-list">
+                <li class="lesson-item"><span class="lesson-num">01</span><div><span class="lesson-name">Proportions as Suggestions</span><span class="lesson-sub">Learn the rules so you can break them</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">02</span><div><span class="lesson-name">Eyes, Then Everything Else</span><span class="lesson-sub">Feature by feature, not all at once</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">03</span><div><span class="lesson-name">Gesture in 2 Minutes</span><span class="lesson-sub">Quick studies, energy over accuracy</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">04</span><div><span class="lesson-name">Expressing Personality</span><span class="lesson-sub">Likeness vs. character — your call</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">05</span><div><span class="lesson-name">Portrait Series</span><span class="lesson-sub">Three portraits, shared in the community gallery</span></div></li>
+              </ul>
+              <div class="track-cta">
+                <a href="/dewmonday/signup/" class="track-btn">Join waitlist for this track →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRACK 4: Style Development -->
+        <div class="track-card" data-tags="intermediate community project">
+          <div class="track-card-header">
+            <div class="track-card-top">
+              <div class="track-icon accent">🌀</div>
+              <div class="track-badges">
+                <span class="track-badge intermediate">Intermediate</span>
+                <span class="track-badge community">Community</span>
+                <span class="track-badge project">Project</span>
+              </div>
+            </div>
+            <div class="track-name">Finding Your Style</div>
+            <p class="track-desc">The hardest thing to teach. Broken down into five structured experiments designed to help you figure out what your art actually wants to be.</p>
+            <div class="track-meta">
+              <span>📚 5 lessons</span>
+              <span>⏱ ~12 hrs</span>
+              <span>✦ All mediums</span>
+            </div>
+          </div>
+          <div class="track-accordion" id="acc4">
+            <button class="track-accordion-toggle" onclick="toggleAccordion('acc4')">
+              View Lesson Outline
+              <svg class="acc-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
+            </button>
+            <div class="track-accordion-body">
+              <ul class="lesson-list">
+                <li class="lesson-item"><span class="lesson-num">01</span><div><span class="lesson-name">Reference Is Not Copying</span><span class="lesson-sub">How to learn from artists you love</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">02</span><div><span class="lesson-name">Constraint as a Tool</span><span class="lesson-sub">One colour. One brush. One subject.</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">03</span><div><span class="lesson-name">What Do You Keep Going Back To?</span><span class="lesson-sub">Identifying your themes and obsessions</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">04</span><div><span class="lesson-name">Iteration Without Judgment</span><span class="lesson-sub">Making 10 versions of one thing</span></div></li>
+                <li class="lesson-item"><span class="lesson-num">05</span><div><span class="lesson-name">Your Visual Statement</span><span class="lesson-sub">A coherent body of 5 pieces — your style, defined</span></div></li>
+              </ul>
+              <div class="track-cta">
+                <a href="/dewmonday/signup/" class="track-btn">Join waitlist for this track →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <div class="how-inner">
+      <p class="how-label">How It Works</p>
+      <h2 class="how-title">Structured, not rigid. A path that bends to how you work.</h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <span class="how-step-num">Step 01</span>
+          <span class="how-step-icon">🗺️</span>
+          <div class="how-step-title">Choose a track</div>
+          <p class="how-step-desc">Pick based on your medium, your skill level, or what kind of work you want to make. No quiz. No algorithm. Just a clear description of where each path goes.</p>
+        </div>
+        <div class="how-step">
+          <span class="how-step-num">Step 02</span>
+          <span class="how-step-icon">🎬</span>
+          <div class="how-step-title">Work through lessons</div>
+          <p class="how-step-desc">Video lessons you can pause, rewind, and work alongside. Downloadable project files included. Each lesson builds on the last and ends with something to make.</p>
+        </div>
+        <div class="how-step">
+          <span class="how-step-num">Step 03</span>
+          <span class="how-step-icon">📤</span>
+          <div class="how-step-title">Submit your project</div>
+          <p class="how-step-desc">Every track ends in a real project. Upload it to the community gallery, get feedback from other learners, and keep it for your portfolio.</p>
+        </div>
+        <div class="how-step">
+          <span class="how-step-num">Step 04</span>
+          <span class="how-step-icon">🔁</span>
+          <div class="how-step-title">Go deeper</div>
+          <p class="how-step-desc">Stack tracks, try a new medium, or come back to refine. The goal is momentum — not streaks, not points, just work you're genuinely proud of.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT GALLERY PREVIEW -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">What You'll Make</p>
+      <h2 class="section-title">Every lesson ends in something real.</h2>
+      <p class="section-sub">These are the kinds of projects you'll finish — not exercises, not drills. Actual work you'll want to share.</p>
+      <div class="gallery-grid">
+        <div class="gallery-card"><span class="gallery-emoji">🌅</span><div class="gallery-title">First digital illustration</div><div class="gallery-track">Digital Foundation · Lesson 5</div></div>
+        <div class="gallery-card"><span class="gallery-emoji">🪟</span><div class="gallery-title">Quiet room series</div><div class="gallery-track">Oil Pastel · Lesson 5</div></div>
+        <div class="gallery-card"><span class="gallery-emoji">🧍</span><div class="gallery-title">Portrait series (×3)</div><div class="gallery-track">Portrait & Figure · Lesson 5</div></div>
+        <div class="gallery-card"><span class="gallery-emoji">🌀</span><div class="gallery-title">Style statement (×5 pieces)</div><div class="gallery-track">Finding Your Style · Lesson 5</div></div>
+        <div class="gallery-card"><span class="gallery-emoji">🖼️</span><div class="gallery-title">Mixed media scan</div><div class="gallery-track">Oil Pastel · Lesson 3</div></div>
+        <div class="gallery-card"><span class="gallery-emoji">🎨</span><div class="gallery-title">Limited palette study</div><div class="gallery-track">Finding Your Style · Lesson 2</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="padding-top:0;">
+    <div class="section-inner">
+      <p class="section-label">Questions</p>
+      <h2 class="section-title">The honest answers.</h2>
+      <div class="faq-list">
+
+        <div class="faq-item" id="faq1">
+          <button class="faq-toggle" onclick="toggleFaq('faq1')">
+            <span class="faq-question">How is this different from YouTube tutorials?</span>
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
+          </button>
+          <div class="faq-answer">YouTube is free and infinite, which is the problem. You can spend four hours watching tutorials and make nothing. Every lesson here ends in work you actually complete. The curriculum is sequential — each lesson builds on the last — and there's a community layer so you're not learning in isolation.</div>
+        </div>
+
+        <div class="faq-item" id="faq2">
+          <button class="faq-toggle" onclick="toggleFaq('faq2')">
+            <span class="faq-question">Do I need expensive equipment?</span>
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
+          </button>
+          <div class="faq-answer">No. The Digital Foundation track works on any iPad with Procreate (or a free alternative). The Oil Pastel track needs oil pastels and toned paper — you can start with a set under $20. We'll always recommend the budget option first and the upgrade if you want it.</div>
+        </div>
+
+        <div class="faq-item" id="faq3">
+          <button class="faq-toggle" onclick="toggleFaq('faq3')">
+            <span class="faq-question">How is this different from the Tutorial App?</span>
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
+          </button>
+          <div class="faq-answer">The Tutorial App is a broad creator skills platform — covering video editing, design tools, motion, and more. The Art Tutorial App is specifically about making visual art: drawing, painting, illustration, mixed media. Narrower scope. Deeper curriculum. A different community.</div>
+        </div>
+
+        <div class="faq-item" id="faq4">
+          <button class="faq-toggle" onclick="toggleFaq('faq4')">
+            <span class="faq-question">When does it launch?</span>
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
+          </button>
+          <div class="faq-answer">This concept is in active development. We're validating the curriculum structure, recording the first track, and building the platform. Join the waitlist to be notified when early access opens — waitlist members get first access and locked-in pricing.</div>
+        </div>
+
+        <div class="faq-item" id="faq5">
+          <button class="faq-toggle" onclick="toggleFaq('faq5')">
+            <span class="faq-question">What's the community layer actually like?</span>
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="5 8 10 13 15 8"/></svg>
+          </button>
+          <div class="faq-answer">A project submission gallery where you post finished work from each track. Other learners can leave feedback — not star ratings, actual written notes. The goal is motivation and genuine critique, not social media engagement metrics. V2 adds a community feed and instructor responses.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <p class="cta-eyebrow">Early Access</p>
+      <h2 class="cta-title">Get in before the curriculum launches.</h2>
+      <p class="cta-sub">Join the Dew Monday waitlist. We'll tell you when the first track is ready and what the early-access pricing looks like.</p>
+      <a href="/dewmonday/signup/" class="cta-btn">Join the Waitlist →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-logo">Dew <span>Monday</span></p>
+    <div class="footer-links">
+      <a href="/dewmonday/" class="footer-link">Home</a>
+      <a href="/dewmonday/concepts/creator-hub/" class="footer-link">Creator Hub</a>
+      <a href="/dewmonday/concepts/art-dropshipping/" class="footer-link">Art Drops</a>
+      <a href="/dewmonday/concepts/tutorial-app/" class="footer-link">Tutorial App</a>
+      <a href="/dewmonday/signup/" class="footer-link">Sign Up</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleNav(){
+      document.getElementById('conceptsNav').classList.toggle('open');
+    }
+    document.addEventListener('click',function(e){
+      const nav=document.getElementById('conceptsNav');
+      if(!nav.contains(e.target)) nav.classList.remove('open');
+    });
+
+    function toggleAccordion(id){
+      const el=document.getElementById(id);
+      el.classList.toggle('open');
+    }
+
+    function toggleFaq(id){
+      const el=document.getElementById(id);
+      el.classList.toggle('open');
+    }
+
+    function filterTracks(tag,btn){
+      document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.track-card').forEach(card=>{
+        if(tag==='all'){
+          card.style.display='';
+        } else {
+          const tags=card.dataset.tags||'';
+          card.style.display=tags.includes(tag)?'':'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

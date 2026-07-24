@@ -1,0 +1,833 @@
+---
+layout: none
+permalink: /concepts/tutorial-app/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial App · Dew Monday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:          #F5F0F8;
+      --bg-white:    #FFFFFF;
+      --primary:     #6B4FA0;
+      --primary-dark:#3D2060;
+      --primary-mid: #8B6FBF;
+      --primary-light:#F0EEF8;
+      --primary-glow: rgba(107,79,160,0.15);
+      --accent:      #C47FD4;
+      --accent-light:#FAF0FC;
+      --gold:        #D4A847;
+      --gold-light:  #FDF6E3;
+      --teal:        #3A8A7B;
+      --teal-light:  #E6F4F1;
+      --text:        #1C1C1C;
+      --text-muted:  #6B6B6B;
+      --border:      #DDD8E8;
+      --border-light:#EEE8F5;
+      --font-display:'DM Serif Display', serif;
+      --font-body:   'Inter', sans-serif;
+      --font-mono:   'JetBrains Mono', monospace;
+      --radius:      14px;
+      --shadow:      0 4px 24px rgba(60,30,100,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 64px;
+      box-shadow: 0 1px 12px rgba(60,30,100,0.07);
+    }
+    .nav-left { display: flex; align-items: center; gap: 32px; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.25rem; color: var(--primary-dark); text-decoration: none; white-space: nowrap; }
+    .nav-logo span { color: var(--accent); }
+
+    /* Concepts dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-trigger {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.85rem; font-weight: 600; color: var(--text);
+      background: none; border: none; cursor: pointer;
+      padding: 6px 10px; border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger {
+      background: var(--primary-light); color: var(--primary);
+    }
+    .nav-dropdown-trigger .chevron {
+      width: 14px; height: 14px; transition: transform 0.2s;
+    }
+    .nav-dropdown.open .chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      display: none; position: absolute; top: calc(100% + 8px); left: 0;
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 8px;
+      min-width: 280px;
+      box-shadow: 0 12px 40px rgba(60,30,100,0.14);
+      animation: menuIn 0.18s ease;
+    }
+    .nav-dropdown.open .nav-dropdown-menu { display: block; }
+    @keyframes menuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-menu-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 12px; border-radius: 10px;
+      text-decoration: none; color: var(--text);
+      transition: background 0.15s;
+    }
+    .nav-menu-item:hover { background: var(--primary-light); }
+    .nav-menu-item.active { background: var(--primary-light); }
+    .nav-menu-emoji { font-size: 1.2rem; width: 28px; text-align: center; }
+    .nav-menu-label { font-weight: 600; font-size: 0.85rem; color: var(--text); }
+    .nav-menu-sub { font-size: 0.72rem; color: var(--text-muted); }
+    .nav-menu-item.active .nav-menu-label { color: var(--primary); }
+    .nav-menu-divider { height: 1px; background: var(--border-light); margin: 4px 0; }
+
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-link { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .nav-link:hover { color: var(--primary); }
+    .nav-cta {
+      padding: 8px 18px; background: var(--primary); color: #fff;
+      border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #5a2d8c 45%, #7B4FAF 100%);
+      padding: 80px 40px 72px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -40%; right: -10%;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,127,212,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -20%; left: -5%;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(107,79,160,0.25) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      padding: 5px 14px; border-radius: 20px;
+      font-family: var(--font-mono); font-size: 0.7rem; color: rgba(255,255,255,0.8);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #C47FD4; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 {
+      font-family: var(--font-display); font-size: 3.6rem; line-height: 1.06;
+      color: #fff; margin-bottom: 16px; max-width: 700px;
+    }
+    .hero h1 em { font-style: normal; color: #D4A8F0; }
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,0.72);
+      max-width: 520px; margin-bottom: 40px; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+    .hero-btn-primary {
+      padding: 13px 28px; background: #fff; color: var(--primary-dark);
+      border-radius: 12px; font-weight: 700; font-size: 0.92rem;
+      text-decoration: none; transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .hero-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .hero-btn-secondary {
+      padding: 13px 28px;
+      border: 1.5px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.9);
+      border-radius: 12px; font-weight: 600; font-size: 0.92rem;
+      text-decoration: none; transition: background 0.15s, border-color 0.15s;
+    }
+    .hero-btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+    .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+    .hero-stat-num { font-family: var(--font-display); font-size: 2rem; color: #D4A8F0; display: block; }
+    .hero-stat-label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); }
+
+    /* ===== CONTENT WRAPPER ===== */
+    .content { max-width: 960px; margin: 0 auto; padding: 0 40px; }
+
+    /* ===== SECTION HEADERS ===== */
+    .section { padding: 56px 0; }
+    .section-eyebrow {
+      font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .section-title { font-family: var(--font-display); font-size: 1.9rem; color: var(--text); margin-bottom: 8px; }
+    .section-sub { font-size: 0.9rem; color: var(--text-muted); max-width: 500px; line-height: 1.65; }
+    .section-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+
+    /* ===== FILTER CHIPS ===== */
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+    .filter-chip {
+      padding: 7px 16px; border-radius: 20px;
+      border: 1.5px solid var(--border); background: var(--bg-white);
+      font-size: 0.8rem; font-weight: 500; color: var(--text-muted);
+      cursor: pointer; transition: all 0.18s; white-space: nowrap;
+    }
+    .filter-chip:hover { border-color: var(--primary); color: var(--primary); }
+    .filter-chip.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+    /* ===== COURSE CARDS ===== */
+    .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: 16px; }
+    .course-card {
+      background: var(--bg-white); border: 1.5px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: transform 0.18s, box-shadow 0.18s;
+      cursor: pointer; display: flex; flex-direction: column;
+    }
+    .course-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .course-card.hidden { display: none; }
+    .course-thumb {
+      height: 140px; display: flex; align-items: center; justify-content: center;
+      font-size: 3.2rem; position: relative;
+    }
+    .course-card-level {
+      position: absolute; top: 10px; right: 10px;
+      font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 3px 9px; border-radius: 10px;
+    }
+    .level-beginner { background: #E6F4F1; color: #2A6B5F; }
+    .level-intermediate { background: #FFF3E0; color: #B06020; }
+    .level-advanced { background: #FAEEE6; color: #9A3020; }
+    .course-body { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .course-category {
+      font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary);
+    }
+    .course-title { font-weight: 700; font-size: 0.95rem; color: var(--text); line-height: 1.35; }
+    .course-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
+    .course-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-light);
+    }
+    .course-meta-item { display: flex; align-items: center; gap: 5px; font-size: 0.73rem; color: var(--text-muted); }
+    .course-status {
+      font-family: var(--font-mono); font-size: 0.63rem; font-weight: 700;
+      padding: 3px 9px; border-radius: 10px; text-transform: uppercase;
+    }
+    .status-live { background: var(--primary-light); color: var(--primary); }
+    .status-soon { background: var(--gold-light); color: #8A6010; }
+    .status-building { background: #FFF0F0; color: #A03030; }
+
+    /* ===== ACCORDION SECTIONS ===== */
+    .accordion { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; background: var(--bg-white); }
+    .accordion-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; background: none; border: none; cursor: pointer;
+      text-align: left; transition: background 0.15s;
+    }
+    .accordion-trigger:hover { background: var(--primary-light); }
+    .accordion.open .accordion-trigger { background: var(--primary-light); border-bottom: 1px solid var(--border); }
+    .accordion-trigger-left { display: flex; align-items: center; gap: 14px; }
+    .accordion-icon { font-size: 1.3rem; }
+    .accordion-label { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+    .accordion-sublabel { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .accordion-chevron {
+      width: 18px; height: 18px; color: var(--text-muted);
+      transition: transform 0.25s; flex-shrink: 0;
+    }
+    .accordion.open .accordion-chevron { transform: rotate(180deg); color: var(--primary); }
+    .accordion-body { display: none; padding: 24px; }
+    .accordion.open .accordion-body { display: block; }
+
+    /* Build log entries */
+    .build-log { display: flex; flex-direction: column; gap: 0; }
+    .log-entry { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border-light); }
+    .log-entry:last-child { border-bottom: none; padding-bottom: 0; }
+    .log-week {
+      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
+      color: var(--primary); background: var(--primary-light);
+      padding: 4px 10px; border-radius: 8px; height: fit-content;
+      white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    }
+    .log-content {}
+    .log-title { font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 4px; }
+    .log-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+    .log-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+    .log-tag { font-size: 0.65rem; padding: 2px 8px; border-radius: 8px; background: var(--border-light); color: var(--text-muted); font-family: var(--font-mono); }
+
+    /* Instructor cards */
+    .instructor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .instructor-card {
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 20px 16px; text-align: center;
+    }
+    .instructor-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--primary-light); border: 2px solid var(--primary);
+      font-size: 1.6rem; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .instructor-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 3px; }
+    .instructor-role { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px; }
+    .instructor-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.62rem; padding: 2px 8px; background: var(--primary-light); color: var(--primary); border-radius: 8px; }
+
+    /* Pricing cards */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .pricing-card {
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 22px 18px;
+    }
+    .pricing-card.featured { background: var(--primary-dark); border-color: var(--primary); }
+    .pricing-name { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 6px; }
+    .pricing-card.featured .pricing-name { color: #D4A8F0; }
+    .pricing-price { font-family: var(--font-display); font-size: 2rem; color: var(--text); margin-bottom: 2px; }
+    .pricing-card.featured .pricing-price { color: #fff; }
+    .pricing-per { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 16px; }
+    .pricing-card.featured .pricing-per { color: rgba(255,255,255,0.6); }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .pricing-features li { font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+    .pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.75); }
+    .pricing-features li::before { content: '✓'; color: var(--primary); font-weight: 700; font-size: 0.75rem; flex-shrink: 0; }
+    .pricing-card.featured .pricing-features li::before { color: #D4A8F0; }
+    .pricing-badge { display: inline-block; background: var(--accent); color: #fff; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; padding: 3px 10px; border-radius: 10px; text-transform: uppercase; margin-bottom: 8px; }
+
+    /* ===== BOTTOM CTA ===== */
+    .bottom-cta {
+      background: linear-gradient(135deg, var(--primary-dark), #5a2d8c);
+      margin: 0; padding: 72px 40px; text-align: center;
+    }
+    .bottom-cta-inner { max-width: 560px; margin: 0 auto; }
+    .bottom-cta h2 { font-family: var(--font-display); font-size: 2.4rem; color: #fff; margin-bottom: 12px; }
+    .bottom-cta p { color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 28px; }
+    .bottom-cta-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary {
+      padding: 13px 28px; background: #fff; color: var(--primary-dark);
+      border-radius: 12px; font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .cta-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    .cta-btn-ghost {
+      padding: 13px 28px; border: 1.5px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85);
+      border-radius: 12px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .cta-btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--primary-dark); padding: 28px 40px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-logo { font-family: var(--font-display); font-size: 1.05rem; color: rgba(255,255,255,0.75); }
+    .footer-logo span { color: var(--accent); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.76rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-copy { font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.22); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .nav { padding: 0 20px; }
+      .nav-left { gap: 16px; }
+      .hero { padding: 56px 24px 52px; }
+      .hero h1 { font-size: 2.3rem; }
+      .content { padding: 0 20px; }
+      .bottom-cta { padding: 52px 24px; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
+
+    <div class="nav-dropdown" id="conceptsDropdown">
+      <button class="nav-dropdown-trigger" onclick="toggleDropdown()">
+        Concepts
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">✍️</span>
+          <div><div class="nav-menu-label">Creator Hub</div><div class="nav-menu-sub">Newsletter, resources & build log</div></div>
+        </a>
+        <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🖼️</span>
+          <div><div class="nav-menu-label">Art Drops</div><div class="nav-menu-sub">Independent artist spotlights</div></div>
+        </a>
+        <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">📷</span>
+          <div><div class="nav-menu-label">Camera Drops</div><div class="nav-menu-sub">Curated creator gear kits</div></div>
+        </a>
+        <a href="{{ '/concepts/little-makers/activities/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎈</span>
+          <div><div class="nav-menu-label">Little Makers</div><div class="nav-menu-sub">Creative activities for kids</div></div>
+        </a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="nav-menu-item active">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-label">Tutorial App</div><div class="nav-menu-sub">Skills platform for digital creators</div></div>
+        </a>
+        <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🖌️</span>
+          <div><div class="nav-menu-label">Art Tutorial App</div><div class="nav-menu-sub">Structured art education</div></div>
+        </a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/creation-bundle/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎁</span>
+          <div><div class="nav-menu-label">Creation Bundle</div><div class="nav-menu-sub">Personalized gear quiz</div></div>
+        </a>
+      </div>
+    </div>
+    <!-- Brand dropdown -->
+    <div class="nav-dropdown" id="dd-brand">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">
+        Brand
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/brand/#overview' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">📖</span>
+          <div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div>
+        </a>
+        <a href="{{ '/brand/#brand-identity' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎯</span>
+          <div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div>
+        </a>
+        <a href="{{ '/brand/#design-system' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div>
+        </a>
+        <a href="{{ '/brand/#interview-guide' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🗣️</span>
+          <div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div>
+        </a>
+        <a href="{{ '/brand/#validation-scorecard' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">📊</span>
+          <div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All 6 concepts rated</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+    <a href="{{ '/signup/' | relative_url }}" class="nav-cta">Subscribe free →</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="hero-badge-dot"></span> Building in public · Concept 05</div>
+    <h1>Learn to create. <em>Actually</em> get somewhere.</h1>
+    <p class="hero-sub">A structured skills platform for digital creators — video editing, graphic design, illustration, and motion. Built in public through Dew Monday. Launching when it's real.</p>
+    <div class="hero-actions">
+      <a href="{{ '/signup/' | relative_url }}" class="hero-btn-primary">Get early access →</a>
+      <a href="#build-log" class="hero-btn-secondary">Follow the build</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="hero-stat-num">4</span><span class="hero-stat-label">Categories planned</span></div>
+      <div><span class="hero-stat-num">18</span><span class="hero-stat-label">Courses scoped</span></div>
+      <div><span class="hero-stat-num">Q3</span><span class="hero-stat-label">Target beta</span></div>
+      <div><span class="hero-stat-num">Free</span><span class="hero-stat-label">Entry tier</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="content">
+
+  <!-- COURSE BROWSER -->
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Course Library</p>
+        <h2 class="section-title">What you'll learn</h2>
+        <p class="section-sub">18 courses across 4 creative disciplines. Filter by category or skill level. Status shows where each course is in the build.</p>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-chip active" onclick="filterCourses('all', this)">All Courses</button>
+      <button class="filter-chip" onclick="filterCourses('video', this)">📹 Video Editing</button>
+      <button class="filter-chip" onclick="filterCourses('design', this)">🎨 Graphic Design</button>
+      <button class="filter-chip" onclick="filterCourses('illustration', this)">✏️ Illustration</button>
+      <button class="filter-chip" onclick="filterCourses('motion', this)">⚡ Motion</button>
+    </div>
+
+    <div class="course-grid" id="courseGrid">
+
+      <div class="course-card" data-cat="video">
+        <div class="course-thumb" style="background: linear-gradient(135deg, #1a1a2e, #2d1b69);">
+          🎬
+          <span class="course-card-level level-beginner">Beginner</span>
+        </div>
+        <div class="course-body">
+          <div class="course-category">Video Editing</div>
+          <div class="course-title">Edit Your First Video in DaVinci Resolve</div>
+          <div class="course-desc">Start from zero. Import footage, cut a timeline, add music, export — done in one sitting.</div>
+          <div class="course-meta">
+            <span class="course-meta-item">⏱ 4.5 hrs</span>
+            <span class="course-meta-item">📋 12 lessons</span>
+            <span class="course-status status-live">Live</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-cat="video">
+        <div class="course-thumb" style="background: linear-gradient(135deg, #0f2027, #203a43);">
+          🎙️
+          <span class="course-card-level level-intermediate">Intermediate</span>
+        </div>
+        <div class="course-body">
+          <div class="course-category">Video Editing</div>
+          <div class="course-title">Audio for Creators: Mix Like You Mean It</div>
+          <div class="course-desc">Clean audio separates amateur from professional. EQ, compression, music balance, dialogue clarity.</div>
+          <div class="course-meta">
+            <span class="course-meta-item">⏱ 3 hrs</span>
+            <span class="course-meta-item">📋 9 lessons</span>
+            <span class="course-status status-soon">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-cat="design">
+        <div class="course-thumb" style="background: linear-gradient(135deg, #3d2060, #6B4FA0);">
+          🖼️
+          <span class="course-card-level level-beginner">Beginner</span>
+        </div>
+        <div class="course-body">
+          <div class="course-category">Graphic Design</div>
+          <div class="course-title">Figma for Creators: Design Without a Degree</div>
+          <div class="course-desc">Thumbnails, brand kits, social graphics, and pitch decks. Figma is free and this is how you use it.</div>
+          <div class="course-meta">
+            <span class="course-meta-item">⏱ 6 hrs</span>
+            <span class="course-meta-item">📋 16 lessons</span>
+            <span class="course-status status-live">Live</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-cat="design">
+        <div class="course-thumb" style="background: linear-gradient(135deg, #1a0533, #4a1080);">
+          🎭
+          <span class="course-card-level level-intermediate">Intermediate</span>
+        </div>
+        <div class="course-body">
+          <div class="course-category">Graphic Design</div>
+          <div class="course-title">Brand Identity from Scratch</div>
+          <div class="course-desc">Logo, color palette, typography, and usage guidelines. Build a brand system that actually holds together.</div>
+          <div class="course-meta">
+            <span class="course-meta-item">⏱ 5 hrs</span>
+            <span class="course-meta-item">📋 14 lessons</span>
+            <span class="course-status status-building">Building</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-cat="illustration">
+        <div class="course-thumb" style="background: linear-gradient(135deg, #2d1b4e, #8B4FA0);">
+          ✏️
+          <span class="course-card-level level-beginner">Beginner</span>
+        </div>
+        <div class="course-body">
+          <div class="course-category">Illustration</div>
+          <div class="course-title">Procreate Foundations: Draw With Intention</div>
+          <div class="course-desc">Brushes, layers, color theory, and composition. The complete beginner path for iPad illustrators.</div>
+          <div class="course-meta">
+            <span class="course-meta-item">⏱ 7 hrs</span>
+            <span class="course-meta-item">📋 20 lessons</span>
+            <span class="course-status status-soon">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-cat="motion">
+        <div class="course-thumb" style="background: linear-gradient(135deg, #0d0d2b, #3A2080);">
+          ⚡
+          <span class="course-card-level level-advanced">Advanced</span>
+        </div>
+        <div class="course-body">
+          <div class="course-category">Motion</div>
+          <div class="course-title">After Effects: Motion Graphics for Social</div>
+          <div class="course-desc">Kinetic text, logo animations, Instagram Reels transitions. Make things move the way you want them to.</div>
+          <div class="course-meta">
+            <span class="course-meta-item">⏱ 8 hrs</span>
+            <span class="course-meta-item">📋 22 lessons</span>
+            <span class="course-status status-building">Building</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ACCORDION SECTIONS -->
+  <section class="section" style="padding-top: 0;">
+    <p class="section-eyebrow" style="margin-bottom: 20px;">Platform Details</p>
+
+    <!-- Instructors -->
+    <div class="accordion" id="acc-instructors">
+      <button class="accordion-trigger" onclick="toggleAccordion('acc-instructors')">
+        <div class="accordion-trigger-left">
+          <span class="accordion-icon">👩‍🏫</span>
+          <div>
+            <div class="accordion-label">Instructors</div>
+            <div class="accordion-sublabel">Who's teaching — real practitioners, not course factories</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="accordion-body">
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:20px;line-height:1.65;">Every instructor is an active practitioner. No one teaches here who doesn't still do the work. Applications open Q2 2026.</p>
+        <div class="instructor-grid">
+          <div class="instructor-card">
+            <div class="instructor-avatar">🎬</div>
+            <div class="instructor-name">Marcus T.</div>
+            <div class="instructor-role">Video editor · 8 years · YouTube & brand clients</div>
+            <span class="instructor-tag">Video Editing</span>
+          </div>
+          <div class="instructor-card">
+            <div class="instructor-avatar">🎨</div>
+            <div class="instructor-name">Sela M.</div>
+            <div class="instructor-role">Brand designer · Ex-agency · Now independent</div>
+            <span class="instructor-tag">Graphic Design</span>
+          </div>
+          <div class="instructor-card">
+            <div class="instructor-avatar">✏️</div>
+            <div class="instructor-name">Yuna K.</div>
+            <div class="instructor-role">Illustrator · Procreate & print · 42k Instagram</div>
+            <span class="instructor-tag">Illustration</span>
+          </div>
+          <div class="instructor-card">
+            <div class="instructor-avatar">⚡</div>
+            <div class="instructor-name">Dev R.</div>
+            <div class="instructor-role">Motion designer · After Effects · Ad & social work</div>
+            <span class="instructor-tag">Motion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="accordion" id="acc-pricing">
+      <button class="accordion-trigger" onclick="toggleAccordion('acc-pricing')">
+        <div class="accordion-trigger-left">
+          <span class="accordion-icon">💰</span>
+          <div>
+            <div class="accordion-label">Pricing Plans</div>
+            <div class="accordion-sublabel">Free to start. Paid when it's worth paying for.</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="accordion-body">
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:20px;line-height:1.65;">Pricing is not final — these are the planned tiers. Dew Monday subscribers get locked early-access pricing when we launch.</p>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-name">Free</div>
+            <div class="pricing-price">$0</div>
+            <div class="pricing-per">forever</div>
+            <ul class="pricing-features">
+              <li>2 courses, full access</li>
+              <li>Community access</li>
+              <li>Project feedback</li>
+              <li>Certificate of completion</li>
+            </ul>
+          </div>
+          <div class="pricing-card featured">
+            <div class="pricing-badge">Most popular</div>
+            <div class="pricing-name">Creator</div>
+            <div class="pricing-price" style="color:#D4A8F0">$12</div>
+            <div class="pricing-per">per month</div>
+            <ul class="pricing-features">
+              <li>All 18 courses</li>
+              <li>New courses as they drop</li>
+              <li>1-on-1 instructor feedback</li>
+              <li>Private Discord</li>
+              <li>Early access to new features</li>
+            </ul>
+          </div>
+          <div class="pricing-card">
+            <div class="pricing-name">Studio</div>
+            <div class="pricing-price">$29</div>
+            <div class="pricing-per">per month</div>
+            <ul class="pricing-features">
+              <li>Everything in Creator</li>
+              <li>Team seats (up to 5)</li>
+              <li>Downloadable project files</li>
+              <li>Priority support</li>
+              <li>Custom learning paths</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Build Log -->
+    <div class="accordion open" id="acc-buildlog">
+      <button class="accordion-trigger" onclick="toggleAccordion('acc-buildlog')">
+        <div class="accordion-trigger-left">
+          <span class="accordion-icon">📊</span>
+          <div>
+            <div class="accordion-label">Build Log</div>
+            <div class="accordion-sublabel">Every decision, in public — updated weekly in Dew Monday</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="accordion-body" id="acc-buildlog-body">
+        <div class="build-log">
+          <div class="log-entry">
+            <span class="log-week">Week 4</span>
+            <div class="log-content">
+              <div class="log-title">Concept scorecard finalized — Tutorial App ranked #5</div>
+              <div class="log-desc">Scored lowest on execution simplicity (8/20) due to product development complexity. Revenue potential is strong at 16/20 but the build timeline keeps it as a Q3 priority, not Q2.</div>
+              <div class="log-tags"><span class="log-tag">strategy</span><span class="log-tag">prioritization</span></div>
+            </div>
+          </div>
+          <div class="log-entry">
+            <span class="log-week">Week 3</span>
+            <div class="log-content">
+              <div class="log-title">18 courses scoped across 4 categories</div>
+              <div class="log-desc">Mapped out the full course library. Video Editing and Graphic Design are highest demand based on audience surveys. Illustration is the most requested new category. Motion is advanced-only for now.</div>
+              <div class="log-tags"><span class="log-tag">content</span><span class="log-tag">research</span></div>
+            </div>
+          </div>
+          <div class="log-entry">
+            <span class="log-week">Week 2</span>
+            <div class="log-content">
+              <div class="log-title">Instructor model decided: practitioners only</div>
+              <div class="log-desc">No course factories, no ghost-written content. Every instructor must be actively working in their discipline. Revenue split: 60% instructor / 40% platform. First instructor conversations happening this week.</div>
+              <div class="log-tags"><span class="log-tag">team</span><span class="log-tag">model</span></div>
+            </div>
+          </div>
+          <div class="log-entry">
+            <span class="log-week">Week 1</span>
+            <div class="log-content">
+              <div class="log-title">Concept validated — problem is real, market is crowded</div>
+              <div class="log-desc">Skillshare, Domestika, and YouTube are the main competitors. The gap: none of them are built specifically for independent creators building a real creative business. That's the positioning.</div>
+              <div class="log-tags"><span class="log-tag">validation</span><span class="log-tag">competitive</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="accordion" id="acc-faq">
+      <button class="accordion-trigger" onclick="toggleAccordion('acc-faq')">
+        <div class="accordion-trigger-left">
+          <span class="accordion-icon">❓</span>
+          <div>
+            <div class="accordion-label">FAQ</div>
+            <div class="accordion-sublabel">Common questions about the platform and build</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="accordion-body">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div>
+            <div style="font-weight:700;font-size:0.9rem;margin-bottom:5px;">When does it launch?</div>
+            <div style="font-size:0.83rem;color:var(--text-muted);line-height:1.65;">Target is Q3 2026 for a closed beta with Dew Monday subscribers. Public launch Q4. The build is happening in public every week — subscribe to follow along.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:0.9rem;margin-bottom:5px;">What makes this different from Skillshare or YouTube?</div>
+            <div style="font-size:0.83rem;color:var(--text-muted);line-height:1.65;">Structure and outcome focus. YouTube is free but disorganized. Skillshare is broad but shallow. This platform is built around specific skills with a clear end state — you finish a course and you can do something you couldn't before.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:0.9rem;margin-bottom:5px;">Can I teach on the platform?</div>
+            <div style="font-size:0.83rem;color:var(--text-muted);line-height:1.65;">Applications open Q2 2026. Requirements: actively working in your discipline, 60-minute minimum course, structured around a specific outcome. Subscribe for updates on the instructor program.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>
+
+<!-- ===== BOTTOM CTA ===== -->
+<section class="bottom-cta">
+  <div class="bottom-cta-inner">
+    <h2>Follow the build every Monday</h2>
+    <p>Tutorial App progress is covered every week in Dew Monday. Subscribe free to get build updates, early access pricing, and the beta invite when it opens.</p>
+    <div class="bottom-cta-actions">
+      <a href="{{ '/signup/' | relative_url }}" class="cta-btn-primary">Get early access →</a>
+      <a href="{{ '/' | relative_url }}" class="cta-btn-ghost">Back to home</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-logo">Dew<span>Monday</span></div>
+  <div class="footer-links">
+    <a href="{{ '/concepts/creator-hub/' | relative_url }}">Creator Hub</a>
+    <a href="{{ '/concepts/art-dropshipping/' | relative_url }}">Art Drops</a>
+    <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}">Camera Drops</a>
+    <a href="{{ '/concepts/little-makers/activities/' | relative_url }}">Little Makers</a>
+    <a href="{{ '/signup/' | relative_url }}">Subscribe</a>
+  </div>
+  <div class="footer-copy">© 2026 Dew Monday</div>
+</footer>
+
+<script>
+  // Concepts dropdown
+  function toggleDropdown() {
+    document.getElementById('conceptsDropdown').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const d = document.getElementById('conceptsDropdown');
+    if (!d.contains(e.target)) d.classList.remove('open');
+  });
+
+  // Course filter
+  function filterCourses(cat, btn) {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.course-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  // Accordion
+  function toggleAccordion(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

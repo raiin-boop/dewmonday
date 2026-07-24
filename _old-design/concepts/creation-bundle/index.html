@@ -1,0 +1,907 @@
+---
+layout: none
+permalink: /concepts/creation-bundle/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creation Bundle · Dew Monday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F2F5F0;
+      --bg-white: #FFFFFF;
+      --primary: #3A7A4A;
+      --primary-dark: #1E4A2A;
+      --primary-mid: #4E9A5E;
+      --primary-light: #E6F2E8;
+      --primary-glow: rgba(58,122,74,0.15);
+      --accent: #D4A847;
+      --accent-light: #FDF6E3;
+      --text: #1C1C1C;
+      --text-muted: #6B6B6B;
+      --border: #D4DCD6;
+      --border-light: #E8EDE9;
+      --font-display: 'DM Serif Display', serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(30,74,42,0.09);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ===== NAV ===== */
+    .nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; box-shadow: 0 1px 12px rgba(0,0,0,0.07); }
+    .nav-left { display: flex; align-items: center; gap: 32px; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.25rem; color: var(--primary-dark); text-decoration: none; white-space: nowrap; }
+    .nav-logo span { color: var(--accent); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-trigger { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--text); background: none; border: none; cursor: pointer; padding: 6px 10px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
+    .nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger { background: var(--primary-light); color: var(--primary); }
+    .nav-dropdown-trigger .chevron { width: 14px; height: 14px; transition: transform 0.2s; }
+    .nav-dropdown.open .chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border: 1.5px solid var(--border); border-radius: 16px; padding: 8px; min-width: 290px; box-shadow: 0 12px 40px rgba(0,0,0,0.13); animation: menuIn 0.18s ease; z-index: 300; }
+    .nav-dropdown.open .nav-dropdown-menu { display: block; }
+    @keyframes menuIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-menu-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; text-decoration: none; color: var(--text); transition: background 0.15s; }
+    .nav-menu-item:hover { background: var(--primary-light); }
+    .nav-menu-item.active { background: var(--primary-light); }
+    .nav-menu-emoji { font-size: 1.1rem; flex-shrink: 0; }
+    .nav-menu-title { font-weight: 600; font-size: 0.87rem; color: var(--text); line-height: 1.2; }
+    .nav-menu-desc { font-size: 0.74rem; color: var(--text-muted); }
+    .nav-menu-item.active .nav-menu-title { color: var(--primary); }
+    .nav-menu-divider { height: 1px; background: var(--border-light); margin: 5px 0; }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .nav-home-link { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .nav-home-link:hover { color: var(--primary); }
+    .nav-subscribe-btn { padding: 8px 18px; background: var(--primary); color: #fff; border-radius: 20px; font-size: 0.82rem; font-weight: 700; text-decoration: none; transition: background 0.2s, transform 0.15s; white-space: nowrap; }
+    .nav-subscribe-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+    /* ===== HERO ===== */
+    .hero { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--primary-mid) 100%); padding: 80px 48px 72px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -30%; right: -8%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,71,0.15) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 999px; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+    .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.75); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .hero h1 { font-family: var(--font-display); font-size: 3.6rem; line-height: 1.07; color: #fff; margin-bottom: 18px; max-width: 680px; }
+    .hero h1 em { font-style: italic; color: rgba(255,255,255,0.65); }
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.72); margin-bottom: 36px; max-width: 520px; line-height: 1.65; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
+    .btn-primary { padding: 13px 28px; background: #fff; color: var(--primary-dark); border-radius: 12px; font-weight: 700; font-size: 0.92rem; text-decoration: none; box-shadow: 0 4px 18px rgba(0,0,0,0.15); transition: transform 0.15s, box-shadow 0.15s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.22); }
+    .btn-ghost { padding: 12px 24px; border: 1.5px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); border-radius: 12px; font-weight: 600; font-size: 0.92rem; text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+    .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+    .hero-stat-num { font-family: var(--font-display); font-size: 2.4rem; color: rgba(255,255,255,0.88); display: block; }
+    .hero-stat-label { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); }
+
+    /* ===== QUIZ SECTION ===== */
+    .quiz-section { max-width: 800px; margin: 0 auto; padding: 60px 40px 80px; }
+    .quiz-intro { text-align: center; margin-bottom: 48px; }
+    .quiz-intro h2 { font-family: var(--font-display); font-size: 2rem; color: var(--text); margin-bottom: 10px; }
+    .quiz-intro p { font-size: 0.92rem; color: var(--text-muted); max-width: 500px; margin: 0 auto; line-height: 1.65; }
+
+    .quiz-container { background: var(--bg-white); border: 1.5px solid var(--border); border-radius: 20px; padding: 48px 40px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .quiz-progress { display: flex; gap: 6px; margin-bottom: 36px; }
+    .quiz-progress-step { flex: 1; height: 4px; border-radius: 4px; background: var(--border-light); transition: background 0.3s; }
+    .quiz-progress-step.active { background: var(--primary); }
+    .quiz-progress-step.completed { background: var(--primary); }
+
+    .quiz-step { display: none; animation: fadeIn 0.3s ease; }
+    .quiz-step.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .quiz-question { font-family: var(--font-display); font-size: 1.5rem; color: var(--text); margin-bottom: 8px; text-align: center; }
+    .quiz-hint { font-size: 0.82rem; color: var(--text-muted); text-align: center; margin-bottom: 28px; }
+
+    .bubble-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .bubble-option { padding: 12px 22px; border: 2px solid var(--border); border-radius: 999px; background: var(--bg-white); font-size: 0.88rem; font-weight: 500; color: var(--text); cursor: pointer; transition: all 0.2s; user-select: none; display: flex; align-items: center; gap: 8px; }
+    .bubble-option:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); transform: scale(1.03); }
+    .bubble-option.selected { border-color: var(--primary); background: var(--primary); color: #fff; transform: scale(1.05); box-shadow: 0 4px 16px rgba(58,122,74,0.25); }
+    .bubble-option .bubble-emoji { font-size: 1.1rem; }
+
+    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 36px; }
+    .quiz-back { padding: 10px 20px; border: 1.5px solid var(--border); border-radius: 10px; background: var(--bg-white); font-size: 0.85rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
+    .quiz-back:hover { border-color: var(--primary); color: var(--primary); }
+    .quiz-back:disabled { opacity: 0.3; cursor: not-allowed; }
+    .quiz-back:disabled:hover { border-color: var(--border); color: var(--text-muted); }
+    .quiz-step-indicator { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); }
+
+    /* ===== RESULTS ===== */
+    .quiz-results { display: none; animation: fadeIn 0.4s ease; }
+    .quiz-results.active { display: block; }
+    .results-header { text-align: center; margin-bottom: 36px; }
+    .results-header h2 { font-family: var(--font-display); font-size: 1.8rem; color: var(--text); margin-bottom: 8px; }
+    .results-header p { font-size: 0.88rem; color: var(--text-muted); }
+    .results-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+    .results-tag { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 12px; border-radius: 999px; background: var(--primary-light); color: var(--primary); }
+
+    .results-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+    .result-card { background: var(--bg-white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px; transition: transform 0.2s, box-shadow 0.2s; }
+    .result-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .result-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .result-card-name { font-weight: 700; font-size: 1rem; color: var(--text); }
+    .result-card-price { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--primary); }
+    .result-card-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+    .result-card-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .pros-list, .cons-list { list-style: none; font-size: 0.78rem; display: flex; flex-direction: column; gap: 4px; }
+    .pros-list li::before { content: '✓ '; color: var(--primary); font-weight: 700; }
+    .cons-list li::before { content: '✗ '; color: #C04040; font-weight: 700; }
+    .pros-label, .cons-label { font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .pros-label { color: var(--primary); }
+    .cons-label { color: #C04040; }
+    .result-card-link { display: inline-block; font-size: 0.82rem; font-weight: 700; color: var(--primary); text-decoration: none; transition: opacity 0.15s; }
+    .result-card-link:hover { opacity: 0.7; }
+    .result-card-best-for { font-family: var(--font-mono); font-size: 0.65rem; padding: 3px 9px; border-radius: 8px; background: var(--accent-light); color: #8A6010; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .results-restart { display: flex; justify-content: center; margin-top: 32px; }
+    .restart-btn { padding: 12px 28px; border: 1.5px solid var(--border); border-radius: 12px; background: var(--bg-white); font-size: 0.88rem; font-weight: 600; color: var(--text); cursor: pointer; transition: all 0.15s; }
+    .restart-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+
+    /* ===== ACCORDION ===== */
+    .content-section { max-width: 800px; margin: 0 auto; padding: 0 40px 60px; }
+    .section-title { font-family: var(--font-display); font-size: 1.6rem; color: var(--text); margin-bottom: 20px; }
+    .accordion { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; background: var(--bg-white); }
+    .accordion-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; background: none; border: none; cursor: pointer; text-align: left; transition: background 0.15s; }
+    .accordion-trigger:hover { background: var(--primary-light); }
+    .accordion.open .accordion-trigger { background: var(--primary-light); }
+    .accordion-label { font-weight: 700; font-size: 0.92rem; color: var(--text); }
+    .accordion-chevron { width: 16px; height: 16px; color: var(--text-muted); transition: transform 0.25s; flex-shrink: 0; }
+    .accordion.open .accordion-chevron { transform: rotate(180deg); color: var(--primary); }
+    .accordion-body { display: none; padding: 20px 22px; border-top: 1px solid var(--border-light); font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+    .accordion.open .accordion-body { display: block; }
+
+    /* ===== BOTTOM CTA ===== */
+    .bottom-cta { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 80px 48px; text-align: center; }
+    .bottom-cta-inner { max-width: 640px; margin: 0 auto; }
+    .bottom-cta-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 14px; border-radius: 999px; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); margin-bottom: 20px; }
+    .bottom-cta h2 { font-family: var(--font-display); font-size: 2.6rem; color: #fff; margin-bottom: 14px; line-height: 1.12; }
+    .bottom-cta h2 em { font-style: italic; color: rgba(255,255,255,0.65); }
+    .bottom-cta p { color: rgba(255,255,255,0.68); font-size: 0.95rem; margin-bottom: 32px; line-height: 1.65; }
+    .bottom-cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--primary-dark); padding: 40px 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.1rem; color: rgba(255,255,255,0.75); text-decoration: none; }
+    .footer-logo span { color: var(--accent); }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-copy { font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.22); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .nav { padding: 0 20px; }
+      .nav-left { gap: 16px; }
+      .hero { padding: 56px 24px 52px; }
+      .hero h1 { font-size: 2.4rem; }
+      .quiz-section { padding: 40px 20px 60px; }
+      .quiz-container { padding: 32px 20px; }
+      .quiz-question { font-size: 1.25rem; }
+      .bubble-grid { gap: 8px; }
+      .bubble-option { padding: 10px 16px; font-size: 0.82rem; }
+      .content-section { padding: 0 20px 40px; }
+      .bottom-cta { padding: 52px 24px; }
+      .bottom-cta h2 { font-size: 2rem; }
+      footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+      .result-card-pros-cons { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
+
+    <!-- Concepts Dropdown -->
+    <div class="nav-dropdown" id="dd-concepts">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">
+        Concepts
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">✍️</span>
+          <div><div class="nav-menu-title">Creator Hub</div><div class="nav-menu-desc">Newsletter & build log</div></div>
+        </a>
+        <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🖼️</span>
+          <div><div class="nav-menu-title">Art Drops</div><div class="nav-menu-desc">Independent artist spotlights</div></div>
+        </a>
+        <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">📷</span>
+          <div><div class="nav-menu-title">Camera Drops</div><div class="nav-menu-desc">Curated creator gear kits</div></div>
+        </a>
+        <a href="{{ '/concepts/little-makers/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎈</span>
+          <div><div class="nav-menu-title">Little Makers</div><div class="nav-menu-desc">Screen-free activities for kids</div></div>
+        </a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-title">Tutorial App</div><div class="nav-menu-desc">Creator skills platform</div></div>
+        </a>
+        <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🖌️</span>
+          <div><div class="nav-menu-title">Art Tutorial App</div><div class="nav-menu-desc">Structured art education</div></div>
+        </a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/creation-bundle/' | relative_url }}" class="nav-menu-item active">
+          <span class="nav-menu-emoji">🎁</span>
+          <div><div class="nav-menu-title">Creation Bundle</div><div class="nav-menu-desc">Personalized gear quiz</div></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Brand Dropdown -->
+    <div class="nav-dropdown" id="dd-brand">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">
+        Brand
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/brand/' | relative_url }}#overview" class="nav-menu-item">
+          <span class="nav-menu-emoji">📖</span>
+          <div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div>
+        </a>
+        <a href="{{ '/brand/' | relative_url }}#brand-identity" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎯</span>
+          <div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div>
+        </a>
+        <a href="{{ '/brand/' | relative_url }}#design-system" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div>
+        </a>
+        <a href="{{ '/brand/' | relative_url }}#interview-guide" class="nav-menu-item">
+          <span class="nav-menu-emoji">🗣️</span>
+          <div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div>
+        </a>
+        <a href="{{ '/brand/' | relative_url }}#validation-scorecard" class="nav-menu-item">
+          <span class="nav-menu-emoji">📊</span>
+          <div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All concepts rated</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <a href="{{ '/' | relative_url }}" class="nav-home-link">Home</a>
+    <a href="{{ '/signup/' | relative_url }}" class="nav-subscribe-btn">Subscribe free →</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="hero-badge-dot"></span> Building in public · Concept 07</div>
+    <h1>Find your perfect <em>creation kit</em></h1>
+    <p class="hero-sub">Take a quick quiz about what you want to create, your skill level, and your goals — get a personalized equipment list with honest pros, cons, and direct links. No guessing, no affiliate traps.</p>
+    <div class="hero-actions">
+      <a href="#quiz" class="btn-primary">Take the quiz →</a>
+      <a href="#how-it-works" class="btn-ghost">How it works ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="hero-stat-num">6</span><span class="hero-stat-label">Categories</span></div>
+      <div><span class="hero-stat-num">30+</span><span class="hero-stat-label">Sub-disciplines</span></div>
+      <div><span class="hero-stat-num">100+</span><span class="hero-stat-label">Items curated</span></div>
+      <div><span class="hero-stat-num">Free</span><span class="hero-stat-label">Always</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIZ ===== -->
+<section class="quiz-section" id="quiz">
+  <div class="quiz-intro">
+    <h2>What do you want to create?</h2>
+    <p>Answer a few quick questions and we'll build your personalized equipment list. Pick the bubbles that fit — you can always go back and change your answers.</p>
+  </div>
+
+  <div class="quiz-container">
+    <div class="quiz-progress">
+      <div class="quiz-progress-step active" data-step="1"></div>
+      <div class="quiz-progress-step" data-step="2"></div>
+      <div class="quiz-progress-step" data-step="3"></div>
+      <div class="quiz-progress-step" data-step="4"></div>
+    </div>
+
+    <!-- Step 1: Category -->
+    <div class="quiz-step active" data-step="1">
+      <div class="quiz-question">What's your creative category?</div>
+      <div class="quiz-hint">Pick the area that interests you most</div>
+      <div class="bubble-grid" data-field="category">
+        <div class="bubble-option" data-value="art"><span class="bubble-emoji">🎨</span> Art</div>
+        <div class="bubble-option" data-value="design"><span class="bubble-emoji">✏️</span> Design</div>
+        <div class="bubble-option" data-value="photography"><span class="bubble-emoji">📷</span> Photography</div>
+        <div class="bubble-option" data-value="videography"><span class="bubble-emoji">🎬</span> Videography</div>
+        <div class="bubble-option" data-value="content-creation"><span class="bubble-emoji">📱</span> Content Creation</div>
+        <div class="bubble-option" data-value="music"><span class="bubble-emoji">🎵</span> Music Production</div>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-back" disabled>← Back</button>
+        <span class="quiz-step-indicator">Step 1 of 4</span>
+      </div>
+    </div>
+
+    <!-- Step 2: Sub-discipline (dynamically populated) -->
+    <div class="quiz-step" data-step="2">
+      <div class="quiz-question">What type of <span id="category-label">creation</span>?</div>
+      <div class="quiz-hint">Narrow it down — this helps us find the right gear</div>
+      <div class="bubble-grid" data-field="subdiscipline" id="subdiscipline-grid">
+        <!-- Populated by JS based on category selection -->
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-back" onclick="goBack()">← Back</button>
+        <span class="quiz-step-indicator">Step 2 of 4</span>
+      </div>
+    </div>
+
+    <!-- Step 3: Skill Level -->
+    <div class="quiz-step" data-step="3">
+      <div class="quiz-question">What's your skill level?</div>
+      <div class="quiz-hint">Be honest — this changes the recommendations</div>
+      <div class="bubble-grid" data-field="skill">
+        <div class="bubble-option" data-value="beginner"><span class="bubble-emoji">🌱</span> Complete beginner</div>
+        <div class="bubble-option" data-value="some-experience"><span class="bubble-emoji">🌿</span> Some experience</div>
+        <div class="bubble-option" data-value="intermediate"><span class="bubble-emoji">🌳</span> Intermediate</div>
+        <div class="bubble-option" data-value="advanced"><span class="bubble-emoji">⭐</span> Advanced</div>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-back" onclick="goBack()">← Back</button>
+        <span class="quiz-step-indicator">Step 3 of 4</span>
+      </div>
+    </div>
+
+    <!-- Step 4: Intent -->
+    <div class="quiz-step" data-step="4">
+      <div class="quiz-question">What's this for?</div>
+      <div class="quiz-hint">Your intent affects whether we suggest starter kits or pro-grade gear</div>
+      <div class="bubble-grid" data-field="intent">
+        <div class="bubble-option" data-value="hobby"><span class="bubble-emoji">🎯</span> Just a hobby</div>
+        <div class="bubble-option" data-value="interest"><span class="bubble-emoji">💡</span> Exploring an interest</div>
+        <div class="bubble-option" data-value="side-hustle"><span class="bubble-emoji">🚀</span> Potential side hustle</div>
+        <div class="bubble-option" data-value="career"><span class="bubble-emoji">💼</span> Career path</div>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-back" onclick="goBack()">← Back</button>
+        <span class="quiz-step-indicator">Step 4 of 4</span>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="quiz-results" id="quiz-results">
+      <div class="results-header">
+        <h2>Your Creation Bundle</h2>
+        <p>Based on your answers, here's what we recommend to get started.</p>
+        <div class="results-tags" id="results-tags"></div>
+      </div>
+      <div class="results-grid" id="results-grid">
+        <!-- Populated by JS -->
+      </div>
+      <div class="results-restart">
+        <button class="restart-btn" onclick="restartQuiz()">↻ Retake quiz</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="content-section" id="how-it-works">
+  <h2 class="section-title">How it works</h2>
+
+  <div class="accordion open" id="acc-how">
+    <button class="accordion-trigger" onclick="toggleAccordion('acc-how')">
+      <span class="accordion-label">The quiz flow</span>
+      <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <p><strong>Step 1 — Category:</strong> Pick your creative field (art, design, photography, videography, content creation, music).</p>
+      <p style="margin-top:10px;"><strong>Step 2 — Sub-discipline:</strong> Narrow down what you actually want to do within that field. The options change based on your category.</p>
+      <p style="margin-top:10px;"><strong>Step 3 — Skill level:</strong> Beginner to advanced. This determines whether we recommend starter kits or pro-grade equipment.</p>
+      <p style="margin-top:10px;"><strong>Step 4 — Intent:</strong> Hobby, interest, side hustle, or career. This affects budget range and durability recommendations.</p>
+      <p style="margin-top:10px;"><strong>Results:</strong> A curated list of equipment with honest pros/cons and direct links to where you can buy each item. No affiliate links, no commissions — just honest recommendations.</p>
+    </div>
+  </div>
+
+  <div class="accordion" id="acc-philosophy">
+    <button class="accordion-trigger" onclick="toggleAccordion('acc-philosophy')">
+      <span class="accordion-label">Why this exists</span>
+      <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <p>Getting started in any creative field is overwhelming. You Google "best camera for beginners" and get 47 affiliate-stuffed listicles that all recommend different things. You don't know if you need a $300 setup or a $3,000 one. You don't know what matters and what's just marketing.</p>
+      <p style="margin-top:10px;">This quiz cuts through that. It asks what you actually want to do, how serious you are, and gives you a straight answer with trade-offs clearly listed. No hidden agendas, no sponsored picks.</p>
+    </div>
+  </div>
+
+  <div class="accordion" id="acc-faq">
+    <button class="accordion-trigger" onclick="toggleAccordion('acc-faq')">
+      <span class="accordion-label">FAQ</span>
+      <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="accordion-body">
+      <div style="margin-bottom:16px;">
+        <div style="font-weight:700;font-size:0.88rem;margin-bottom:4px;">Are these affiliate links?</div>
+        <div>No. Every link goes directly to the manufacturer or retailer. Dew Monday makes zero commission on any recommendation.</div>
+      </div>
+      <div style="margin-bottom:16px;">
+        <div style="font-weight:700;font-size:0.88rem;margin-bottom:4px;">How often is the equipment list updated?</div>
+        <div>Quarterly. When better options come out or prices change significantly, the recommendations update. Updates are announced in the Dew Monday newsletter.</div>
+      </div>
+      <div style="margin-bottom:16px;">
+        <div style="font-weight:700;font-size:0.88rem;margin-bottom:4px;">Can I retake the quiz with different answers?</div>
+        <div>Yes — hit the retake button at the bottom of your results or use the back button during the quiz to change any answer.</div>
+      </div>
+      <div>
+        <div style="font-weight:700;font-size:0.88rem;margin-bottom:4px;">What if my discipline isn't listed?</div>
+        <div>More sub-disciplines are being added as the concept develops. Subscribe to the newsletter to know when new categories drop.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOTTOM CTA ===== -->
+<section class="bottom-cta">
+  <div class="bottom-cta-inner">
+    <div class="bottom-cta-badge">Free · Every Monday</div>
+    <h2>Follow the build <em>every week</em></h2>
+    <p>Get the honest version — what's working, what failed, and what's next across all concepts including Creation Bundle.</p>
+    <div class="bottom-cta-actions">
+      <a href="{{ '/signup/' | relative_url }}" class="btn-primary">Get early access →</a>
+      <a href="{{ '/' | relative_url }}" class="btn-ghost">See all concepts</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <a href="{{ '/' | relative_url }}" class="footer-logo">Dew<span>Monday</span></a>
+  <div class="footer-links">
+    <a href="{{ '/concepts/creator-hub/' | relative_url }}">Creator Hub</a>
+    <a href="{{ '/concepts/art-dropshipping/' | relative_url }}">Art Drops</a>
+    <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}">Camera Drops</a>
+    <a href="{{ '/concepts/little-makers/' | relative_url }}">Little Makers</a>
+    <a href="{{ '/concepts/tutorial-app/' | relative_url }}">Tutorial App</a>
+    <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}">Art Tutorial App</a>
+    <a href="{{ '/concepts/creation-bundle/' | relative_url }}">Creation Bundle</a>
+    <a href="{{ '/signup/' | relative_url }}">Subscribe</a>
+  </div>
+  <p class="footer-copy">© 2026 Dew Monday · Built in public</p>
+</footer>
+
+<script>
+// ===== NAV DROPDOWNS =====
+function toggleDD(id) {
+  document.querySelectorAll('.nav-dropdown').forEach(d => {
+    if (d.id !== id) d.classList.remove('open');
+  });
+  document.getElementById(id).classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.nav-dropdown')) {
+    document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+  }
+});
+
+// ===== ACCORDION =====
+function toggleAccordion(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// ===== QUIZ ENGINE =====
+const answers = {};
+let currentStep = 1;
+const totalSteps = 4;
+
+const subdisciplines = {
+  'art': [
+    { value: 'illustration', emoji: '✏️', label: 'Illustration' },
+    { value: 'digital-art', emoji: '💻', label: 'Digital Art' },
+    { value: 'painting', emoji: '🖼️', label: 'Painting' },
+    { value: 'sketching', emoji: '📝', label: 'Sketching & Drawing' },
+    { value: 'printmaking', emoji: '🖨️', label: 'Printmaking' },
+    { value: 'mixed-media', emoji: '🎭', label: 'Mixed Media' }
+  ],
+  'design': [
+    { value: 'graphic-design', emoji: '🎨', label: 'Graphic Design' },
+    { value: 'ui-ux', emoji: '📐', label: 'UI/UX Design' },
+    { value: 'brand-design', emoji: '💎', label: 'Brand & Identity' },
+    { value: 'motion-design', emoji: '⚡', label: 'Motion Design' },
+    { value: 'print-design', emoji: '📄', label: 'Print Design' },
+    { value: '3d-design', emoji: '🧊', label: '3D Design' }
+  ],
+  'photography': [
+    { value: 'portrait', emoji: '👤', label: 'Portrait Photography' },
+    { value: 'editorial', emoji: '📰', label: 'Editorial Photography' },
+    { value: 'nature', emoji: '🌿', label: 'Nature & Landscape' },
+    { value: 'street', emoji: '🏙️', label: 'Street Photography' },
+    { value: 'product', emoji: '📦', label: 'Product Photography' },
+    { value: 'event', emoji: '🎉', label: 'Event Photography' }
+  ],
+  'videography': [
+    { value: 'short-film', emoji: '🎬', label: 'Short Films' },
+    { value: 'documentary', emoji: '📹', label: 'Documentary' },
+    { value: 'car-video', emoji: '🚗', label: 'Car Videography' },
+    { value: 'wedding', emoji: '💒', label: 'Wedding Video' },
+    { value: 'music-video', emoji: '🎶', label: 'Music Videos' },
+    { value: 'commercial', emoji: '📺', label: 'Commercial Work' }
+  ],
+  'content-creation': [
+    { value: 'youtube', emoji: '▶️', label: 'YouTube' },
+    { value: 'tiktok', emoji: '📱', label: 'TikTok / Short-form' },
+    { value: 'podcast', emoji: '🎙️', label: 'Podcasting' },
+    { value: 'streaming', emoji: '🔴', label: 'Live Streaming' },
+    { value: 'blogging', emoji: '✍️', label: 'Blogging & Writing' },
+    { value: 'social-media', emoji: '📸', label: 'Social Media Content' }
+  ],
+  'music': [
+    { value: 'beat-making', emoji: '🥁', label: 'Beat Making' },
+    { value: 'recording', emoji: '🎤', label: 'Recording & Vocals' },
+    { value: 'mixing', emoji: '🎛️', label: 'Mixing & Mastering' },
+    { value: 'songwriting', emoji: '🎼', label: 'Songwriting' },
+    { value: 'dj', emoji: '💿', label: 'DJing' },
+    { value: 'sound-design', emoji: '🔊', label: 'Sound Design' }
+  ]
+};
+
+// Equipment recommendation database
+const recommendations = {
+  'art': {
+    'illustration': {
+      'beginner': [
+        { name: 'Wacom Intuos Small', price: '$80–$100', desc: 'Entry-level drawing tablet that works with any computer. Pressure-sensitive, compact, and durable.', pros: ['Affordable', 'Plug-and-play', 'Great software bundle'], cons: ['Small active area', 'No screen display'], link: 'https://www.wacom.com/en-us/products/pen-tablets/wacom-intuos', bestFor: 'Hobby' },
+        { name: 'Procreate (iPad)', price: '$13 one-time', desc: 'If you have an iPad, this is the best digital illustration app. One-time purchase, no subscription.', pros: ['No subscription', 'Huge brush library', 'Intuitive gestures'], cons: ['iPad required', 'No desktop version'], link: 'https://procreate.com/', bestFor: 'All levels' },
+        { name: 'Sketchbook Pro', price: 'Free', desc: 'Full-featured free drawing app for desktop and mobile. Great for those just starting out.', pros: ['Completely free', 'Cross-platform', 'Clean UI'], cons: ['Fewer brushes than Procreate', 'Less community content'], link: 'https://www.sketchbook.com/', bestFor: 'Beginner' }
+      ],
+      'some-experience': [
+        { name: 'Wacom Intuos Pro Medium', price: '$350–$380', desc: 'Professional pen tablet with tilt sensitivity, multi-touch, and wireless connectivity.', pros: ['8192 pressure levels', 'Wireless option', 'ExpressKeys'], cons: ['Pricier', 'Learning curve for shortcuts'], link: 'https://www.wacom.com/en-us/products/pen-tablets/wacom-intuos-pro', bestFor: 'Side hustle' },
+        { name: 'Clip Studio Paint Pro', price: '$50 one-time', desc: 'Industry-standard for comics, illustration, and animation. One-time purchase.', pros: ['One-time purchase', 'Animation tools', 'Huge asset store'], cons: ['Steeper learning curve', 'Desktop focus'], link: 'https://www.clipstudio.net/', bestFor: 'All levels' },
+        { name: 'Huion Kamvas 13', price: '$250–$280', desc: 'Pen display (draw directly on screen) at an affordable price. Great middle ground.', pros: ['Draw on screen', 'Affordable display tablet', 'Good color accuracy'], cons: ['Cables needed', 'Stand sold separately'], link: 'https://www.huion.com/pen-display/Kamvas-13.html', bestFor: 'Interest' }
+      ],
+      'intermediate': [
+        { name: 'iPad Pro + Apple Pencil 2', price: '$900–$1,200', desc: 'The gold standard for mobile digital illustration. Pairs with Procreate for a complete portable studio.', pros: ['Portable full studio', 'Best pen feel', 'ProMotion display'], cons: ['Expensive', 'Ecosystem lock-in'], link: 'https://www.apple.com/ipad-pro/', bestFor: 'Career' },
+        { name: 'Wacom Cintiq 16', price: '$650', desc: 'Professional pen display for desktop illustration. Draw directly on a 15.6" screen.', pros: ['Large drawing area', 'Industry standard', 'Pro color accuracy'], cons: ['Not portable', 'Needs computer'], link: 'https://www.wacom.com/en-us/products/pen-displays/wacom-cintiq-16', bestFor: 'Career' },
+        { name: 'Adobe Fresco', price: '$10/mo', desc: 'Live brushes simulate real paint and watercolor. Best for artists who want digital to feel analog.', pros: ['Realistic brushes', 'Vector + raster', 'Cloud sync'], cons: ['Subscription', 'iPad/Windows only'], link: 'https://www.adobe.com/products/fresco.html', bestFor: 'Interest' }
+      ],
+      'advanced': [
+        { name: 'Wacom Cintiq Pro 27', price: '$3,500', desc: 'The top-tier professional pen display. 4K, 120Hz, 99% Adobe RGB. For full-time professionals.', pros: ['4K 120Hz', '99% Adobe RGB', 'Etched glass feel'], cons: ['Very expensive', 'Desk setup required'], link: 'https://www.wacom.com/en-us/products/pen-displays/wacom-cintiq-pro-27', bestFor: 'Career' },
+        { name: 'Adobe Creative Cloud', price: '$55/mo', desc: 'Full suite: Photoshop, Illustrator, Fresco, and more. Industry standard for professional work.', pros: ['Industry standard', 'Full suite', 'Cloud storage'], cons: ['Expensive subscription', 'Resource heavy'], link: 'https://www.adobe.com/creativecloud.html', bestFor: 'Career' }
+      ]
+    },
+    'digital-art': {
+      'beginner': [
+        { name: 'Huion Inspiroy H640P', price: '$40–$50', desc: 'Ultra-affordable pen tablet for getting started with digital art on any computer.', pros: ['Very cheap', 'Battery-free pen', 'Portable'], cons: ['Small active area', 'Basic build'], link: 'https://www.huion.com/pen-tablets/Inspiroy-H640P.html', bestFor: 'Hobby' },
+        { name: 'Krita', price: 'Free & Open Source', desc: 'Powerful free painting program with professional features. Great brush engine.', pros: ['Completely free', 'Pro-level tools', 'Active community'], cons: ['Can be slow on older PCs', 'UI takes getting used to'], link: 'https://krita.org/', bestFor: 'All levels' }
+      ],
+      'some-experience': [
+        { name: 'XP-Pen Artist 12 Pro', price: '$200–$250', desc: 'Budget pen display with good accuracy and a built-in stand.', pros: ['Affordable display', 'Built-in stand', 'Shortcut keys'], cons: ['12" screen is small', 'Color accuracy OK not great'], link: 'https://www.xp-pen.com/', bestFor: 'Interest' },
+        { name: 'Clip Studio Paint EX', price: '$100 one-time', desc: 'Full version with animation, multi-page comics, and team collaboration features.', pros: ['Animation timeline', 'Multi-page support', 'One-time purchase'], cons: ['Complex interface', 'Overkill for basics'], link: 'https://www.clipstudio.net/', bestFor: 'Side hustle' }
+      ],
+      'intermediate': [
+        { name: 'iPad Air + Apple Pencil', price: '$700–$850', desc: 'Great balance of power and price. Runs Procreate and all major creative apps.', pros: ['M-series chip', 'Portable', 'Great ecosystem'], cons: ['Smaller than Pro', 'No ProMotion'], link: 'https://www.apple.com/ipad-air/', bestFor: 'Side hustle' },
+        { name: 'Affinity Designer 2', price: '$70 one-time', desc: 'Vector and raster combined. No subscription alternative to Illustrator.', pros: ['One-time purchase', 'Vector + pixel', 'Fast performance'], cons: ['Smaller community', 'Fewer plugins'], link: 'https://affinity.serif.com/designer/', bestFor: 'All levels' }
+      ],
+      'advanced': [
+        { name: 'Wacom Cintiq Pro 27', price: '$3,500', desc: 'Top-tier 4K pen display for professionals working on digital art full-time.', pros: ['4K 120Hz', 'Best pen tech', 'Desk mount options'], cons: ['Expensive', 'Requires dedicated space'], link: 'https://www.wacom.com/en-us/products/pen-displays/wacom-cintiq-pro-27', bestFor: 'Career' }
+      ]
+    }
+  },
+  'photography': {
+    'portrait': {
+      'beginner': [
+        { name: 'Canon EOS R50', price: '$680 (body)', desc: 'Compact mirrorless with excellent autofocus and eye-tracking. Great for learning portraits.', pros: ['Lightweight', 'Fast eye-AF', 'Good video too'], cons: ['Crop sensor', 'Limited lens selection (growing)'], link: 'https://www.usa.canon.com/shop/p/eos-r50', bestFor: 'Hobby' },
+        { name: 'Canon RF 50mm f/1.8', price: '$200', desc: 'The "nifty fifty" for the RF mount. Affordable, sharp, beautiful background blur.', pros: ['Cheap', 'Great bokeh', 'Sharp'], cons: ['Plastic build', 'Slow AF motor'], link: 'https://www.usa.canon.com/shop/p/rf50mm-f-1-8-stm', bestFor: 'All levels' },
+        { name: 'Neewer 5-in-1 Reflector', price: '$20', desc: 'Essential for shaping natural light in portraits. Gold, silver, white, black, translucent.', pros: ['Dirt cheap', 'Huge impact on lighting', 'Portable'], cons: ['Need someone to hold it', 'Flimsy build'], link: 'https://neewer.com/', bestFor: 'All levels' }
+      ],
+      'some-experience': [
+        { name: 'Sony a6700', price: '$1,400 (body)', desc: 'APS-C mirrorless with AI autofocus, 4K video, and excellent dynamic range.', pros: ['AI subject tracking', '4K 120fps', 'Compact'], cons: ['Crop sensor', 'Menu system complex'], link: 'https://www.sony.com/en/interchangeable-lens-cameras/a6700', bestFor: 'Side hustle' },
+        { name: 'Sigma 56mm f/1.4 (APS-C)', price: '$450', desc: 'Equivalent to 85mm on full-frame. The classic portrait focal length with creamy bokeh.', pros: ['Sharp wide open', 'Beautiful bokeh', 'Solid build'], cons: ['APS-C only', 'No stabilization'], link: 'https://www.sigma-global.com/', bestFor: 'Interest' },
+        { name: 'Godox TT685II Flash', price: '$110', desc: 'TTL speedlight with HSS. First step into off-camera flash for portraits.', pros: ['TTL + manual', 'HSS capable', 'Affordable'], cons: ['Needs trigger for off-camera', 'Recycle time average'], link: 'https://www.godox.com/', bestFor: 'Side hustle' }
+      ],
+      'intermediate': [
+        { name: 'Sony a7 IV', price: '$2,500 (body)', desc: 'Full-frame hybrid camera. Excellent for both photo and video portrait work.', pros: ['Full-frame sensor', '33MP', '4K 60fps'], cons: ['Expensive', 'Heavy with lenses'], link: 'https://www.sony.com/en/interchangeable-lens-cameras/a7m4', bestFor: 'Career' },
+        { name: 'Sony 85mm f/1.4 GM', price: '$1,600', desc: 'The portrait lens. Razor-sharp with the creamiest bokeh in the business.', pros: ['Best-in-class bokeh', 'Tack sharp', 'Fast AF'], cons: ['Expensive', 'Heavy'], link: 'https://www.sony.com/', bestFor: 'Career' }
+      ],
+      'advanced': [
+        { name: 'Canon EOS R5', price: '$3,900 (body)', desc: '45MP full-frame with 8K video, IBIS, and dual card slots. Top-tier professional.', pros: ['45MP', 'IBIS', '8K video'], cons: ['Very expensive', 'Overheating in long 8K'], link: 'https://www.usa.canon.com/shop/p/eos-r5', bestFor: 'Career' },
+        { name: 'Profoto B10 Plus', price: '$2,100', desc: 'Portable studio strobe. 500Ws in a 1.8kg body. Professional lighting anywhere.', pros: ['Powerful & portable', 'Consistent color', 'Built-in receiver'], cons: ['Very expensive', 'Proprietary ecosystem'], link: 'https://profoto.com/', bestFor: 'Career' }
+      ]
+    },
+    'nature': {
+      'beginner': [
+        { name: 'Nikon Z50', price: '$860 (with kit lens)', desc: 'Compact mirrorless with weather resistance and excellent image quality for landscapes.', pros: ['Weather sealed', 'Great kit lens', 'Lightweight'], cons: ['Crop sensor', 'Small battery'], link: 'https://www.nikonusa.com/cameras/mirrorless/z-50', bestFor: 'Hobby' },
+        { name: 'Tripod: K&F Concept 64"', price: '$60', desc: 'Essential for landscape photography. Stable, lightweight aluminum with ball head.', pros: ['Very affordable', 'Lightweight', 'Quick-release plate'], cons: ['Not carbon fiber', 'Limited in wind'], link: 'https://www.kentfaith.com/', bestFor: 'All levels' }
+      ],
+      'some-experience': [
+        { name: 'Nikon Z5', price: '$1,400 (body)', desc: 'Full-frame on a budget. Great dynamic range for landscapes at a reasonable price.', pros: ['Full-frame', 'IBIS', 'Dual card slots'], cons: ['Older AF system', 'Slow burst rate'], link: 'https://www.nikonusa.com/cameras/mirrorless/z-5', bestFor: 'Interest' },
+        { name: 'Nikon Z 24-70mm f/4', price: '$700', desc: 'Versatile zoom that covers most landscape needs. Sharp, stabilized, compact.', pros: ['Versatile range', 'Sharp', 'Compact for full-frame'], cons: ['f/4 max (not great in low light)', 'No f/2.8'], link: 'https://www.nikonusa.com/', bestFor: 'All levels' }
+      ],
+      'intermediate': [
+        { name: 'Sony a7CR', price: '$2,900 (body)', desc: '61MP in a compact body. Insane resolution for landscape detail and large prints.', pros: ['61MP resolution', 'Compact body', 'Great dynamic range'], cons: ['Expensive', 'Large file sizes'], link: 'https://www.sony.com/', bestFor: 'Career' }
+      ],
+      'advanced': [
+        { name: 'Nikon Z8', price: '$4,000 (body)', desc: '45.7MP stacked sensor with zero blackout. Professional landscape and wildlife hybrid.', pros: ['Stacked sensor', 'No blackout', 'Rugged build'], cons: ['Very expensive', 'Heavy'], link: 'https://www.nikonusa.com/', bestFor: 'Career' }
+      ]
+    }
+  },
+  'videography': {
+    'car-video': {
+      'beginner': [
+        { name: 'DJI Osmo Pocket 3', price: '$520', desc: 'Tiny gimbal camera that shoots 4K with a 1" sensor. Perfect for getting cinematic car shots without a rig.', pros: ['Pocket-sized', 'Built-in gimbal', '4K 120fps'], cons: ['Small sensor in low light', 'Fixed lens'], link: 'https://www.dji.com/', bestFor: 'Hobby' },
+        { name: 'GoPro Hero 12', price: '$350', desc: 'Mount it anywhere on a car. Waterproof, shockproof, and stabilized. The standard for POV car shots.', pros: ['Mount anywhere', 'Crazy stabilization', 'Waterproof'], cons: ['Small sensor', 'Overheats in long sessions'], link: 'https://gopro.com/', bestFor: 'Hobby' },
+        { name: 'DaVinci Resolve (Free)', price: 'Free', desc: 'Professional video editor that rivals Premiere Pro. Free version has everything a beginner needs.', pros: ['Completely free', 'Color grading tools', 'Professional-grade'], cons: ['Steep learning curve', 'Needs good hardware'], link: 'https://www.blackmagicdesign.com/products/davinciresolve', bestFor: 'All levels' }
+      ],
+      'some-experience': [
+        { name: 'Sony ZV-E10 II', price: '$900 (body)', desc: 'Interchangeable lens vlogging camera. Great autofocus, 4K, and compact. Perfect B-camera for car content.', pros: ['Interchangeable lenses', 'Flip screen', 'Great AF'], cons: ['No IBIS', 'Crop in 4K'], link: 'https://www.sony.com/', bestFor: 'Side hustle' },
+        { name: 'DJI RS 3 Mini', price: '$370', desc: 'Lightweight gimbal for smooth tracking shots. Handles cameras up to 2kg.', pros: ['Lightweight', 'Auto-calibrates', 'Smooth movements'], cons: ['2kg limit', 'No vertical mode'], link: 'https://www.dji.com/', bestFor: 'Interest' }
+      ],
+      'intermediate': [
+        { name: 'Sony a7S III', price: '$3,500 (body)', desc: 'The low-light king. 4K 120fps, 10-bit 4:2:2, and dual slots. Made for cinematic video.', pros: ['Insane low light', '4K 120fps', 'No overheating'], cons: ['Only 12MP for photos', 'Very expensive'], link: 'https://www.sony.com/', bestFor: 'Career' },
+        { name: 'DJI Mini 4 Pro', price: '$760', desc: 'Sub-250g drone for cinematic aerial shots of cars. No registration needed in most countries.', pros: ['No registration needed', '4K HDR', 'Obstacle avoidance'], cons: ['Wind limit', 'Small sensor'], link: 'https://www.dji.com/', bestFor: 'Side hustle' }
+      ],
+      'advanced': [
+        { name: 'Blackmagic Pocket Cinema 6K Pro', price: '$2,500', desc: 'Cinema camera with Super 35 sensor, built-in NDs, and ProRes/BRAW recording.', pros: ['Cinema image quality', 'Built-in NDs', 'EF mount (tons of lenses)'], cons: ['Poor battery life', 'Needs rigging'], link: 'https://www.blackmagicdesign.com/', bestFor: 'Career' }
+      ]
+    },
+    'short-film': {
+      'beginner': [
+        { name: 'Panasonic Lumix G85', price: '$700 (with kit lens)', desc: 'Micro 4/3 with IBIS, 4K, and a huge lens selection. Great for learning filmmaking.', pros: ['IBIS + OIS combo', '4K capable', 'Affordable lenses'], cons: ['Smaller sensor', 'Older AF system'], link: 'https://www.panasonic.com/', bestFor: 'Hobby' },
+        { name: 'Rode VideoMicro II', price: '$80', desc: 'On-camera shotgun mic. Massive audio upgrade over internal camera mics.', pros: ['No battery needed', 'Compact', 'Clean audio'], cons: ['Short range', 'On-camera only'], link: 'https://www.rode.com/', bestFor: 'All levels' }
+      ],
+      'some-experience': [
+        { name: 'Sony a6700', price: '$1,400 (body)', desc: 'APS-C hybrid with AI autofocus, S-Cinetone, and 4K 120fps.', pros: ['AI tracking AF', '4K 120fps', 'Log profiles'], cons: ['Crop sensor', 'Rolling shutter'], link: 'https://www.sony.com/', bestFor: 'Side hustle' },
+        { name: 'Rode Wireless Go II', price: '$300', desc: 'Dual-channel wireless mic system. Essential for dialogue in short films.', pros: ['Two transmitters', 'Internal recording', 'Compact'], cons: ['Pricey for beginners', 'Limited range outdoors'], link: 'https://www.rode.com/', bestFor: 'Side hustle' }
+      ],
+      'intermediate': [
+        { name: 'Sony FX30', price: '$1,800 (body)', desc: 'Dedicated cinema camera with APS-C sensor, Cinema Line color, and pro features.', pros: ['Cinema Line color science', 'Active cooling', 'XLR inputs'], cons: ['APS-C crop', 'No EVF'], link: 'https://www.sony.com/', bestFor: 'Career' }
+      ],
+      'advanced': [
+        { name: 'Sony FX6', price: '$6,000 (body)', desc: 'Full-frame cinema camera with dual base ISO, 4K 120fps, and modular design.', pros: ['Dual base ISO', 'Full-frame', 'Professional outputs'], cons: ['Very expensive', 'Needs accessories'], link: 'https://www.sony.com/', bestFor: 'Career' }
+      ]
+    }
+  },
+  'content-creation': {
+    'youtube': {
+      'beginner': [
+        { name: 'Sony ZV-1F', price: '$400', desc: 'All-in-one vlogging camera with a wide lens, great mic, and one-touch bokeh.', pros: ['All-in-one', 'Wide angle built-in', 'Product showcase mode'], cons: ['Fixed lens', 'Small sensor in low light'], link: 'https://www.sony.com/', bestFor: 'Hobby' },
+        { name: 'Elgato Key Light Mini', price: '$80', desc: 'Portable LED panel with app control. Good-enough lighting for desk content.', pros: ['App control', 'Portable', 'USB-C powered'], cons: ['Small panel', 'Not very bright'], link: 'https://www.elgato.com/', bestFor: 'Hobby' },
+        { name: 'Blue Yeti Nano', price: '$80', desc: 'USB condenser mic with two pickup patterns. Plug-and-play audio upgrade.', pros: ['Plug-and-play', 'Good sound quality', 'Compact'], cons: ['Picks up room noise', 'Desktop only'], link: 'https://www.logitechg.com/en-us/products/streaming-gear/yeti-nano-usb-microphone.html', bestFor: 'Hobby' }
+      ],
+      'some-experience': [
+        { name: 'Sony ZV-E10 II', price: '$900 (body)', desc: 'Interchangeable lens creator camera with flip screen, 4K, and great autofocus.', pros: ['Swap lenses', 'Excellent AF', 'Log profiles'], cons: ['No IBIS', 'Need to buy lenses'], link: 'https://www.sony.com/', bestFor: 'Side hustle' },
+        { name: 'Elgato Ring Light', price: '$200', desc: 'Multi-layer diffused ring light with desk clamp. Even, flattering light for face-to-camera.', pros: ['Very even light', 'App control', 'Desk clamp'], cons: ['Expensive for a ring light', 'Fixed position'], link: 'https://www.elgato.com/', bestFor: 'Side hustle' },
+        { name: 'Shure MV7', price: '$250', desc: 'USB/XLR hybrid dynamic mic. Sounds great for voice, rejects room noise.', pros: ['USB + XLR', 'Great for voice', 'Noise rejection'], cons: ['Pricey', 'Needs to be close to mouth'], link: 'https://www.shure.com/', bestFor: 'Side hustle' }
+      ],
+      'intermediate': [
+        { name: 'Sony a7C II', price: '$2,200 (body)', desc: 'Full-frame in a compact body. 4K, S-Cinetone, and AI autofocus for talking-head content.', pros: ['Full-frame', 'Compact body', 'Excellent AF'], cons: ['Expensive', 'Limited lens selection'], link: 'https://www.sony.com/', bestFor: 'Career' },
+        { name: 'Elgato Prompter', price: '$280', desc: 'Teleprompter that mounts on your camera. Read scripts while looking at the lens.', pros: ['Look at lens while reading', 'Works with any camera', 'App included'], cons: ['Adds bulk', 'Small screen'], link: 'https://www.elgato.com/', bestFor: 'Career' }
+      ],
+      'advanced': [
+        { name: 'Canon EOS R5 C', price: '$4,500 (body)', desc: 'Hybrid cinema/photo camera with active cooling, 8K RAW, and Cinema EOS features.', pros: ['8K Cinema RAW', 'No overheating', 'Photo + cinema'], cons: ['Very expensive', 'Heavy'], link: 'https://www.usa.canon.com/', bestFor: 'Career' }
+      ]
+    },
+    'podcast': {
+      'beginner': [
+        { name: 'Samson Q2U', price: '$70', desc: 'USB/XLR dynamic mic. The best budget podcast mic — sounds great and rejects room noise.', pros: ['USB + XLR future-proof', 'Rejects room noise', 'Cheap'], cons: ['Needs to be close', 'Basic stand included'], link: 'https://www.samsontech.com/', bestFor: 'Hobby' },
+        { name: 'Anchor (Spotify for Podcasters)', price: 'Free', desc: 'Free hosting and distribution. Record, edit, and publish from your phone or computer.', pros: ['Completely free', 'Auto-distribution', 'Built-in editor'], cons: ['Limited analytics', 'Spotify-owned'], link: 'https://podcasters.spotify.com/', bestFor: 'Hobby' }
+      ],
+      'some-experience': [
+        { name: 'Shure SM7B', price: '$400', desc: 'The podcast microphone. Used by every major podcaster. Smooth, warm, broadcast-quality sound.', pros: ['Legendary sound', 'Rejects everything', 'Broadcast standard'], cons: ['Needs preamp/interface', 'Heavy'], link: 'https://www.shure.com/', bestFor: 'Side hustle' },
+        { name: 'Focusrite Scarlett 2i2', price: '$180', desc: 'Audio interface for connecting XLR mics to your computer. Clean preamps, low latency.', pros: ['Clean preamps', 'Low latency', 'Reliable'], cons: ['Only 2 inputs', 'No DSP'], link: 'https://focusrite.com/', bestFor: 'All levels' },
+        { name: 'Riverside.fm', price: '$15/mo', desc: 'Remote recording platform. Records each guest locally for studio-quality audio regardless of internet.', pros: ['Local recording', 'Video + audio', 'Auto-transcription'], cons: ['Monthly cost', 'Browser-based'], link: 'https://riverside.fm/', bestFor: 'Side hustle' }
+      ],
+      'intermediate': [
+        { name: 'RØDECaster Pro II', price: '$600', desc: 'All-in-one podcast production studio. 4 mic inputs, effects, soundpads, and multitrack recording.', pros: ['All-in-one', 'Built-in effects', 'Multitrack'], cons: ['Expensive', 'Overkill for solo'], link: 'https://www.rode.com/rodecaster-pro-ii', bestFor: 'Career' }
+      ],
+      'advanced': [
+        { name: 'Neumann U87 Ai', price: '$3,600', desc: 'Studio-standard condenser microphone. Unmistakable clarity and presence.', pros: ['Legendary sound', 'Studio standard', 'Versatile'], cons: ['Needs treated room', 'Extremely expensive'], link: 'https://www.neumann.com/', bestFor: 'Career' }
+      ]
+    }
+  },
+  'design': {
+    'graphic-design': {
+      'beginner': [
+        { name: 'Canva Pro', price: '$13/mo', desc: 'Great starting point for graphic design. Templates, brand kits, and easy export.', pros: ['Easy to learn', 'Huge template library', 'Collaboration'], cons: ['Limited custom design', 'Not industry standard'], link: 'https://www.canva.com/', bestFor: 'Hobby' },
+        { name: 'Figma (Free tier)', price: 'Free', desc: 'Professional design tool with a generous free tier. Learn the tool pros actually use.', pros: ['Free to start', 'Industry standard', 'Browser-based'], cons: ['Learning curve', 'Needs good internet'], link: 'https://www.figma.com/', bestFor: 'All levels' },
+        { name: 'Logitech MX Master 3S', price: '$100', desc: 'The designer mouse. Ergonomic, precise, with a horizontal scroll wheel for timeline work.', pros: ['Ergonomic', 'Precise scrolling', 'Multi-device'], cons: ['Expensive for a mouse', 'Large hands only'], link: 'https://www.logitech.com/', bestFor: 'All levels' }
+      ],
+      'some-experience': [
+        { name: 'Affinity Designer 2', price: '$70 one-time', desc: 'Professional vector design without the subscription. Full Illustrator alternative.', pros: ['One-time purchase', 'Vector + pixel', 'Fast'], cons: ['Smaller community', 'Fewer plugins'], link: 'https://affinity.serif.com/designer/', bestFor: 'Side hustle' },
+        { name: 'Adobe Illustrator', price: '$21/mo', desc: 'Industry standard for vector design. If you want to work at agencies, learn this.', pros: ['Industry standard', 'Huge plugin ecosystem', 'Best pen tool'], cons: ['Subscription', 'Bloated'], link: 'https://www.adobe.com/products/illustrator.html', bestFor: 'Career' }
+      ],
+      'intermediate': [
+        { name: 'Adobe Creative Cloud', price: '$55/mo', desc: 'Full suite: Illustrator, Photoshop, InDesign, XD, and more. For working professionals.', pros: ['Everything included', 'Industry standard', 'Cloud sync'], cons: ['Expensive', 'Subscription lock-in'], link: 'https://www.adobe.com/creativecloud.html', bestFor: 'Career' },
+        { name: 'Dell UltraSharp U2723QE', price: '$520', desc: '4K IPS monitor with 98% DCI-P3. Color-accurate display for design work.', pros: ['4K resolution', '98% DCI-P3', 'USB-C hub'], cons: ['Not cheap', '60Hz only'], link: 'https://www.dell.com/', bestFor: 'Career' }
+      ],
+      'advanced': [
+        { name: 'Apple Studio Display', price: '$1,600', desc: '5K Retina with P3 wide color, 600 nits. The reference display for Mac-based designers.', pros: ['5K Retina', 'P3 wide color', 'Built-in camera/speakers'], cons: ['Very expensive', 'Mac-focused'], link: 'https://www.apple.com/studio-display/', bestFor: 'Career' }
+      ]
+    }
+  },
+  'music': {
+    'beat-making': {
+      'beginner': [
+        { name: 'FL Studio (Fruity Edition)', price: '$100', desc: 'The beat-making DAW. Lifetime free updates, pattern-based workflow perfect for hip-hop and electronic.', pros: ['Lifetime updates', 'Pattern-based', 'Huge community'], cons: ['Windows-first', 'Basic edition limited'], link: 'https://www.image-line.com/', bestFor: 'Hobby' },
+        { name: 'Akai MPK Mini MK3', price: '$120', desc: '25-key MIDI controller with 8 pads. Compact, USB-powered, works with any DAW.', pros: ['Compact', 'MPC-style pads', 'USB powered'], cons: ['Mini keys', 'No aftertouch'], link: 'https://www.akaipro.com/', bestFor: 'Hobby' },
+        { name: 'Audio-Technica ATH-M50x', price: '$150', desc: 'Industry standard monitoring headphones. Flat response for hearing your mix accurately.', pros: ['Flat frequency response', 'Comfortable', 'Foldable'], cons: ['Not wireless', 'Can get hot'], link: 'https://www.audio-technica.com/', bestFor: 'All levels' }
+      ],
+      'some-experience': [
+        { name: 'Ableton Live Standard', price: '$350', desc: 'Session view is perfect for beat experimentation. Industry standard for electronic music production.', pros: ['Session view', 'Great MIDI tools', 'Stable'], cons: ['Expensive', 'Learning curve'], link: 'https://www.ableton.com/', bestFor: 'Side hustle' },
+        { name: 'Native Instruments Maschine MK3', price: '$500', desc: 'Hardware + software beatmaking workstation. MPC-style workflow with NI sounds library.', pros: ['Huge sound library', 'Tactile workflow', 'Standalone feel'], cons: ['Expensive', 'NI ecosystem lock-in'], link: 'https://www.native-instruments.com/', bestFor: 'Side hustle' }
+      ],
+      'intermediate': [
+        { name: 'Universal Audio Apollo Twin', price: '$900', desc: 'Premium audio interface with onboard DSP for real-time plugin processing. Studio-quality sound.', pros: ['Onboard DSP', 'Premium converters', 'UAD plugins'], cons: ['Expensive', 'Plugin subscription extra'], link: 'https://www.uaudio.com/', bestFor: 'Career' }
+      ],
+      'advanced': [
+        { name: 'Ableton Push 3 (Standalone)', price: '$2,000', desc: 'Standalone beatmaking hardware running full Ableton Live. No computer needed.', pros: ['Fully standalone', 'Full Ableton Live', 'Beautiful display'], cons: ['Very expensive', 'Heavy'], link: 'https://www.ableton.com/push/', bestFor: 'Career' }
+      ]
+    }
+  }
+};
+
+// Get default recommendations for categories/subdisciplines not fully mapped
+function getDefaultRecs(category, subdiscipline, skill) {
+  return [
+    { name: 'Recommendation coming soon', price: 'TBD', desc: 'This specific combination is being researched. Subscribe to the newsletter to get notified when recommendations are added.', pros: ['Curated by practitioners', 'No affiliate bias', 'Updated quarterly'], cons: ['Not yet available'], link: '#', bestFor: 'Coming soon' }
+  ];
+}
+
+function getRecommendations(category, subdiscipline, skill) {
+  if (recommendations[category] && recommendations[category][subdiscipline] && recommendations[category][subdiscipline][skill]) {
+    return recommendations[category][subdiscipline][skill];
+  }
+  return getDefaultRecs(category, subdiscipline, skill);
+}
+
+// Bubble selection handling
+document.querySelectorAll('.bubble-option').forEach(bubble => {
+  bubble.addEventListener('click', function() {
+    const grid = this.closest('.bubble-grid');
+    const field = grid.dataset.field;
+
+    // Deselect others in same grid
+    grid.querySelectorAll('.bubble-option').forEach(b => b.classList.remove('selected'));
+    this.classList.add('selected');
+
+    answers[field] = this.dataset.value;
+
+    // Auto-advance after short delay
+    setTimeout(() => {
+      if (field === 'category') {
+        populateSubdisciplines(answers.category);
+        goToStep(2);
+      } else if (field === 'subdiscipline') {
+        goToStep(3);
+      } else if (field === 'skill') {
+        goToStep(4);
+      } else if (field === 'intent') {
+        showResults();
+      }
+    }, 300);
+  });
+});
+
+function populateSubdisciplines(category) {
+  const grid = document.getElementById('subdiscipline-grid');
+  const label = document.getElementById('category-label');
+  const subs = subdisciplines[category] || [];
+
+  label.textContent = category.replace('-', ' ');
+  grid.innerHTML = subs.map(s =>
+    `<div class="bubble-option" data-value="${s.value}"><span class="bubble-emoji">${s.emoji}</span> ${s.label}</div>`
+  ).join('');
+
+  // Attach click handlers to new bubbles
+  grid.querySelectorAll('.bubble-option').forEach(bubble => {
+    bubble.addEventListener('click', function() {
+      grid.querySelectorAll('.bubble-option').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      answers.subdiscipline = this.dataset.value;
+      setTimeout(() => goToStep(3), 300);
+    });
+  });
+}
+
+function goToStep(step) {
+  currentStep = step;
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.querySelector(`.quiz-step[data-step="${step}"]`).classList.add('active');
+
+  // Update progress
+  document.querySelectorAll('.quiz-progress-step').forEach(p => {
+    const pStep = parseInt(p.dataset.step);
+    p.classList.remove('active', 'completed');
+    if (pStep === step) p.classList.add('active');
+    else if (pStep < step) p.classList.add('completed');
+  });
+}
+
+function goBack() {
+  if (currentStep > 1) {
+    goToStep(currentStep - 1);
+  }
+}
+
+function showResults() {
+  // Hide all steps
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+
+  // Mark all progress as completed
+  document.querySelectorAll('.quiz-progress-step').forEach(p => p.classList.add('completed'));
+
+  // Get recommendations
+  const recs = getRecommendations(answers.category, answers.subdiscipline, answers.skill);
+
+  // Populate tags
+  const tagsEl = document.getElementById('results-tags');
+  const categoryLabel = answers.category ? answers.category.replace('-', ' ') : '';
+  const subdLabel = answers.subdiscipline ? answers.subdiscipline.replace(/-/g, ' ') : '';
+  const skillLabel = answers.skill ? answers.skill.replace(/-/g, ' ') : '';
+  const intentLabel = answers.intent ? answers.intent.replace(/-/g, ' ') : '';
+  tagsEl.innerHTML = `
+    <span class="results-tag">${categoryLabel}</span>
+    <span class="results-tag">${subdLabel}</span>
+    <span class="results-tag">${skillLabel}</span>
+    <span class="results-tag">${intentLabel}</span>
+  `;
+
+  // Populate results grid
+  const gridEl = document.getElementById('results-grid');
+  gridEl.innerHTML = recs.map(r => `
+    <div class="result-card">
+      <div class="result-card-header">
+        <div class="result-card-name">${r.name}</div>
+        <div class="result-card-price">${r.price}</div>
+      </div>
+      <div class="result-card-desc">${r.desc}</div>
+      <div class="result-card-pros-cons">
+        <div>
+          <div class="pros-label">Pros</div>
+          <ul class="pros-list">${r.pros.map(p => `<li>${p}</li>`).join('')}</ul>
+        </div>
+        <div>
+          <div class="cons-label">Cons</div>
+          <ul class="cons-list">${r.cons.map(c => `<li>${c}</li>`).join('')}</ul>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <a href="${r.link}" target="_blank" rel="noopener" class="result-card-link">View product →</a>
+        <span class="result-card-best-for">${r.bestFor}</span>
+      </div>
+    </div>
+  `).join('');
+
+  // Show results
+  document.getElementById('quiz-results').classList.add('active');
+}
+
+function restartQuiz() {
+  // Reset answers
+  Object.keys(answers).forEach(k => delete answers[k]);
+  currentStep = 1;
+
+  // Reset UI
+  document.querySelectorAll('.bubble-option').forEach(b => b.classList.remove('selected'));
+  document.getElementById('quiz-results').classList.remove('active');
+
+  // Reset progress
+  document.querySelectorAll('.quiz-progress-step').forEach(p => {
+    p.classList.remove('active', 'completed');
+  });
+  document.querySelector('.quiz-progress-step[data-step="1"]').classList.add('active');
+
+  // Show step 1
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.querySelector('.quiz-step[data-step="1"]').classList.add('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+---
+layout: none
+permalink: /concepts/camera-dropshipping/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Drops · Dew Monday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#FAF4EE; --bg-white:#FFFFFF; --primary:#9A4E20; --primary-dark:#6A2E0A;
+      --primary-light:#FAF0E8; --accent:#D4803A; --accent-light:#FDF0E0;
+      --green:#2D5A27; --green-light:#E8F0E7;
+      --text:#1C1C1C; --text-muted:#6B6B6B; --border:#E0CEBA; --border-light:#EDE4D8;
+      --font-display:'DM Serif Display',serif; --font-body:'Inter',sans-serif;
+      --font-mono:'JetBrains Mono',monospace; --radius:14px;
+      --shadow:0 4px 24px rgba(106,46,10,0.1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;}
+
+    .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;box-shadow:0 1px 12px rgba(106,46,10,0.07);}
+    .nav-left{display:flex;align-items:center;gap:32px;}
+    .nav-logo{font-family:var(--font-display);font-size:1.25rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
+    .nav-logo span{color:var(--accent);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;transition:background 0.15s,color 0.15s;}
+    .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary);}
+    .nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform 0.2s;}
+    .nav-dropdown.open .chevron{transform:rotate(180deg);}
+    .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:8px;min-width:280px;box-shadow:0 12px 40px rgba(106,46,10,0.12);animation:menuIn 0.18s ease;}
+    .nav-dropdown.open .nav-dropdown-menu{display:block;}
+    @keyframes menuIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+    .nav-menu-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--text);transition:background 0.15s;}
+    .nav-menu-item:hover,.nav-menu-item.active{background:var(--primary-light);}
+    .nav-menu-emoji{font-size:1.2rem;width:28px;text-align:center;}
+    .nav-menu-label{font-weight:600;font-size:0.85rem;color:var(--text);}
+    .nav-menu-item.active .nav-menu-label{color:var(--primary);}
+    .nav-menu-sub{font-size:0.72rem;color:var(--text-muted);}
+    .nav-menu-divider{height:1px;background:var(--border-light);margin:4px 0;}
+    .nav-right{display:flex;align-items:center;gap:12px;}
+    .nav-link{font-size:0.85rem;color:var(--text-muted);text-decoration:none;}
+    .nav-link:hover{color:var(--primary);}
+    .nav-cta{padding:8px 18px;background:var(--primary);color:#fff;border-radius:20px;font-size:0.82rem;font-weight:600;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+    .nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px);}
+
+    .hero{background:linear-gradient(135deg,var(--primary-dark) 0%,#9A4E20 55%,#C06830 100%);padding:80px 40px 72px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:-20%;right:-8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(212,128,58,0.2) 0%,transparent 65%);pointer-events:none;}
+    .hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1;}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:5px 14px;border-radius:20px;font-family:var(--font-mono);font-size:0.7rem;color:rgba(255,255,255,0.8);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px;}
+    .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:#F0C090;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+    .hero h1{font-family:var(--font-display);font-size:3.6rem;line-height:1.06;color:#fff;margin-bottom:16px;max-width:680px;}
+    .hero h1 em{font-style:normal;color:#F0C090;}
+    .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.72);max-width:520px;margin-bottom:40px;line-height:1.7;}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px;}
+    .hero-btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:0.92rem;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 4px 16px rgba(0,0,0,0.15);}
+    .hero-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2);}
+    .hero-btn-secondary{padding:13px 28px;border:1.5px solid rgba(255,255,255,0.35);color:rgba(255,255,255,0.9);border-radius:12px;font-weight:600;font-size:0.92rem;text-decoration:none;transition:background 0.15s;}
+    .hero-btn-secondary:hover{background:rgba(255,255,255,0.1);}
+    .hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
+    .hero-stat-num{font-family:var(--font-display);font-size:2rem;color:#F0C090;display:block;}
+    .hero-stat-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.45);}
+
+    .content{max-width:960px;margin:0 auto;padding:0 40px;}
+    .section{padding:56px 0;}
+    .section-eyebrow{font-family:var(--font-mono);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--primary);margin-bottom:8px;}
+    .section-title{font-family:var(--font-display);font-size:1.9rem;color:var(--text);margin-bottom:8px;}
+    .section-sub{font-size:0.9rem;color:var(--text-muted);max-width:500px;line-height:1.65;}
+    .section-header{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px;}
+
+    .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+    .filter-chip{padding:7px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--bg-white);font-size:0.8rem;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all 0.18s;white-space:nowrap;}
+    .filter-chip:hover{border-color:var(--primary);color:var(--primary);}
+    .filter-chip.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+
+    .gear-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:16px;}
+    .gear-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform 0.18s,box-shadow 0.18s;display:flex;flex-direction:column;}
+    .gear-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+    .gear-card.hidden{display:none;}
+    .gear-card.hero-pick{border-top:3px solid var(--primary);}
+    .gear-thumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;}
+    .gear-drop-badge{position:absolute;top:10px;left:10px;font-family:var(--font-mono);font-size:0.6rem;font-weight:700;text-transform:uppercase;padding:3px 9px;border-radius:10px;background:rgba(255,255,255,0.16);color:rgba(255,255,255,0.9);}
+    .gear-cat-badge{position:absolute;top:10px;right:10px;font-family:var(--font-mono);font-size:0.6rem;font-weight:700;padding:3px 9px;border-radius:10px;}
+    .cat-camera{background:#FAF0E8;color:#6A2E0A;}
+    .cat-audio{background:#E8F0E7;color:#1E3D1A;}
+    .cat-lighting{background:#FDF6E3;color:#8A6010;}
+    .cat-accessories{background:#F0EEF8;color:#3D2060;}
+    .gear-body{padding:16px 18px;flex:1;display:flex;flex-direction:column;gap:6px;}
+    .gear-drop-num{font-family:var(--font-mono);font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--primary);}
+    .gear-name{font-weight:700;font-size:0.95rem;color:var(--text);line-height:1.3;}
+    .gear-why{font-size:0.78rem;color:var(--text-muted);line-height:1.55;flex:1;}
+    .gear-footer{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-light);}
+    .gear-price{font-family:var(--font-mono);font-size:0.88rem;font-weight:700;color:var(--primary);}
+    .gear-specs{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+    .gear-spec{font-family:var(--font-mono);font-size:0.62rem;background:var(--border-light);color:var(--text-muted);padding:2px 7px;border-radius:7px;}
+    .gear-status{font-family:var(--font-mono);font-size:0.63rem;font-weight:700;padding:3px 9px;border-radius:10px;text-transform:uppercase;}
+    .status-live{background:var(--green-light);color:var(--green);}
+    .status-next{background:var(--accent-light);color:#8A4010;}
+
+    .accordion{border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;background:var(--bg-white);}
+    .accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 24px;background:none;border:none;cursor:pointer;text-align:left;transition:background 0.15s;}
+    .accordion-trigger:hover,.accordion.open .accordion-trigger{background:var(--primary-light);}
+    .accordion.open .accordion-trigger{border-bottom:1px solid var(--border);}
+    .accordion-trigger-left{display:flex;align-items:center;gap:14px;}
+    .accordion-icon{font-size:1.3rem;}
+    .accordion-label{font-weight:700;font-size:0.95rem;color:var(--text);}
+    .accordion-sublabel{font-size:0.75rem;color:var(--text-muted);margin-top:2px;}
+    .accordion-chevron{width:18px;height:18px;color:var(--text-muted);transition:transform 0.25s;flex-shrink:0;}
+    .accordion.open .accordion-chevron{transform:rotate(180deg);color:var(--primary);}
+    .accordion-body{display:none;padding:24px;}
+    .accordion.open .accordion-body{display:block;}
+
+    .calendar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+    .cal-card{background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:16px 14px;}
+    .cal-drop{font-family:var(--font-mono);font-size:0.68rem;font-weight:700;color:var(--primary);text-transform:uppercase;margin-bottom:4px;}
+    .cal-name{font-weight:700;font-size:0.88rem;margin-bottom:4px;}
+    .cal-date{font-size:0.75rem;color:var(--text-muted);margin-bottom:8px;}
+    .cal-status{display:inline-block;font-family:var(--font-mono);font-size:0.62rem;font-weight:700;padding:3px 9px;border-radius:8px;text-transform:uppercase;}
+    .cal-live{background:var(--green-light);color:var(--green);}
+    .cal-next{background:var(--accent-light);color:#8A4010;}
+    .cal-planned{background:var(--border-light);color:var(--text-muted);}
+
+    .criteria-list{display:flex;flex-direction:column;gap:12px;}
+    .criteria-item{display:flex;gap:14px;align-items:flex-start;padding:14px;background:var(--bg);border-radius:10px;}
+    .criteria-icon{font-size:1.3rem;flex-shrink:0;}
+    .criteria-title{font-weight:700;font-size:0.88rem;margin-bottom:3px;}
+    .criteria-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6;}
+
+    .faq-item{padding:16px 0;border-bottom:1px solid var(--border-light);}
+    .faq-item:last-child{border-bottom:none;padding-bottom:0;}
+    .faq-q{font-weight:700;font-size:0.88rem;margin-bottom:6px;}
+    .faq-a{font-size:0.8rem;color:var(--text-muted);line-height:1.65;}
+
+    .bottom-cta{background:linear-gradient(135deg,var(--primary-dark),#9A4E20);padding:72px 40px;text-align:center;}
+    .bottom-cta-inner{max-width:560px;margin:0 auto;}
+    .bottom-cta h2{font-family:var(--font-display);font-size:2.4rem;color:#fff;margin-bottom:12px;}
+    .bottom-cta p{color:rgba(255,255,255,0.7);font-size:0.95rem;margin-bottom:28px;}
+    .bottom-cta-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+    .cta-btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;}
+    .cta-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+    .cta-btn-ghost{padding:13px 28px;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);border-radius:12px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:background 0.15s;}
+    .cta-btn-ghost:hover{background:rgba(255,255,255,0.1);}
+
+    footer{background:var(--primary-dark);padding:28px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+    .footer-logo{font-family:var(--font-display);font-size:1.05rem;color:rgba(255,255,255,0.75);}
+    .footer-logo span{color:var(--accent);}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+    .footer-links a{font-size:0.76rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s;}
+    .footer-links a:hover{color:rgba(255,255,255,0.8);}
+    .footer-copy{font-family:var(--font-mono);font-size:0.65rem;color:rgba(255,255,255,0.22);}
+
+    @media(max-width:640px){
+      .nav{padding:0 20px;}.nav-left{gap:16px;}
+      .hero{padding:56px 24px 52px;}.hero h1{font-size:2.3rem;}
+      .content{padding:0 20px;}.bottom-cta{padding:52px 24px;}
+      footer{padding:24px 20px;flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">Dew<span>Monday</span></a>
+    <div class="nav-dropdown" id="conceptsDropdown">
+      <button class="nav-dropdown-trigger" onclick="toggleDropdown()">
+        Concepts
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">✍️</span>
+          <div><div class="nav-menu-label">Creator Hub</div><div class="nav-menu-sub">Newsletter, resources & build log</div></div>
+        </a>
+        <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🖼️</span>
+          <div><div class="nav-menu-label">Art Drops</div><div class="nav-menu-sub">Independent artist spotlights</div></div>
+        </a>
+        <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="nav-menu-item active">
+          <span class="nav-menu-emoji">📷</span>
+          <div><div class="nav-menu-label">Camera Drops</div><div class="nav-menu-sub">Curated creator gear kits</div></div>
+        </a>
+        <a href="{{ '/concepts/little-makers/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎈</span>
+          <div><div class="nav-menu-label">Little Makers</div><div class="nav-menu-sub">Creative activities for kids</div></div>
+        </a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-label">Tutorial App</div><div class="nav-menu-sub">Skills platform for digital creators</div></div>
+        </a>
+        <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🖌️</span>
+          <div><div class="nav-menu-label">Art Tutorial App</div><div class="nav-menu-sub">Structured art education</div></div>
+        </a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/creation-bundle/' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎁</span>
+          <div><div class="nav-menu-label">Creation Bundle</div><div class="nav-menu-sub">Personalized gear quiz</div></div>
+        </a>
+      </div>
+    </div>
+    <!-- Brand dropdown -->
+    <div class="nav-dropdown" id="dd-brand">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">
+        Brand
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/brand/#overview' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">📖</span>
+          <div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div>
+        </a>
+        <a href="{{ '/brand/#brand-identity' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎯</span>
+          <div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div>
+        </a>
+        <a href="{{ '/brand/#design-system' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div>
+        </a>
+        <a href="{{ '/brand/#interview-guide' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">🗣️</span>
+          <div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div>
+        </a>
+        <a href="{{ '/brand/#validation-scorecard' | relative_url }}" class="nav-menu-item">
+          <span class="nav-menu-emoji">📊</span>
+          <div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All 6 concepts rated</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+    <a href="{{ '/signup/' | relative_url }}" class="nav-cta">Subscribe free →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="hero-badge-dot"></span> Building in public · Concept 03</div>
+    <h1>One kit. One month. <em>No filler.</em></h1>
+    <p class="hero-sub">Monthly curated gear drops for creators — camera bodies, audio, lighting, and accessories selected editorially, not algorithmically. Everything in a kit works together.</p>
+    <div class="hero-actions">
+      <a href="{{ '/concepts/camera-dropshipping/drops/001-creator-starter-kit/' | relative_url }}" class="hero-btn-primary">See Drop 001 →</a>
+      <a href="{{ '/signup/' | relative_url }}" class="hero-btn-secondary">Get drops 48hrs early</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="hero-stat-num">1</span><span class="hero-stat-label">Drop live</span></div>
+      <div><span class="hero-stat-num">$1,010</span><span class="hero-stat-label">Kit 001 total</span></div>
+      <div><span class="hero-stat-num">0</span><span class="hero-stat-label">Affiliate links</span></div>
+      <div><span class="hero-stat-num">Monthly</span><span class="hero-stat-label">New drop</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="content">
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <p class="section-eyebrow">Gear Browser</p>
+        <h2 class="section-title">Everything we've dropped</h2>
+        <p class="section-sub">Filter by category. Every item is independently selected — no affiliate commissions, no sponsored placements.</p>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-chip active" onclick="filterGear('all',this)">All Gear</button>
+      <button class="filter-chip" onclick="filterGear('camera',this)">📷 Camera</button>
+      <button class="filter-chip" onclick="filterGear('audio',this)">🎙️ Audio</button>
+      <button class="filter-chip" onclick="filterGear('lighting',this)">💡 Lighting</button>
+      <button class="filter-chip" onclick="filterGear('accessories',this)">🎒 Accessories</button>
+    </div>
+    <div class="gear-grid" id="gearGrid">
+
+      <div class="gear-card hero-pick" data-cat="camera">
+        <div class="gear-thumb" style="background:linear-gradient(135deg,#2A1A0A,#6A3A1A);">
+          📷<span class="gear-drop-badge">Drop 001</span><span class="gear-cat-badge cat-camera">Camera</span>
+        </div>
+        <div class="gear-body">
+          <div class="gear-drop-num">Drop 001 · Hero Pick</div>
+          <div class="gear-name">Sony ZV-E10 II + 16-50mm Kit Lens</div>
+          <div class="gear-why">The clearest entry point into mirrorless for solo creators. Flip screen, subject-tracking AF, 4K/30fps. The kit lens covers everything until you know what focal length you actually shoot in.</div>
+          <div class="gear-specs"><span class="gear-spec">APS-C</span><span class="gear-spec">4K/30fps</span><span class="gear-spec">Flip screen</span><span class="gear-spec">Tracking AF</span></div>
+          <div class="gear-footer"><span class="gear-price">$748</span><span class="gear-status status-live">Drop 001</span></div>
+        </div>
+      </div>
+
+      <div class="gear-card" data-cat="audio">
+        <div class="gear-thumb" style="background:linear-gradient(135deg,#1A2A1A,#2D5A27);">
+          🎙️<span class="gear-drop-badge">Drop 001</span><span class="gear-cat-badge cat-audio">Audio</span>
+        </div>
+        <div class="gear-body">
+          <div class="gear-drop-num">Drop 001 · Audio</div>
+          <div class="gear-name">Rode VideoMicro II</div>
+          <div class="gear-why">Plugs directly into the ZV-E10 II. No battery. Cardioid pattern rejects room noise. The single highest-ROI audio upgrade you can make.</div>
+          <div class="gear-specs"><span class="gear-spec">Cardioid</span><span class="gear-spec">Bus-powered</span><span class="gear-spec">3.5mm TRS</span></div>
+          <div class="gear-footer"><span class="gear-price">$99</span><span class="gear-status status-live">Drop 001</span></div>
+        </div>
+      </div>
+
+      <div class="gear-card" data-cat="lighting">
+        <div class="gear-thumb" style="background:linear-gradient(135deg,#2A2A1A,#5A5A20);">
+          💡<span class="gear-drop-badge">Drop 001</span><span class="gear-cat-badge cat-lighting">Lighting</span>
+        </div>
+        <div class="gear-body">
+          <div class="gear-drop-num">Drop 001 · Lighting</div>
+          <div class="gear-name">Godox SL60W + Medium Softbox</div>
+          <div class="gear-why">One light at 45 degrees transforms any room. Daylight-balanced, silent, dimmable to 10%. The softbox gives you clean, professional light without hard shadows.</div>
+          <div class="gear-specs"><span class="gear-spec">60W LED</span><span class="gear-spec">5600K</span><span class="gear-spec">Dimmable</span></div>
+          <div class="gear-footer"><span class="gear-price">$90</span><span class="gear-status status-live">Drop 001</span></div>
+        </div>
+      </div>
+
+      <div class="gear-card" data-cat="accessories">
+        <div class="gear-thumb" style="background:linear-gradient(135deg,#1A1A2A,#3A3A5A);">
+          🎬<span class="gear-drop-badge">Drop 001</span><span class="gear-cat-badge cat-accessories">Accessories</span>
+        </div>
+        <div class="gear-body">
+          <div class="gear-drop-num">Drop 001 · Support</div>
+          <div class="gear-name">Joby GorillaPod 3K Kit</div>
+          <div class="gear-why">Flexible legs wrap around anything. 3kg load handles the ZV-E10 II with mic attached. More useful than a full-size tripod 80% of the time. Weighs 250g.</div>
+          <div class="gear-specs"><span class="gear-spec">3kg load</span><span class="gear-spec">Flexible</span><span class="gear-spec">250g</span></div>
+          <div class="gear-footer"><span class="gear-price">$45</span><span class="gear-status status-live">Drop 001</span></div>
+        </div>
+      </div>
+
+      <div class="gear-card" data-cat="audio">
+        <div class="gear-thumb" style="background:linear-gradient(135deg,#2A1A2A,#5A2A5A);">
+          🎚️<span class="gear-drop-badge">Drop 002</span><span class="gear-cat-badge cat-audio">Audio</span>
+        </div>
+        <div class="gear-body">
+          <div class="gear-drop-num">Drop 002 · Coming July</div>
+          <div class="gear-name">Focusrite Scarlett Solo (4th Gen)</div>
+          <div class="gear-why">The Podcast Studio Kit anchor. Clean preamp, USB-C, works with any dynamic or condenser mic. The interface that ends the search for a better interface.</div>
+          <div class="gear-specs"><span class="gear-spec">USB-C</span><span class="gear-spec">48V phantom</span><span class="gear-spec">24-bit</span></div>
+          <div class="gear-footer"><span class="gear-price">$130</span><span class="gear-status status-next">Drop 002</span></div>
+        </div>
+      </div>
+
+      <div class="gear-card" data-cat="audio">
+        <div class="gear-thumb" style="background:linear-gradient(135deg,#1A1A1A,#3A3A3A);">
+          🎤<span class="gear-drop-badge">Drop 002</span><span class="gear-cat-badge cat-audio">Audio</span>
+        </div>
+        <div class="gear-body">
+          <div class="gear-drop-num">Drop 002 · Coming July</div>
+          <div class="gear-name">Shure SM7dB Dynamic Mic</div>
+          <div class="gear-why">The mic that makes voices sound like voices. Built-in preamp means it works with the Scarlett Solo without a CloudLifter. Industry standard for podcast, voiceover, and studio recording.</div>
+          <div class="gear-specs"><span class="gear-spec">Dynamic</span><span class="gear-spec">Built-in preamp</span><span class="gear-spec">XLR</span></div>
+          <div class="gear-footer"><span class="gear-price">$399</span><span class="gear-status status-next">Drop 002</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <p class="section-eyebrow" style="margin-bottom:20px;">About Camera Drops</p>
+
+    <div class="accordion" id="acc-calendar">
+      <button class="accordion-trigger" onclick="toggleAccordion('acc-calendar')">
+        <div class="accordion-trigger-left">
+          <span class="accordion-icon">📅</span>
+          <div><div class="accordion-label">Drop Calendar</div><div class="accordion-sublabel">What's live, what's next, what's planned</div></div>
+        </div>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="accordion-body">
+        <div class="calendar-grid">
+          <div class="cal-card"><div class="cal-drop">Drop 001</div><div class="cal-name">Creator Starter Kit</div><div class="cal-date">June 2026</div><span class="cal-status cal-live">Live now</span></div>
+          <div class="cal-card"><div class="cal-drop">Drop 002</div><div class="cal-name">Podcast Studio Kit</div><div class="cal-date">July 2026</div><span class="cal-status cal-next">Coming next</span></div>
+          <div class="cal-card"><div class="cal-drop">Drop 003</div><div class="cal-name">On-the-Go Kit</div><div class="cal-date">August 2026</div><span class="cal-status cal-planned">Planned</span></div>
+          <div class="cal-card"><div class="cal-drop">Drop 004</div><div class="cal-name">Studio Upgrade Kit</div><div class="cal-date">September 2026</div><span class="cal-status cal-planned">Planned</span></div>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:16px;line-height:1.6;">Subscribers get access to each drop 48 hours before it goes public. Drop 002 will be announced in the newsletter first.</p>
+      </div>
+    </div>
+
+    <div class="accordion" id="acc-criteria">
+      <button class="accordion-trigger" onclick="toggleAccordion('acc-criteria')">
+        <div class="accordion-trigger-left">
+          <span class="accordion-icon">🔍</span>
+          <div><div class="accordion-label">How We Pick Gear</div><div class="accordion-sublabel">The editorial criteria behind every recommendation</div></div>
+        </div>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="accordion-body">
+        <div class="criteria-list">
+          <div class="criteria-item"><span class="criteria-icon">🎯</span><div><div class="criteria-title">Built around a specific creator type</div><div class="criteria-desc">Each drop starts with a creator profile, not a product list. Drop 001 is for solo video creators upgrading from a phone. Drop 002 is for podcasters setting up their first real studio.</div></div></div>
+          <div class="criteria-item"><span class="criteria-icon">🔗</span><div><div class="criteria-title">Everything works together</div><div class="criteria-desc">We don't curate individual products — we curate kits. The camera pairs with the lens. The mic pairs with the interface. The lighting works with the space. If it doesn't work together, it doesn't make the drop.</div></div></div>
+          <div class="criteria-item"><span class="criteria-icon">🚫</span><div><div class="criteria-title">No affiliate links, ever</div><div class="criteria-desc">We don't earn commissions from what you buy. No sponsored placements, no paid inclusions. Gear makes the drop because it's the right gear, not because someone paid for the slot.</div></div></div>
+          <div class="criteria-item"><span class="criteria-icon">📐</span><div><div class="criteria-title">Priced so the math works</div><div class="criteria-desc">Each kit is priced against realistic creator budgets. Drop 001 is $1,010 for the full stack. Drop 002 will be under $700. We show the full kit price upfront — no hidden add-ons.</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion" id="acc-faq">
+      <button class="accordion-trigger" onclick="toggleAccordion('acc-faq')">
+        <div class="accordion-trigger-left">
+          <span class="accordion-icon">❓</span>
+          <div><div class="accordion-label">FAQ</div><div class="accordion-sublabel">Common questions about how Camera Drops works</div></div>
+        </div>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="accordion-body">
+        <div class="faq-item"><div class="faq-q">Do you sell the gear directly?</div><div class="faq-a">No. Camera Drops links to manufacturer sites and authorized retailers. You buy directly from them — we're the editorial layer, not the storefront.</div></div>
+        <div class="faq-item"><div class="faq-q">Do you have affiliate deals with any of these brands?</div><div class="faq-a">No. No affiliate links, no brand relationships, no sponsored inclusions. Everything in a drop is there because we chose it independently.</div></div>
+        <div class="faq-item"><div class="faq-q">How do subscribers get early access?</div><div class="faq-a">Each new drop goes to the newsletter 48 hours before it goes public on the site. Subscribe at dewmonday.com — free, one email per week.</div></div>
+        <div class="faq-item"><div class="faq-q">Can I suggest gear for a future drop?</div><div class="faq-a">Yes — reply to any newsletter issue with a suggestion. We read every reply. If we've already tested something you suggest, we'll tell you what we thought.</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="bottom-cta">
+  <div class="bottom-cta-inner">
+    <h2>Get Drop 002 first</h2>
+    <p>The Podcast Studio Kit drops in July. Subscribers get it 48 hours before the public. Free to subscribe.</p>
+    <div class="bottom-cta-actions">
+      <a href="{{ '/signup/' | relative_url }}" class="cta-btn-primary">Subscribe free →</a>
+      <a href="{{ '/concepts/camera-dropshipping/drops/001-creator-starter-kit/' | relative_url }}" class="cta-btn-ghost">See Drop 001</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Dew<span>Monday</span></div>
+  <div class="footer-links">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}">Camera Drops</a>
+    <a href="{{ '/signup/' | relative_url }}">Subscribe</a>
+    <a href="#">Privacy</a>
+  </div>
+  <div class="footer-copy">© 2026 Dew Monday</div>
+</footer>
+
+<script>
+  function toggleDropdown(){const d=document.getElementById('conceptsDropdown');d.classList.toggle('open');}
+  document.addEventListener('click',e=>{const d=document.getElementById('conceptsDropdown');if(!d.contains(e.target))d.classList.remove('open');});
+  function filterGear(cat,btn){
+    document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.gear-card').forEach(card=>{
+      card.classList.toggle('hidden',cat!=='all'&&card.dataset.cat!==cat);
+    });
+  }
+  function toggleAccordion(id){
+    const el=document.getElementById(id);const wasOpen=el.classList.contains('open');
+    document.querySelectorAll('.accordion').forEach(a=>a.classList.remove('open'));
+    if(!wasOpen)el.classList.add('open');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,534 @@
+---
+layout: none
+permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Starter Kit · Camera Drops · Dew Monday</title>
+  <meta name="description" content="A curated gear kit for someone starting a YouTube channel, podcast, or content creation. The ones that actually work.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#FAF4EE; --bg-white:#FFFFFF; --primary:#9A4E20; --primary-dark:#6A2E0A;
+      --primary-light:#FAF0E8; --accent:#D4803A; --accent-light:#FDF0E0;
+      --green:#2D5A27; --green-light:#E8F0E7;
+      --text:#1C1C1C; --text-muted:#6B6B6B; --border:#E0CEBA; --border-light:#EDE4D8;
+      --font-display:'DM Serif Display',serif;
+      --font-body:'Inter',sans-serif;
+      --font-mono:'JetBrains Mono',monospace;
+      --radius:14px; --shadow:0 4px 24px rgba(106,46,10,0.1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;}
+
+    /* ===== NAV ===== */
+    .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;box-shadow:0 1px 12px rgba(106,46,10,0.07);}
+    .nav-left{display:flex;align-items:center;gap:32px;}
+    .nav-logo{font-family:var(--font-display);font-size:1.3rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
+    .nav-logo span{color:var(--accent);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;transition:background 0.15s,color 0.15s;}
+    .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary);}
+    .nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform 0.2s;}
+    .nav-dropdown.open .chevron{transform:rotate(180deg);}
+    .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:8px;min-width:290px;box-shadow:0 12px 40px rgba(106,46,10,0.13);animation:menuIn 0.18s ease;z-index:300;}
+    .nav-dropdown.open .nav-dropdown-menu{display:block;}
+    @keyframes menuIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+    .nav-menu-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--text);transition:background 0.15s;}
+    .nav-menu-item:hover{background:var(--primary-light);}
+    .nav-menu-item.active{background:var(--primary-light);color:var(--primary);}
+    .nav-menu-emoji{font-size:1.1rem;width:24px;text-align:center;}
+    .nav-menu-title{font-size:0.85rem;font-weight:600;line-height:1.2;}
+    .nav-menu-desc{font-size:0.75rem;color:var(--text-muted);margin-top:1px;}
+    .nav-menu-divider{height:1px;background:var(--border-light);margin:4px 0;}
+    .nav-cta{background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:8px 18px;border-radius:9px;text-decoration:none;transition:background 0.15s;}
+    .nav-cta:hover{background:var(--primary-dark);}
+
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb{background:var(--primary-light);border-bottom:1px solid var(--border);padding:12px 48px;display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--text-muted);}
+    .breadcrumb a{color:var(--primary);text-decoration:none;font-weight:500;}
+    .breadcrumb a:hover{text-decoration:underline;}
+    .breadcrumb-sep{color:var(--border);}
+
+    /* ===== HERO ===== */
+    .hero{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,#C4703A 100%);padding:80px 48px 72px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(212,128,58,0.25) 0%,transparent 60%);pointer-events:none;}
+    .hero-eyebrow{font-family:var(--font-mono);font-size:0.7rem;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.55);margin-bottom:12px;}
+    .hero-meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+    .hero-tag{font-family:var(--font-mono);font-size:0.7rem;padding:4px 12px;border-radius:99px;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);}
+    .hero h1{font-family:var(--font-display);font-size:3rem;line-height:1.1;color:#fff;margin-bottom:14px;max-width:680px;}
+    .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.72);margin-bottom:28px;max-width:580px;}
+    .hero-kit-total{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:12px 20px;}
+    .hero-kit-num{font-family:var(--font-display);font-size:1.8rem;color:#fff;line-height:1;}
+    .hero-kit-label{font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.65);}
+
+    /* ===== LAYOUT ===== */
+    .layout{display:grid;grid-template-columns:1fr 300px;gap:48px;max-width:1100px;margin:0 auto;padding:56px 48px;}
+    @media(max-width:860px){.layout{grid-template-columns:1fr;}.sidebar{order:-1;}}
+
+    /* ===== GEAR CARDS ===== */
+    .gear-intro{font-size:0.97rem;color:var(--text);line-height:1.78;margin-bottom:32px;}
+    .gear-intro strong{color:var(--primary-dark);}
+
+    .gear-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:20px;box-shadow:var(--shadow);transition:box-shadow 0.2s,transform 0.2s;}
+    .gear-card:hover{box-shadow:0 8px 32px rgba(106,46,10,0.16);transform:translateY(-2px);}
+    .gear-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap;}
+    .gear-card-left{display:flex;align-items:center;gap:14px;}
+    .gear-emoji{font-size:2rem;}
+    .gear-name{font-family:var(--font-display);font-size:1.25rem;color:var(--primary-dark);}
+    .gear-type{font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-top:2px;}
+    .gear-price{font-family:var(--font-display);font-size:1.5rem;color:var(--primary);white-space:nowrap;}
+    .gear-price-note{font-size:0.72rem;font-family:var(--font-mono);color:var(--text-muted);}
+
+    .gear-specs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+    .gear-spec{font-family:var(--font-mono);font-size:0.7rem;padding:3px 9px;border-radius:6px;background:var(--primary-light);color:var(--primary-dark);font-weight:500;}
+
+    .gear-desc{font-size:0.88rem;color:var(--text-muted);line-height:1.65;margin-bottom:14px;}
+
+    .gear-why{background:var(--accent-light);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:12px 16px;font-size:0.86rem;color:var(--primary-dark);}
+    .gear-why-label{font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px;}
+
+    /* kit summary */
+    .kit-summary{background:var(--primary-dark);border-radius:var(--radius);padding:28px;margin:32px 0;color:#fff;}
+    .kit-summary-title{font-family:var(--font-display);font-size:1.3rem;margin-bottom:16px;}
+    .kit-summary-rows{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+    .kit-summary-row{display:flex;align-items:center;justify-content:space-between;font-size:0.88rem;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
+    .kit-summary-row:last-child{border-bottom:none;}
+    .kit-summary-row-name{color:rgba(255,255,255,0.75);}
+    .kit-summary-row-price{font-family:var(--font-mono);font-size:0.82rem;color:rgba(255,255,255,0.9);}
+    .kit-summary-total{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1.5px solid rgba(255,255,255,0.2);}
+    .kit-summary-total-label{font-family:var(--font-mono);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);}
+    .kit-summary-total-price{font-family:var(--font-display);font-size:1.8rem;color:#fff;}
+    .kit-summary-note{font-family:var(--font-mono);font-size:0.68rem;color:rgba(255,255,255,0.4);margin-top:12px;line-height:1.5;}
+
+    .divider{height:1px;background:var(--border-light);margin:32px 0;}
+    .article h2{font-family:var(--font-display);font-size:1.7rem;color:var(--primary-dark);margin:40px 0 14px;}
+    .article h2:first-child{margin-top:0;}
+    .article p{font-size:0.97rem;line-height:1.75;margin-bottom:14px;}
+
+    /* notice */
+    .notice{background:var(--green-light);border:1px solid #B8D0B4;border-radius:var(--radius);padding:16px 20px;font-size:0.85rem;color:#1E3D1A;margin:24px 0;display:flex;gap:10px;align-items:flex-start;}
+    .notice-icon{font-size:1rem;flex-shrink:0;margin-top:1px;}
+
+    /* ===== SIDEBAR ===== */
+    .sidebar{display:flex;flex-direction:column;gap:16px;}
+    .sidebar-card{background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);}
+    .sidebar-card-label{font-family:var(--font-mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;}
+    .sidebar-card-title{font-family:var(--font-display);font-size:1rem;color:var(--primary-dark);margin-bottom:6px;}
+    .kit-nav-card{background:var(--primary-dark);border-radius:var(--radius);padding:20px;}
+    .kit-nav-label{font-family:var(--font-mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin-bottom:10px;}
+    .kit-nav-title{font-family:var(--font-display);font-size:1.05rem;color:#fff;margin-bottom:4px;}
+    .kit-nav-sub{font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:14px;}
+    .kit-nav-btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 0;border-radius:8px;transition:opacity 0.15s;}
+    .kit-nav-btn:hover{opacity:0.88;}
+
+    .gear-jump-link{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--text);font-size:0.83rem;font-weight:500;transition:background 0.15s;gap:8px;}
+    .gear-jump-link:hover{background:var(--primary-light);}
+    .gear-jump-price{font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);}
+
+    /* ===== CTA ===== */
+    .cta{background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:72px 48px;text-align:center;}
+    .cta h2{font-family:var(--font-display);font-size:2.1rem;color:#fff;margin-bottom:10px;}
+    .cta p{color:rgba(255,255,255,0.72);margin-bottom:26px;}
+    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);font-weight:700;padding:13px 34px;border-radius:10px;text-decoration:none;font-size:0.93rem;transition:opacity 0.15s;}
+    .cta-btn:hover{opacity:0.9;}
+
+    /* ===== FOOTER ===== */
+    .footer{background:var(--primary-dark);color:rgba(255,255,255,0.55);padding:48px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;}
+    .footer-logo{font-family:var(--font-display);font-size:1.1rem;color:#fff;}
+    .footer-logo span{color:var(--accent);}
+    .footer-links{display:flex;flex-wrap:wrap;gap:10px 22px;}
+    .footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.82rem;transition:color 0.15s;}
+    .footer-links a:hover{color:#fff;}
+    .footer-copy{width:100%;font-family:var(--font-mono);font-size:0.68rem;color:rgba(255,255,255,0.28);margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="/dewmonday/" class="nav-logo">Dew<span>Monday</span></a>
+
+    <div class="nav-dropdown" id="dd-concepts">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">
+        Concepts
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/dewmonday/concepts/creator-hub/" class="nav-menu-item">
+          <span class="nav-menu-emoji">✍️</span>
+          <div><div class="nav-menu-title">Creator Hub</div><div class="nav-menu-desc">The newsletter itself</div></div>
+        </a>
+        <div class="nav-menu-divider"></div>
+        <a href="/dewmonday/concepts/art-dropshipping/" class="nav-menu-item">
+          <span class="nav-menu-emoji">🖼️</span>
+          <div><div class="nav-menu-title">Art Drops</div><div class="nav-menu-desc">Independent artist spotlights</div></div>
+        </a>
+        <a href="/dewmonday/concepts/camera-dropshipping/" class="nav-menu-item active">
+          <span class="nav-menu-emoji">📷</span>
+          <div><div class="nav-menu-title">Camera Drops</div><div class="nav-menu-desc">Curated creator gear</div></div>
+        </a>
+        <a href="/dewmonday/concepts/little-makers/" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎈</span>
+          <div><div class="nav-menu-title">Little Makers</div><div class="nav-menu-desc">Kids craft activities</div></div>
+        </a>
+        <a href="/dewmonday/concepts/tutorial-app/" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-title">Tutorial App</div><div class="nav-menu-desc">Video lesson platform</div></div>
+        </a>
+        <a href="/dewmonday/concepts/art-tutorial-app/" class="nav-menu-item">
+          <span class="nav-menu-emoji">🖌️</span>
+          <div><div class="nav-menu-title">Art Tutorial App</div><div class="nav-menu-desc">Structured art education</div></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-dropdown" id="dd-brand">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">
+        Brand
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/dewmonday/brand/#overview" class="nav-menu-item">
+          <span class="nav-menu-emoji">📖</span>
+          <div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div>
+        </a>
+        <a href="/dewmonday/brand/#brand-identity" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎯</span>
+          <div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div>
+        </a>
+        <a href="/dewmonday/brand/#design-system" class="nav-menu-item">
+          <span class="nav-menu-emoji">🎨</span>
+          <div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div>
+        </a>
+        <a href="/dewmonday/brand/#interview-guide" class="nav-menu-item">
+          <span class="nav-menu-emoji">🗣️</span>
+          <div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div>
+        </a>
+        <a href="/dewmonday/brand/#validation-scorecard" class="nav-menu-item">
+          <span class="nav-menu-emoji">📊</span>
+          <div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All 6 concepts rated</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <a href="/dewmonday/signup/" class="nav-cta">Get Early Access</a>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/dewmonday/">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <a href="/dewmonday/concepts/camera-dropshipping/">Camera Drops</a>
+  <span class="breadcrumb-sep">›</span>
+  <span>Drop 001 — Creator Starter Kit</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Camera Drops · Curated Gear</div>
+  <div class="hero-meta">
+    <span class="hero-tag">DROP 001</span>
+    <span class="hero-tag">JUNE 2026</span>
+    <span class="hero-tag">5 PIECES</span>
+  </div>
+  <h1>Creator Starter Kit</h1>
+  <p class="hero-sub">Not the cheapest options, not the most expensive. The ones that actually work and won't need replacing in six months.</p>
+  <div class="hero-kit-total">
+    <div>
+      <div class="hero-kit-num">~$740</div>
+      <div class="hero-kit-label">Total kit · 5 items</div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- ARTICLE -->
+  <article class="article">
+
+    <p class="gear-intro">This kit is for someone starting a YouTube channel, podcast, or any kind of content creation. It assumes you're serious enough to buy real equipment but not ready to spend $2,000 to find out if you like it. Every item here was chosen for the same reason: it works well, won't frustrate you in six months, and doesn't require a production crew to operate. <strong>No affiliate links.</strong> Prices are reference-only.</p>
+
+    <div class="notice">
+      <span class="notice-icon">ℹ️</span>
+      <span>Prices shown are approximate and may vary by retailer. Links go to manufacturer pages or major retailers. Camera Drops doesn't earn commissions — these are just the picks.</span>
+    </div>
+
+    <!-- GEAR CARD 1 -->
+    <div class="gear-card" id="sony-zv1f">
+      <div class="gear-card-top">
+        <div class="gear-card-left">
+          <span class="gear-emoji">📷</span>
+          <div>
+            <div class="gear-name">Sony ZV-1F</div>
+            <div class="gear-type">Vlogging Camera</div>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div class="gear-price">~$400</div>
+          <div class="gear-price-note">Reference price</div>
+        </div>
+      </div>
+      <div class="gear-specs">
+        <span class="gear-spec">20.1MP</span>
+        <span class="gear-spec">1" sensor</span>
+        <span class="gear-spec">f/2.0 wide-angle</span>
+        <span class="gear-spec">Built-in directional mic</span>
+        <span class="gear-spec">Flip screen</span>
+        <span class="gear-spec">USB-C streaming</span>
+      </div>
+      <p class="gear-desc">Sony's dedicated vlogging camera. Wide-angle lens built-in, so you don't need to carry a bag of glass. The flip screen means you can see yourself while recording without a mirror setup. Built-in directional mic is genuinely good for a built-in — not a studio mic, but usable for outdoor content and b-roll narration.</p>
+      <div class="gear-why">
+        <div class="gear-why-label">Why this one</div>
+        Best all-in-one for solo creators who don't want to deal with lens swapping or carrying a camera bag. It just works — which is worth more than you think when you're learning to create content at the same time as learning to use a camera.
+      </div>
+    </div>
+
+    <!-- GEAR CARD 2 -->
+    <div class="gear-card" id="rode-nt-usb">
+      <div class="gear-card-top">
+        <div class="gear-card-left">
+          <span class="gear-emoji">🎙️</span>
+          <div>
+            <div class="gear-name">Rode NT-USB Mini</div>
+            <div class="gear-type">USB Condenser Mic</div>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div class="gear-price">~$100</div>
+          <div class="gear-price-note">Reference price</div>
+        </div>
+      </div>
+      <div class="gear-specs">
+        <span class="gear-spec">Cardioid pattern</span>
+        <span class="gear-spec">Built-in pop filter</span>
+        <span class="gear-spec">Headphone monitoring</span>
+        <span class="gear-spec">Zero-latency</span>
+        <span class="gear-spec">USB-A &amp; USB-C</span>
+      </div>
+      <p class="gear-desc">Plug it in, open your recording software, start talking. No audio interface needed. Cardioid pattern means it picks up your voice and rejects most room noise from the sides and back. The built-in pop filter handles plosives well. Headphone jack for zero-latency monitoring is a feature you won't appreciate until you record without it.</p>
+      <div class="gear-why">
+        <div class="gear-why-label">Why this one</div>
+        Good audio is the fastest way to sound professional. This mic sounds better than anything at this price range that requires an interface, and the zero-setup experience means you'll actually use it every time instead of talking yourself out of the hassle.
+      </div>
+    </div>
+
+    <!-- GEAR CARD 3 -->
+    <div class="gear-card" id="elgato-key-light">
+      <div class="gear-card-top">
+        <div class="gear-card-left">
+          <span class="gear-emoji">💡</span>
+          <div>
+            <div class="gear-name">Elgato Key Light Mini</div>
+            <div class="gear-type">Portable LED Panel</div>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div class="gear-price">~$90</div>
+          <div class="gear-price-note">Reference price</div>
+        </div>
+      </div>
+      <div class="gear-specs">
+        <span class="gear-spec">800 lumens</span>
+        <span class="gear-spec">2900–7000K color temp</span>
+        <span class="gear-spec">Bluetooth control</span>
+        <span class="gear-spec">Built-in battery</span>
+        <span class="gear-spec">Adjustable mount</span>
+      </div>
+      <p class="gear-desc">Good light is the single biggest quality jump available in video. A $90 LED panel will make you look better on camera than a $3,000 camera in bad light. The Mini version is portable and battery-powered, so it works at your desk, on location, or anywhere else. Adjustable color temperature means it matches daylight or warm indoor light.</p>
+      <div class="gear-why">
+        <div class="gear-why-label">Why this one</div>
+        This is the most impactful purchase in the kit per dollar spent. If you're only buying one thing right now, buy this. The battery makes it versatile. Bluetooth control means you can adjust brightness from your phone without moving the light.
+      </div>
+    </div>
+
+    <!-- GEAR CARD 4 -->
+    <div class="gear-card" id="samsung-t7">
+      <div class="gear-card-top">
+        <div class="gear-card-left">
+          <span class="gear-emoji">💾</span>
+          <div>
+            <div class="gear-name">Samsung T7 Shield 1TB</div>
+            <div class="gear-type">Portable SSD</div>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div class="gear-price">~$100</div>
+          <div class="gear-price-note">Reference price</div>
+        </div>
+      </div>
+      <div class="gear-specs">
+        <span class="gear-spec">1050MB/s read</span>
+        <span class="gear-spec">IP65 dust/water resistant</span>
+        <span class="gear-spec">USB 3.2</span>
+        <span class="gear-spec">1TB capacity</span>
+        <span class="gear-spec">256-bit AES encryption</span>
+      </div>
+      <p class="gear-desc">Fast enough to edit 4K footage directly off the drive. IP65 rating means it survives the bag throw, the desk coffee spill, and outdoor shoots. 1TB is enough for roughly 5–6 hours of 4K footage before you need to clear it. The encryption option is there if you're storing client work.</p>
+      <div class="gear-why">
+        <div class="gear-why-label">Why this one</div>
+        Tough enough to throw in a bag and fast enough to actually edit off. Most cheap external drives are too slow for smooth 4K playback. This one isn't.
+      </div>
+    </div>
+
+    <!-- GEAR CARD 5 -->
+    <div class="gear-card" id="joby-gorillapod">
+      <div class="gear-card-top">
+        <div class="gear-card-left">
+          <span class="gear-emoji">🦎</span>
+          <div>
+            <div class="gear-name">Joby GorillaPod 3K</div>
+            <div class="gear-type">Flexible Tripod</div>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div class="gear-price">~$50</div>
+          <div class="gear-price-note">Reference price</div>
+        </div>
+      </div>
+      <div class="gear-specs">
+        <span class="gear-spec">Supports up to 6.6 lbs</span>
+        <span class="gear-spec">Wraps around anything</span>
+        <span class="gear-spec">Ball head included</span>
+        <span class="gear-spec">Compact folddown</span>
+      </div>
+      <p class="gear-desc">Flexible legs that wrap around poles, rails, branches, monitors, chairs — anything with a shape. Also works as a standard tripod on a flat surface. Ball head allows you to angle the camera precisely and lock it. Supports the ZV-1F and most mirrorless cameras without issue.</p>
+      <div class="gear-why">
+        <div class="gear-why-label">Why this one</div>
+        More useful than a traditional tripod for 90% of creator situations. You're rarely on perfectly flat ground with a clear sightline. This adapts. It also fits in any bag.
+      </div>
+    </div>
+
+    <!-- KIT SUMMARY -->
+    <div class="kit-summary">
+      <div class="kit-summary-title">The Full Kit</div>
+      <div class="kit-summary-rows">
+        <div class="kit-summary-row">
+          <span class="kit-summary-row-name">📷 Sony ZV-1F</span>
+          <span class="kit-summary-row-price">~$400</span>
+        </div>
+        <div class="kit-summary-row">
+          <span class="kit-summary-row-name">🎙️ Rode NT-USB Mini</span>
+          <span class="kit-summary-row-price">~$100</span>
+        </div>
+        <div class="kit-summary-row">
+          <span class="kit-summary-row-name">💡 Elgato Key Light Mini</span>
+          <span class="kit-summary-row-price">~$90</span>
+        </div>
+        <div class="kit-summary-row">
+          <span class="kit-summary-row-name">💾 Samsung T7 Shield 1TB</span>
+          <span class="kit-summary-row-price">~$100</span>
+        </div>
+        <div class="kit-summary-row">
+          <span class="kit-summary-row-name">🦎 Joby GorillaPod 3K</span>
+          <span class="kit-summary-row-price">~$50</span>
+        </div>
+      </div>
+      <div class="kit-summary-total">
+        <div>
+          <div class="kit-summary-total-label">Total Kit</div>
+        </div>
+        <div class="kit-summary-total-price">~$740</div>
+      </div>
+      <div class="kit-summary-note">Prices are approximate and vary by retailer and region. No affiliate links — these numbers are reference only. Check current pricing before purchasing.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2>What this kit skips</h2>
+    <p>This kit doesn't include editing software (DaVinci Resolve is free and genuinely excellent), a backdrop (a clean wall works fine to start), or a capture card (you don't need one yet). It also skips the $200 desk arm for the mic — the NT-USB Mini sits on a desk stand that ships with it. Start simple.</p>
+    <p>When you've used this kit for three months and can identify exactly what's limiting you, that's when it makes sense to upgrade the specific thing that's limiting you — not before.</p>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="kit-nav-card">
+      <div class="kit-nav-label">You're reading</div>
+      <div class="kit-nav-title">Camera Drops · Drop 001</div>
+      <div class="kit-nav-sub">Creator Starter Kit — 5 pieces, ~$740</div>
+      <a href="/dewmonday/concepts/camera-dropshipping/" class="kit-nav-btn">← All Camera Drops</a>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-label">Jump to gear</div>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <a href="#sony-zv1f" class="gear-jump-link">📷 Sony ZV-1F <span class="gear-jump-price">~$400</span></a>
+        <a href="#rode-nt-usb" class="gear-jump-link">🎙️ Rode NT-USB Mini <span class="gear-jump-price">~$100</span></a>
+        <a href="#elgato-key-light" class="gear-jump-link">💡 Elgato Key Light Mini <span class="gear-jump-price">~$90</span></a>
+        <a href="#samsung-t7" class="gear-jump-link">💾 Samsung T7 Shield <span class="gear-jump-price">~$100</span></a>
+        <a href="#joby-gorillapod" class="gear-jump-link">🦎 Joby GorillaPod 3K <span class="gear-jump-price">~$50</span></a>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-label">Kit summary</div>
+      <div style="font-family:var(--font-display);font-size:1.8rem;color:var(--primary);margin-bottom:4px;">~$740</div>
+      <div style="font-size:0.82rem;color:var(--text-muted);">5 pieces · No affiliate links · Prices are reference only</div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-label">About Camera Drops</div>
+      <p style="font-size:0.84rem;color:var(--text);line-height:1.65;">Curated gear picks for creators. Honest reviews. No affiliate links — prices are reference only. The goal is to help you buy the right thing once instead of upgrading twice.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-label">Newsletter</div>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:12px;">Camera Drops goes out in the Dew Monday newsletter. Free, every Monday, 6am ET.</p>
+      <a href="/dewmonday/signup/" style="display:block;text-align:center;background:var(--primary);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 0;border-radius:8px;transition:opacity 0.15s;">Subscribe free →</a>
+    </div>
+
+  </aside>
+</div>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>More gear drops every week.</h2>
+  <p>Subscribe to Dew Monday — free, every Monday at 6am ET.</p>
+  <a href="/dewmonday/signup/" class="cta-btn">Get Early Access →</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">Dew<span>Monday</span></div>
+    <div style="font-size:0.8rem;margin-top:6px;">Built in public. Every Monday. Free.</div>
+  </div>
+  <div class="footer-links">
+    <a href="/dewmonday/">Home</a>
+    <a href="/dewmonday/concepts/creator-hub/">Creator Hub</a>
+    <a href="/dewmonday/concepts/art-dropshipping/">Art Drops</a>
+    <a href="/dewmonday/concepts/camera-dropshipping/">Camera Drops</a>
+    <a href="/dewmonday/concepts/little-makers/">Little Makers</a>
+    <a href="/dewmonday/concepts/tutorial-app/">Tutorial App</a>
+    <a href="/dewmonday/concepts/art-tutorial-app/">Art Tutorial App</a>
+    <a href="/dewmonday/brand/">Brand</a>
+    <a href="/dewmonday/signup/">Sign Up</a>
+  </div>
+  <div class="footer-copy">© 2026 Dew Monday. Built in public in Livonia, MI.</div>
+</footer>
+
+<script>
+  function toggleDD(id) {
+    const dd = document.getElementById(id);
+    const isOpen = dd.classList.contains('open');
+    document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+    if (!isOpen) dd.classList.add('open');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+    }
+  });
+</script>
+</body>
+</html>
