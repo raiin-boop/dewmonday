@@ -24,6 +24,8 @@ permalink: /concepts/art-dropshipping/
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.in-view{opacity:1;transform:translateY(0);}
 
     .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;box-shadow:0 1px 12px rgba(26,58,80,0.07);}
     .nav-left{display:flex;align-items:center;gap:32px;}
@@ -48,8 +50,9 @@ permalink: /concepts/art-dropshipping/
     .nav-right{display:flex;align-items:center;gap:12px;}
     .nav-link{font-size:0.85rem;color:var(--text-muted);text-decoration:none;transition:color 0.15s;}
     .nav-link:hover{color:var(--primary);}
-    .nav-cta{padding:8px 18px;background:var(--primary);color:#fff;border-radius:20px;font-size:0.82rem;font-weight:600;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+    .nav-cta{padding:8px 18px;background:var(--primary);color:#fff;border-radius:20px;font-size:0.82rem;font-weight:600;text-decoration:none;box-shadow:0 3px 0 rgba(26,58,80,.40);transform:translateY(0);transition:background 0.2s,transform 0.1s,box-shadow 0.1s;}
     .nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px);}
+    .nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(26,58,80,.40);}
 
     .hero{background:linear-gradient(135deg,var(--primary-dark) 0%,#2A5F7A 50%,#3A7A9A 100%);padding:80px 40px 72px;position:relative;overflow:hidden;}
     .hero::before{content:'';position:absolute;top:-20%;right:-5%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(123,175,212,0.18) 0%,transparent 65%);pointer-events:none;}
@@ -62,8 +65,9 @@ permalink: /concepts/art-dropshipping/
     .hero h1 em{font-style:normal;color:#A8CDE4;}
     .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.72);max-width:520px;margin-bottom:40px;line-height:1.7;}
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px;}
-    .hero-btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:0.92rem;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 4px 16px rgba(0,0,0,0.15);}
-    .hero-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2);}
+    .hero-btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:0.92rem;text-decoration:none;box-shadow:0 3px 0 rgba(26,58,80,.30),0 4px 16px rgba(0,0,0,0.10);transform:translateY(0);transition:transform 0.15s,box-shadow 0.15s;}
+    .hero-btn-primary:hover{transform:translateY(-2px);box-shadow:0 3px 0 rgba(26,58,80,.30),0 8px 24px rgba(0,0,0,0.18);}
+    .hero-btn-primary:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(26,58,80,.30);}
     .hero-btn-secondary{padding:13px 28px;border:1.5px solid rgba(255,255,255,0.35);color:rgba(255,255,255,0.9);border-radius:12px;font-weight:600;font-size:0.92rem;text-decoration:none;transition:background 0.15s;}
     .hero-btn-secondary:hover{background:rgba(255,255,255,0.1);}
     .hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
@@ -136,8 +140,9 @@ permalink: /concepts/art-dropshipping/
     .bottom-cta h2{font-family:var(--font-display);font-size:2.4rem;color:#fff;margin-bottom:12px;}
     .bottom-cta p{color:rgba(255,255,255,0.7);font-size:0.95rem;margin-bottom:28px;}
     .bottom-cta-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-    .cta-btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;}
-    .cta-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+    .cta-btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;box-shadow:0 3px 0 rgba(26,58,80,.28);transform:translateY(0);transition:transform 0.15s,box-shadow 0.15s;}
+    .cta-btn-primary:hover{transform:translateY(-2px);box-shadow:0 3px 0 rgba(26,58,80,.28),0 6px 20px rgba(0,0,0,0.18);}
+    .cta-btn-primary:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(26,58,80,.28);}
     .cta-btn-ghost{padding:13px 28px;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);border-radius:12px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:background 0.15s;}
     .cta-btn-ghost:hover{background:rgba(255,255,255,0.1);}
 
@@ -272,7 +277,7 @@ permalink: /concepts/art-dropshipping/
     </div>
     <div class="artist-grid" id="artistGrid">
 
-      <div class="artist-card" data-cat="pastel">
+      <div class="artist-card reveal" data-cat="pastel">
         <div class="artist-thumb" style="background:linear-gradient(135deg,#2A1A10,#6A3A20);">
           🪟
           <span class="artist-spotlight-badge">Spotlight 001</span>
@@ -290,7 +295,7 @@ permalink: /concepts/art-dropshipping/
         </div>
       </div>
 
-      <div class="artist-card" data-cat="mixed">
+      <div class="artist-card reveal" data-cat="mixed">
         <div class="artist-thumb" style="background:linear-gradient(135deg,#1A2A3A,#2A4A5A);">
           🌾
           <span class="artist-spotlight-badge">Spotlight 002</span>
@@ -308,7 +313,7 @@ permalink: /concepts/art-dropshipping/
         </div>
       </div>
 
-      <div class="artist-card" data-cat="digital">
+      <div class="artist-card reveal" data-cat="digital">
         <div class="artist-thumb" style="background:linear-gradient(135deg,#0A1A2A,#1A3A5A);">
           🌆
           <span class="artist-spotlight-badge">Spotlight 003</span>
@@ -332,7 +337,7 @@ permalink: /concepts/art-dropshipping/
   <section class="section" style="padding-top:0;">
     <p class="section-eyebrow" style="margin-bottom:20px;">About Art Drops</p>
 
-    <div class="accordion" id="acc-how">
+    <div class="accordion reveal" id="acc-how">
       <button class="accordion-trigger" onclick="toggleAccordion('acc-how')">
         <div class="accordion-trigger-left">
           <span class="accordion-icon">💡</span>
@@ -362,7 +367,7 @@ permalink: /concepts/art-dropshipping/
       </div>
     </div>
 
-    <div class="accordion" id="acc-nominate">
+    <div class="accordion reveal" id="acc-nominate">
       <button class="accordion-trigger" onclick="toggleAccordion('acc-nominate')">
         <div class="accordion-trigger-left">
           <span class="accordion-icon">📬</span>
@@ -386,7 +391,7 @@ permalink: /concepts/art-dropshipping/
       </div>
     </div>
 
-    <div class="accordion" id="acc-artists">
+    <div class="accordion reveal" id="acc-artists">
       <button class="accordion-trigger" onclick="toggleAccordion('acc-artists')">
         <div class="accordion-trigger-left">
           <span class="accordion-icon">🤝</span>
@@ -448,6 +453,8 @@ permalink: /concepts/art-dropshipping/
     document.querySelectorAll('.accordion').forEach(a=>a.classList.remove('open'));
     if(!wasOpen)el.classList.add('open');
   }
+  const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target)}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 </script>
 </body>
 </html>

@@ -24,6 +24,8 @@ permalink: /concepts/camera-dropshipping/
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.in-view{opacity:1;transform:translateY(0);}
 
     .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;box-shadow:0 1px 12px rgba(106,46,10,0.07);}
     .nav-left{display:flex;align-items:center;gap:32px;}
@@ -47,8 +49,9 @@ permalink: /concepts/camera-dropshipping/
     .nav-right{display:flex;align-items:center;gap:12px;}
     .nav-link{font-size:0.85rem;color:var(--text-muted);text-decoration:none;}
     .nav-link:hover{color:var(--primary);}
-    .nav-cta{padding:8px 18px;background:var(--primary);color:#fff;border-radius:20px;font-size:0.82rem;font-weight:600;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+    .nav-cta{padding:8px 18px;background:var(--primary);color:#fff;border-radius:20px;font-size:0.82rem;font-weight:600;text-decoration:none;box-shadow:0 3px 0 rgba(106,46,10,.42);transform:translateY(0);transition:background 0.2s,transform 0.1s,box-shadow 0.1s;}
     .nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px);}
+    .nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(106,46,10,.42);}
 
     .hero{background:linear-gradient(135deg,var(--primary-dark) 0%,#9A4E20 55%,#C06830 100%);padding:80px 40px 72px;position:relative;overflow:hidden;}
     .hero::before{content:'';position:absolute;top:-20%;right:-8%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(212,128,58,0.2) 0%,transparent 65%);pointer-events:none;}
@@ -60,8 +63,9 @@ permalink: /concepts/camera-dropshipping/
     .hero h1 em{font-style:normal;color:#F0C090;}
     .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.72);max-width:520px;margin-bottom:40px;line-height:1.7;}
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px;}
-    .hero-btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:0.92rem;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 4px 16px rgba(0,0,0,0.15);}
-    .hero-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2);}
+    .hero-btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:0.92rem;text-decoration:none;box-shadow:0 3px 0 rgba(106,46,10,.30),0 4px 16px rgba(0,0,0,0.10);transform:translateY(0);transition:transform 0.15s,box-shadow 0.15s;}
+    .hero-btn-primary:hover{transform:translateY(-2px);box-shadow:0 3px 0 rgba(106,46,10,.30),0 8px 24px rgba(0,0,0,0.18);}
+    .hero-btn-primary:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(106,46,10,.30);}
     .hero-btn-secondary{padding:13px 28px;border:1.5px solid rgba(255,255,255,0.35);color:rgba(255,255,255,0.9);border-radius:12px;font-weight:600;font-size:0.92rem;text-decoration:none;transition:background 0.15s;}
     .hero-btn-secondary:hover{background:rgba(255,255,255,0.1);}
     .hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
@@ -143,8 +147,9 @@ permalink: /concepts/camera-dropshipping/
     .bottom-cta h2{font-family:var(--font-display);font-size:2.4rem;color:#fff;margin-bottom:12px;}
     .bottom-cta p{color:rgba(255,255,255,0.7);font-size:0.95rem;margin-bottom:28px;}
     .bottom-cta-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-    .cta-btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;}
-    .cta-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+    .cta-btn-primary{padding:13px 28px;background:#fff;color:var(--primary-dark);border-radius:12px;font-weight:700;font-size:0.9rem;text-decoration:none;box-shadow:0 3px 0 rgba(106,46,10,.28);transform:translateY(0);transition:transform 0.15s,box-shadow 0.15s;}
+    .cta-btn-primary:hover{transform:translateY(-2px);box-shadow:0 3px 0 rgba(106,46,10,.28),0 6px 20px rgba(0,0,0,0.18);}
+    .cta-btn-primary:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(106,46,10,.28);}
     .cta-btn-ghost{padding:13px 28px;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);border-radius:12px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:background 0.15s;}
     .cta-btn-ghost:hover{background:rgba(255,255,255,0.1);}
 
@@ -279,7 +284,7 @@ permalink: /concepts/camera-dropshipping/
     </div>
     <div class="gear-grid" id="gearGrid">
 
-      <div class="gear-card hero-pick" data-cat="camera">
+      <div class="gear-card hero-pick reveal" data-cat="camera">
         <div class="gear-thumb" style="background:linear-gradient(135deg,#2A1A0A,#6A3A1A);">
           📷<span class="gear-drop-badge">Drop 001</span><span class="gear-cat-badge cat-camera">Camera</span>
         </div>
@@ -292,7 +297,7 @@ permalink: /concepts/camera-dropshipping/
         </div>
       </div>
 
-      <div class="gear-card" data-cat="audio">
+      <div class="gear-card reveal" data-cat="audio">
         <div class="gear-thumb" style="background:linear-gradient(135deg,#1A2A1A,#2D5A27);">
           🎙️<span class="gear-drop-badge">Drop 001</span><span class="gear-cat-badge cat-audio">Audio</span>
         </div>
@@ -305,7 +310,7 @@ permalink: /concepts/camera-dropshipping/
         </div>
       </div>
 
-      <div class="gear-card" data-cat="lighting">
+      <div class="gear-card reveal" data-cat="lighting">
         <div class="gear-thumb" style="background:linear-gradient(135deg,#2A2A1A,#5A5A20);">
           💡<span class="gear-drop-badge">Drop 001</span><span class="gear-cat-badge cat-lighting">Lighting</span>
         </div>
@@ -318,7 +323,7 @@ permalink: /concepts/camera-dropshipping/
         </div>
       </div>
 
-      <div class="gear-card" data-cat="accessories">
+      <div class="gear-card reveal" data-cat="accessories">
         <div class="gear-thumb" style="background:linear-gradient(135deg,#1A1A2A,#3A3A5A);">
           🎬<span class="gear-drop-badge">Drop 001</span><span class="gear-cat-badge cat-accessories">Accessories</span>
         </div>
@@ -331,7 +336,7 @@ permalink: /concepts/camera-dropshipping/
         </div>
       </div>
 
-      <div class="gear-card" data-cat="audio">
+      <div class="gear-card reveal" data-cat="audio">
         <div class="gear-thumb" style="background:linear-gradient(135deg,#2A1A2A,#5A2A5A);">
           🎚️<span class="gear-drop-badge">Drop 002</span><span class="gear-cat-badge cat-audio">Audio</span>
         </div>
@@ -344,7 +349,7 @@ permalink: /concepts/camera-dropshipping/
         </div>
       </div>
 
-      <div class="gear-card" data-cat="audio">
+      <div class="gear-card reveal" data-cat="audio">
         <div class="gear-thumb" style="background:linear-gradient(135deg,#1A1A1A,#3A3A3A);">
           🎤<span class="gear-drop-badge">Drop 002</span><span class="gear-cat-badge cat-audio">Audio</span>
         </div>
@@ -363,7 +368,7 @@ permalink: /concepts/camera-dropshipping/
   <section class="section" style="padding-top:0;">
     <p class="section-eyebrow" style="margin-bottom:20px;">About Camera Drops</p>
 
-    <div class="accordion" id="acc-calendar">
+    <div class="accordion reveal" id="acc-calendar">
       <button class="accordion-trigger" onclick="toggleAccordion('acc-calendar')">
         <div class="accordion-trigger-left">
           <span class="accordion-icon">📅</span>
@@ -382,7 +387,7 @@ permalink: /concepts/camera-dropshipping/
       </div>
     </div>
 
-    <div class="accordion" id="acc-criteria">
+    <div class="accordion reveal" id="acc-criteria">
       <button class="accordion-trigger" onclick="toggleAccordion('acc-criteria')">
         <div class="accordion-trigger-left">
           <span class="accordion-icon">🔍</span>
@@ -400,7 +405,7 @@ permalink: /concepts/camera-dropshipping/
       </div>
     </div>
 
-    <div class="accordion" id="acc-faq">
+    <div class="accordion reveal" id="acc-faq">
       <button class="accordion-trigger" onclick="toggleAccordion('acc-faq')">
         <div class="accordion-trigger-left">
           <span class="accordion-icon">❓</span>
@@ -459,6 +464,8 @@ permalink: /concepts/camera-dropshipping/
       card.classList.toggle('hidden',cat!=='all'&&card.dataset.cat!==cat);
     });
   }
+const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target)}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
   function toggleAccordion(id){
     const el=document.getElementById(id);const wasOpen=el.classList.contains('open');
     document.querySelectorAll('.accordion').forEach(a=>a.classList.remove('open'));

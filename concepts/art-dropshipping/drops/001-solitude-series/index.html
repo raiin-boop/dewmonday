@@ -26,6 +26,8 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.in-view{opacity:1;transform:translateY(0);}
 
     /* ===== NAV ===== */
     .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;box-shadow:0 1px 12px rgba(26,58,80,0.07);}
@@ -47,8 +49,9 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
     .nav-menu-title{font-size:0.85rem;font-weight:600;line-height:1.2;}
     .nav-menu-desc{font-size:0.75rem;color:var(--text-muted);margin-top:1px;}
     .nav-menu-divider{height:1px;background:var(--border-light);margin:4px 0;}
-    .nav-cta{background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:8px 18px;border-radius:9px;text-decoration:none;transition:background 0.15s;}
+    .nav-cta{background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:8px 18px;border-radius:9px;text-decoration:none;box-shadow:0 3px 0 rgba(26,58,80,.40);transform:translateY(0);transition:background 0.15s,transform 0.1s,box-shadow 0.1s;}
     .nav-cta:hover{background:var(--primary-dark);}
+    .nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(26,58,80,.40);}
 
     /* ===== BREADCRUMB ===== */
     .breadcrumb{background:var(--primary-light);border-bottom:1px solid var(--border);padding:12px 48px;display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--text-muted);}
@@ -128,15 +131,17 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
     .series-nav-label{font-family:var(--font-mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin-bottom:10px;}
     .series-nav-title{font-family:var(--font-display);font-size:1.05rem;color:#fff;margin-bottom:4px;}
     .series-nav-sub{font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:14px;}
-    .series-nav-btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 0;border-radius:8px;transition:opacity 0.15s;}
+    .series-nav-btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 0;border-radius:8px;box-shadow:0 3px 0 rgba(26,58,80,.30);transform:translateY(0);transition:opacity 0.15s,transform 0.1s,box-shadow 0.1s;}
     .series-nav-btn:hover{opacity:0.88;}
+    .series-nav-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(26,58,80,.30);}
 
     /* ===== CTA ===== */
     .cta{background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:72px 48px;text-align:center;}
     .cta h2{font-family:var(--font-display);font-size:2.1rem;color:#fff;margin-bottom:10px;}
     .cta p{color:rgba(255,255,255,0.72);margin-bottom:26px;}
-    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);font-weight:700;padding:13px 34px;border-radius:10px;text-decoration:none;font-size:0.93rem;transition:opacity 0.15s;}
+    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);font-weight:700;padding:13px 34px;border-radius:10px;text-decoration:none;font-size:0.93rem;box-shadow:0 3px 0 rgba(26,58,80,.28);transform:translateY(0);transition:opacity 0.15s,transform 0.1s,box-shadow 0.1s;}
     .cta-btn:hover{opacity:0.9;}
+    .cta-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(26,58,80,.28);}
 
     /* ===== FOOTER ===== */
     .footer{background:var(--primary-dark);color:rgba(255,255,255,0.55);padding:48px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;}
@@ -267,7 +272,7 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
     <p>Mara works in oil pastel on toned paper, then digitizes and adjusts in Procreate before sending to print. The result sits somewhere between illustration and painting — warm, slightly grainy, unmistakably human. She sells originals once a year at a small show in her city. The rest of the year, she posts on Instagram to 6,200 people who keep asking where they can buy prints.</p>
 
     <div class="piece-grid">
-      <div class="piece-card">
+      <div class="piece-card reveal">
         <div class="piece-emoji">🪟</div>
         <div class="piece-name">Morning Window</div>
         <p class="piece-desc">A figure at a kitchen window, coffee cup, morning light coming in sideways. The most requested piece from her Instagram. Her most recognizable work — the one people screenshot and ask about in the comments.</p>
@@ -278,7 +283,7 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
         </div>
       </div>
 
-      <div class="piece-card">
+      <div class="piece-card reveal">
         <div class="piece-emoji">📚</div>
         <div class="piece-name">Shelf Life</div>
         <p class="piece-desc">A bookshelf with objects arranged by someone who lives alone. A mug used as a pen holder. Shoes by the door. The kind of specific detail that makes you recognize a life.</p>
@@ -289,7 +294,7 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
         </div>
       </div>
 
-      <div class="piece-card">
+      <div class="piece-card reveal">
         <div class="piece-emoji">🍳</div>
         <div class="piece-name">Kitchen at Night</div>
         <p class="piece-desc">Single overhead light, dishes in the sink, chair pulled away from a table. The most "lonely" piece in the series — Mara says it's actually the most peaceful.</p>
@@ -300,7 +305,7 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
         </div>
       </div>
 
-      <div class="piece-card">
+      <div class="piece-card reveal">
         <div class="piece-emoji">🪞</div>
         <div class="piece-name">Bathroom Mirror</div>
         <p class="piece-desc">A reflection of a figure who could be anyone. Toothbrush in a cup. Towel on a hook. The face just out of frame enough to be yours.</p>
@@ -311,7 +316,7 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
         </div>
       </div>
 
-      <div class="piece-card">
+      <div class="piece-card reveal">
         <div class="piece-emoji">🛏️</div>
         <div class="piece-name">Unmade Bed</div>
         <p class="piece-desc">Warm tones. Sheets twisted. Pillow with the indent of a head still in it. Her personal favorite. The one she says she would keep if she could only keep one.</p>
@@ -322,7 +327,7 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
         </div>
       </div>
 
-      <div class="piece-card">
+      <div class="piece-card reveal">
         <div class="piece-emoji">🚪</div>
         <div class="piece-name">Door, Slightly Open</div>
         <p class="piece-desc">Hallway light coming through a bedroom door cracked two inches. The final piece in the series, made last. The one that closes it without closing it.</p>
@@ -392,19 +397,19 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
-    <div class="series-nav-card">
+    <div class="series-nav-card reveal">
       <div class="series-nav-label">You're reading</div>
       <div class="series-nav-title">Art Drops · Spotlight 001</div>
       <div class="series-nav-sub">Solitude Series — Mara Voss</div>
       <a href="/dewmonday/concepts/art-dropshipping/" class="series-nav-btn">← All Art Drops</a>
     </div>
 
-    <div class="sidebar-card">
+    <div class="sidebar-card reveal">
       <div class="sidebar-card-label">About Art Drops</div>
       <p style="font-size:0.84rem;color:var(--text);line-height:1.65;">Art Drops finds independent artists doing work worth knowing about. We write about why it matters and send you directly to the artist. No middleman. No markup.</p>
     </div>
 
-    <div class="sidebar-card">
+    <div class="sidebar-card reveal">
       <div class="sidebar-card-label">The Artist</div>
       <div class="sidebar-card-title">Mara Voss</div>
       <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
@@ -415,7 +420,7 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
       </div>
     </div>
 
-    <div class="sidebar-card">
+    <div class="sidebar-card reveal">
       <div class="sidebar-card-label">The 6 Pieces</div>
       <div class="sidebar-links">
         <span class="sidebar-link-item" style="cursor:default;">🪟 Morning Window</span>
@@ -427,7 +432,7 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
       </div>
     </div>
 
-    <div class="sidebar-card">
+    <div class="sidebar-card reveal">
       <div class="sidebar-card-label">Newsletter</div>
       <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:12px;">Art Drops goes out in the Dew Monday newsletter. Free, every Monday, 6am ET.</p>
       <a href="/dewmonday/signup/" style="display:block;text-align:center;background:var(--primary);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 0;border-radius:8px;transition:opacity 0.15s;">Subscribe free →</a>
@@ -475,6 +480,8 @@ permalink: /concepts/art-dropshipping/drops/001-solitude-series/
       document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
     }
   });
+  const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target)}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 </script>
 </body>
 </html>

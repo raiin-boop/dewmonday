@@ -26,6 +26,8 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+    .reveal.in-view{opacity:1;transform:translateY(0);}
 
     /* ===== NAV ===== */
     .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;box-shadow:0 1px 12px rgba(106,46,10,0.07);}
@@ -47,8 +49,9 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
     .nav-menu-title{font-size:0.85rem;font-weight:600;line-height:1.2;}
     .nav-menu-desc{font-size:0.75rem;color:var(--text-muted);margin-top:1px;}
     .nav-menu-divider{height:1px;background:var(--border-light);margin:4px 0;}
-    .nav-cta{background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:8px 18px;border-radius:9px;text-decoration:none;transition:background 0.15s;}
+    .nav-cta{background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:8px 18px;border-radius:9px;text-decoration:none;box-shadow:0 3px 0 rgba(106,46,10,.42);transform:translateY(0);transition:background 0.15s,transform 0.1s,box-shadow 0.1s;}
     .nav-cta:hover{background:var(--primary-dark);}
+    .nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(106,46,10,.42);}
 
     /* ===== BREADCRUMB ===== */
     .breadcrumb{background:var(--primary-light);border-bottom:1px solid var(--border);padding:12px 48px;display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--text-muted);}
@@ -125,8 +128,9 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
     .kit-nav-label{font-family:var(--font-mono);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin-bottom:10px;}
     .kit-nav-title{font-family:var(--font-display);font-size:1.05rem;color:#fff;margin-bottom:4px;}
     .kit-nav-sub{font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:14px;}
-    .kit-nav-btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 0;border-radius:8px;transition:opacity 0.15s;}
+    .kit-nav-btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 0;border-radius:8px;box-shadow:0 3px 0 rgba(106,46,10,.32);transform:translateY(0);transition:opacity 0.15s,transform 0.1s,box-shadow 0.1s;}
     .kit-nav-btn:hover{opacity:0.88;}
+    .kit-nav-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(106,46,10,.32);}
 
     .gear-jump-link{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--text);font-size:0.83rem;font-weight:500;transition:background 0.15s;gap:8px;}
     .gear-jump-link:hover{background:var(--primary-light);}
@@ -136,8 +140,9 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
     .cta{background:linear-gradient(135deg,var(--primary-dark),var(--primary));padding:72px 48px;text-align:center;}
     .cta h2{font-family:var(--font-display);font-size:2.1rem;color:#fff;margin-bottom:10px;}
     .cta p{color:rgba(255,255,255,0.72);margin-bottom:26px;}
-    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);font-weight:700;padding:13px 34px;border-radius:10px;text-decoration:none;font-size:0.93rem;transition:opacity 0.15s;}
+    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);font-weight:700;padding:13px 34px;border-radius:10px;text-decoration:none;font-size:0.93rem;box-shadow:0 3px 0 rgba(106,46,10,.28);transform:translateY(0);transition:opacity 0.15s,transform 0.1s,box-shadow 0.1s;}
     .cta-btn:hover{opacity:0.9;}
+    .cta-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(106,46,10,.28);}
 
     /* ===== FOOTER ===== */
     .footer{background:var(--primary-dark);color:rgba(255,255,255,0.55);padding:48px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;}
@@ -269,7 +274,7 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
     </div>
 
     <!-- GEAR CARD 1 -->
-    <div class="gear-card" id="sony-zv1f">
+    <div class="gear-card reveal" id="sony-zv1f">
       <div class="gear-card-top">
         <div class="gear-card-left">
           <span class="gear-emoji">📷</span>
@@ -299,7 +304,7 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
     </div>
 
     <!-- GEAR CARD 2 -->
-    <div class="gear-card" id="rode-nt-usb">
+    <div class="gear-card reveal" id="rode-nt-usb">
       <div class="gear-card-top">
         <div class="gear-card-left">
           <span class="gear-emoji">🎙️</span>
@@ -328,7 +333,7 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
     </div>
 
     <!-- GEAR CARD 3 -->
-    <div class="gear-card" id="elgato-key-light">
+    <div class="gear-card reveal" id="elgato-key-light">
       <div class="gear-card-top">
         <div class="gear-card-left">
           <span class="gear-emoji">💡</span>
@@ -357,7 +362,7 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
     </div>
 
     <!-- GEAR CARD 4 -->
-    <div class="gear-card" id="samsung-t7">
+    <div class="gear-card reveal" id="samsung-t7">
       <div class="gear-card-top">
         <div class="gear-card-left">
           <span class="gear-emoji">💾</span>
@@ -386,7 +391,7 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
     </div>
 
     <!-- GEAR CARD 5 -->
-    <div class="gear-card" id="joby-gorillapod">
+    <div class="gear-card reveal" id="joby-gorillapod">
       <div class="gear-card-top">
         <div class="gear-card-left">
           <span class="gear-emoji">🦎</span>
@@ -458,14 +463,14 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
-    <div class="kit-nav-card">
+    <div class="kit-nav-card reveal">
       <div class="kit-nav-label">You're reading</div>
       <div class="kit-nav-title">Camera Drops · Drop 001</div>
       <div class="kit-nav-sub">Creator Starter Kit — 5 pieces, ~$740</div>
       <a href="/dewmonday/concepts/camera-dropshipping/" class="kit-nav-btn">← All Camera Drops</a>
     </div>
 
-    <div class="sidebar-card">
+    <div class="sidebar-card reveal">
       <div class="sidebar-card-label">Jump to gear</div>
       <div style="display:flex;flex-direction:column;gap:2px;">
         <a href="#sony-zv1f" class="gear-jump-link">📷 Sony ZV-1F <span class="gear-jump-price">~$400</span></a>
@@ -476,18 +481,18 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
       </div>
     </div>
 
-    <div class="sidebar-card">
+    <div class="sidebar-card reveal">
       <div class="sidebar-card-label">Kit summary</div>
       <div style="font-family:var(--font-display);font-size:1.8rem;color:var(--primary);margin-bottom:4px;">~$740</div>
       <div style="font-size:0.82rem;color:var(--text-muted);">5 pieces · No affiliate links · Prices are reference only</div>
     </div>
 
-    <div class="sidebar-card">
+    <div class="sidebar-card reveal">
       <div class="sidebar-card-label">About Camera Drops</div>
       <p style="font-size:0.84rem;color:var(--text);line-height:1.65;">Curated gear picks for creators. Honest reviews. No affiliate links — prices are reference only. The goal is to help you buy the right thing once instead of upgrading twice.</p>
     </div>
 
-    <div class="sidebar-card">
+    <div class="sidebar-card reveal">
       <div class="sidebar-card-label">Newsletter</div>
       <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:12px;">Camera Drops goes out in the Dew Monday newsletter. Free, every Monday, 6am ET.</p>
       <a href="/dewmonday/signup/" style="display:block;text-align:center;background:var(--primary);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:600;padding:9px 0;border-radius:8px;transition:opacity 0.15s;">Subscribe free →</a>
@@ -535,6 +540,8 @@ permalink: /concepts/camera-dropshipping/drops/001-creator-starter-kit/
       document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
     }
   });
+  const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target)}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 </script>
 </body>
 </html>

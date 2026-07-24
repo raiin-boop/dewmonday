@@ -54,8 +54,9 @@ permalink: /concepts/art-tutorial-app/
     .nav-right{display:flex;align-items:center;gap:14px;}
     .nav-home-link{font-size:0.85rem;color:var(--text-muted);text-decoration:none;transition:color 0.15s;}
     .nav-home-link:hover{color:var(--primary);}
-    .nav-cta{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:8px 18px;font-size:0.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s;}
+    .nav-cta{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:8px 18px;font-size:0.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.1s,box-shadow 0.1s;box-shadow:0 3px 0 rgba(74,26,53,.40);transform:translateY(0);}
     .nav-cta:hover{background:var(--primary-dark);}
+    .nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(74,26,53,.40);}
 
     /* ===== HERO ===== */
     .hero{background:linear-gradient(135deg, var(--primary-dark) 0%, #7A3A5A 55%, #A05A7A 100%);padding:80px 40px 72px;text-align:center;position:relative;overflow:hidden;}
@@ -68,10 +69,12 @@ permalink: /concepts/art-tutorial-app/
     .hero-badges{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
     .hero-badge{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:999px;padding:5px 14px;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.85);font-family:var(--font-mono);}
     .hero-actions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
-    .btn-hero-primary{background:#fff;color:var(--primary-dark);border:none;border-radius:12px;padding:14px 28px;font-size:0.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;display:inline-block;}
-    .btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.2);}
-    .btn-hero-ghost{background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.35);border-radius:12px;padding:14px 24px;font-size:0.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s;display:inline-block;}
+    .btn-hero-primary{background:#fff;color:var(--primary-dark);border:none;border-radius:12px;padding:14px 28px;font-size:0.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;display:inline-block;box-shadow:0 3px 0 rgba(74,26,53,.28);transform:translateY(0);}
+    .btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 3px 0 rgba(74,26,53,.28),0 8px 28px rgba(0,0,0,0.2);}
+    .btn-hero-primary:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(74,26,53,.28);}
+    .btn-hero-ghost{background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.35);border-radius:12px;padding:14px 24px;font-size:0.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.1s;display:inline-block;}
     .btn-hero-ghost:hover{background:rgba(255,255,255,0.2);}
+    .btn-hero-ghost:active{transform:translateY(1px);}
     .hero-stats{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:44px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.12);flex-wrap:wrap;}
     .hero-stat-num{font-family:var(--font-display);font-size:2rem;color:#fff;display:block;}
     .hero-stat-label{font-size:0.78rem;color:rgba(255,255,255,0.55);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.08em;}
@@ -85,8 +88,9 @@ permalink: /concepts/art-tutorial-app/
 
     /* ===== FILTERS ===== */
     .filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
-    .filter-chip{background:var(--bg-white);border:1.5px solid var(--border);border-radius:999px;padding:6px 16px;font-size:0.82rem;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all 0.15s;font-family:var(--font-body);}
+    .filter-chip{background:var(--bg-white);border:1.5px solid var(--border);border-radius:999px;padding:6px 16px;font-size:0.82rem;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all 0.15s;font-family:var(--font-body);box-shadow:0 2px 0 rgba(74,26,53,.14);transform:translateY(0);}
     .filter-chip:hover{border-color:var(--primary);color:var(--primary);}
+    .filter-chip:active{transform:translateY(2px);box-shadow:0 0 0 rgba(74,26,53,.14);}
     .filter-chip.active{background:var(--primary);border-color:var(--primary);color:#fff;}
 
     /* ===== TRACK CARDS ===== */
@@ -170,8 +174,9 @@ permalink: /concepts/art-tutorial-app/
     .cta-eyebrow{font-family:var(--font-mono);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.45);margin-bottom:14px;}
     .cta-title{font-family:var(--font-display);font-size:2.4rem;color:#fff;margin-bottom:14px;line-height:1.15;}
     .cta-sub{font-size:1rem;color:rgba(255,255,255,0.7);margin-bottom:32px;line-height:1.65;}
-    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);border-radius:12px;padding:15px 32px;font-size:1rem;font-weight:700;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;}
-    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,0,0,0.2);}
+    .cta-btn{display:inline-block;background:#fff;color:var(--primary-dark);border-radius:12px;padding:15px 32px;font-size:1rem;font-weight:700;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 3px 0 rgba(74,26,53,.28);transform:translateY(0);}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 3px 0 rgba(74,26,53,.28),0 10px 32px rgba(0,0,0,0.2);}
+    .cta-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(74,26,53,.28);}
 
     /* ===== FOOTER ===== */
     .footer{background:var(--primary-dark);padding:36px 40px;text-align:center;}
@@ -192,6 +197,7 @@ permalink: /concepts/art-tutorial-app/
       .footer{padding:28px 24px;}
       .tracks-grid{grid-template-columns:1fr;}
     }
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}.reveal.in-view{opacity:1;transform:translateY(0);}
   </style>
 </head>
 <body>
@@ -345,7 +351,7 @@ permalink: /concepts/art-tutorial-app/
       <div class="tracks-grid">
 
         <!-- TRACK 1: Digital Foundation -->
-        <div class="track-card" data-tags="beginner project">
+        <div class="track-card reveal" data-tags="beginner project">
           <div class="track-card-header">
             <div class="track-card-top">
               <div class="track-icon rose">🖼️</div>
@@ -383,7 +389,7 @@ permalink: /concepts/art-tutorial-app/
         </div>
 
         <!-- TRACK 2: Oil Pastel & Mixed Media -->
-        <div class="track-card" data-tags="beginner intermediate project">
+        <div class="track-card reveal" data-tags="beginner intermediate project">
           <div class="track-card-header">
             <div class="track-card-top">
               <div class="track-icon gold">🎨</div>
@@ -422,7 +428,7 @@ permalink: /concepts/art-tutorial-app/
         </div>
 
         <!-- TRACK 3: Portrait & Figure -->
-        <div class="track-card" data-tags="intermediate project community">
+        <div class="track-card reveal" data-tags="intermediate project community">
           <div class="track-card-header">
             <div class="track-card-top">
               <div class="track-icon teal">👤</div>
@@ -461,7 +467,7 @@ permalink: /concepts/art-tutorial-app/
         </div>
 
         <!-- TRACK 4: Style Development -->
-        <div class="track-card" data-tags="intermediate community project">
+        <div class="track-card reveal" data-tags="intermediate community project">
           <div class="track-card-header">
             <div class="track-card-top">
               <div class="track-icon accent">🌀</div>
@@ -662,6 +668,8 @@ permalink: /concepts/art-tutorial-app/
         }
       });
     }
+    const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');revealObs.unobserve(e.target)}})},{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
   </script>
 </body>
 </html>
