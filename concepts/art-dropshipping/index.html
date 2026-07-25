@@ -10,14 +10,14 @@ permalink: /concepts/art-dropshipping/
   <title>Art Drops · Dew Monday</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg:#F0F4F8; --bg-white:#FFFFFF; --primary:#2A5F7A; --primary-dark:#1A3A50;
       --primary-light:#E0EBF3; --accent:#7BAFD4; --accent-light:#EAF3FA;
       --warm:#C4836A; --warm-light:#FAF0EC; --text:#1C1C1C; --text-muted:#6B6B6B;
       --border:#C8D8E4; --border-light:#DDE8F0;
-      --font-display:'DM Serif Display',serif; --font-body:'Inter',sans-serif;
+      --font-display:'Instrument Serif',serif; --font-body:'Inter',sans-serif;
       --font-mono:'JetBrains Mono',monospace; --radius:14px;
       --shadow:0 4px 24px rgba(26,58,80,0.09);
     }
@@ -27,12 +27,12 @@ permalink: /concepts/art-dropshipping/
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
     .reveal.in-view{opacity:1;transform:translateY(0);}
 
-    .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;box-shadow:0 1px 12px rgba(26,58,80,0.07);}
+    .nav{position:sticky;top:0;z-index:200;background:rgba(240,244,248,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:76px;box-shadow:0 1px 12px rgba(26,58,80,0.07);}
     .nav-left{display:flex;align-items:center;gap:32px;}
-    .nav-logo{font-family:var(--font-display);font-size:1.25rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
+    .nav-logo{font-family:var(--font-display);font-style:italic;font-size:1.25rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
     .nav-logo span{color:var(--accent);}
     .nav-dropdown{position:relative;}
-    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;transition:background 0.15s,color 0.15s;}
+    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 14px;border-radius:999px;transition:background 0.15s,color 0.15s;}
     .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary);}
     .nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform 0.2s;}
     .nav-dropdown.open .chevron{transform:rotate(180deg);}
@@ -50,7 +50,7 @@ permalink: /concepts/art-dropshipping/
     .nav-right{display:flex;align-items:center;gap:12px;}
     .nav-link{font-size:0.85rem;color:var(--text-muted);text-decoration:none;transition:color 0.15s;}
     .nav-link:hover{color:var(--primary);}
-    .nav-cta{padding:8px 18px;background:var(--primary);color:#fff;border-radius:20px;font-size:0.82rem;font-weight:600;text-decoration:none;box-shadow:0 3px 0 rgba(26,58,80,.40);transform:translateY(0);transition:background 0.2s,transform 0.1s,box-shadow 0.1s;}
+    .nav-cta{padding:8px 18px;background:var(--text);color:#fff;border-radius:999px;font-size:0.82rem;font-weight:600;text-decoration:none;box-shadow:0 3px 0 rgba(26,58,80,.40);transform:translateY(0);transition:background 0.2s,transform 0.1s,box-shadow 0.1s;}
     .nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px);}
     .nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(26,58,80,.40);}
 
@@ -146,13 +146,13 @@ permalink: /concepts/art-dropshipping/
     .cta-btn-ghost{padding:13px 28px;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);border-radius:12px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:background 0.15s;}
     .cta-btn-ghost:hover{background:rgba(255,255,255,0.1);}
 
-    footer{background:var(--primary-dark);padding:28px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-    .footer-logo{font-family:var(--font-display);font-size:1.05rem;color:rgba(255,255,255,0.75);}
+    footer{padding:28px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--border);}
+    .footer-logo{font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:var(--text);}
     .footer-logo span{color:var(--accent);}
     .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
-    .footer-links a{font-size:0.76rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s;}
-    .footer-links a:hover{color:rgba(255,255,255,0.8);}
-    .footer-copy{font-family:var(--font-mono);font-size:0.65rem;color:rgba(255,255,255,0.22);}
+    .footer-links a{font-size:0.76rem;color:var(--text-muted);text-decoration:none;transition:color 0.15s;}
+    .footer-links a:hover{color:var(--text);}
+    .footer-copy{font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted);}
 
     @media(max-width:640px){
       .nav{padding:0 20px;}.nav-left{gap:16px;}
