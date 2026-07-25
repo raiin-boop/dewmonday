@@ -10,7 +10,7 @@ permalink: /concepts/art-tutorial-app/
   <title>Art Tutorial App · Dew Monday</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg:#F8F2F5; --bg-white:#FFFFFF; --primary:#7A3A5A; --primary-dark:#4A1A35;
@@ -21,7 +21,7 @@ permalink: /concepts/art-tutorial-app/
       --rose:#E07A7A; --rose-light:#FDF0F0;
       --text:#1C1C1C; --text-muted:#6B6B6B;
       --border:#E4D0DA; --border-light:#F0E2EB;
-      --font-display:'DM Serif Display',serif;
+      --font-display:'Instrument Serif',serif;
       --font-body:'Inter',sans-serif;
       --font-mono:'JetBrains Mono',monospace;
       --radius:14px; --shadow:0 4px 24px rgba(74,26,53,0.10);
@@ -31,12 +31,12 @@ permalink: /concepts/art-tutorial-app/
     body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;}
 
     /* ===== NAV ===== */
-    .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;box-shadow:0 1px 12px rgba(74,26,53,0.07);}
+    .nav{position:sticky;top:0;z-index:200;background:rgba(248,242,245,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:76px;box-shadow:0 1px 12px rgba(74,26,53,0.07);}
     .nav-left{display:flex;align-items:center;gap:32px;}
-    .nav-logo{font-family:var(--font-display);font-size:1.25rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
+    .nav-logo{font-family:var(--font-display);font-style:italic;font-size:1.25rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
     .nav-logo span{color:var(--accent);}
     .nav-dropdown{position:relative;}
-    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;transition:background 0.15s,color 0.15s;}
+    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 14px;border-radius:999px;transition:background 0.15s,color 0.15s;}
     .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary);}
     .nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform 0.2s;}
     .nav-dropdown.open .chevron{transform:rotate(180deg);}
@@ -54,7 +54,7 @@ permalink: /concepts/art-tutorial-app/
     .nav-right{display:flex;align-items:center;gap:14px;}
     .nav-home-link{font-size:0.85rem;color:var(--text-muted);text-decoration:none;transition:color 0.15s;}
     .nav-home-link:hover{color:var(--primary);}
-    .nav-cta{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:8px 18px;font-size:0.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.1s,box-shadow 0.1s;box-shadow:0 3px 0 rgba(74,26,53,.40);transform:translateY(0);}
+    .nav-cta{background:var(--text);color:#fff;border:none;border-radius:999px;padding:8px 18px;font-size:0.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.1s,box-shadow 0.1s;box-shadow:0 3px 0 rgba(74,26,53,.40);transform:translateY(0);}
     .nav-cta:hover{background:var(--primary-dark);}
     .nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(74,26,53,.40);}
 
@@ -179,12 +179,12 @@ permalink: /concepts/art-tutorial-app/
     .cta-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(74,26,53,.28);}
 
     /* ===== FOOTER ===== */
-    .footer{background:var(--primary-dark);padding:36px 40px;text-align:center;}
-    .footer-logo{font-family:var(--font-display);font-size:1.1rem;color:rgba(255,255,255,0.6);margin-bottom:10px;}
+    .footer{padding:36px 40px;text-align:center;border-top:1px solid var(--border);}
+    .footer-logo{font-family:var(--font-display);font-style:italic;font-size:1.1rem;color:var(--text);margin-bottom:10px;}
     .footer-logo span{color:var(--accent);}
     .footer-links{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
-    .footer-link{font-size:0.82rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s;}
-    .footer-link:hover{color:rgba(255,255,255,0.8);}
+    .footer-link{font-size:0.82rem;color:var(--text-muted);text-decoration:none;transition:color 0.15s;}
+    .footer-link:hover{color:var(--text);}
 
     /* ===== RESPONSIVE ===== */
     @media(max-width:680px){

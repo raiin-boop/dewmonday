@@ -10,7 +10,7 @@ permalink: /concepts/little-makers/activities/
   <title>Little Makers — Activity Browser · Dew Monday</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #EEF8F6;
@@ -29,7 +29,7 @@ permalink: /concepts/little-makers/activities/
       --text: #1C1C1C;
       --text-muted: #6B6B6B;
       --border: #CFE4DE;
-      --font-display: 'DM Serif Display', serif;
+      --font-display: 'Instrument Serif', serif;
       --font-body: 'Inter', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
@@ -38,12 +38,12 @@ permalink: /concepts/little-makers/activities/
     body { font-family: var(--font-body); color: var(--text); background: var(--bg); line-height: 1.6; min-height: 100vh; }
 
     /* ===== NAV ===== */
-    .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;box-shadow:0 1px 12px rgba(0,0,0,0.07);}
+    .nav{position:sticky;top:0;z-index:200;background:rgba(238,248,246,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:76px;box-shadow:0 1px 12px rgba(0,0,0,0.07);}
     .nav-left{display:flex;align-items:center;gap:32px;}
-    .nav-logo{font-family:var(--font-display);font-size:1.25rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
+    .nav-logo{font-family:var(--font-display);font-style:italic;font-size:1.25rem;color:var(--text);text-decoration:none;white-space:nowrap;}
     .nav-logo span{color:var(--accent);}
     .nav-dropdown{position:relative;}
-    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;transition:background 0.15s,color 0.15s;}
+    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:500;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:999px;transition:background 0.15s,color 0.15s;}
     .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary);}
     .nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform 0.2s;}
     .nav-dropdown.open .chevron{transform:rotate(180deg);}
@@ -58,7 +58,7 @@ permalink: /concepts/little-makers/activities/
     .nav-right{display:flex;align-items:center;gap:14px;}
     .nav-home-link{font-size:0.85rem;color:var(--text-muted);text-decoration:none;}
     .nav-home-link:hover{color:var(--primary);}
-    .nav-subscribe-btn{padding:8px 18px;background:var(--primary);color:#fff;border-radius:20px;font-size:0.82rem;font-weight:700;text-decoration:none;box-shadow:0 3px 0 rgba(26,80,64,.38);transform:translateY(0);transition:background 0.2s,transform 0.1s,box-shadow 0.1s;}
+    .nav-subscribe-btn{padding:8px 18px;background:var(--text);color:#fff;border-radius:999px;font-size:0.82rem;font-weight:700;text-decoration:none;box-shadow:0 3px 0 rgba(26,80,64,.38);transform:translateY(0);transition:background 0.2s,transform 0.1s,box-shadow 0.1s;}
     .nav-subscribe-btn:hover{background:var(--primary-dark);}
     .nav-subscribe-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(26,80,64,.38);}
 
@@ -201,12 +201,12 @@ permalink: /concepts/little-makers/activities/
 
     /* ===== FOOTER ===== */
     .page-footer {
-      background: var(--primary-dark); color: rgba(255,255,255,0.55);
+       color: var(--text-muted);
       padding: 32px 48px; text-align: center;
       font-size: 0.82rem;
     }
-    .page-footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
-    .page-footer a:hover { color: white; }
+    .page-footer a { color: var(--text-muted); text-decoration: none; }
+    .page-footer a:hover { color: var(--text); }
 
     /* ===== MOBILE ===== */
     @media (max-width: 768px) {

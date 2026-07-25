@@ -11,14 +11,14 @@ permalink: /brand/
   <meta name="description" content="The Dew Monday brand guide — who we are, what we're building, and how we build it.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg:#F5F2EC; --bg-white:#FFFFFF; --primary:#2D5A27; --primary-dark:#1E3D1A;
       --primary-mid:#3D7A35; --primary-light:#E8F0E7; --accent:#6BA3BE;
       --accent-light:#E8F2F8; --gold:#D4A847; --gold-light:#FDF6E3;
       --text:#1C1C1C; --text-muted:#6B6B6B; --border:#D8D4C8; --border-light:#EAE6DC;
-      --font-display:'DM Serif Display',serif;
+      --font-display:'Instrument Serif',serif;
       --font-body:'Inter',sans-serif;
       --font-mono:'JetBrains Mono',monospace;
       --radius:14px; --shadow:0 4px 24px rgba(30,61,26,0.09);
@@ -28,12 +28,12 @@ permalink: /brand/
     body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;}
 
     /* ===== NAV ===== */
-    .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;box-shadow:0 1px 12px rgba(30,61,26,0.06);}
+    .nav{position:sticky;top:0;z-index:200;background:rgba(245,242,236,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:76px;box-shadow:0 1px 12px rgba(30,61,26,0.06);}
     .nav-left{display:flex;align-items:center;gap:32px;}
-    .nav-logo{font-family:var(--font-display);font-size:1.3rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
+    .nav-logo{font-family:var(--font-display);font-style:italic;font-size:1.3rem;color:var(--primary-dark);text-decoration:none;white-space:nowrap;}
     .nav-logo span{color:var(--accent);}
     .nav-dropdown{position:relative;}
-    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;transition:background 0.15s,color 0.15s;}
+    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:600;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 14px;border-radius:999px;transition:background 0.15s,color 0.15s;}
     .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary);}
     .nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform 0.2s;}
     .nav-dropdown.open .chevron{transform:rotate(180deg);}
@@ -47,7 +47,7 @@ permalink: /brand/
     .nav-menu-title{font-size:0.85rem;font-weight:600;line-height:1.2;}
     .nav-menu-desc{font-size:0.75rem;color:var(--text-muted);margin-top:1px;}
     .nav-menu-divider{height:1px;background:var(--border-light);margin:4px 0;}
-    .nav-cta{background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:8px 18px;border-radius:9px;text-decoration:none;transition:background 0.15s,transform 0.1s,box-shadow 0.1s;box-shadow:0 3px 0 rgba(30,61,26,.35);transform:translateY(0);}
+    .nav-cta{background:var(--primary);color:#fff;font-size:0.82rem;font-weight:600;padding:8px 18px;border-radius:999px;text-decoration:none;transition:background 0.15s,transform 0.1s,box-shadow 0.1s;box-shadow:0 3px 0 rgba(30,61,26,.35);transform:translateY(0);}
     .nav-cta:hover{background:var(--primary-mid);}
     .nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(30,61,26,.35);}
 
@@ -146,13 +146,13 @@ permalink: /brand/
     .cta-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(30,61,26,.28);opacity:1;}
 
     /* ===== FOOTER ===== */
-    .footer{background:var(--primary-dark);color:rgba(255,255,255,0.6);padding:48px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;}
-    .footer-logo{font-family:var(--font-display);font-size:1.1rem;color:#fff;}
+    .footer{padding:48px;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;border-top:1px solid var(--border);}
+    .footer-logo{font-family:var(--font-display);font-style:italic;font-size:1.1rem;color:var(--text);}
     .footer-logo span{color:var(--accent);}
     .footer-links{display:flex;flex-wrap:wrap;gap:12px 24px;}
-    .footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.83rem;transition:color 0.15s;}
-    .footer-links a:hover{color:#fff;}
-    .footer-copy{width:100%;font-family:var(--font-mono);font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);}
+    .footer-links a{color:var(--text-muted);text-decoration:none;font-size:0.83rem;transition:color 0.15s;}
+    .footer-links a:hover{color:var(--text);}
+    .footer-copy{width:100%;font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);margin-top:24px;padding-top:24px;border-top:1px solid var(--border);}
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}.reveal.in-view{opacity:1;transform:translateY(0);}
   </style>
 </head>
@@ -394,7 +394,7 @@ permalink: /brand/
 
           <div class="font-specimen">
             <div class="font-specimen-label">DM Serif Display — Headings, hero text, card titles, stat numbers</div>
-            <div class="font-specimen-sample" style="font-family:'DM Serif Display',serif;font-size:2rem;color:var(--primary-dark);">Dew Monday</div>
+            <div class="font-specimen-sample" style="font-family:'Instrument Serif',serif;font-size:2rem;color:var(--primary-dark);">Dew Monday</div>
           </div>
           <div class="font-specimen">
             <div class="font-specimen-label">Inter — Body text, buttons, descriptions, UI labels</div>

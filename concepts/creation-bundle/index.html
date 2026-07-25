@@ -10,7 +10,7 @@ permalink: /concepts/creation-bundle/
   <title>Creation Bundle · Dew Monday</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #F2F5F0;
@@ -26,7 +26,7 @@ permalink: /concepts/creation-bundle/
       --text-muted: #6B6B6B;
       --border: #D4DCD6;
       --border-light: #E8EDE9;
-      --font-display: 'DM Serif Display', serif;
+      --font-display: 'Instrument Serif', serif;
       --font-body: 'Inter', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
       --radius: 14px;
@@ -36,9 +36,31 @@ permalink: /concepts/creation-bundle/
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    /* ===== BACK LINK ===== */
-    .back-link { display: block; padding: 12px 24px; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); text-decoration: none; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; transition: color 0.15s; }
-    .back-link:hover { color: var(--primary); }
+    /* ===== NAV ===== */
+    .nav{position:sticky;top:0;z-index:200;background:rgba(242,245,240,0.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:76px;}
+    .nav-left{display:flex;align-items:center;gap:30px;}
+    .nav-logo{font-family:var(--font-display);font-style:italic;font-size:1.25rem;color:var(--text);text-decoration:none;white-space:nowrap;}
+    .nav-logo span{color:var(--primary);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown-trigger{display:flex;align-items:center;gap:6px;font-size:0.85rem;font-weight:500;color:var(--text);background:none;border:none;cursor:pointer;padding:6px 14px;border-radius:999px;transition:background 0.2s,color 0.2s;}
+    .nav-dropdown-trigger:hover,.nav-dropdown.open .nav-dropdown-trigger{background:var(--primary-light);color:var(--primary);}
+    .nav-dropdown-trigger .chevron{width:14px;height:14px;transition:transform 0.25s;}
+    .nav-dropdown.open .chevron{transform:rotate(180deg);}
+    .nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 10px);left:0;background:var(--bg-white);border:1px solid var(--border);border-radius:20px;padding:10px;min-width:300px;box-shadow:0 20px 50px rgba(42,39,35,0.06);animation:menuIn 0.2s ease;z-index:300;}
+    .nav-dropdown.open .nav-dropdown-menu{display:block;}
+    @keyframes menuIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+    .nav-menu-item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:14px;text-decoration:none;color:var(--text);transition:background 0.2s;}
+    .nav-menu-item:hover,.nav-menu-item.active{background:var(--primary-light);}
+    .nav-menu-emoji{font-size:1.1rem;width:24px;text-align:center;flex-shrink:0;opacity:0.85;}
+    .nav-menu-title{font-size:0.85rem;font-weight:500;}
+    .nav-menu-desc{font-size:0.75rem;color:var(--text-muted);margin-top:1px;}
+    .nav-menu-divider{height:1px;background:var(--border);margin:6px 10px;}
+    .nav-right{display:flex;align-items:center;gap:16px;}
+    .nav-home-link{font-size:0.85rem;color:var(--text-muted);text-decoration:none;}
+    .nav-home-link:hover{color:var(--text);}
+    .nav-subscribe-btn{padding:10px 22px;background:var(--text);color:var(--bg);border-radius:999px;font-size:0.83rem;font-weight:500;text-decoration:none;transition:background 0.2s;white-space:nowrap;box-shadow:0 3px 0 rgba(30,74,42,.25);transform:translateY(0);}
+    .nav-subscribe-btn:hover{background:var(--primary-dark);}
+    .nav-subscribe-btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(30,74,42,.25);}
 
     /* ===== HERO ===== */
     .hero { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--primary-mid) 100%); padding: 80px 48px 72px; position: relative; overflow: hidden; }
@@ -162,11 +184,53 @@ permalink: /concepts/creation-bundle/
       .bottom-cta h2 { font-size: 2rem; }
       .result-card-pros-cons { grid-template-columns: 1fr; }
     }
+
+    /* ===== FOOTER ===== */
+    footer{padding:40px 48px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--border);}
+    .footer-logo{font-family:var(--font-display);font-style:italic;font-size:1.1rem;color:var(--text);text-decoration:none;}
+    .footer-logo span{color:var(--primary);}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+    .footer-links a{font-size:.78rem;color:var(--text-muted);text-decoration:none;}
+    .footer-links a:hover{color:var(--text);}
+    .footer-copy{font-family:var(--font-mono);font-size:.65rem;color:var(--text-muted);}
+    @media(max-width:720px){.nav{padding:0 20px;}.nav-left{gap:16px;}footer{padding:28px 20px;flex-direction:column;align-items:flex-start;}}
   </style>
 </head>
 <body>
 
-<a href="{{ "/" | relative_url }}" class="back-link">← Dew Monday</a>
+<nav class="nav">
+  <div class="nav-left">
+    <a href="{{ '/' | relative_url }}" class="nav-logo">dew<span>monday</span></a>
+    <div class="nav-dropdown" id="dd-concepts">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-concepts')">Concepts <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/concepts/creator-hub/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">✍️</span><div><div class="nav-menu-title">Creator Hub</div><div class="nav-menu-desc">Newsletter & build log</div></div></a>
+        <a href="{{ '/concepts/art-dropshipping/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🖼️</span><div><div class="nav-menu-title">Art Drops</div><div class="nav-menu-desc">Independent artist spotlights</div></div></a>
+        <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📷</span><div><div class="nav-menu-title">Camera Drops</div><div class="nav-menu-desc">Curated creator gear kits</div></div></a>
+        <a href="{{ '/concepts/little-makers/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎈</span><div><div class="nav-menu-title">Little Makers</div><div class="nav-menu-desc">Screen-free activities for kids</div></div></a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/tutorial-app/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎨</span><div><div class="nav-menu-title">Tutorial App</div><div class="nav-menu-desc">Creator skills platform</div></div></a>
+        <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🖌️</span><div><div class="nav-menu-title">Art Tutorial App</div><div class="nav-menu-desc">Structured art education</div></div></a>
+        <div class="nav-menu-divider"></div>
+        <a href="{{ '/concepts/creation-bundle/' | relative_url }}" class="nav-menu-item active"><span class="nav-menu-emoji">🎁</span><div><div class="nav-menu-title">Creation Bundle</div><div class="nav-menu-desc">Personalized gear quiz</div></div></a>
+      </div>
+    </div>
+    <div class="nav-dropdown" id="dd-brand">
+      <button class="nav-dropdown-trigger" onclick="toggleDD('dd-brand')">Brand <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="nav-dropdown-menu">
+        <a href="{{ '/brand/#overview' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📖</span><div><div class="nav-menu-title">Overview</div><div class="nav-menu-desc">What Dew Monday is</div></div></a>
+        <a href="{{ '/brand/#brand-identity' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎯</span><div><div class="nav-menu-title">Brand Identity</div><div class="nav-menu-desc">Voice, tone, audience</div></div></a>
+        <a href="{{ '/brand/#design-system' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🎨</span><div><div class="nav-menu-title">Design System</div><div class="nav-menu-desc">Fonts, colors, components</div></div></a>
+        <a href="{{ '/brand/#interview-guide' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">🗣️</span><div><div class="nav-menu-title">Interview Guide</div><div class="nav-menu-desc">25 validation questions</div></div></a>
+        <a href="{{ '/brand/#validation-scorecard' | relative_url }}" class="nav-menu-item"><span class="nav-menu-emoji">📊</span><div><div class="nav-menu-title">Concept Scorecard</div><div class="nav-menu-desc">All concepts rated</div></div></a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="{{ '/' | relative_url }}" class="nav-home-link">Home</a>
+    <a href="{{ '/signup/' | relative_url }}" class="nav-subscribe-btn">Subscribe free →</a>
+  </div>
+</nav>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -350,7 +414,24 @@ permalink: /concepts/creation-bundle/
   </div>
 </section>
 
+<footer>
+  <a href="{{ '/' | relative_url }}" class="footer-logo">dew<span>monday</span></a>
+  <div class="footer-links">
+    <a href="{{ '/concepts/creator-hub/' | relative_url }}">Creator Hub</a>
+    <a href="{{ '/concepts/art-dropshipping/' | relative_url }}">Art Drops</a>
+    <a href="{{ '/concepts/camera-dropshipping/' | relative_url }}">Camera Drops</a>
+    <a href="{{ '/concepts/little-makers/' | relative_url }}">Little Makers</a>
+    <a href="{{ '/concepts/tutorial-app/' | relative_url }}">Tutorial App</a>
+    <a href="{{ '/concepts/art-tutorial-app/' | relative_url }}">Art Tutorial App</a>
+    <a href="{{ '/concepts/creation-bundle/' | relative_url }}">Creation Bundle</a>
+    <a href="{{ '/signup/' | relative_url }}">Subscribe</a>
+  </div>
+  <p class="footer-copy">© 2026 Dew Monday · Built in public</p>
+</footer>
+
 <script>
+function toggleDD(id){document.querySelectorAll('.nav-dropdown').forEach(d=>{if(d.id!==id)d.classList.remove('open')});document.getElementById(id).classList.toggle('open')}
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown')){document.querySelectorAll('.nav-dropdown').forEach(d=>d.classList.remove('open'))}})
 // ===== ACCORDION =====
 function toggleAccordion(id) {
   document.getElementById(id).classList.toggle('open');

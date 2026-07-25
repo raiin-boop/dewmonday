@@ -10,7 +10,7 @@ permalink: /concepts/tutorial-app/
   <title>Tutorial App · Dew Monday</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg:          #F5F0F8;
@@ -30,7 +30,7 @@ permalink: /concepts/tutorial-app/
       --text-muted:  #6B6B6B;
       --border:      #DDD8E8;
       --border-light:#EEE8F5;
-      --font-display:'DM Serif Display', serif;
+      --font-display:'Instrument Serif', serif;
       --font-body:   'Inter', sans-serif;
       --font-mono:   'JetBrains Mono', monospace;
       --radius:      14px;
@@ -43,11 +43,11 @@ permalink: /concepts/tutorial-app/
     /* ===== NAV ===== */
     .nav {
       position: sticky; top: 0; z-index: 200;
-      background: rgba(255,255,255,0.96);
+      background: rgba(245,240,248,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px; height: 64px;
+      padding: 0 40px; height:76px;
       box-shadow: 0 1px 12px rgba(60,30,100,0.07);
     }
     .nav-left { display: flex; align-items: center; gap: 32px; }
@@ -60,7 +60,7 @@ permalink: /concepts/tutorial-app/
       display: flex; align-items: center; gap: 6px;
       font-size: 0.85rem; font-weight: 600; color: var(--text);
       background: none; border: none; cursor: pointer;
-      padding: 6px 10px; border-radius: 8px;
+      padding: 6px 14px; border-radius: 999px;
       transition: background 0.15s, color 0.15s;
     }
     .nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger {
@@ -98,8 +98,8 @@ permalink: /concepts/tutorial-app/
     .nav-link { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
     .nav-link:hover { color: var(--primary); }
     .nav-cta {
-      padding: 8px 18px; background: var(--primary); color: #fff;
-      border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+      padding: 8px 18px; background:var(--text); color: #fff;
+      border-radius:999px; font-size: 0.82rem; font-weight: 600;
       text-decoration: none; transition: background 0.2s, transform 0.1s, box-shadow 0.1s;
       box-shadow: 0 3px 0 rgba(61,32,96,.40); transform: translateY(0);
     }
@@ -337,16 +337,16 @@ permalink: /concepts/tutorial-app/
 
     /* ===== FOOTER ===== */
     footer {
-      background: var(--primary-dark); padding: 28px 40px;
+      border-top: 1px solid var(--border); padding: 28px 40px;
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid var(--border);
     }
-    .footer-logo { font-family: var(--font-display); font-size: 1.05rem; color: rgba(255,255,255,0.75); }
+    .footer-logo { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; color: var(--text); }
     .footer-logo span { color: var(--accent); }
     .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-links a { font-size: 0.76rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
-    .footer-links a:hover { color: rgba(255,255,255,0.8); }
-    .footer-copy { font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.22); }
+    .footer-links a { font-size: 0.76rem; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 640px) {
